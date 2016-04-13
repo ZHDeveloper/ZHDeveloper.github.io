@@ -118,7 +118,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/iOS/" style="font-size: 10px;">iOS</a>
+						<a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/屏幕旋转/" style="font-size: 10px;">屏幕旋转</a> <a href="/tags/强制横屏/" style="font-size: 10px;">强制横屏</a>
 					</div>
 				</section>
 				
@@ -137,7 +137,7 @@
 				
 				<section class="switch-part switch-part4">
 				
-					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+					<div id="js-aboutme">努力赚钱，让孩子成为富二代。</div>
 				</section>
 				
 			</div>
@@ -195,6 +195,136 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-iOS屏幕旋转" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/13/iOS屏幕旋转/" class="article-date">
+  	<time datetime="2016-04-13T02:54:55.000Z" itemprop="datePublished">2016-04-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/13/iOS屏幕旋转/">iOS屏幕旋转</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>当屏幕发生旋转，需要注册通知UIDeviceOrientationDidChangeNotification来告诉应用程序屏幕方向发生改变。UIDevice的beginGeneratingDeviceOrientationNotifications方法是告诉应用程序每次设备更改的方向。</p>
+<pre><code>//监听屏幕方向变化
+- (void)listeningRotating {
+    //当屏幕方向发生改变时通知应用程序
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onDeviceOrientationChange) name:UIDeviceOrientationDidChangeNotification object:nil];
+}
+
+- (void)removeListeningRotating {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
+}
+
+- (void)onDeviceOrientationChange {
+    UIDeviceOrientation orientation             = [UIDevice currentDevice].orientation;
+    UIInterfaceOrientation interfaceOrientation = (UIInterfaceOrientation)orientation;
+    switch (interfaceOrientation)
+    {
+        case UIInterfaceOrientationPortraitUpsideDown:
+        {
+            //NSLog(@&quot;第3个旋转方向---电池栏在下&quot;);
+        }
+        break;
+        case UIInterfaceOrientationPortrait:
+        {
+            //NSLog(@&quot;第0个旋转方向---电池栏在上&quot;);
+        }
+        break;
+        case UIInterfaceOrientationLandscapeLeft:
+        {
+            //NSLog(@&quot;第2个旋转方向---电池栏在右&quot;);
+        }
+        break;
+        case UIInterfaceOrientationLandscapeRight:
+        {
+            //NSLog(@&quot;第1个旋转方向---电池栏在左&quot;);
+        }
+        break;
+
+        default:
+            break;
+    }
+}
+</code></pre><p>iOS播放器的开发，难免需要用到横竖屏间的切换。下面提供了几个方法来实现横竖屏的切换，但有些方法具有局限性。</p>
+<pre><code>//强制横屏
+- (void)interfaceOrientation:(UIInterfaceOrientation)orientation {
+    // arc下
+    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)])
+    {
+        SEL selector             = NSSelectorFromString(@&quot;setOrientation:&quot;);
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
+        [invocation setSelector:selector];
+        [invocation setTarget:[UIDevice currentDevice]];
+        int val = orientation;
+        [invocation setArgument:&amp;val atIndex:2];
+        [invocation invoke];
+    }
+    //    问题：横屏后，切换不回竖屏，不建议使用
+    //    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)])
+    //    {
+    //        [[UIDevice currentDevice] performSelector:@selector(setOrientation:)
+    //                                       withObject:@(orientation)];
+    //    }
+
+    //    问题：直接调用这个方法不能通过AppStore的审核
+    //    [[UIDevice currentDevice] setValue:[NSNumber numberWithInteger:UIInterfaceOrientationLandscapeRight] forKey:@&quot;orientation&quot;];
+}
+</code></pre><p>iOS8以后，从竖屏切换到横屏时，状态栏的默认是隐藏的。需要通过代码来设置显示手机的状态栏。</p>
+<p>情况一：当状态的控制由UIController来管理时，可以通过重写控制器的prefersStatusBarHidden，来控制状态栏的显示或者隐藏。</p>
+<pre><code>- (BOOL)prefersStatusBarHidden {
+    return NO;
+}
+</code></pre><p>情况二：从info.plist中设置View controller-based status bar appearance为NO，表示不由控制器来管理状态栏。</p>
+<pre><code>[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/屏幕旋转/">屏幕旋转</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/强制横屏/">强制横屏</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-iOS资料分享" class="article article-type-post" itemscope itemprop="blogPost">
   
