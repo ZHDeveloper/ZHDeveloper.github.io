@@ -120,7 +120,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/IB/" style="font-size: 10px;">IB</a> <a href="/tags/ReactiveCocoa/" style="font-size: 10px;">ReactiveCocoa</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/函数式编程/" style="font-size: 10px;">函数式编程</a> <a href="/tags/博客/" style="font-size: 10px;">博客</a> <a href="/tags/响应式编程/" style="font-size: 10px;">响应式编程</a> <a href="/tags/屏幕旋转/" style="font-size: 10px;">屏幕旋转</a> <a href="/tags/强制横屏/" style="font-size: 10px;">强制横屏</a> <a href="/tags/技巧/" style="font-size: 10px;">技巧</a> <a href="/tags/技术分享/" style="font-size: 10px;">技术分享</a> <a href="/tags/链式编程/" style="font-size: 10px;">链式编程</a>
+						<a href="/tags/IB/" style="font-size: 10px;">IB</a> <a href="/tags/KVO/" style="font-size: 10px;">KVO</a> <a href="/tags/ReactiveCocoa/" style="font-size: 10px;">ReactiveCocoa</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/函数式编程/" style="font-size: 10px;">函数式编程</a> <a href="/tags/博客/" style="font-size: 10px;">博客</a> <a href="/tags/响应式编程/" style="font-size: 10px;">响应式编程</a> <a href="/tags/屏幕旋转/" style="font-size: 10px;">屏幕旋转</a> <a href="/tags/底层实现/" style="font-size: 10px;">底层实现</a> <a href="/tags/强制横屏/" style="font-size: 10px;">强制横屏</a> <a href="/tags/技巧/" style="font-size: 10px;">技巧</a> <a href="/tags/技术分享/" style="font-size: 10px;">技术分享</a> <a href="/tags/链式编程/" style="font-size: 10px;">链式编程</a>
 					</div>
 				</section>
 				
@@ -199,6 +199,152 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-KVO底层实现" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/21/KVO底层实现/" class="article-date">
+  	<time datetime="2016-04-21T08:33:44.000Z" itemprop="datePublished">2016-04-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/21/KVO底层实现/">KVO底层实现</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&#x89C2;&#x5BDF;&#x8005;&#x6A21;&#x5F0F;&#xFF08;KVO&#xFF09;&#xFF0C;&#x5F53;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x503C;&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x4F1A;&#x901A;&#x8FC7;&#x8C03;&#x7528;&#x65B9;&#x6CD5;observeValueForKeyPath:ofObject:change:context:&#x6765;&#x8BF4;&#x660E;&#x5C5E;&#x6027;&#x7684;&#x503C;&#x53D1;&#x751F;&#x4E86;&#x6539;&#x53D8;&#x3002;KVO&#x7684;&#x5B9E;&#x73B0;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>- (void)viewDidLoad {
+[super viewDidLoad];
+
+Person *p = [Person new];
+
+p.name = @&quot;&#x5F20;&#x4E09;&quot;;
+
+[p addObserver:self forKeyPath:@&quot;name&quot; options:NSKeyValueObservingOptionNew context:nil];
+
+    p.name = @&quot;&#x674E;&#x601D;&quot;;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary&lt;NSString *, id&gt; *)change context:(void *)context {
+    NSLog(@&quot;%@&quot;, change);
+}
+</code></pre><p>&#x4ECE;&#x4E0B;&#x56FE;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x5F53;&#x8FD8;&#x672A;&#x7ED9;&#x5BF9;&#x8C61;&#x6DFB;&#x52A0;&#x89C2;&#x5BDF;&#x8005;&#x524D;&#xFF0C;p&#x5BF9;&#x8C61;&#x662F;Person&#x7C7B;&#x3002;<br><img src="/2016/04/21/KVO&#x5E95;&#x5C42;&#x5B9E;&#x73B0;/kvo_tip1.png" alt="&#x6DFB;&#x52A0;&#x89C2;&#x5BDF;&#x8005;&#x524D;"></p>
+<p>&#x5F53;&#x7ED9;&#x5BF9;&#x8C61;&#x6DFB;&#x52A0;&#x89C2;&#x5BDF;&#x8005;&#x540E;&#xFF0C;P&#x5BF9;&#x8C61;&#x7684;&#x7C7B;&#x53D8;&#x6210;&#x4E3A;NSKVONotifying_Person&#x3002;<br><img src="/2016/04/21/KVO&#x5E95;&#x5C42;&#x5B9E;&#x73B0;/kvo_tip2.png" alt="&#x6DFB;&#x52A0;&#x89C2;&#x5BDF;&#x8005;&#x524D;"></p>
+<p>&#x6CE8;&#xFF1A;&#x53EA;&#x7528;&#x8C03;&#x7528;&#x5C5E;&#x6027;&#x7684;set&#x65B9;&#x6CD5;&#x6765;&#x6539;&#x53D8;&#x5C5E;&#x6027;&#x7684;&#x503C;&#x65F6;&#xFF0C;&#x624D;&#x4F1A;&#x89C2;&#x5BDF;&#x8005;&#x624D;&#x4F1A;&#x77E5;&#x9053;&#x5C5E;&#x6027;&#x503C;&#x53D1;&#x751F;&#x6539;&#x53D8;&#x3002;</p>
+<p>KVO&#x5E95;&#x5C42;&#x5B9E;&#x73B0;&#x7684;&#x5206;&#x6790;&#xFF1A;</p>
+<p>1.&#x5F53;&#x4E3A;&#x5BF9;&#x8C61;&#x6DFB;&#x52A0;&#x89C2;&#x5BDF;&#x8005;&#x65F6;&#xFF0C;&#x52A8;&#x6001;&#x521B;&#x5EFA;NSKVONotifying_Person&#xFF0C;NSKVONotifying_Person&#x662F;Person&#x7C7B;&#x7684;&#x5B50;&#x7C7B;&#x3002;</p>
+<p>2.&#x4FEE;&#x6539;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x7684;isa&#x6307;&#x9488;-&gt;NSKVONotifying_Person</p>
+<p>3.&#x5F53;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x503C;&#x53D1;&#x751F;&#x6539;&#x53D8;&#x65F6;&#xFF0C;&#x4F1A;&#x8C03;&#x7528;NSKVONotifying_Person&#x7684;set&#x65B9;&#x6CD5;</p>
+<p>4.&#x91CD;&#x5199;NSKVONotifying_Person&#x7684;set&#x65B9;&#x6CD5;&#xFF0C;&#x8C03;&#x7528;&#x89C2;&#x5BDF;&#x8005;&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x91CD;&#x5199;KVO&#x7684;&#x5B9E;&#x73B0;&#xFF1A;</p>
+<p>NSObject (KVO)&#x7684;&#x58F0;&#x660E;&#x4E0E;&#x5B9E;&#x73B0;</p>
+<pre><code>//NSObject (KVO).h
+#import &lt;Foundation/Foundation.h&gt;
+
+@interface NSObject (KVO)
+
+- (void)ZHAddObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options context:(nullable void *)context;
+
+@end
+
+//NSObject (KVO).m
+#import &quot;NSObject+KVO.h&quot;
+#import &lt;objc/runtime.h&gt;
+#import &quot;ZHNSKVONotifying_Person.h&quot;
+
+@implementation NSObject (KVO)
+
+- (void)ZHAddObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options context:(nullable void *)context {
+    //&#x4FEE;&#x6539;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x7684;isa&#x6307;&#x9488;
+    object_setClass(self, [ZHNSKVONotifying_Person class]);
+
+    //&#x4FDD;&#x5B58;&#x628A;&#x89C2;&#x5BDF;&#x8005;
+    objc_setAssociatedObject(self, @&quot;observer&quot;, observer, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+@end
+</code></pre><p>ZHNSKVONotifying_Person&#x7684;&#x58F0;&#x660E;&#x4E0E;&#x5B9E;&#x73B0;</p>
+<pre><code>#import &quot;Person.h&quot;
+
+@interface ZHNSKVONotifying_Person : Person
+
+@end
+
+#import &quot;ZHNSKVONotifying_Person.h&quot;
+#import &lt;objc/runtime.h&gt;
+
+@implementation ZHNSKVONotifying_Person
+
+- (void)setName:(NSString *)name {
+    [super setName:name];
+
+    id observer = objc_getAssociatedObject(self, @&quot;observer&quot;);
+
+    NSDictionary *change = @{ @&quot;change&quot; : name };
+
+    [observer observeValueForKeyPath:@&quot;name&quot; ofObject:self change:change context:nil];
+}
+
+@end
+</code></pre><p>&#x5B9E;&#x73B0;&#x8C03;&#x7528;</p>
+<pre><code>- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    Person *p = [Person new];
+
+    p.name = @&quot;&#x5F20;&#x4E09;&quot;;
+
+    [p ZHAddObserver:self forKeyPath:@&quot;name&quot; options:NSKeyValueObservingOptionNew context:nil];
+
+    p.name = @&quot;&#x674E;&#x601D;&quot;;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary&lt;NSString *, id&gt; *)change context:(void *)context {
+    NSLog(@&quot;%@&quot;, change);
+}
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/KVO/">KVO</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/底层实现/">底层实现</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-iOS开发技巧" class="article article-type-post" itemscope itemprop="blogPost">
   
