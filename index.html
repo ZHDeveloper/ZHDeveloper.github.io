@@ -200,6 +200,150 @@
 
       <div class="body-wrap">
   
+    <article id="post-链式编程思想" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/21/链式编程思想/" class="article-date">
+  	<time datetime="2016-04-21T09:28:44.000Z" itemprop="datePublished">2016-04-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/21/链式编程思想/">链式编程思想</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&#x94FE;&#x5F0F;&#x7F16;&#x7A0B;&#x601D;&#x60F3;&#xFF1A;&#x628A;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x64CD;&#x4F5C;&#x4F7F;&#x7528;.&#x6765;&#x6765;&#x8FDE;&#x63A5;&#x6210;&#x4E00;&#x53E5;&#x4EE3;&#x7801;&#xFF0C;&#x53EF;&#x8BFB;&#x6027;&#x597D;&#x3002;&#x5178;&#x578B;&#x7684;&#x4EE3;&#x8868;Masonry&#x6846;&#x67B6;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre><code>[redView mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.left.top.equalTo(@10);
+    make.right.bottom.equalTo(@(-10));
+}];
+</code></pre><p>ZHCalculateMaker&#x7684;&#x58F0;&#x660E;&#x4E0E;&#x5B9E;&#x73B0;</p>
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+
+@interface ZHCalculateMaker : NSObject
+
+@property (nonatomic, assign) float result;
+
+- (ZHCalculateMaker * (^)(float))add;
+
+- (ZHCalculateMaker * (^)(float))subtract;
+
+- (ZHCalculateMaker * (^)(float))multiply;
+
+- (ZHCalculateMaker * (^)(float))divide;
+
+@end
+
+#import &quot;ZHCalculateMaker.h&quot;
+
+@implementation ZHCalculateMaker
+
+- (ZHCalculateMaker * (^)(float))add {
+    return ^(float num) {
+        self.result += num;
+        return self;
+    };
+}
+
+- (ZHCalculateMaker * (^)(float))subtract {
+    return ^(float num) {
+        self.result -= num;
+        return self;
+    };
+}
+
+- (ZHCalculateMaker * (^)(float))multiply {
+    return ^(float num) {
+        self.result *= num;
+        return self;
+    };
+}
+
+- (ZHCalculateMaker * (^)(float))divide {
+    return ^(float num) {
+        self.result /= num;
+        return self;
+    };
+}
+
+@end
+</code></pre><p>NSObject+ZHCalculate.h&#x7684;&#x58F0;&#x660E;&#x4E0E;&#x5B9E;&#x73B0;</p>
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+#import &quot;ZHCalculateMaker.h&quot;
+
+@interface NSObject (ZHCalculate)
+
++ (float)makeCalculate:(void (^)(ZHCalculateMaker *maker))block;
+
+@end
+
+#import &quot;NSObject+ZHCalculate.h&quot;
+#import &quot;ZHCalculateMaker.h&quot;
+
+@implementation NSObject (ZHCalculate)
+
++ (float)makeCalculate:(void (^)(ZHCalculateMaker *maker))block {
+    //&#x521D;&#x59CB;&#x5316;&#x5236;&#x9020;&#x8005;
+    ZHCalculateMaker *maker = [ZHCalculateMaker new];
+
+    block(maker);
+
+    return maker.result;
+}
+
+@end
+</code></pre><p>&#x5916;&#x90E8;&#x8C03;&#x7528;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<pre><code>- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    float result = [NSObject makeCalculate:^(ZHCalculateMaker *maker) {
+
+        maker.add(3).multiply(5);
+
+    }];
+
+    NSLog(@&quot;%f&quot;, result);
+}
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-KVO底层实现" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
