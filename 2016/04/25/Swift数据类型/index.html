@@ -86,7 +86,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/04/25/Swift数据类型/index.html">
 <meta property="og:site_name" content="晴间多云">
 <meta property="og:description" content="&amp;#x5E38;&amp;#x4EAE;&amp;#x3001;&amp;#x53D8;&amp;#x91CF;&amp;#x5E38;&amp;#x91CF;&amp;#xFF1A;&amp;#x4F7F;&amp;#x7528;let&amp;#x6765;&amp;#x58F0;&amp;#x660E;&amp;#x7684;&amp;#x53D8;&amp;#x91CF;&amp;#xFF0C;&amp;#x5E38;&amp;#x4EAE;&amp;#x7684;&amp;#x503C;&amp;#x4E00;&amp;#x65E6;&amp;#x786E;&amp;#x5B">
-<meta property="og:updated_time" content="2016-04-25T04:13:50.000Z">
+<meta property="og:updated_time" content="2016-04-25T07:16:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift数据类型">
 <meta name="twitter:description" content="&amp;#x5E38;&amp;#x4EAE;&amp;#x3001;&amp;#x53D8;&amp;#x91CF;&amp;#x5E38;&amp;#x91CF;&amp;#xFF1A;&amp;#x4F7F;&amp;#x7528;let&amp;#x6765;&amp;#x58F0;&amp;#x660E;&amp;#x7684;&amp;#x53D8;&amp;#x91CF;&amp;#xFF0C;&amp;#x5E38;&amp;#x4EAE;&amp;#x7684;&amp;#x503C;&amp;#x4E00;&amp;#x65E6;&amp;#x786E;&amp;#x5B">
@@ -456,9 +456,19 @@ var chara: Character = &quot;ab&quot;        //&#x9519;&#x8BEF;
 </code></pre><p>&#x5B57;&#x7B26;&#x4E32;&#xFF1A;</p>
 <p>&#x5B57;&#x7B26;&#x662F;&#x5355;&#x4E2A;&#x5B57;&#x7B26;&#x7684;&#x96C6;&#x5408;&#xFF0C;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x591A;&#x4E2A;&#x5B57;&#x7B26;&#x7684;&#x96C6;&#x5408;&#xFF0C;&#x60F3;&#x8981;&#x5B58;&#x653E;&#x591A;&#x4E2A;&#x5B57;&#x7B26;&#xFF0C;&#x4F7F;&#x7528;&#x5B57;&#x7B26;&#x4E32;&#x3002;</p>
 <pre><code>var str: String = &quot;Product&quot;
-</code></pre><p>C&#x8BED;&#x8A00;&#x4E2D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x4EE5;\0&#x7ED3;&#x5C3E;&#x7684;, &#x4F8B;&#x5982;:<br>char *stringValue = &#x201C;abc\0bcd&#x201D;;<br>printf(&#x201C;%s&#x201D;, stringValue);<br>&#x6253;&#x5370;&#x7ED3;&#x679C;&#x4E3A;abc</p>
-<p>OC&#x8BED;&#x8A00;&#x4E2D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x4E5F;&#x662F;&#x4EE5;\0&#x7ED3;&#x5C3E;&#x7684;, &#x4F8B;&#x5982;:<br>NSString *stringValue = @&#x201D;abc\0bcd&#x201D;;<br>NSLog(@&#x201D;%@&#x201D;, stringValue);<br>&#x6253;&#x5370;&#x7ED3;&#x679C;&#x4E3A;abc</p>
-<pre><code>var stringValue2 = &quot;abc\0bcd&quot;
+
+
+C&#x8BED;&#x8A00;&#x4E2D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x4EE5;\0&#x7ED3;&#x5C3E;&#x7684;, &#x4F8B;&#x5982;:
+char *stringValue = &quot;abc\0bcd&quot;;
+printf(&quot;%s&quot;, stringValue);
+&#x6253;&#x5370;&#x7ED3;&#x679C;&#x4E3A;abc
+
+OC&#x8BED;&#x8A00;&#x4E2D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x4E5F;&#x662F;&#x4EE5;\0&#x7ED3;&#x5C3E;&#x7684;, &#x4F8B;&#x5982;:
+NSString *stringValue = @&quot;abc\0bcd&quot;;
+NSLog(@&quot;%@&quot;, stringValue);
+&#x6253;&#x5370;&#x7ED3;&#x679C;&#x4E3A;abc
+
+var stringValue2 = &quot;abc\0bcd&quot;
 print(stringValue2)
 // &#x6253;&#x5370;&#x7ED3;&#x679C;&#x4E3A;abcbcd
 // &#x4ECE;&#x6B64;&#x53EF;&#x4EE5;&#x770B;&#x51FA;Swift&#x4E2D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x548C;C&#x8BED;&#x8A00;/OC&#x8BED;&#x8A00;&#x4E2D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x4E0D;&#x4E00;&#x6837;&#x7684;
@@ -606,6 +616,45 @@ if number != nil
 {
     // &#x4EE5;&#x524D;&#x7684;&#x7248;&#x672C;println&#x4F1A;&#x81EA;&#x52A8;&#x62C6;&#x5305;, &#x73B0;&#x5728;&#x7684;&#x4E0D;&#x4F1A;
     print(number!)
+}
+</code></pre><h4 id="&#x8FD0;&#x7B97;&#x7B26;"><a href="#&#x8FD0;&#x7B97;&#x7B26;" class="headerlink" title="&#x8FD0;&#x7B97;&#x7B26;"></a>&#x8FD0;&#x7B97;&#x7B26;</h4><p>&#x7B97;&#x672F;&#x8FD0;&#x7B97;&#x7B26;&#xFF1A;&#x9664;&#x4E86;&#x53D6;&#x6A21;&#xFF0C;&#x5176;&#x4ED6;&#x8DDF;OC&#x4E00;&#x6837;&#xFF0C;&#x5305;&#x62EC;&#x4F18;&#x5148;&#x7EA7;&#x3002;</p>
+<p>&#x6CE8;&#x610F;:Swift&#x662F;&#x5B89;&#x5168;&#x4E25;&#x683C;&#x7684;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;, &#x4F1A;&#x5728;&#x7F16;&#x8BD1;&#x65F6;&#x5019;&#x68C0;&#x67E5;&#x662F;&#x5426;&#x6EA2;&#x51FA;, &#x4F46;&#x662F;&#x53EA;&#x4F1A;&#x68C0;&#x67E5;&#x5B57;&#x9762;&#x91CF;&#x800C;&#x4E0D;&#x4F1A;&#x68C0;&#x67E5;&#x53D8;&#x91CF;, &#x6240;&#x4EE5;&#x5728;Swift&#x4E2D;&#x4E00;&#x5B9A;&#x8981;&#x6CE8;&#x610F;&#x9690;&#x5F0F;&#x6EA2;&#x51FA;</p>
+<pre><code>&#x53EF;&#x4EE5;&#x68C0;&#x6D4B;
+var num1:UInt8 = 255 + 1;
+&#x65E0;&#x6CD5;&#x68C0;&#x6D4B;
+var num1:UInt8 = 255
+var num2:UInt8 = 250
+var result = num1 + num2
+println(result)
+</code></pre><p>&#x9047;&#x5230;&#x8FD9;&#x79CD;&#x95EE;&#x9898;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x6EA2;&#x51FA;&#x8FD0;&#x7B97;&#x7B26;&#x89E3;&#x51B3;&#x8BE5;&#x95EE;&#x9898;:<a href="http://www.yiibai.com/swift/overflow_operators.html" target="_blank" rel="external">http://www.yiibai.com/swift/overflow_operators.html</a></p>
+<p>&#x6EA2;&#x51FA;&#x8FD0;&#x7B97;&#x7B26;&#xFF1A;&amp;+ &amp;- &amp;* &amp;/ &amp;%</p>
+<p>&#x53D6;&#x6A21;&#xFF1A;&#x6C42;&#x4F59;&#x201D;&#x6BD4;&#x201D;&#x53D6;&#x6A21;&#x201D;</p>
+<pre><code>/*
+&#x53D6;&#x6A21; %
+OC: &#x53EA;&#x80FD;&#x5BF9;&#x6574;&#x6570;&#x53D6;&#x6A21;
+NSLog(@&quot;%tu&quot;, 10 % 3);
+
+Swift: &#x652F;&#x6301;&#x5C0F;&#x6570;&#x53D6;&#x6A21;
+*/
+print(10 % 3.5)
+</code></pre><p>&#x533A;&#x95F4;&#x8FD0;&#x7B97;&#x7B26;</p>
+<pre><code>/*
+&#x533A;&#x95F4;
+&#x95ED;&#x533A;&#x95F4;: &#x5305;&#x542B;&#x533A;&#x95F4;&#x5185;&#x6240;&#x6709;&#x503C;  a...b &#x4F8B;&#x5982;: 1...5
+&#x534A;&#x95ED;&#x533A;&#x95F4;: &#x5305;&#x542B;&#x5934;&#x4E0D;&#x5305;&#x542B;&#x5C3E;  a..&lt;b  &#x4F8B;&#x5982;: 1..&lt;5
+&#x6CE8;&#x610F;: 
+ 1.Swift&#x521A;&#x51FA;&#x6765;&#x65F6;&#x7684;&#x5199;&#x6CD5;&#x662F; a..b
+ 2.&#x533A;&#x95F4;&#x53EA;&#x80FD;&#x7528;&#x4E8E;&#x6574;&#x6570;, &#x5199;&#x5C0F;&#x6570;&#x4F1A;&#x6709;&#x95EE;&#x9898;
+&#x5E94;&#x7528;&#x573A;&#x666F;: &#x904D;&#x5386;, &#x6570;&#x7EC4;&#x7B49;
+*/
+for i in 1...5
+{
+    print(i)
+}
+
+for i in 1..&lt;5
+{
+    print(i)
 }
 </code></pre>
       
@@ -793,7 +842,7 @@ if number != nil
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#常亮、变量"><span class="nav-number">1.</span> <span class="nav-text">常亮、变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本数据类型"><span class="nav-number">2.</span> <span class="nav-text">基本数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类型转换"><span class="nav-number">3.</span> <span class="nav-text">类型转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bool类型"><span class="nav-number">4.</span> <span class="nav-text">Bool类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元组"><span class="nav-number">5.</span> <span class="nav-text">元组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可选值"><span class="nav-number">6.</span> <span class="nav-text">可选值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符和字符串"><span class="nav-number">7.</span> <span class="nav-text">字符和字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串常用的方法"><span class="nav-number">8.</span> <span class="nav-text">字符串常用的方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#常亮、变量"><span class="nav-number">1.</span> <span class="nav-text">常亮、变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本数据类型"><span class="nav-number">2.</span> <span class="nav-text">基本数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类型转换"><span class="nav-number">3.</span> <span class="nav-text">类型转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bool类型"><span class="nav-number">4.</span> <span class="nav-text">Bool类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元组"><span class="nav-number">5.</span> <span class="nav-text">元组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可选值"><span class="nav-number">6.</span> <span class="nav-text">可选值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符和字符串"><span class="nav-number">7.</span> <span class="nav-text">字符和字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串常用的方法"><span class="nav-number">8.</span> <span class="nav-text">字符串常用的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运算符"><span class="nav-number">9.</span> <span class="nav-text">运算符</span></a></li></ol></div>
             
           </div>
         </section>
