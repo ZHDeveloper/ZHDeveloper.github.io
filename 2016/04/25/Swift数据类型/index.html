@@ -86,7 +86,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/04/25/Swift数据类型/index.html">
 <meta property="og:site_name" content="晴间多云">
 <meta property="og:description" content="&amp;#x5E38;&amp;#x4EAE;&amp;#x3001;&amp;#x53D8;&amp;#x91CF;&amp;#x5E38;&amp;#x91CF;&amp;#xFF1A;&amp;#x4F7F;&amp;#x7528;let&amp;#x6765;&amp;#x58F0;&amp;#x660E;&amp;#x7684;&amp;#x53D8;&amp;#x91CF;&amp;#xFF0C;&amp;#x5E38;&amp;#x4EAE;&amp;#x7684;&amp;#x503C;&amp;#x4E00;&amp;#x65E6;&amp;#x786E;&amp;#x5B">
-<meta property="og:updated_time" content="2016-04-25T02:50:01.000Z">
+<meta property="og:updated_time" content="2016-04-25T04:13:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift数据类型">
 <meta name="twitter:description" content="&amp;#x5E38;&amp;#x4EAE;&amp;#x3001;&amp;#x53D8;&amp;#x91CF;&amp;#x5E38;&amp;#x91CF;&amp;#xFF1A;&amp;#x4F7F;&amp;#x7528;let&amp;#x6765;&amp;#x58F0;&amp;#x660E;&amp;#x7684;&amp;#x53D8;&amp;#x91CF;&amp;#xFF0C;&amp;#x5E38;&amp;#x4EAE;&amp;#x7684;&amp;#x503C;&amp;#x4E00;&amp;#x65E6;&amp;#x786E;&amp;#x5B">
@@ -384,6 +384,229 @@ var doubleValue:Double = intValue
 var doubleValue: Double
 doubleValue = Double(intValue)
 &#x6CE8;&#x610F;:Double()&#x5E76;&#x4E0D;&#x4F1A;&#x4FEE;&#x6539;intValue&#x7684;&#x503C;, &#x800C;&#x662F;&#x901A;&#x8FC7;intValue&#x7684;&#x503C;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x4E34;&#x65F6;&#x7684;&#x503C;&#x8D4B;&#x503C;&#x7ED9;doubleValue
+</code></pre><h4 id="Bool&#x7C7B;&#x578B;"><a href="#Bool&#x7C7B;&#x578B;" class="headerlink" title="Bool&#x7C7B;&#x578B;"></a>Bool&#x7C7B;&#x578B;</h4><pre><code>let isOpen = true;
+let isOpen = 1; //&#x4F1A;&#x62A5;&#x9519;
+</code></pre><p>Swift&#x4E2D;&#x7684;if&#x7684;&#x6761;&#x4EF6;&#x53EA;&#x80FD;&#x662F;&#x4E00;&#x4E2A;BOOL&#x503C;&#x6216;&#x8005;&#x8FD4;&#x56DE;BOOL&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#x3002;</p>
+<h4 id="&#x5143;&#x7EC4;"><a href="#&#x5143;&#x7EC4;" class="headerlink" title="&#x5143;&#x7EC4;"></a>&#x5143;&#x7EC4;</h4><p>&#x5143;&#x7EC4;&#xFF1A;&#x5728;&#x5176;&#x4ED6;&#x8BED;&#x8A00;&#x4E2D;&#x65E9;&#x5C31;&#x6709;&#x5143;&#x7EC4;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x4F46;&#x76F8;&#x5BF9;&#x4E8E;OC&#x7684;&#x5F00;&#x53D1;&#x8005;&#x6765;&#x8BF4;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x6982;&#x5FF5;&#x3002;&#x5C06;&#x591A;&#x4E2A;&#x7C7B;&#x578B;&#x76F8;&#x540C;&#x6216;&#x8005;&#x4E0D;&#x540C;&#x7684;&#x7C7B;&#x578B;&#x7684;&#x503C;&#x7528;&#x62EC;&#x53F7;&#x62EC;&#x8D77;&#x6765;&#x8868;&#x793A;&#x5143;&#x7EC4;&#x3002;</p>
+<pre><code>let score = (&quot;&#x5F20;&#x4E09;&quot;,90,89.4)
+print(score)
+print(score.0)
+print(score.1)
+print(score.2)
+</code></pre><p>&#x5143;&#x7EC4;&#x5176;&#x5B9E;&#x548C;&#x7ED3;&#x6784;&#x4F53;&#x5F88;&#x50CF;&#xFF0C;&#x53EA;&#x662F;&#x4E0D;&#x9700;&#x8981;&#x63D0;&#x524D;&#x5B9A;&#x4E49;&#x7C7B;&#x578B;&#x3002;&#x5143;&#x7EC4;&#x5176;&#x5B9E;&#x662F;&#x590D;&#x5408;&#x7C7B;&#x578B;&#xFF0C;&#x5C0F;&#x62EC;&#x53F7;&#x4E2D;&#x53EF;&#x4EE5;&#x5199;&#x4EFB;&#x4F55;&#x7C7B;&#x578B;&#x3002;</p>
+<pre><code>let score: (String,Double,Double) = (&quot;&#x5F20;&#x4E09;&quot;,90,89.4)
+</code></pre><p>&#x5143;&#x7EC4;&#x7684;&#x5176;&#x4ED6;&#x5B9A;&#x4E49;&#x65B9;&#x5F0F;&#xFF1A;&#x6307;&#x660E;&#x5143;&#x7EC4;&#x5143;&#x7D20;&#x7684;&#x540D;&#x79F0;&#x3002;</p>
+<pre><code>let score = (s_name:&quot;&#x5F20;&#x4E09;&quot;,math_score:90.0,chinese_score:89.4)
+print(score)
+print(score.s_name)
+print(score.math_score)
+print(score.chinese_score)
+</code></pre><p>&#x901A;&#x8FC7;&#x6307;&#x5B9A;&#x540D;&#x79F0;&#x63D0;&#x53D6;&#x5143;&#x7EC4;&#x5BF9;&#x5E94;&#x7684;&#x503C;&#xFF0C;&#x5BF9;&#x5E94;&#x4F4D;&#x7F6E;&#x7684;&#x503C;&#x8D4B;&#x4E88;&#x5BF9;&#x5E94;&#x4F4D;&#x7F6E;&#x7684;&#x540D;&#x79F0;&#x3002;</p>
+<pre><code>let (s_name,math_score,chinese_score) = (&quot;&#x5F20;&#x4E09;&quot;,90.0,89.4)
+print(s_name)
+print(chinese_score)
+</code></pre><p>&#x5982;&#x679C;&#x4E0D;&#x5173;&#x5FC3;&#x5143;&#x7EC4;&#x4E2D;&#x7684;&#x67D0;&#x4E2A;&#x503C;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;_&#x5FFD;&#x7565;&#x63D0;&#x53D6;&#x3002;</p>
+<pre><code>let (s_name,math_score,_) = (&quot;&#x5F20;&#x4E09;&quot;,90.0,89.4)
+</code></pre><h4 id="&#x53EF;&#x9009;&#x503C;"><a href="#&#x53EF;&#x9009;&#x503C;" class="headerlink" title="&#x53EF;&#x9009;&#x503C;"></a>&#x53EF;&#x9009;&#x503C;</h4><p>&#x53EF;&#x9009;&#x503C;optionals&#x6709;&#x4E24;&#x79CD;&#x72B6;&#x6001;&#xFF1A;</p>
+<ol>
+<li>&#x6709;&#x503C;</li>
+<li>&#x6CA1;&#x6709;&#x503C;&#xFF0C;&#x6CA1;&#x6709;&#x503C;&#x5C31;&#x662F;nil</li>
+</ol>
+<p>eg:</p>
+<pre><code>// &#x6709;&#x503C;
+var optionValue: Int? = 9
+
+// &#x6CA1;&#x503C;
+var optionValue1: Int?
+var optionValue2: Int? = nil
+</code></pre><p>&#x53EF;&#x9009;&#x503C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;if&#x6765;&#x5224;&#x65AD;</p>
+<pre><code>if optionValue != nil
+{
+    print(&quot;&#x6709;&#x503C;&quot;)
+}
+else
+{
+    print(&quot;&#x6CA1;&#x503C;&quot;)
+}
+</code></pre><p>&#x63D0;&#x53D6;&#x53EF;&#x9009;&#x7C7B;&#x578B;&#x7684;&#x503C;&#xFF08;&#x5F3A;&#x5236;&#x89E3;&#x5305;&#xFF09;</p>
+<p>&#x4F1A;&#x5C06;optValue&#x4E2D;&#x7684;&#x6574;&#x578B;&#x503C;&#x5F3A;&#x5236;&#x62FF;&#x51FA;&#x6765;&#x8D4B;&#x503C;&#x7ED9;&#x53D8;&#x91CF;result, &#x6362;&#x53E5;&#x8BDD;&#x8BF4;&#x5C31;&#x662F;&#x544A;&#x8BC9;&#x7F16;&#x8BD1;&#x5668;optValue&#x4E00;&#x5B9A;&#x6709;&#x503C;, &#x56E0;&#x4E3A;&#x53EF;&#x9009;&#x7C7B;&#x578B;&#x6709;&#x4E24;&#x79CD;&#x72B6;&#x6001;&#x6709;&#x503C;&#x548C;&#x6CA1;&#x6709;&#x503C;, &#x6240;&#x4EE5;&#x9700;&#x8981;&#x544A;&#x8BC9;&#x7F16;&#x8BD1;&#x5668;&#x5230;&#x5E95;&#x6709;&#x6CA1;&#x6709;&#x503C;</p>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x5982;&#x679C;&#x5F3A;&#x5236;&#x89E3;&#x6790;optValue, &#x4F46;&#x662F;optValue&#x4E2D;&#x6CA1;&#x6709;&#x503C;&#x65F6;&#x4F1A;&#x5F15;&#x53D1;&#x4E00;&#x4E2A;&#x8FD0;&#x884C;&#x65F6;&#x9519;&#x8BEF;</p>
+<pre><code>var optValue5: Int? = 9
+var result1: Int = optValue5!
+print(result1)
+
+//&#x62A5;&#x9519;:
+var optValue6: Int?
+var result2: Int = optValue6!
+print(result2)
+</code></pre><p>&#x53EF;&#x9009;&#x7ED1;&#x5B9A;&#xFF1A;<br>&#x4E3A;&#x4E86;&#x66F4;&#x5B89;&#x5168;&#x7684;&#x89E3;&#x6790;&#x53EF;&#x9009;&#x7C7B;&#x578B;&#x7684;&#x503C;&#xFF0C;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#x4F7F;&#x7528;&#x53EF;&#x9009;&#x7ED1;&#x5B9A;&#x3002;<br>&#x5982;&#x679C;optValue&#x6CA1;&#x6709;&#x503C;&#x662F;&#x4E0D;&#x4F1A;&#x8FDB;&#x884C;&#x4EFB;&#x4F55;&#x64CD;&#x4F5C;&#xFF0C;&#x5982;&#x679C;optionValue&#x6709;&#x503C;&#x5C31;&#x4F1A;&#x8FD4;&#x56DE;true&#x5E76;&#x5C06;optionValue&#x7684;&#x503C;&#x8D4B;&#x4E88;result,&#x7136;&#x540E;&#x6267;&#x884C;&#x5927;&#x62EC;&#x53F7;&#x4E2D;&#x7684;&#x5185;&#x5BB9;&#x3002;</p>
+<pre><code>if let result = optionValue
+{
+    print(result)
+}
+</code></pre><h4 id="&#x5B57;&#x7B26;&#x548C;&#x5B57;&#x7B26;&#x4E32;"><a href="#&#x5B57;&#x7B26;&#x548C;&#x5B57;&#x7B26;&#x4E32;" class="headerlink" title="&#x5B57;&#x7B26;&#x548C;&#x5B57;&#x7B26;&#x4E32;"></a>&#x5B57;&#x7B26;&#x548C;&#x5B57;&#x7B26;&#x4E32;</h4><p>&#x5B57;&#x7B26;&#xFF1A;</p>
+<ol>
+<li>Swift&#x7684;&#x5B57;&#x7B26;&#x662F;&#x4F7F;&#x7528;&#x53CC;&#x5F15;&#x53F7;</li>
+<li>Swift&#x4E2D;&#x7684;&#x5B57;&#x7B26;&#x7C7B;&#x578B;&#x548C;OC&#x4E2D;&#x7684;&#x4E5F;&#x4E0D;&#x4E00;&#x6837;, OC&#x4E2D;&#x7684;&#x5B57;&#x7B26;&#x5360;&#x4E00;&#x4E2A;&#x5B57;&#x8282;,&#x56E0;&#x4E3A;&#x5B83;&#x53EA;&#x5305;&#x542B;ASCII&#x8868;&#x4E2D;&#x7684;&#x5B57;&#x7B26;, &#x800C;Swift&#x4E2D;&#x7684;&#x5B57;&#x7B26;&#x9664;&#x4E86;&#x53EF;&#x4EE5;&#x5B58;&#x50A8;ASCII&#x8868;&#x4E2D;&#x7684;&#x5B57;&#x7B26;&#x8FD8;&#x53EF;&#x4EE5;&#x5B58;&#x50A8;unicode&#x5B57;&#x7B26;</li>
+</ol>
+<p>eg:</p>
+<pre><code>var chara: Character = &quot;a&quot;
+//&#x53CC;&#x5F15;&#x53F7;&#x4E2D;&#x53EA;&#x80FD;&#x653E;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;
+var chara: Character = &quot;ab&quot;        //&#x9519;&#x8BEF;
+</code></pre><p>&#x5B57;&#x7B26;&#x4E32;&#xFF1A;</p>
+<p>&#x5B57;&#x7B26;&#x662F;&#x5355;&#x4E2A;&#x5B57;&#x7B26;&#x7684;&#x96C6;&#x5408;&#xFF0C;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x591A;&#x4E2A;&#x5B57;&#x7B26;&#x7684;&#x96C6;&#x5408;&#xFF0C;&#x60F3;&#x8981;&#x5B58;&#x653E;&#x591A;&#x4E2A;&#x5B57;&#x7B26;&#xFF0C;&#x4F7F;&#x7528;&#x5B57;&#x7B26;&#x4E32;&#x3002;</p>
+<pre><code>var str: String = &quot;Product&quot;
+</code></pre><p>C&#x8BED;&#x8A00;&#x4E2D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x4EE5;\0&#x7ED3;&#x5C3E;&#x7684;, &#x4F8B;&#x5982;:<br>char *stringValue = &#x201C;abc\0bcd&#x201D;;<br>printf(&#x201C;%s&#x201D;, stringValue);<br>&#x6253;&#x5370;&#x7ED3;&#x679C;&#x4E3A;abc</p>
+<p>OC&#x8BED;&#x8A00;&#x4E2D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x4E5F;&#x662F;&#x4EE5;\0&#x7ED3;&#x5C3E;&#x7684;, &#x4F8B;&#x5982;:<br>NSString *stringValue = @&#x201D;abc\0bcd&#x201D;;<br>NSLog(@&#x201D;%@&#x201D;, stringValue);<br>&#x6253;&#x5370;&#x7ED3;&#x679C;&#x4E3A;abc</p>
+<pre><code>var stringValue2 = &quot;abc\0bcd&quot;
+print(stringValue2)
+// &#x6253;&#x5370;&#x7ED3;&#x679C;&#x4E3A;abcbcd
+// &#x4ECE;&#x6B64;&#x53EF;&#x4EE5;&#x770B;&#x51FA;Swift&#x4E2D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x548C;C&#x8BED;&#x8A00;/OC&#x8BED;&#x8A00;&#x4E2D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x4E0D;&#x4E00;&#x6837;&#x7684;
+</code></pre><h4 id="&#x5B57;&#x7B26;&#x4E32;&#x5E38;&#x7528;&#x7684;&#x65B9;&#x6CD5;"><a href="#&#x5B57;&#x7B26;&#x4E32;&#x5E38;&#x7528;&#x7684;&#x65B9;&#x6CD5;" class="headerlink" title="&#x5B57;&#x7B26;&#x4E32;&#x5E38;&#x7528;&#x7684;&#x65B9;&#x6CD5;"></a>&#x5B57;&#x7B26;&#x4E32;&#x5E38;&#x7528;&#x7684;&#x65B9;&#x6CD5;</h4><p>&#x8BA1;&#x7B97;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x957F;&#x5EA6;</p>
+<pre><code>/*
+&#x8BA1;&#x7B97;&#x5B57;&#x7B26;&#x4E32;&#x957F;&#x5EA6;:
+C:
+char *stringValue = &quot;abc&#x674E;&quot;;
+printf(&quot;%tu&quot;, strlen(stringValue));
+&#x6253;&#x5370;&#x7ED3;&#x679C;6
+
+OC:
+NSString *stringValue = @&quot;abc&#x674E;&quot;;
+NSLog(@&quot;%tu&quot;, stringValue.length);
+&#x6253;&#x5370;&#x7ED3;&#x679C;4, &#x4EE5;UTF16&#x8BA1;&#x7B97;
+*/
+
+var stringValue = &quot;abc&#x674E;&quot;
+print(stringValue.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
+// &#x6253;&#x5370;&#x7ED3;&#x679C;6, &#x548C;C&#x8BED;&#x8A00;&#x4E00;&#x6837;&#x8BA1;&#x7B97;&#x5B57;&#x8282;&#x6570;
+</code></pre><p>&#x5B57;&#x7B26;&#x4E32;&#x62FC;&#x63A5;</p>
+<pre><code>/*
+&#x5B57;&#x7B26;&#x4E32;&#x62FC;&#x63A5;
+C:
+char str1[] = &quot;abc&quot;;
+char *str2 = &quot;bcd&quot;;
+char *str = strcat(str1, str2);
+
+OC:
+NSMutableString *str1 = [NSMutableString stringWithString:@&quot;abc&quot;];
+NSString *str2 = @&quot;bcd&quot;;
+[str1 appendString:str2];
+NSLog(@&quot;%@&quot;, str1);
+
+*/
+var str1 = &quot;abc&quot;;
+var str2 = &quot;lnj&quot;;
+var str = str1 + str2;
+print(str)
+</code></pre><p>&#x683C;&#x5F0F;&#x5316;&#x5B57;&#x7B26;&#x4E32;</p>
+<pre><code>/*
+&#x683C;&#x5F0F;&#x5316;&#x5B57;&#x7B26;&#x4E32;
+C: &#x76F8;&#x5F53;&#x9EBB;&#x70E6;, &#x6307;&#x9488;, &#x4E0B;&#x6807;&#x7B49;&#x65B9;&#x5F0F;
+OC:
+NSInteger index = 1;
+NSString *str1 = [NSMutableString stringWithFormat:@&quot;http://ios.itcast.cn/pic/%tu.png&quot;, index];
+NSLog(@&quot;%@&quot;, str1);
+*/
+
+var index = 1
+var str3 = &quot;http://www.520it.com/pic/\(index).png&quot;
+print(str3)
+</code></pre><p>&#x5B57;&#x7B26;&#x4E32;&#x6BD4;&#x8F83;:</p>
+<pre><code>/*
+&#x5B57;&#x7B26;&#x4E32;&#x6BD4;&#x8F83;:
+OC:
+NSString *str1 = @&quot;abc&quot;;
+NSString *str2 = @&quot;abc&quot;;
+if ([str1 compare:str2] == NSOrderedSame)
+{
+    NSLog(@&quot;&#x76F8;&#x7B49;&quot;);
+}else
+{
+    NSLog(@&quot;&#x4E0D;&#x76F8;&#x7B49;&quot;);
+}
+
+if ([str1 isEqualToString:str2])
+{
+NSLog(@&quot;&#x76F8;&#x7B49;&quot;);
+}else
+{
+NSLog(@&quot;&#x4E0D;&#x76F8;&#x7B49;&quot;);
+}
+
+Swift:(== / != / &gt;= / &lt;=), &#x548C;C&#x8BED;&#x8A00;&#x7684;strcmp&#x4E00;&#x6837;&#x662F;&#x9010;&#x4E2A;&#x6BD4;&#x8F83;
+*/
+
+var str4 = &quot;abc&quot;;
+var str5 = &quot;abc&quot;;
+if str4 == str5
+{
+    print(&quot;&#x76F8;&#x7B49;&quot;);
+}else
+{
+    print(&quot;&#x4E0D;&#x76F8;&#x7B49;&quot;);
+}
+
+var str6 = &quot;abd&quot;;
+var str7 = &quot;abc&quot;;
+if str6 &gt;= str7
+{
+    print(&quot;&#x5927;&#x4E8E;&#x7B49;&#x4E8E;&quot;);
+}else
+{
+    print(&quot;&#x4E0D;&#x5927;&#x4E8E;&#x7B49;&#x4E8E;&quot;);
+}
+</code></pre><p>&#x5224;&#x65AD;&#x524D;&#x540E;&#x7F00;</p>
+<pre><code>/*
+&#x5224;&#x65AD;&#x524D;&#x540E;&#x7F00;
+OC:
+NSString *str = @&quot;http://ios.itcast.cn&quot;;
+if ([str hasPrefix:@&quot;http&quot;]) {
+    NSLog(@&quot;&#x662F;url&quot;);
+}
+
+if ([str hasSuffix:@&quot;.cn&quot;]) {
+    NSLog(@&quot;&#x662F;&#x5929;&#x671D;&#x9876;&#x7EA7;&#x57DF;&#x540D;&quot;);
+}
+*/
+
+var str8 = &quot;http://www.520it.com&quot;
+if str8.hasPrefix(&quot;http&quot;) {
+    print(&quot;&#x662F;url&quot;);
+}
+
+if str8.hasSuffix(&quot;.com&quot;) {
+    print(&quot;&#x662F;&#x9876;&#x7EA7;&#x57DF;&#x540D;&quot;);
+}
+</code></pre><p>&#x5927;&#x5C0F;&#x5199;&#x8F6C;&#x6362;</p>
+<pre><code>/*
+&#x5927;&#x5C0F;&#x5199;&#x8F6C;&#x6362;
+OC:
+NSString *str = @&quot;abc.txt&quot;;
+NSLog(@&quot;%@&quot;, [str uppercaseString]);
+NSLog(@&quot;%@&quot;, [str lowercaseString]);
+*/
+
+var str9 = &quot;abc.txt&quot;;
+print(str9.uppercaseString)
+print(str9.lowercaseString)
+</code></pre><p>&#x8F6C;&#x6362;&#x4E3A;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;</p>
+<pre><code>/*
+&#x8F6C;&#x6362;&#x4E3A;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;
+OC:
+NSString *str = @&quot;250&quot;;
+NSInteger number = [str integerValue];
+NSLog(@&quot;%tu&quot;, number);
+*/
+
+var str10 = &quot;250&quot;
+// &#x5982;&#x679C;str&#x4E0D;&#x80FD;&#x8F6C;&#x6362;&#x4E3A;&#x6574;&#x6570;, &#x90A3;&#x4E48;&#x53EF;&#x9009;&#x7C7B;&#x578B;&#x8FD4;&#x56DE;nil
+// str = &quot;250sb&quot; &#x4E0D;&#x80FD;&#x8F6C;&#x6362;&#x6240;&#x4EE5;&#x53EF;&#x80FD;&#x4E3A;nil
+var number:Int? = Int(str10)
+if number != nil
+{
+    // &#x4EE5;&#x524D;&#x7684;&#x7248;&#x672C;println&#x4F1A;&#x81EA;&#x52A8;&#x62C6;&#x5305;, &#x73B0;&#x5728;&#x7684;&#x4E0D;&#x4F1A;
+    print(number!)
+}
 </code></pre>
       
     </div>
@@ -570,7 +793,7 @@ doubleValue = Double(intValue)
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#常亮、变量"><span class="nav-number">1.</span> <span class="nav-text">常亮、变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本数据类型"><span class="nav-number">2.</span> <span class="nav-text">基本数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类型转换"><span class="nav-number">3.</span> <span class="nav-text">类型转换</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#常亮、变量"><span class="nav-number">1.</span> <span class="nav-text">常亮、变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本数据类型"><span class="nav-number">2.</span> <span class="nav-text">基本数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类型转换"><span class="nav-number">3.</span> <span class="nav-text">类型转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bool类型"><span class="nav-number">4.</span> <span class="nav-text">Bool类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元组"><span class="nav-number">5.</span> <span class="nav-text">元组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可选值"><span class="nav-number">6.</span> <span class="nav-text">可选值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符和字符串"><span class="nav-number">7.</span> <span class="nav-text">字符和字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串常用的方法"><span class="nav-number">8.</span> <span class="nav-text">字符串常用的方法</span></a></li></ol></div>
             
           </div>
         </section>
