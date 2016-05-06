@@ -279,8 +279,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/04/23/iOS学习分享/" itemprop="url">
-                  iOS学习分享
+                <a class="post-title-link" href="/2016/04/23/Launch-Once与Dispatch-Once/" itemprop="url">
+                  Launch Once与Dispatch Once
                 </a>
               
             
@@ -293,7 +293,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-23T12:09:12+08:00" content="2016-04-23">
+            <time itemprop="dateCreated" datetime="2016-04-23T12:11:22+08:00" content="2016-04-23">
               2016-04-23
             </time>
           </span>
@@ -307,8 +307,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术分享/" itemprop="url" rel="index">
-                    <span itemprop="name">技术分享</span>
+                  <a href="/categories/Object-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Object-C</span>
                   </a>
                 </span>
 
@@ -323,8 +323,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/23/iOS学习分享/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/23/iOS学习分享/" itemprop="commentsCount"></span>
+                <a href="/2016/04/23/Launch-Once与Dispatch-Once/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/23/Launch-Once与Dispatch-Once/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -334,7 +334,7 @@
 
           
           
-             <span id="/2016/04/23/iOS学习分享/" class="leancloud_visitors" data-flag-title="iOS学习分享">
+             <span id="/2016/04/23/Launch-Once与Dispatch-Once/" class="leancloud_visitors" data-flag-title="Launch Once与Dispatch Once">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -358,7 +358,25 @@
       
         
           
-            <p>&#x738B;&#x5DCD; (@onevcat)&#x535A;&#x5BA2;:<a href="https://onevcat.com" target="_blank" rel="external">https://onevcat.com</a></p>
+            <h4 id="&#x4E00;&#x3001;Launch-Once&#xFF1A;&#x5728;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#xFF0C;&#x65B9;&#x6CD5;&#x503C;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;"><a href="#&#x4E00;&#x3001;Launch-Once&#xFF1A;&#x5728;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#xFF0C;&#x65B9;&#x6CD5;&#x503C;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;" class="headerlink" title="&#x4E00;&#x3001;Launch Once&#xFF1A;&#x5728;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#xFF0C;&#x65B9;&#x6CD5;&#x503C;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;"></a>&#x4E00;&#x3001;Launch Once&#xFF1A;&#x5728;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#xFF0C;&#x65B9;&#x6CD5;&#x503C;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;</h4><pre><code>- (void)launchOnce {
+    // _cmd&#xFF1A;&#x5F53;&#x524D;&#x65B9;&#x6CD5;&#x540D;&#x79F0;
+    if (objc_getAssociatedObject(self, _cmd)) return;
+
+    objc_setAssociatedObject(self, _cmd, @&quot;Launched&quot;, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+
+    NSLog(@&quot;launch only once&quot;);
+}
+</code></pre><p>&#x539F;&#x7406;&#x5206;&#x6790;&#x5206;&#x6790;&#xFF1A;</p>
+<p>1.&#x5728;&#x6267;&#x884C;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x5224;&#x65AD;&#x662F;&#x5426;&#x5C06;&#x65B9;&#x6CD5;&#x5173;&#x8054;&#x8D77;&#x6765;&#x3002;</p>
+<p>2.&#x7B2C;&#x4E00;&#x6B21;&#x8C03;&#x7528;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8FD8;&#x6CA1;&#x6709;&#x5C06;&#x65B9;&#x6CD5;&#x5173;&#x8054;&#x8D77;&#x6765;&#xFF0C;&#x5219;&#x5EFA;&#x7ACB;&#x5173;&#x8054;&#x3002;</p>
+<p>3.&#x6267;&#x884C;&#x65B9;&#x6CD5;&#x7684;&#x4EE3;&#x7801;&#x3002;</p>
+<p>4.&#x7B2C;&#x4E8C;&#x6B21;&#x8C03;&#x7528;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x5224;&#x65AD;&#x5DF2;&#x5C06;&#x8BE5;&#x65B9;&#x6CD5;&#x5173;&#x8054;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;&#x3002;</p>
+<h4 id="&#x4E8C;&#x3001;Dispatch-Once-&#x5728;&#x5E94;&#x7528;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#x4EE3;&#x7801;&#x5FEB;&#x53EA;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;"><a href="#&#x4E8C;&#x3001;Dispatch-Once-&#x5728;&#x5E94;&#x7528;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#x4EE3;&#x7801;&#x5FEB;&#x53EA;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;" class="headerlink" title="&#x4E8C;&#x3001;Dispatch Once:&#x5728;&#x5E94;&#x7528;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#x4EE3;&#x7801;&#x5FEB;&#x53EA;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;"></a>&#x4E8C;&#x3001;Dispatch Once:&#x5728;&#x5E94;&#x7528;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#x4EE3;&#x7801;&#x5FEB;&#x53EA;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;</h4><pre><code>static dispatch_once_t onceToken;
+dispatch_once(&amp;onceToken, ^{
+
+});
+</code></pre><p>&#x7B80;&#x7B54;&#x5206;&#x6790;&#xFF1A;&#x6211;&#x4EEC;&#x5E38;&#x7528;&#x7684;Dispatch Once&#x4F7F;&#x7528;statc&#x53D8;&#x91CF;&#x4F5C;&#x4E3A;onceToken&#xFF0C;&#x6240;&#x4EE5;&#x4F1A;&#x5728;App&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x5185;&#x503C;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;</p>
+<p><a href="http://www.dreamingwish.com/article/gcd-guide-dispatch-once-1.html" target="_blank" rel="external">Dispatch Once&#x7684;&#x5185;&#x90E8;&#x8BBE;&#x8BA1;</a></p>
 
           
         
@@ -391,7 +409,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -432,7 +450,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -449,7 +467,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

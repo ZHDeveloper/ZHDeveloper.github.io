@@ -279,8 +279,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/04/21/KVO底层实现/" itemprop="url">
-                  KVO底层实现
+                <a class="post-title-link" href="/2016/04/21/链式编程思想/" itemprop="url">
+                  链式编程思想
                 </a>
               
             
@@ -293,7 +293,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-21T16:33:44+08:00" content="2016-04-21">
+            <time itemprop="dateCreated" datetime="2016-04-21T17:28:44+08:00" content="2016-04-21">
               2016-04-21
             </time>
           </span>
@@ -307,8 +307,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Object-C/" itemprop="url" rel="index">
-                    <span itemprop="name">Object-C</span>
+                  <a href="/categories/编程思想/" itemprop="url" rel="index">
+                    <span itemprop="name">编程思想</span>
                   </a>
                 </span>
 
@@ -323,8 +323,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/21/KVO底层实现/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/21/KVO底层实现/" itemprop="commentsCount"></span>
+                <a href="/2016/04/21/链式编程思想/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/21/链式编程思想/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -334,7 +334,7 @@
 
           
           
-             <span id="/2016/04/21/KVO底层实现/" class="leancloud_visitors" data-flag-title="KVO底层实现">
+             <span id="/2016/04/21/链式编程思想/" class="leancloud_visitors" data-flag-title="链式编程思想">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -358,95 +358,97 @@
       
         
           
-            <p>&#x89C2;&#x5BDF;&#x8005;&#x6A21;&#x5F0F;&#xFF08;KVO&#xFF09;&#xFF0C;&#x5F53;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x503C;&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x4F1A;&#x901A;&#x8FC7;&#x8C03;&#x7528;&#x65B9;&#x6CD5;observeValueForKeyPath:ofObject:change:context:&#x6765;&#x8BF4;&#x660E;&#x5C5E;&#x6027;&#x7684;&#x503C;&#x53D1;&#x751F;&#x4E86;&#x6539;&#x53D8;&#x3002;KVO&#x7684;&#x5B9E;&#x73B0;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
-<pre><code>- (void)viewDidLoad {
-[super viewDidLoad];
+            <p>&#x94FE;&#x5F0F;&#x7F16;&#x7A0B;&#x601D;&#x60F3;&#xFF1A;&#x628A;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x64CD;&#x4F5C;&#x4F7F;&#x7528;.&#x6765;&#x6765;&#x8FDE;&#x63A5;&#x6210;&#x4E00;&#x53E5;&#x4EE3;&#x7801;&#xFF0C;&#x53EF;&#x8BFB;&#x6027;&#x597D;&#x3002;&#x5178;&#x578B;&#x7684;&#x4EE3;&#x8868;Masonry&#x6846;&#x67B6;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre><code>[redView mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.left.top.equalTo(@10);
+    make.right.bottom.equalTo(@(-10));
+}];
+</code></pre><p>ZHCalculateMaker&#x7684;&#x58F0;&#x660E;&#x4E0E;&#x5B9E;&#x73B0;</p>
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
 
-Person *p = [Person new];
+@interface ZHCalculateMaker : NSObject
 
-p.name = @&quot;&#x5F20;&#x4E09;&quot;;
+@property (nonatomic, assign) float result;
 
-[p addObserver:self forKeyPath:@&quot;name&quot; options:NSKeyValueObservingOptionNew context:nil];
+- (ZHCalculateMaker * (^)(float))add;
 
-    p.name = @&quot;&#x674E;&#x601D;&quot;;
-}
+- (ZHCalculateMaker * (^)(float))subtract;
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary&lt;NSString *, id&gt; *)change context:(void *)context {
-    NSLog(@&quot;%@&quot;, change);
-}
-</code></pre><p>&#x4ECE;&#x4E0B;&#x56FE;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x5F53;&#x8FD8;&#x672A;&#x7ED9;&#x5BF9;&#x8C61;&#x6DFB;&#x52A0;&#x89C2;&#x5BDF;&#x8005;&#x524D;&#xFF0C;p&#x5BF9;&#x8C61;&#x662F;Person&#x7C7B;&#x3002;<br><img src="/2016/04/21/KVO&#x5E95;&#x5C42;&#x5B9E;&#x73B0;/kvo_tip1.png" alt="&#x6DFB;&#x52A0;&#x89C2;&#x5BDF;&#x8005;&#x524D;"></p>
-<p>&#x5F53;&#x7ED9;&#x5BF9;&#x8C61;&#x6DFB;&#x52A0;&#x89C2;&#x5BDF;&#x8005;&#x540E;&#xFF0C;P&#x5BF9;&#x8C61;&#x7684;&#x7C7B;&#x53D8;&#x6210;&#x4E3A;NSKVONotifying_Person&#x3002;<br><img src="/2016/04/21/KVO&#x5E95;&#x5C42;&#x5B9E;&#x73B0;/kvo_tip2.png" alt="&#x6DFB;&#x52A0;&#x89C2;&#x5BDF;&#x8005;&#x524D;"></p>
-<p>&#x6CE8;&#xFF1A;&#x53EA;&#x7528;&#x8C03;&#x7528;&#x5C5E;&#x6027;&#x7684;set&#x65B9;&#x6CD5;&#x6765;&#x6539;&#x53D8;&#x5C5E;&#x6027;&#x7684;&#x503C;&#x65F6;&#xFF0C;&#x624D;&#x4F1A;&#x89C2;&#x5BDF;&#x8005;&#x624D;&#x4F1A;&#x77E5;&#x9053;&#x5C5E;&#x6027;&#x503C;&#x53D1;&#x751F;&#x6539;&#x53D8;&#x3002;</p>
-<p>KVO&#x5E95;&#x5C42;&#x5B9E;&#x73B0;&#x7684;&#x5206;&#x6790;&#xFF1A;</p>
-<p>1.&#x5F53;&#x4E3A;&#x5BF9;&#x8C61;&#x6DFB;&#x52A0;&#x89C2;&#x5BDF;&#x8005;&#x65F6;&#xFF0C;&#x52A8;&#x6001;&#x521B;&#x5EFA;NSKVONotifying_Person&#xFF0C;NSKVONotifying_Person&#x662F;Person&#x7C7B;&#x7684;&#x5B50;&#x7C7B;&#x3002;</p>
-<p>2.&#x4FEE;&#x6539;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x7684;isa&#x6307;&#x9488;-&gt;NSKVONotifying_Person</p>
-<p>3.&#x5F53;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x503C;&#x53D1;&#x751F;&#x6539;&#x53D8;&#x65F6;&#xFF0C;&#x4F1A;&#x8C03;&#x7528;NSKVONotifying_Person&#x7684;set&#x65B9;&#x6CD5;</p>
-<p>4.&#x91CD;&#x5199;NSKVONotifying_Person&#x7684;set&#x65B9;&#x6CD5;&#xFF0C;&#x8C03;&#x7528;&#x89C2;&#x5BDF;&#x8005;&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
-<p>&#x91CD;&#x5199;KVO&#x7684;&#x5B9E;&#x73B0;&#xFF1A;</p>
-<p>NSObject (KVO)&#x7684;&#x58F0;&#x660E;&#x4E0E;&#x5B9E;&#x73B0;</p>
-<pre><code>//NSObject (KVO).h
-#import &lt;Foundation/Foundation.h&gt;
+- (ZHCalculateMaker * (^)(float))multiply;
 
-@interface NSObject (KVO)
-
-- (void)ZHAddObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options context:(nullable void *)context;
+- (ZHCalculateMaker * (^)(float))divide;
 
 @end
 
-//NSObject (KVO).m
-#import &quot;NSObject+KVO.h&quot;
-#import &lt;objc/runtime.h&gt;
-#import &quot;ZHNSKVONotifying_Person.h&quot;
+#import &quot;ZHCalculateMaker.h&quot;
 
-@implementation NSObject (KVO)
+@implementation ZHCalculateMaker
 
-- (void)ZHAddObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options context:(nullable void *)context {
-    //&#x4FEE;&#x6539;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x7684;isa&#x6307;&#x9488;
-    object_setClass(self, [ZHNSKVONotifying_Person class]);
+- (ZHCalculateMaker * (^)(float))add {
+    return ^(float num) {
+        self.result += num;
+        return self;
+    };
+}
 
-    //&#x4FDD;&#x5B58;&#x628A;&#x89C2;&#x5BDF;&#x8005;
-    objc_setAssociatedObject(self, @&quot;observer&quot;, observer, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (ZHCalculateMaker * (^)(float))subtract {
+    return ^(float num) {
+        self.result -= num;
+        return self;
+    };
+}
+
+- (ZHCalculateMaker * (^)(float))multiply {
+    return ^(float num) {
+        self.result *= num;
+        return self;
+    };
+}
+
+- (ZHCalculateMaker * (^)(float))divide {
+    return ^(float num) {
+        self.result /= num;
+        return self;
+    };
 }
 
 @end
-</code></pre><p>ZHNSKVONotifying_Person&#x7684;&#x58F0;&#x660E;&#x4E0E;&#x5B9E;&#x73B0;</p>
-<pre><code>#import &quot;Person.h&quot;
+</code></pre><p>NSObject+ZHCalculate.h&#x7684;&#x58F0;&#x660E;&#x4E0E;&#x5B9E;&#x73B0;</p>
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+#import &quot;ZHCalculateMaker.h&quot;
 
-@interface ZHNSKVONotifying_Person : Person
+@interface NSObject (ZHCalculate)
+
++ (float)makeCalculate:(void (^)(ZHCalculateMaker *maker))block;
 
 @end
 
-#import &quot;ZHNSKVONotifying_Person.h&quot;
-#import &lt;objc/runtime.h&gt;
+#import &quot;NSObject+ZHCalculate.h&quot;
+#import &quot;ZHCalculateMaker.h&quot;
 
-@implementation ZHNSKVONotifying_Person
+@implementation NSObject (ZHCalculate)
 
-- (void)setName:(NSString *)name {
-    [super setName:name];
++ (float)makeCalculate:(void (^)(ZHCalculateMaker *maker))block {
+    //&#x521D;&#x59CB;&#x5316;&#x5236;&#x9020;&#x8005;
+    ZHCalculateMaker *maker = [ZHCalculateMaker new];
 
-    id observer = objc_getAssociatedObject(self, @&quot;observer&quot;);
+    block(maker);
 
-    NSDictionary *change = @{ @&quot;change&quot; : name };
-
-    [observer observeValueForKeyPath:@&quot;name&quot; ofObject:self change:change context:nil];
+    return maker.result;
 }
 
 @end
-</code></pre><p>&#x5B9E;&#x73B0;&#x8C03;&#x7528;</p>
+</code></pre><p>&#x5916;&#x90E8;&#x8C03;&#x7528;&#x65B9;&#x6CD5;&#xFF1A;</p>
 <pre><code>- (void)viewDidLoad {
     [super viewDidLoad];
 
-    Person *p = [Person new];
+    float result = [NSObject makeCalculate:^(ZHCalculateMaker *maker) {
 
-    p.name = @&quot;&#x5F20;&#x4E09;&quot;;
+        maker.add(3).multiply(5);
 
-    [p ZHAddObserver:self forKeyPath:@&quot;name&quot; options:NSKeyValueObservingOptionNew context:nil];
+    }];
 
-    p.name = @&quot;&#x674E;&#x601D;&quot;;
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary&lt;NSString *, id&gt; *)change context:(void *)context {
-    NSLog(@&quot;%@&quot;, change);
+    NSLog(@&quot;%f&quot;, result);
 }
 </code></pre>
           
@@ -480,7 +482,7 @@ p.name = @&quot;&#x5F20;&#x4E09;&quot;;
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -521,7 +523,7 @@ p.name = @&quot;&#x5F20;&#x4E09;&quot;;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -538,7 +540,7 @@ p.name = @&quot;&#x5F20;&#x4E09;&quot;;
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
