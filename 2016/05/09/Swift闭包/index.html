@@ -80,16 +80,25 @@
 
 
 
-<meta name="description" content="改变，永远不嫌晚。无论你是几岁，也无论你目前所处的境况有多糟，只要立定目标、一步一步往前走，人生随时都有翻盘的可能性。新的一天，你要加油!">
+<meta name="description" content="&amp;#x95ED;&amp;#x5305;:
+
+&amp;#x51FD;&amp;#x6570;&amp;#x662F;&amp;#x95ED;&amp;#x5305;&amp;#x7684;&amp;#x4E00;&amp;#x79CD;&amp;#x7279;&amp;#x6B8A;&amp;#x3002;
+&amp;#x95ED;&amp;#x5305;&amp;#x8868;&amp;#x8FBE;&amp;#x5F0F;&amp;#xFF08;&amp;#x533F;&amp;#x540D;&amp;#x95ED;&amp;#x5305;&amp;#xFF09;- &amp;#">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift闭包">
 <meta property="og:url" content="http://yoursite.com/2016/05/09/Swift闭包/index.html">
 <meta property="og:site_name" content="晴间多云">
-<meta property="og:description" content="改变，永远不嫌晚。无论你是几岁，也无论你目前所处的境况有多糟，只要立定目标、一步一步往前走，人生随时都有翻盘的可能性。新的一天，你要加油!">
-<meta property="og:updated_time" content="2016-05-09T01:22:06.000Z">
+<meta property="og:description" content="&amp;#x95ED;&amp;#x5305;:
+
+&amp;#x51FD;&amp;#x6570;&amp;#x662F;&amp;#x95ED;&amp;#x5305;&amp;#x7684;&amp;#x4E00;&amp;#x79CD;&amp;#x7279;&amp;#x6B8A;&amp;#x3002;
+&amp;#x95ED;&amp;#x5305;&amp;#x8868;&amp;#x8FBE;&amp;#x5F0F;&amp;#xFF08;&amp;#x533F;&amp;#x540D;&amp;#x95ED;&amp;#x5305;&amp;#xFF09;- &amp;#">
+<meta property="og:updated_time" content="2016-05-09T02:08:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift闭包">
-<meta name="twitter:description" content="改变，永远不嫌晚。无论你是几岁，也无论你目前所处的境况有多糟，只要立定目标、一步一步往前走，人生随时都有翻盘的可能性。新的一天，你要加油!">
+<meta name="twitter:description" content="&amp;#x95ED;&amp;#x5305;:
+
+&amp;#x51FD;&amp;#x6570;&amp;#x662F;&amp;#x95ED;&amp;#x5305;&amp;#x7684;&amp;#x4E00;&amp;#x79CD;&amp;#x7279;&amp;#x6B8A;&amp;#x3002;
+&amp;#x95ED;&amp;#x5305;&amp;#x8868;&amp;#x8FBE;&amp;#x5F0F;&amp;#xFF08;&amp;#x533F;&amp;#x540D;&amp;#x95ED;&amp;#x5305;&amp;#xFF09;- &amp;#">
 
 
 
@@ -352,7 +361,91 @@
       
 
       
-        
+        <p>&#x95ED;&#x5305;:</p>
+<ol>
+<li>&#x51FD;&#x6570;&#x662F;&#x95ED;&#x5305;&#x7684;&#x4E00;&#x79CD;&#x7279;&#x6B8A;&#x3002;</li>
+<li>&#x95ED;&#x5305;&#x8868;&#x8FBE;&#x5F0F;&#xFF08;&#x533F;&#x540D;&#x95ED;&#x5305;&#xFF09;- &#x80FD;&#x6355;&#x83B7;&#x4E0A;&#x4E0B;&#x6587;&#x4E2D;&#x95ED;&#x5305;&#x7684;&#x503C;&#x3002;</li>
+</ol>
+<p>&#x95ED;&#x5305;&#x7684;&#x8BED;&#x6CD5;:</p>
+<ol>
+<li>in&#x5173;&#x952E;&#x5B57;&#x662F;&#x4FBF;&#x4E8E;&#x533A;&#x5206;&#x8FD4;&#x56DE;&#x503C;&#x548C;&#x6267;&#x884C;&#x8BED;&#x53E5;&#x3002;</li>
+<li>&#x95ED;&#x5305;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x7C7B;&#x578B;&#x548C;&#x51FD;&#x6570;&#x7684;&#x7C7B;&#x578B;&#x4E00;&#x6837;&#xFF0C;&#x662F;&#x53C2;&#x6570;&#x4E0A;&#x52A0;&#x8FD4;&#x56DE;&#x503C;&#x3002;&#x4E5F;&#x5C31;&#x662F;in&#x4E4B;&#x524D;&#x7684;&#x90E8;&#x5206;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x95ED;&#x5305;&#x662F;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x53C2;&#x6570;, &#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5C06;&#x95ED;&#x5305;&#x5199;&#x5230;&#x53C2;&#x6570;&#x5217;&#x8868;&#x540E;&#x9762;, &#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x63D0;&#x9AD8;&#x9605;&#x8BFB;&#x6027;. &#x79F0;&#x4E4B;&#x4E3A;&#x5C3E;&#x968F;&#x95ED;&#x5305;</li>
+</ol>
+<p>eg:</p>
+<pre><code>//&#x5B8C;&#x6574;&#x5199;&#x6CD5;
+let say:(String)-&gt;String = {
+    (name:String) -&gt; String in
+    return &quot;hello \(name)&quot;
+}
+
+//&#x6CA1;&#x6709;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x5199;&#x6CD5;
+let say:(String)-&gt;Void = {
+    (name:String) in
+    print(&quot;hello \(name)&quot;)
+}
+
+//&#x65E0;&#x53C2;&#x65E0;&#x8FD4;&#x56DE;&#x503C;
+let say = {
+    print(&quot;hello&quot;)
+}
+
+func bubbleSort(inout array:[Int], cmp: (Int, Int) -&gt; Int)
+{
+    let count = array.count;
+    for var i = 1; i &lt; count; i++
+    {
+        for var j = 0; j &lt; (count - i); j++
+        {
+            if cmp(array[j], array[j + 1]) == -1
+            {
+                let temp = array[j]
+                array[j] = array[j + 1]
+                array[j + 1] = temp
+            }
+        }
+    }
+}
+
+// &#x95ED;&#x5305;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x9012;
+bubbleSort(&amp;arr, cmp: {
+    (a: Int, b: Int) -&gt; Int in
+    if a &gt; b{
+        return 1;
+    }else if a &lt; b
+    {
+        return -1;
+    }else
+    {
+        return 0;
+    }
+})
+</code></pre><p>&#x95ED;&#x5305;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x4F18;&#x5316;:</p>
+<ol>
+<li>&#x7C7B;&#x578B;&#x4F18;&#x5316;, &#x7531;&#x4E8E;&#x51FD;&#x6570;&#x4E2D;&#x5DF2;&#x7ECF;&#x58F0;&#x660E;&#x4E86;&#x95ED;&#x5305;&#x53C2;&#x6570;&#x7684;&#x7C7B;&#x578B;, &#x6240;&#x4EE5;&#x4F20;&#x5165;&#x7684;&#x5B9E;&#x53C2;&#x53EF;&#x4EE5;&#x4E0D;&#x7528;&#x5199;&#x7C7B;&#x578B;</li>
+<li>&#x8FD4;&#x56DE;&#x503C;&#x4F18;&#x5316;, &#x540C;&#x7406;&#x7531;&#x4E8E;&#x51FD;&#x6570;&#x4E2D;&#x5DF2;&#x7ECF;&#x58F0;&#x660E;&#x4E86;&#x95ED;&#x5305;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x7C7B;&#x578B;,&#x6240;&#x4EE5;&#x4F20;&#x5165;&#x7684;&#x5B9E;&#x53C2;&#x53EF;&#x4EE5;&#x4E0D;&#x7528;&#x5199;&#x7C7B;&#x578B;</li>
+<li>&#x53C2;&#x6570;&#x4F18;&#x5316;, swift&#x53EF;&#x4EE5;&#x4F7F;&#x7528;$&#x7D22;&#x5F15;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x8BBF;&#x95EE;&#x95ED;&#x5305;&#x7684;&#x53C2;&#x6570;, &#x9ED8;&#x8BA4;&#x4ECE;0&#x5F00;&#x59CB;</li>
+<li>&#x5982;&#x679C;&#x53EA;&#x6709;&#x4E00;&#x6761;&#x8BED;&#x53E5;&#x53EF;&#x4EE5;&#x7701;&#x7565;return</li>
+</ol>
+<p>eg:</p>
+<pre><code>bubbleSort(&amp;arr){
+//    (a , b) -&gt; Int in
+//    (a , b) in
+    if $0 &gt; $1{
+        return 1;
+    }else if $0 &lt; $1
+    {
+        return -1;
+    }else
+    {
+        return 0;
+    }
+}
+
+let hehe = {
+    &quot;&#x6211;&#x662F;lnj&quot;
+}
+</code></pre>
       
     </div>
     
@@ -388,6 +481,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/09/Swift枚举/" rel="prev" title="Swift枚举">
+                Swift枚举 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -462,7 +559,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -470,7 +567,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -479,7 +576,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

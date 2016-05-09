@@ -279,6 +279,226 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/21/链式编程思想/" itemprop="url">
+                  链式编程思想
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-21T17:28:44+08:00" content="2016-04-21">
+              2016-04-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/编程思想/" itemprop="url" rel="index">
+                    <span itemprop="name">编程思想</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/21/链式编程思想/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/21/链式编程思想/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/04/21/链式编程思想/" class="leancloud_visitors" data-flag-title="链式编程思想">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>&#x94FE;&#x5F0F;&#x7F16;&#x7A0B;&#x601D;&#x60F3;&#xFF1A;&#x628A;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x64CD;&#x4F5C;&#x4F7F;&#x7528;.&#x6765;&#x6765;&#x8FDE;&#x63A5;&#x6210;&#x4E00;&#x53E5;&#x4EE3;&#x7801;&#xFF0C;&#x53EF;&#x8BFB;&#x6027;&#x597D;&#x3002;&#x5178;&#x578B;&#x7684;&#x4EE3;&#x8868;Masonry&#x6846;&#x67B6;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre><code>[redView mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.left.top.equalTo(@10);
+    make.right.bottom.equalTo(@(-10));
+}];
+</code></pre><p>ZHCalculateMaker&#x7684;&#x58F0;&#x660E;&#x4E0E;&#x5B9E;&#x73B0;</p>
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+
+@interface ZHCalculateMaker : NSObject
+
+@property (nonatomic, assign) float result;
+
+- (ZHCalculateMaker * (^)(float))add;
+
+- (ZHCalculateMaker * (^)(float))subtract;
+
+- (ZHCalculateMaker * (^)(float))multiply;
+
+- (ZHCalculateMaker * (^)(float))divide;
+
+@end
+
+#import &quot;ZHCalculateMaker.h&quot;
+
+@implementation ZHCalculateMaker
+
+- (ZHCalculateMaker * (^)(float))add {
+    return ^(float num) {
+        self.result += num;
+        return self;
+    };
+}
+
+- (ZHCalculateMaker * (^)(float))subtract {
+    return ^(float num) {
+        self.result -= num;
+        return self;
+    };
+}
+
+- (ZHCalculateMaker * (^)(float))multiply {
+    return ^(float num) {
+        self.result *= num;
+        return self;
+    };
+}
+
+- (ZHCalculateMaker * (^)(float))divide {
+    return ^(float num) {
+        self.result /= num;
+        return self;
+    };
+}
+
+@end
+</code></pre><p>NSObject+ZHCalculate.h&#x7684;&#x58F0;&#x660E;&#x4E0E;&#x5B9E;&#x73B0;</p>
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+#import &quot;ZHCalculateMaker.h&quot;
+
+@interface NSObject (ZHCalculate)
+
++ (float)makeCalculate:(void (^)(ZHCalculateMaker *maker))block;
+
+@end
+
+#import &quot;NSObject+ZHCalculate.h&quot;
+#import &quot;ZHCalculateMaker.h&quot;
+
+@implementation NSObject (ZHCalculate)
+
++ (float)makeCalculate:(void (^)(ZHCalculateMaker *maker))block {
+    //&#x521D;&#x59CB;&#x5316;&#x5236;&#x9020;&#x8005;
+    ZHCalculateMaker *maker = [ZHCalculateMaker new];
+
+    block(maker);
+
+    return maker.result;
+}
+
+@end
+</code></pre><p>&#x5916;&#x90E8;&#x8C03;&#x7528;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<pre><code>- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    float result = [NSObject makeCalculate:^(ZHCalculateMaker *maker) {
+
+        maker.add(3).multiply(5);
+
+    }];
+
+    NSLog(@&quot;%f&quot;, result);
+}
+</code></pre>
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/21/KVO底层实现/" itemprop="url">
                   KVO底层实现
                 </a>
@@ -986,7 +1206,7 @@ p.name = @&quot;&#x5F20;&#x4E09;&quot;;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -994,7 +1214,7 @@ p.name = @&quot;&#x5F20;&#x4E09;&quot;;
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1003,7 +1223,7 @@ p.name = @&quot;&#x5F20;&#x4E09;&quot;;
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
