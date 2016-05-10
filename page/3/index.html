@@ -279,6 +279,512 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/25/Swift数组、字典/" itemprop="url">
+                  Swift数组、字典
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-25T15:18:23+08:00" content="2016-04-25">
+              2016-04-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift语法/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift语法</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/25/Swift数组、字典/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/25/Swift数组、字典/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/04/25/Swift数组、字典/" class="leancloud_visitors" data-flag-title="Swift数组、字典">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="&#x6570;&#x7EC4;&#x7684;&#x57FA;&#x672C;&#x4F7F;&#x7528;"><a href="#&#x6570;&#x7EC4;&#x7684;&#x57FA;&#x672C;&#x4F7F;&#x7528;" class="headerlink" title="&#x6570;&#x7EC4;&#x7684;&#x57FA;&#x672C;&#x4F7F;&#x7528;"></a>&#x6570;&#x7EC4;&#x7684;&#x57FA;&#x672C;&#x4F7F;&#x7528;</h4><pre><code>/*
+&#x6570;&#x7EC4;&#x5B9A;&#x4E49;:
+OC:
+&#x6709;&#x503C;&#x6570;&#x7EC4;
+NSArray *arr0 = @[@1, @2, @3];
+NSArray *arr1 = [NSArray arrayWithObjects:@1, @2, @3, nil];
+NSLog(@&quot;%@&quot;, arr1);
+
+&#x7A7A;&#x6570;&#x7EC4;
+NSArray *arr2 = @[];
+NSArray *arr3 = [NSArray array];
+NSLog(@&quot;%@&quot;, arr3);
+
+&#x4E0D;&#x53EF;&#x53D8;&#x6570;&#x7EC4;:NSArray
+&#x53EF;&#x53D8;&#x6570;&#x7EC4;:NSMutableArray
+*/
+
+//&#x6709;&#x503C;&#x6570;&#x7EC4;
+var arr0 = [1, 2, 3]
+var arr1: Array = [1, 2, 3]
+var arr2: Array&lt;Int&gt; = [1, 2, 3]
+var arr3: [Int] = [1, 2, 3]
+//var arr4: Int[] = [1, 2, 3] &#x65E9;&#x671F;&#x5199;&#x6CD5;
+
+//&#x7A7A;&#x6570;&#x7EC4;
+var arr5 = []
+var arr6 = [Int]()
+var arr7 = Array&lt;Int&gt;()
+print(arr7)
+
+//&#x4E0D;&#x53EF;&#x53D8;&#x6570;&#x7EC4;:
+var arr8 = []
+//&#x53EF;&#x53D8;&#x6570;&#x7EC4;:
+let arr9  = []
+
+/*
+&#x5143;&#x7D20;&#x7C7B;&#x578B;
+OC:
+NSArray *arr = @[@1, @&quot;lnj&quot;, @1.75];
+NSLog(@&quot;%@&quot;, arr);
+*/
+var arr10 = [1, &quot;lnj&quot;, 1.75]
+print(arr10)
+
+// &#x5982;&#x679C;&#x60F3;&#x660E;&#x786E;&#x8868;&#x793A;&#x6570;&#x7EC4;&#x4E2D;&#x5B58;&#x653E;&#x7684;&#x662F;&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x7684;&#x6570;&#x636E;, &#x53EF;&#x4EE5;&#x4F7F;&#x7528;Any&#x5173;&#x952E;&#x5B57;, &#x8868;&#x793A;&#x6570;&#x7EC4;&#x4E2D;&#x53EF;&#x4EE5;&#x5B58;&#x653E;&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x7684;&#x6570;&#x636E;
+var arr11:Array&lt;Any&gt; = [1, &quot;lnj&quot;, 1.75]
+print(arr11)
+
+
+/*
+&#x6570;&#x7EC4;&#x64CD;&#x4F5C;
+1.&#x83B7;&#x53D6;&#x957F;&#x5EA6;
+OC:
+NSArray *arr = @[@1, @2, @3];
+NSLog(@&quot;%tu&quot;, arr.count);
+*/
+
+var arr12 = [1, 2, 3]
+print(arr12.count)
+
+/*
+2.&#x5224;&#x65AD;&#x662F;&#x5426;&#x4E3A;&#x7A7A;
+OC:
+NSArray *arr = @[];
+NSLog(@&quot;%d&quot;, arr.count != 0);
+*/
+
+var arr13 = [1, 2, 3]
+print(arr13.isEmpty)
+
+/*
+3.&#x68C0;&#x7D22;
+OC:
+NSArray *arr = @[@1, @2, @3];
+NSLog(@&quot;%@&quot;, arr[0]);
+*/
+var arr14 = [1, 2, 3]
+print(arr14[0])
+
+/*
+4.&#x8FFD;&#x52A0;
+OC:
+NSMutableArray *arr = [NSMutableArray arrayWithObjects:@1, @2, @3, nil];
+[arr addObject:@4];
+NSLog(@&quot;%@&quot;, arr);
+*/
+
+var arr15 = [1, 2, 3]
+arr15.append(4);
+print(arr15)
+
+var arr16 = [1, 2, 3]
+arr16 += [4]
+// arr16 += 4 &#x4EE5;&#x524D;&#x7684;&#x7248;&#x672C;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x5199;
+//arr16 += [5, 6, 7]
+arr16 += arr16[0...1] // &#x8FD8;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x641E;&#x81EA;&#x5DF1;
+print(arr16)
+
+/*
+5.&#x63D2;&#x5165;
+OC:
+NSMutableArray *arr = [NSMutableArray arrayWithObjects:@1, @2, @3, nil];
+[arr insertObject:@4 atIndex:0];
+NSLog(@&quot;%@&quot;, arr);
+*/
+var arr17 = [1, 2, 3]
+arr17.insert(4, atIndex: 0);
+print(arr17)
+
+/*
+6.&#x66F4;&#x65B0;
+OC:
+NSMutableArray *arr = [NSMutableArray arrayWithObjects:@1, @2, @3, nil];
+arr[0] = @8;
+NSLog(@&quot;%@&quot;, arr);
+*/
+var arr18 = [1, 2, 3]
+arr18[0] = 8
+print(arr18)
+
+/*
+7.&#x5220;&#x9664;
+OC:
+NSMutableArray *arr = [NSMutableArray arrayWithObjects:@1, @2, @3, nil];
+[arr removeObject:@1];
+NSLog(@&quot;%@&quot;, arr);
+
+NSMutableArray *arr = [NSMutableArray arrayWithObjects:@1, @2, @3, nil];
+[arr removeLastObject];
+NSLog(@&quot;%@&quot;, arr);
+
+NSMutableArray *arr = [NSMutableArray arrayWithObjects:@1, @2, @3, nil];
+[arr removeAllObjects];
+NSLog(@&quot;%@&quot;, arr);
+*/
+
+var arr19 = [1, 2, 3]
+arr19.removeAtIndex(0)
+print(arr19)
+
+var arr20 = [1, 2, 3]
+arr20.removeLast()
+print(arr20)
+
+var arr21 = [1, 2, 3]
+arr21.removeAll(keepCapacity: false) //&#x662F;&#x5426;&#x4FDD;&#x6301;&#x5BB9;&#x91CF;, &#x5982;&#x679C;&#x4E3A;true, &#x5373;&#x4FBF;&#x5220;&#x9664;&#x4E86;&#x5BB9;&#x91CF;&#x4F9D;&#x7136;&#x5B58;&#x5728;, &#x5BB9;&#x91CF;&#x662F;2&#x7684;&#x500D;&#x6570;
+print(arr21)
+print(arr21.capacity)
+//&#x6CE8;&#x610F;: &#x5982;&#x679C;&#x6570;&#x7EC4;&#x662F;&#x4E00;&#x4E2A;&#x4E0D;&#x53EF;&#x53D8;&#x6570;&#x7EC4;&#x4E0D;&#x80FD;&#x66F4;&#x65B0;/&#x63D2;&#x5165;&#x548C;&#x5220;&#x9664;
+//&#x7B2C;&#x4E00;&#x4E2A;&#x7248;&#x672C;&#x7684;&#x4E0D;&#x53EF;&#x53D8;&#x6570;&#x7EC4;&#x662F;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x7684;
+
+
+/*
+Range
+OC:
+NSMutableArray *arr = [NSMutableArray arrayWithObjects:@1, @2, @3, nil];
+[arr removeObjectsInRange:NSMakeRange(0, 2)];
+NSLog(@&quot;%@&quot;, arr);
+*/
+
+var arr22 = [1, 2, 3]
+arr22.removeRange(Range(start: 1, end: 2))
+print(arr22)
+
+var arr23 = [1, 2, 3]
+arr23.removeRange(0...0)
+print(arr23)
+
+// &#x5176;&#x5B9E;Range&#x5C31;&#x662F;&#x534A;&#x95ED;&#x533A;&#x95F4;
+var range = 0...5
+//range = 99 // &#x901A;&#x8FC7;&#x62A5;&#x9519;&#x53EF;&#x4EE5;&#x63A8;&#x65AD;&#x51FA;&#x7C7B;&#x578B;
+print(range) // &#x901A;&#x8FC7;&#x7B54;&#x5E94;&#x4E5F;&#x53EF;&#x4EE5;&#x63A8;&#x65AD;&#x51FA;&#x7C7B;&#x578B;
+
+var range1:Range&lt;Int&gt; = 0...5
+//var range2:Range&lt;String&gt;; // &#x5FC5;&#x987B;&#x9075;&#x5B88;ForwardIndexType&#x534F;&#x8BAE;
+// start &#x8D77;&#x70B9; end &#x7EC8;&#x70B9;
+var range3:Range&lt;Int&gt; = Range(start: 0, end: 5)
+var range4:Range&lt;Int&gt; = 0..&lt;5
+
+print(range1)
+print(range3)
+print(range4)
+</code></pre><h4 id="&#x6570;&#x7EC4;&#x7684;&#x5176;&#x4ED6;&#x64CD;&#x4F5C;"><a href="#&#x6570;&#x7EC4;&#x7684;&#x5176;&#x4ED6;&#x64CD;&#x4F5C;" class="headerlink" title="&#x6570;&#x7EC4;&#x7684;&#x5176;&#x4ED6;&#x64CD;&#x4F5C;"></a>&#x6570;&#x7EC4;&#x7684;&#x5176;&#x4ED6;&#x64CD;&#x4F5C;</h4><pre><code>/*
+&#x6570;&#x7EC4;&#x7684;&#x6279;&#x91CF;&#x64CD;&#x4F5C;
+OC:
+NSMutableArray *arr = [NSMutableArray arrayWithObjects:@1, @2, @3, nil];
+NSRange range = NSMakeRange(0, 2);
+// [arr replaceObjectsInRange:range withObjectsFromArray:@[@99, @88]];
+[arr replaceObjectsInRange:range withObjectsFromArray:@[@99, @88, @77, @66]];
+NSLog(@&quot;%@&quot;, arr);
+*/
+var arr = [1, 2, 3]
+//arr[0...1] = [99, 88]
+//arr[0...1] = [99, 88, 77, 66]
+// &#x7B49;&#x4EF7;&#x4E8E;&#x4E0A;&#x4E00;&#x884C;&#x4EE3;&#x7801;
+//arr.replaceRange(Range(start: 0, end: 2), with: [99, 88, 77, 66])
+arr.replaceRange(1..&lt;2, with: [99, 88, 77, 66])
+print(arr)
+
+/*
+4.&#x904D;&#x5386;
+OC:
+NSArray *arr = @[@1, @2, @3];
+for (int i = 0; i &lt; arr.count; i++) {
+    NSLog(@&quot;%@&quot;, arr[i]);
+}
+
+for (NSNumber *number in arr) {
+    NSLog(@&quot;%@&quot;, number);
+}
+*/
+var arr1 = [1, 2, 3]
+for var i = 0 ; i &lt; arr1.count ; i++
+{
+    print(arr1[i])
+}
+
+for number in arr1
+{
+    print(number)
+}
+
+for i in 0..&lt;arr1.count
+{
+    print(arr1[i])
+}
+
+// &#x53D6;&#x51FA;&#x6570;&#x7EC4;&#x4E2D;&#x67D0;&#x4E2A;&#x533A;&#x95F4;&#x8303;&#x56F4;&#x7684;&#x503C;
+var arr2 = [1, 2, 3]
+for number in arr2[0..&lt;3]
+{
+    print(number)
+}
+</code></pre><h4 id="&#x5B57;&#x5178;"><a href="#&#x5B57;&#x5178;" class="headerlink" title="&#x5B57;&#x5178;"></a>&#x5B57;&#x5178;</h4><p>&#x5B57;&#x5178;&#x7684;&#x5B9A;&#x4E49;&#xFF1A;&#x952E;&#x503C;&#x5BF9;<br>&#x5B57;&#x5178;&#x7684;key&#x4E00;&#x5B9A;&#x8981;&#x662F;&#x53EF;&#x4EE5;hash&#x7684;(String, Int, Float, Double, Bool), value&#x6CA1;&#x6709;&#x8981;&#x6C42;</p>
+<pre><code>var dict = [&quot;name&quot;:&quot;lnj&quot;, &quot;age&quot;:30]
+print(dict)
+
+var dict1:Dictionary = [&quot;name&quot;:&quot;lnj&quot;, &quot;age&quot;:30]
+print(dict1)
+
+var dict2:Dictionary&lt;String,Any&gt; = [&quot;name&quot;:&quot;lnj&quot;, &quot;age&quot;:30]
+print(dict2)
+
+var dict3:[String:Any] = [&quot;name&quot;:&quot;lnj&quot;, &quot;age&quot;:30]
+print(dict3)
+
+var dict4:[String:Any] = Dictionary(dictionaryLiteral: (&quot;name&quot;, &quot;lnj&quot;), (&quot;age&quot;, 30))
+</code></pre><p>&#x5B57;&#x5178;&#x7684;&#x64CD;&#x4F5C;&#xFF1A;</p>
+<pre><code>/*
+&#x5B57;&#x5178;&#x64CD;&#x4F5C;
+OC:
+1.&#x83B7;&#x53D6;
+NSDictionary *dict = @{@&quot;name&quot;:@&quot;lnj&quot;, @&quot;age&quot;:@30};
+NSLog(@&quot;%@&quot;, dict[@&quot;name&quot;]);
+
+2.&#x4FEE;&#x6539;
+NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@&quot;name&quot;, @&quot;lnj&quot;, @&quot;age&quot;, @30, nil];
+dict[@&quot;name&quot;] = @&quot;iversion&quot;;
+NSLog(@&quot;%@&quot;, dict[@&quot;name&quot;]);
+
+NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@&quot;name&quot;, @&quot;lnj&quot;, @&quot;age&quot;, @30, nil];
+[dict setObject:@&quot;iversion&quot; forKey:@&quot;name&quot;];
+NSLog(@&quot;%@&quot;, dict[@&quot;name&quot;]);
+*/
+//1.&#x83B7;&#x53D6;
+var dict7 = [&quot;name&quot;:&quot;lnj&quot;, &quot;age&quot;:30]
+print(dict7[&quot;name&quot;]!)
+
+//2.&#x4FEE;&#x6539;
+var dict8 = [&quot;name&quot;:&quot;lnj&quot;, &quot;age&quot;:30]
+dict8[&quot;name&quot;] = &quot;iverson&quot;
+print(dict8[&quot;name&quot;]!)
+
+var dict9 = [&quot;name&quot;:&quot;lnj&quot;, &quot;age&quot;:30]
+dict9.updateValue(&quot;iverson&quot;, forKey: &quot;name&quot;)
+print(dict9[&quot;name&quot;]!)
+
+// 3.&#x66F4;&#x65B0;
+// updateValue&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x53EF;&#x9009;&#x7C7B;&#x578B;, &#x5982;&#x679C;&#x5B57;&#x5178;&#x4E2D;&#x4E0D;&#x5B58;&#x5728;&#x9700;&#x8981;&#x66F4;&#x65B0;&#x7684;key, &#x90A3;&#x4E48;&#x8FD4;&#x56DE;nil, &#x5982;&#x679C;&#x5B58;&#x5728;&#x8FD4;&#x56DE;&#x539F;&#x59CB;&#x503C;
+var dict10 = [&quot;name&quot;:&quot;lnj&quot;, &quot;age&quot;:30]
+if let orignal = dict10.updateValue(&quot;iverson&quot;, forKey: &quot;name&quot;)
+{
+    print(dict10[&quot;name&quot;]!)
+    print(orignal)
+}
+
+// updateValue&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x53EF;&#x9009;&#x7C7B;&#x578B;, &#x5982;&#x679C;&#x5B57;&#x5178;&#x4E2D;&#x4E0D;&#x5B58;&#x5728;&#x9700;&#x8981;&#x66F4;&#x65B0;&#x7684;key, &#x90A3;&#x4E48;&#x8FD4;&#x56DE;nil&#x5E76;&#x4E14;&#x4F1A;&#x5C06;&#x65B0;&#x7684;&#x952E;&#x503C;&#x5BF9;&#x6DFB;&#x52A0;&#x5230;&#x5B57;&#x5178;&#x4E2D;
+var dict11 = [&quot;name&quot;:&quot;lnj&quot;, &quot;age&quot;:30]
+if let orignal = dict11.updateValue(&quot;iverson&quot;, forKey: &quot;abc&quot;)
+{
+    print(dict11[&quot;abc&quot;]!)
+    print(orignal)
+}
+print(dict11)
+
+/*
+4.&#x6DFB;&#x52A0;
+OC:
+NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@&quot;name&quot;, @&quot;lnj&quot;, @&quot;age&quot;, @30, nil];
+dict[@&quot;height&quot;] = @175;
+NSLog(@&quot;%@&quot;, dict);
+
+
+NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@&quot;name&quot;, @&quot;lnj&quot;, @&quot;age&quot;, @30, nil];
+[dict setObject:@175 forKey:@&quot;height&quot;];
+NSLog(@&quot;%@&quot;, dict);
+*/
+
+var dict12 = [&quot;name&quot;:&quot;lnj&quot;, &quot;age&quot;:30]
+dict12[&quot;height&quot;] = 175;
+print(dict12)
+
+/*
+5.&#x5220;&#x9664;
+OC:
+NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@&quot;lnj&quot;, @&quot;name&quot;, @30, @&quot;age&quot;, nil];
+[dict removeObjectForKey:@&quot;name&quot;];
+NSLog(@&quot;%@&quot;, dict);
+
+NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@&quot;lnj&quot;, @&quot;name&quot;, @30, @&quot;age&quot;, nil];
+[dict removeAllObjects];
+NSLog(@&quot;%@&quot;, dict);
+*/
+var dict13 = [&quot;name&quot;:&quot;lnj&quot;, &quot;age&quot;:30]
+dict13.removeValueForKey(&quot;name&quot;)
+print(dict13)
+
+
+// removeValueForKey&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x53EF;&#x9009;&#x7C7B;&#x578B;, &#x5982;&#x679C;&#x5B57;&#x5178;&#x4E2D;&#x4E0D;&#x5B58;&#x5728;&#x9700;&#x8981;&#x5220;&#x9664;&#x7684;key, &#x90A3;&#x4E48;&#x8FD4;&#x56DE;nil&#x5E76;&#x4E14;&#x4E0D;&#x4F1A;&#x6267;&#x884C;&#x4EFB;&#x4F55;&#x64CD;&#x4F5C;, &#x5982;&#x679C;&#x5B58;&#x5728;&#x5219;&#x5220;&#x9664;key&#x5BF9;&#x5E94;&#x7684;&#x503C;, &#x5E76;&#x4E14;&#x8FD4;&#x56DE;&#x88AB;&#x5220;&#x9664;&#x7684;&#x503C;
+var dict14 = [&quot;name&quot;:&quot;lnj&quot;, &quot;age&quot;:30]
+if let orignal = dict14.removeValueForKey(&quot;names&quot;)
+{
+    print(dict14)
+    print(orignal)
+}
+print(dict14)
+
+var dict15 = [&quot;name&quot;:&quot;lnj&quot;, &quot;age&quot;:30]
+dict15.removeAll(keepCapacity: true)
+
+/*
+&#x904D;&#x5386;&#x5B57;&#x5178;
+OC:
+NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@&quot;lnj&quot;, @&quot;name&quot;, @30, @&quot;age&quot;, nil];
+[dict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+NSLog(@&quot;key = %@ value = %@&quot;, key, obj);
+}];
+
+NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@&quot;lnj&quot;, @&quot;name&quot;, @30, @&quot;age&quot;, nil];
+NSArray *keys = [dict allKeys];
+for (NSString *key in keys) {
+NSLog(@&quot;%@&quot;, key);
+}
+
+NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@&quot;lnj&quot;, @&quot;name&quot;, @30, @&quot;age&quot;, nil];
+NSArray *values = [dict allValues];
+for (NSString *value in values) {
+NSLog(@&quot;%@&quot;, value);
+}
+*/
+
+var dict16 = [&quot;name&quot;:&quot;lnj&quot;, &quot;age&quot;:30]
+for (key , value) in dict16
+{
+    print(&quot;key = \(key) value = \(value)&quot;)
+}
+
+var dict17 = [&quot;name&quot;:&quot;lnj&quot;, &quot;age&quot;:30]
+for key in dict17.keys
+{
+    print(&quot;key = \(key)&quot;)
+}
+
+var dict18 = [&quot;name&quot;:&quot;lnj&quot;, &quot;age&quot;:30]
+for value in dict18.values
+{
+    print(&quot;value = \(value)&quot;)
+}
+</code></pre>
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/25/Swift数据类型/" itemprop="url">
                   Swift数据类型
                 </a>
@@ -1495,140 +2001,11 @@ dispatch_once(&amp;onceToken, ^{
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/22/应用备份/" itemprop="url">
-                  应用备份
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-22T14:54:03+08:00" content="2016-04-22">
-              2016-04-22
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/备忘录/" itemprop="url" rel="index">
-                    <span itemprop="name">备忘录</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/22/应用备份/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/22/应用备份/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/04/22/应用备份/" class="leancloud_visitors" data-flag-title="应用备份">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>VMware Fusion&#x5E8F;&#x5217;&#x53F7;&#xFF1A;FY7N2-6RGD2-081XZ-UYWQC-ZPKCA</p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1669,7 +2046,7 @@ dispatch_once(&amp;onceToken, ^{
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">21</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
