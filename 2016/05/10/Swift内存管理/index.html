@@ -80,16 +80,16 @@
 
 
 
-<meta name="description" content="改变，永远不嫌晚。无论你是几岁，也无论你目前所处的境况有多糟，只要立定目标、一步一步往前走，人生随时都有翻盘的可能性。新的一天，你要加油!">
+<meta name="description" content="&amp;#x7BA1;&amp;#x7406;&amp;#x5F15;&amp;#x7528;&amp;#x7C7B;&amp;#x578B;&amp;#x7684;&amp;#x5185;&amp;#x5B58;&amp;#xFF0C;&amp;#x5F53;&amp;#x6CA1;&amp;#x6709;&amp;#x4EFB;&amp;#x4F55;&amp;#x5F3A;&amp;#x5F15;&amp;#x7528;&amp;#x5BF9;&amp;#x8C61;&amp;#xFF0C;&amp;#x7CFB;&amp;#x7EDF;&amp;#x4F1A;&amp;#x81EA;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift内存管理">
 <meta property="og:url" content="http://yoursite.com/2016/05/10/Swift内存管理/index.html">
 <meta property="og:site_name" content="晴间多云">
-<meta property="og:description" content="改变，永远不嫌晚。无论你是几岁，也无论你目前所处的境况有多糟，只要立定目标、一步一步往前走，人生随时都有翻盘的可能性。新的一天，你要加油!">
-<meta property="og:updated_time" content="2016-05-10T09:36:50.000Z">
+<meta property="og:description" content="&amp;#x7BA1;&amp;#x7406;&amp;#x5F15;&amp;#x7528;&amp;#x7C7B;&amp;#x578B;&amp;#x7684;&amp;#x5185;&amp;#x5B58;&amp;#xFF0C;&amp;#x5F53;&amp;#x6CA1;&amp;#x6709;&amp;#x4EFB;&amp;#x4F55;&amp;#x5F3A;&amp;#x5F15;&amp;#x7528;&amp;#x5BF9;&amp;#x8C61;&amp;#xFF0C;&amp;#x7CFB;&amp;#x7EDF;&amp;#x4F1A;&amp;#x81EA;">
+<meta property="og:updated_time" content="2016-05-10T10:18:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift内存管理">
-<meta name="twitter:description" content="改变，永远不嫌晚。无论你是几岁，也无论你目前所处的境况有多糟，只要立定目标、一步一步往前走，人生随时都有翻盘的可能性。新的一天，你要加油!">
+<meta name="twitter:description" content="&amp;#x7BA1;&amp;#x7406;&amp;#x5F15;&amp;#x7528;&amp;#x7C7B;&amp;#x578B;&amp;#x7684;&amp;#x5185;&amp;#x5B58;&amp;#xFF0C;&amp;#x5F53;&amp;#x6CA1;&amp;#x6709;&amp;#x4EFB;&amp;#x4F55;&amp;#x5F3A;&amp;#x5F15;&amp;#x7528;&amp;#x5BF9;&amp;#x8C61;&amp;#xFF0C;&amp;#x7CFB;&amp;#x7EDF;&amp;#x4F1A;&amp;#x81EA;">
 
 
 
@@ -295,6 +295,25 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift语法/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift语法</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -333,7 +352,111 @@
       
 
       
-        
+        <p>&#x7BA1;&#x7406;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x7684;&#x5185;&#x5B58;&#xFF0C;&#x5F53;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x5F3A;&#x5F15;&#x7528;&#x5BF9;&#x8C61;&#xFF0C;&#x7CFB;&#x7EDF;&#x4F1A;&#x81EA;&#x52A8;&#x9500;&#x6BC1;&#x5BF9;&#x8C61;&#x3002;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#x6240;&#x6709;&#x7684;&#x5F15;&#x7528;&#x90FD;&#x662F;&#x5F3A;&#x5F15;&#x7528;&#x3002;</p>
+<h4 id="&#x5F31;&#x5F15;&#x7528;"><a href="#&#x5F31;&#x5F15;&#x7528;" class="headerlink" title="&#x5F31;&#x5F15;&#x7528;"></a>&#x5F31;&#x5F15;&#x7528;</h4><ul>
+<li>&#x5F3A;&#x5F15;&#x7528;&#xFF0C;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x52A0;1&#x3002;&#x5F31;&#x5F15;&#x7528;&#xFF0C;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x4E0D;&#x53D8;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x5229;&#x7528;weak&#x4FEE;&#x9970;&#x53D8;&#x91CF;, &#x5F53;&#x5BF9;&#x8C61;&#x91CA;&#x653E;&#x540E;&#x4F1A;&#x81EA;&#x52A8;&#x5C06;&#x53D8;&#x91CF;&#x8BBE;&#x7F6E;&#x4E3A;nil</li>
+<li>&#x6240;&#x4EE5;&#x5229;&#x7528;weak&#x4FEE;&#x9970;&#x7684;&#x53D8;&#x91CF;&#x5FC5;&#x5B9A;&#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x9009;&#x7C7B;&#x578B;, &#x56E0;&#x4E3A;&#x53EA;&#x6709;&#x53EF;&#x9009;&#x7C7B;&#x578B;&#x624D;&#x80FD;&#x8BBE;&#x7F6E;&#x4E3A;nil</li>
+</ul>
+<p>eg:</p>
+<pre><code>var per:OnePerson? = OnePerson(heigh:160.0)
+
+weak var weakPer = per
+
+
+if let p = per
+{
+    print(&quot;not nil&quot;)
+}
+else
+{
+    print(&quot;nil&quot;)
+}
+</code></pre><h4 id="unowned&#x65E0;&#x4E3B;&#x5F15;&#x7528;"><a href="#unowned&#x65E0;&#x4E3B;&#x5F15;&#x7528;" class="headerlink" title="unowned&#x65E0;&#x4E3B;&#x5F15;&#x7528;"></a>unowned&#x65E0;&#x4E3B;&#x5F15;&#x7528;</h4><p>unowned&#x65E0;&#x4E3B;&#x5F15;&#x7528;,&#x76F8;&#x5F53;&#x4E8E;OC&#x4E2D;&#x7684;unsafe_unretained</p>
+<p>unowned&#x4E0E;weak&#x7684;&#x533A;&#x522B;</p>
+<ul>
+<li>&#x5229;&#x7528;unowned&#x4FEE;&#x9970;&#x7684;&#x53D8;&#x91CF;, &#x5BF9;&#x8C61;&#x91CA;&#x653E;&#x540E;&#x4E0D;&#x4F1A;&#x8BBE;&#x7F6E;&#x4E3A;nil. &#x4E0D;&#x5B89;&#x5168;<br>&#x5229;&#x7528;weak&#x4FEE;&#x9970;&#x7684;&#x53D8;&#x91CF;, &#x5BF9;&#x8C61;&#x91CA;&#x653E;&#x540E;&#x4F1A;&#x8BBE;&#x7F6E;&#x4E3A;nil</li>
+<li>&#x5229;&#x7528;unowned&#x4FEE;&#x9970;&#x7684;&#x53D8;&#x91CF;, &#x4E0D;&#x662F;&#x53EF;&#x9009;&#x7C7B;&#x578B;<br>&#x5229;&#x7528;weak&#x4FEE;&#x9970;&#x7684;&#x53D8;&#x91CF;, &#x662F;&#x53EF;&#x9009;&#x7C7B;&#x578B;</li>
+</ul>
+<p>eg:</p>
+<pre><code>var per:OnePerson? = OnePerson(heigh:160.0)
+
+unowned var p = per!
+
+//per = nil
+
+p.name
+
+per?.name
+</code></pre><h4 id="&#x5FAA;&#x73AF;&#x5F15;&#x7528;"><a href="#&#x5FAA;&#x73AF;&#x5F15;&#x7528;" class="headerlink" title="&#x5FAA;&#x73AF;&#x5F15;&#x7528;"></a>&#x5FAA;&#x73AF;&#x5F15;&#x7528;</h4><pre><code>class Person {
+
+    var name:String
+    weak var apartment:Apartment?
+
+    init(name:String){
+        self.name = name
+    }
+
+    deinit {
+        print(&quot;Person dealloc&quot;)
+    }
+
+}
+
+class Apartment {
+
+    let number:String
+    var tenant:Person?
+
+    init(number:String) {
+        self.number = number
+    }
+
+    deinit {
+        print(&quot;Apartment dealloc&quot;)
+    }
+
+}
+
+var a:Apartment? = Apartment(number: &quot;V98&quot;)
+var p:Person? = Person(name: &quot;&#x5F20;&#x4E09;&quot;)
+
+p!.apartment = a // &#x4EBA;&#x6709;&#x4E00;&#x5957;&#x516C;&#x5BD3;
+a!.tenant = p! // &#x516C;&#x5BD3;&#x4E2D;&#x4F4F;&#x7740;&#x4E00;&#x4E2A;&#x4EBA;
+
+a = nil
+p = nil
+
+//unowned&#x7684;&#x4F7F;&#x7528;
+class Person {
+    let name:String // &#x59D3;&#x540D;
+    // &#x4EBA;&#x4E0D;&#x4E00;&#x5B9A;&#x6709;&#x4FE1;&#x7528;&#x5361;
+    var card: CreditCard?
+    init(name:String){
+        self.name = name
+    }
+    deinit{
+        print(&quot;\(self.name) deinit&quot;)
+    }
+}
+class CreditCard{
+    let number: Int
+    // &#x4FE1;&#x7528;&#x5361;&#x5FC5;&#x987B;&#x6709;&#x6240;&#x5C5E;&#x7528;&#x6237;
+    // &#x5F53;&#x67D0;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;/&#x5E38;&#x91CF;&#x5FC5;&#x987B;&#x6709;&#x503C;, &#x4E00;&#x76F4;&#x6709;&#x503C;, &#x90A3;&#x4E48;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;unowned&#x4FEE;&#x9970;
+    unowned let person: Person
+    init(number:Int, person: Person){
+        self.number = number
+        self.person = person
+    }
+    deinit{
+        print(&quot;\(self.number) deinit&quot;)
+    }
+}
+var p:Person? = Person(name: &quot;lnj&quot;)
+var cc:CreditCard? = CreditCard(number: 8888888, person: p!)
+p = nil
+cc = nil
+</code></pre>
       
     </div>
     
@@ -513,7 +636,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#弱引用"><span class="nav-number">1.</span> <span class="nav-text">弱引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#unowned无主引用"><span class="nav-number">2.</span> <span class="nav-text">unowned无主引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#循环引用"><span class="nav-number">3.</span> <span class="nav-text">循环引用</span></a></li></ol></div>
             
           </div>
         </section>
