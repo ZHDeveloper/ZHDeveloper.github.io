@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="晴间多云">
 <meta property="og:description" content="&amp;#x6784;&amp;#x9020;&amp;#x65B9;&amp;#x6CD5;&amp;#x4F5C;&amp;#x7528;: &amp;#x5BF9;&amp;#x5B9E;&amp;#x4F8B;&amp;#x5BF9;&amp;#x8C61;&amp;#x7684;&amp;#x5185;&amp;#x5BB9;&amp;#x8FDB;&amp;#x884C;&amp;#x521D;&amp;#x59CB;&amp;#x5316;
 &amp;#x6CE8;&amp;#x610F;&amp;#x70B9;:Swift&amp;#x8981;&amp;#x6C42">
-<meta property="og:updated_time" content="2016-05-10T07:52:32.000Z">
+<meta property="og:updated_time" content="2016-05-10T09:05:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift构造方法">
 <meta name="twitter:description" content="&amp;#x6784;&amp;#x9020;&amp;#x65B9;&amp;#x6CD5;&amp;#x4F5C;&amp;#x7528;: &amp;#x5BF9;&amp;#x5B9E;&amp;#x4F8B;&amp;#x5BF9;&amp;#x8C61;&amp;#x7684;&amp;#x5185;&amp;#x5BB9;&amp;#x8FDB;&amp;#x884C;&amp;#x521D;&amp;#x59CB;&amp;#x5316;
@@ -499,6 +499,275 @@ class Person5 {
 var p5 = Person5(name: &quot;lnj&quot;)
 // &#x61D2;&#x52A0;&#x8F7D;&#x662F;&#x7528;&#x5230;&#x65F6;&#x624D;&#x6267;&#x884C;, &#x800C;&#x95ED;&#x5305;&#x8D4B;&#x503C;&#x662F;&#x521D;&#x59CB;&#x5316;&#x65F6;&#x5C31;&#x4F1A;&#x6267;&#x884C;
 print(p5.height)
+</code></pre><h4 id="&#x6307;&#x5B9A;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x4E0E;&#x4FBF;&#x5229;&#x6784;&#x9020;&#x65B9;&#x6CD5;"><a href="#&#x6307;&#x5B9A;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x4E0E;&#x4FBF;&#x5229;&#x6784;&#x9020;&#x65B9;&#x6CD5;" class="headerlink" title="&#x6307;&#x5B9A;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x4E0E;&#x4FBF;&#x5229;&#x6784;&#x9020;&#x65B9;&#x6CD5;"></a>&#x6307;&#x5B9A;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x4E0E;&#x4FBF;&#x5229;&#x6784;&#x9020;&#x65B9;&#x6CD5;</h4><ul>
+<li>&#x6307;&#x5B9A;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x662F;&#x4EE5;init&#x5F00;&#x5934;&#x7684;&#x65B9;&#x6CD5;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x662F;&#x503C;&#x7C7B;&#x578B;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x9ED8;&#x8BA4;&#x7684;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x4E2D;&#x8C03;&#x7528;&#x5176;&#x4ED6;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#xFF0C;&#x79F0;&#x4E4B;&#x4E3A;&#x6784;&#x9020;&#x5668;&#x4EE3;&#x7406;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x662F;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x4F1A;&#x62A5;&#x9519;, &#x9700;&#x8981;&#x5728;&#x524D;&#x9762;&#x52A0;&#x4E0A;convenience&#x5173;&#x952E;&#x5B57;</li>
+<li>&#x88AB;convenience&#x5173;&#x952E;&#x5B57;&#x4FEE;&#x9970;&#x7684;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x79F0;&#x4E4B;&#x4E3A;&#x4FBF;&#x5229;&#x6784;&#x9020;&#x5668;, &#x901A;&#x8FC7;&#x8C03;&#x7528;&#x5176;&#x5B83;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x6765;&#x521D;&#x59CB;&#x5316;</li>
+<li>&#x4FBF;&#x5229;&#x6784;&#x9020;&#x5668;&#x4E0D;&#x80FD;&#x548C;&#x6307;&#x5B9A;&#x6784;&#x9020;&#x5668;&#x540C;&#x540D;</li>
+</ul>
+<p>eg:</p>
+<pre><code>class Person {
+    var name:String
+    var age:Int
+
+    init(name:String, age:Int)
+    {
+        self.name = name
+        self.age = age
+    }
+
+    convenience init()
+    {
+
+//        self.name = &quot;lnj&quot;
+//        self.age = 30
+        self.init(name:&quot;lnj&quot;, age:30)
+    }
+    // &#x7C7B;&#x53EF;&#x4EE5;&#x62E5;&#x6709;&#x591A;&#x4E2A;&#x6784;&#x9020;&#x65B9;&#x6CD5;
+    init(name:String)
+    {
+        self.name = name
+        self.age = 0
+        // &#x4E0D;&#x80FD;&#x5728;&#x6307;&#x5B9A;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x4E2D;&#x8C03;&#x7528;&#x4FBF;&#x5229;&#x6784;&#x9020;&#x65B9;&#x6CD5;
+        // &#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x6307;&#x5B9A;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x4E2D;&#x4E0D;&#x80FD;&#x51FA;&#x73B0;self.init
+//        self.init()
+    }
+
+    convenience init(age:Int)
+    {
+        // &#x53EF;&#x4EE5;&#x5728;&#x4FBF;&#x5229;&#x6784;&#x9020;&#x5668;&#x4E2D;&#x8C03;&#x7528;&#x6307;&#x5B9A;&#x6784;&#x9020;&#x5668;
+//        self.init(name:&quot;lnj&quot;, age:30)
+        // &#x53EF;&#x4EE5;&#x5728;&#x4FBF;&#x5229;&#x6784;&#x9020;&#x5668;&#x4E2D;&#x8C03;&#x7528;&#x4FBF;&#x5229;&#x6784;&#x9020;&#x5668;
+        self.init()
+    }
+    // &#x4FBF;&#x5229;&#x6784;&#x9020;&#x5668;&#x4E0D;&#x80FD;&#x548C;&#x6307;&#x5B9A;&#x6784;&#x9020;&#x5668;&#x540C;&#x540D;
+//    convenience init(name:String)
+//    {
+//    }
+}
+</code></pre><h4 id="&#x5B50;&#x7C7B;&#x7684;&#x6784;&#x9020;&#x65B9;&#x6CD5;"><a href="#&#x5B50;&#x7C7B;&#x7684;&#x6784;&#x9020;&#x65B9;&#x6CD5;" class="headerlink" title="&#x5B50;&#x7C7B;&#x7684;&#x6784;&#x9020;&#x65B9;&#x6CD5;"></a>&#x5B50;&#x7C7B;&#x7684;&#x6784;&#x9020;&#x65B9;&#x6CD5;</h4><ul>
+<li>&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x4E0D;&#x4F1A;&#x88AB;&#x7EE7;&#x627F;</li>
+<li>&#x57FA;&#x7C7B;&#x7684;&#x5B58;&#x50A8;&#x5C5E;&#x6027;&#x53EA;&#x80FD;&#x901A;&#x8FC7;&#x57FA;&#x7C7B;&#x7684;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x521D;&#x59CB;&#x5316;</li>
+<li>&#x521D;&#x59CB;&#x5316;&#x5B58;&#x50A8;&#x5C5E;&#x6027;&#x65F6;&#x5FC5;&#x987B;&#x5148;&#x521D;&#x59CB;&#x5316;&#x5F53;&#x524D;&#x7C7B;&#x518D;&#x521D;&#x59CB;&#x5316;&#x7236;&#x7C7B;</li>
+<li>&#x4E0D;&#x80FD;&#x901A;&#x8FC7;&#x4FBF;&#x5229;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x521D;&#x59CB;&#x5316;&#x7236;&#x7C7B;, &#x53EA;&#x80FD;&#x901A;&#x8FC7;&#x8C03;&#x7528;&#x6307;&#x5B9A;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x521D;&#x59CB;&#x5316;&#x7236;&#x7C7B;</li>
+</ul>
+<p>eg:</p>
+<pre><code>class Man {
+    var name:String
+    // &#x6307;&#x5B9A;&#x6784;&#x9020;&#x65B9;&#x6CD5;
+    init(name:String){
+        self.name = name
+    }
+    // &#x4FBF;&#x5229;&#x6784;&#x9020;&#x65B9;&#x6CD5;
+    convenience init(){
+        self.init(name:&quot;lnj&quot;)
+    }
+}
+class SuperMan: Man {
+    var age: Int
+    // &#x6307;&#x5B9A;&#x6784;&#x9020;&#x5668;
+    init(age:Int){
+        self.age = age
+        super.init(name: &quot;lnj&quot;)
+//        super.init()
+    }
+}
+</code></pre><p>&#x6784;&#x9020;&#x5668;&#x95F4;&#x7684;&#x8C03;&#x7528;&#x89C4;&#x5219;&#xFF1A;</p>
+<ul>
+<li>&#x6307;&#x5B9A;&#x6784;&#x9020;&#x5668;&#x5FC5;&#x987B;&#x8C03;&#x7528;&#x5176;&#x76F4;&#x63A5;&#x7236;&#x7C7B;&#x7684;&#x201D;&#x6307;&#x5B9A;&#x6784;&#x9020;&#x5668;&#x201D;</li>
+<li>&#x4FBF;&#x5229;&#x6784;&#x9020;&#x5668;&#x5FC5;&#x987B;&#x8C03;&#x7528;&#x540C;&#x7C7B;&#x4E2D;&#x7684;&#x5176;&#x5B83;&#x6784;&#x9020;&#x5668;(&#x6307;&#x5B9A;&#x6216;&#x4FBF;&#x5229;)</li>
+<li>&#x4FBF;&#x5229;&#x6784;&#x9020;&#x5668;&#x5FC5;&#x987B;&#x6700;&#x7EC8;&#x4EE5;&#x8C03;&#x7528;<code>&#x4E00;&#x4E2A;</code>&#x6307;&#x5B9A;&#x6784;&#x9020;&#x5668;&#x7ED3;&#x675F;(&#x65E0;&#x8BBA;&#x8C03;&#x7528;&#x7684;&#x65F6;&#x6307;&#x5B9A;&#x8FD8;&#x662F;&#x4FBF;&#x5229;, &#x6700;&#x7EC8;&#x80AF;&#x5B9A;&#x4F1A;&#x8C03;&#x7528;&#x4E00;&#x4E2A;&#x6307;&#x5B9A;&#x6784;&#x9020;&#x5668;)</li>
+<li>&#x6307;&#x5B9A;&#x6784;&#x9020;&#x5668;&#x603B;&#x662F;&#x5411;&#x4E0A;&#x4EE3;&#x7406;(&#x7236;&#x7C7B;)</li>
+<li>&#x4FBF;&#x5229;&#x6784;&#x9020;&#x5668;&#x603B;&#x662F;&#x6A2A;&#x5411;&#x4EE3;&#x7406;(&#x5F53;&#x524D;&#x7C7B;)</li>
+</ul>
+<p>&#x4E24;&#x6BB5;&#x5F0F;&#x6784;&#x9020;- &#x6784;&#x9020;&#x8FC7;&#x7A0B;&#x53EF;&#x4EE5;&#x5212;&#x5206;&#x4E3A;&#x4E24;&#x4E2A;&#x9636;&#x6BB5;</p>
+<ol>
+<li>&#x786E;&#x4FDD;&#x5F53;&#x524D;&#x7C7B;&#x548C;&#x7236;&#x7C7B;&#x6240;&#x6709;&#x5B58;&#x50A8;&#x5C5E;&#x6027;&#x90FD;&#x88AB;&#x521D;&#x59CB;&#x5316;</li>
+<li>&#x505A;&#x4E00;&#x4E9B;&#x5176;&#x5B83;&#x521D;&#x59CB;&#x5316;&#x64CD;&#x4F5C;<blockquote>
+<p>&#x597D;&#x5904;: 1.&#x53EF;&#x4EE5;&#x9632;&#x6B62;&#x5C5E;&#x6027;&#x5728;&#x88AB;&#x521D;&#x59CB;&#x5316;&#x4E4B;&#x524D;&#x8BBF;&#x95EE;, 2.&#x53EF;&#x4EE5;&#x9632;&#x6B62;&#x5C5E;&#x6027;&#x88AB;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x6784;&#x9020;&#x5668;&#x610F;&#x5916;&#x8D4B;&#x503C; </p>
+</blockquote>
+</li>
+</ol>
+<p>&#x6CE8;&#x610F;:&#x6784;&#x9020;&#x5668;&#x7684;&#x521D;&#x59CB;&#x5316;&#x6C38;&#x8FDC;&#x662F;&#x5728;&#x6240;&#x6709;&#x7C7B;&#x7684;&#x7B2C;&#x4E00;&#x9636;&#x6BB5;&#x521D;&#x59CB;&#x5316;&#x5B8C;&#x6BD5;&#x4E4B;&#x540E;&#x624D;&#x4F1A;&#x5F00;&#x59CB;&#x7B2C;&#x4E8C;&#x9636;&#x6BB5;</p>
+<p>&#x7F16;&#x8BD1;&#x5668;&#x5B89;&#x5168;&#x68C0;&#x67E5;:</p>
+<ol>
+<li>&#x5FC5;&#x987B;&#x5148;&#x521D;&#x59CB;&#x5316;&#x5B50;&#x7C7B;&#x7279;&#x6709;&#x5C5E;&#x6027;, &#x518D;&#x5411;&#x4E0A;&#x4EE3;&#x7406;&#x7236;&#x7C7B;&#x6307;&#x5B9A;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x521D;&#x59CB;&#x5316;&#x7236;&#x7C7B;&#x5C5E;&#x6027;</li>
+<li>&#x53EA;&#x80FD;&#x5728;&#x8C03;&#x7528;&#x5B8C;&#x7236;&#x7C7B;&#x6307;&#x5B9A;&#x6784;&#x9020;&#x5668;&#x540E;&#x624D;&#x80FD;&#x8BBF;&#x95EE;&#x7236;&#x7C7B;&#x5C5E;&#x6027;</li>
+<li>&#x5728;&#x904D;&#x5386;&#x6784;&#x9020;&#x5668;&#x4E2D;, &#x5FC5;&#x987B;&#x5148;&#x8C03;&#x7528;&#x540C;&#x7C7B;&#x5176;&#x5B83;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x540E;&#x624D;&#x80FD;&#x8BBF;&#x95EE;&#x5C5E;&#x6027;</li>
+<li>&#x7B2C;&#x4E00;&#x9636;&#x6BB5;&#x5B8C;&#x6210;&#x524D;&#x4E0D;&#x80FD;&#x8BBF;&#x95EE;&#x7236;&#x7C7B;&#x5C5E;&#x6027;/&#x4E5F;&#x4E0D;&#x80FD;&#x5F15;&#x7528;self&#x548C;&#x8C03;&#x7528;&#x4EFB;&#x4F55;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;</li>
+</ol>
+<p>eg:</p>
+<pre><code>class Man3 {
+    var name:String
+    // &#x6307;&#x5B9A;&#x6784;&#x9020;&#x65B9;&#x6CD5;
+    init(name:String){
+        self.name = name
+    }
+    // &#x4FBF;&#x5229;&#x6784;&#x9020;&#x65B9;&#x6CD5;
+    convenience init(){
+        self.init(name:&quot;lnj&quot;)
+    }
+}
+
+class SuperMan3: Man3 {
+    var age: Int
+    // &#x6307;&#x5B9A;&#x6784;&#x9020;&#x5668;
+    init(age:Int){
+        print(&quot;SuperMan&#x7B2C;&#x4E00;&#x9636;&#x6BB5;&#x5F00;&#x59CB;&quot;)
+        // &#x5BF9;&#x5B50;&#x7C7B;&#x5F15;&#x5165;&#x7684;&#x5C5E;&#x6027;&#x521D;&#x59CB;&#x5316;
+        self.age = age
+        // &#x4EE3;&#x7801;&#x4F1A;&#x62A5;&#x9519;,&#x56E0;&#x4E3A;&#x8C03;&#x7528;self.name&#x4E4B;&#x524D;&#x8FD8;&#x6CA1;&#x6709;&#x5BF9;&#x7236;&#x7C7B;&#x7684;name&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;
+        // &#x5373;&#x4FBF;&#x5728;&#x8FD9;&#x4E2A;&#x5730;&#x65B9;&#x4FEE;&#x6539;, &#x4E5F;&#x4F1A;&#x88AB;&#x540E;&#x9762;&#x7684;&#x521D;&#x59CB;&#x5316;&#x8BED;&#x53E5;&#x8986;&#x76D6;
+//        if (age &gt; 30){
+//            self.name = &quot;zs&quot;
+//        }
+        // &#x5BF9;&#x7236;&#x7C7B;&#x5F15;&#x5165;&#x7684;&#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;
+        super.init(name: &quot;lnj&quot;)
+
+        print(&quot;SuperMan&#x7B2C;&#x4E8C;&#x9636;&#x6BB5;&#x5F00;&#x59CB;&quot;)
+        if age &gt; 30 {
+            self.name = &quot;zs&quot;
+        }
+    }
+}
+class MonkeyMan:SuperMan3{
+    var height:Double
+    init(height:Double){
+        print(&quot;MonkeyMan&#x7B2C;&#x4E00;&#x9636;&#x6BB5;&#x5F00;&#x59CB;&quot;)
+        // &#x5BF9;&#x5B50;&#x7C7B;&#x5F15;&#x5165;&#x7684;&#x5C5E;&#x6027;&#x521D;&#x59CB;&#x5316;
+        self.height = 99.0
+        // &#x5BF9;&#x7236;&#x7C7B;&#x5F15;&#x5165;&#x7684;&#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;
+        super.init(age: 30)
+
+        print(&quot;MonkeyMan&#x7B2C;&#x4E8C;&#x9636;&#x6BB5;&#x5F00;&#x59CB;&quot;)
+        if height &lt; 100.0{
+            self.age = 50
+        }
+    }
+}
+
+var m = MonkeyMan(height: 20)
+</code></pre><p>&#x91CD;&#x5199;&#x6307;&#x5B9A;&#x6784;&#x9020;&#x65B9;&#x6CD5;: &#x5B50;&#x7C7B;&#x7684;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x548C;&#x7236;&#x7C7B;&#x7684;&#x4E00;&#x6A21;&#x4E00;&#x6837;</p>
+<pre><code>class Man4 {
+    var name:String
+    // &#x6307;&#x5B9A;&#x6784;&#x9020;&#x65B9;&#x6CD5;
+    init(name:String){
+        self.name = name
+    }
+}
+class SuperMan4: Man4 {
+    var age: Int
+    init(){
+        self.age = 30
+        super.init(name: &quot;lnj&quot;)
+    }
+    // &#x5982;&#x679C;&#x5B50;&#x7C7B;&#x4E2D;&#x7684;&#x6784;&#x9020;&#x5668;&#x548C;&#x7236;&#x7C7B;&#x4E00;&#x6A21;&#x4E00;&#x6837;, &#x5FC5;&#x987B;&#x52A0;&#x4E0A;override&#x5173;&#x952E;&#x5B57;, &#x8868;&#x793A;&#x91CD;&#x5199;&#x7236;&#x7C7B;&#x65B9;&#x6CD5;
+    // &#x5728;&#x8001;&#x7248;&#x672C;&#x7684;Swift&#x8BED;&#x8A00;&#x4E2D;&#x662F;&#x4E0D;&#x9700;&#x8981;override&#x5173;&#x952E;&#x5B57;&#x7684;, &#x65B0;&#x7248;&#x672C;&#x624D;&#x63A8;&#x51FA;&#x7684;
+//    override init(name:String){
+//        self.age = 30
+//        super.init(name: name)
+//    }
+
+    // &#x5C06;&#x7236;&#x7C7B;&#x7684;&#x6307;&#x5B9A;&#x6784;&#x9020;&#x5668;&#x91CD;&#x5199;&#x6210;&#x4E00;&#x4E2A;&#x4FBF;&#x5229;&#x6784;&#x9020;&#x5668;, &#x4E5F;&#x5FC5;&#x987B;&#x52A0;&#x4E0A;override&#x5173;&#x952E;&#x5B57;, &#x8868;&#x793A;&#x91CD;&#x5199;&#x7236;&#x7C7B;&#x65B9;&#x6CD5;
+    convenience override init(name:String){
+        self.init(name:name)
+        self.age = 30
+    }
+}
+</code></pre><p>&#x4FBF;&#x5229;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x4E0D;&#x5B58;&#x5728;&#x91CD;&#x5199;</p>
+<pre><code>class Man5 {
+    var name:String
+    // &#x6307;&#x5B9A;&#x6784;&#x9020;&#x65B9;&#x6CD5;
+    init(name:String){
+        self.name = name
+    }
+    convenience init(){
+        self.init(name:&quot;lnj&quot;)
+    }
+}
+class SuperMan5: Man5 {
+    var age: Int
+    init(age:Int){
+        self.age = age
+        super.init(name: &quot;lnj&quot;)
+    }
+    // Swift&#x4E2D;&#x4FBF;&#x5229;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x4E0D;&#x5B58;&#x5728;&#x91CD;&#x5199;, &#x5982;&#x679C;&#x52A0;&#x4E0A;override&#x5173;&#x952E;&#x5B57;, &#x7CFB;&#x7EDF;&#x4F1A;&#x53BB;&#x67E5;&#x627E;&#x7236;&#x7C7B;&#x4E2D;&#x6709;&#x6CA1;&#x6709;&#x548C;&#x4FBF;&#x5229;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x4E00;&#x6837;&#x7684;&#x6307;&#x5B9A;&#x6784;&#x9020;&#x65B9;&#x6CD5;, &#x6709;&#x65E7;&#x4E0D;&#x62A5;&#x9519;, &#x6CA1;&#x6709;&#x5C31;&#x62A5;&#x9519;
+    // &#x4E3A;&#x4EC0;&#x4E48;&#x4FBF;&#x5229;&#x6784;&#x9020;&#x5668;&#x4E0D;&#x80FD;&#x91CD;&#x5199;&#x5462;? &#x56E0;&#x4E3A;&#x4FBF;&#x5229;&#x6784;&#x9020;&#x5668;&#x53EA;&#x80FD;&#x6A2A;&#x5411;&#x4EE3;&#x7406;, &#x53EA;&#x80FD;&#x8C03;&#x7528;&#x5F53;&#x524D;&#x7C7B;&#x7684;&#x5176;&#x5B83;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x6216;&#x6307;&#x5B9A;&#x65B9;&#x6CD5;, &#x4E0D;&#x53EF;&#x80FD;&#x8C03;&#x7528;super. &#x6240;&#x4EE5;&#x4E0D;&#x5B58;&#x5728;&#x91CD;&#x5199;
+    // &#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x5B50;&#x7C7B;&#x7684;&#x4FBF;&#x5229;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x7236;&#x7C7B;&#x7684;&#x4FBF;&#x5229;&#x6784;&#x9020;&#x65B9;&#x6CD5;, &#x6240;&#x4EE5;&#x4E0D;&#x5B58;&#x5728;&#x91CD;&#x5199;&#x7684;&#x6982;&#x5FF5;
+    convenience init(){
+        self.init(age:30)
+    }
+}
+// &#x65E9;&#x671F;&#x7248;&#x672C;&#x4E2D;&#x5982;&#x679C;&#x5B57;&#x7B26;&#x7C7B;&#x4E2D;&#x6709;&#x540C;&#x540D;&#x4FBF;&#x5229;&#x6784;&#x9020;&#x5668;&#x4F1A;&#x62A5;&#x9519;
+var sm = SuperMan5()
+</code></pre><p>&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x7684;&#x81EA;&#x52A8;&#x7EE7;&#x627F;</p>
+<ul>
+<li>&#x5982;&#x679C;&#x5B50;&#x7C7B;&#x4E2D;&#x6CA1;&#x6709;&#x5B9A;&#x4E49;&#x4EFB;&#x4F55;&#x6784;&#x9020;&#x5668;, &#x4E14;&#x5B50;&#x7C7B;&#x4E2D;&#x6240;&#x6709;&#x7684;&#x5B58;&#x50A8;&#x5C5E;&#x6027;&#x90FD;&#x6709;&#x7F3A;&#x7701;&#x503C;, &#x4F1A;&#x7EE7;&#x627F;&#x7236;&#x7C7B;&#x4E2D;&#x6240;&#x6709;&#x7684;&#x6784;&#x9020;&#x65B9;&#x6CD5;(&#x5305;&#x62EC;&#x4FBF;&#x5229;&#x6784;&#x9020;&#x5668;).</li>
+<li>&#x5982;&#x679C;&#x5B50;&#x7C7B;&#x4E2D;&#x53EA;&#x662F;&#x91CD;&#x5199;&#x4E86;&#x7236;&#x7C7B;&#x4E2D;&#x7684;&#x67D0;&#x4E9B;&#x6307;&#x5B9A;&#x6784;&#x9020;&#x5668;, &#x4E0D;&#x7BA1;&#x5B50;&#x7C7B;&#x4E2D;&#x7684;&#x5B58;&#x50A8;&#x5C5E;&#x6027;&#x662F;&#x5426;&#x6709;&#x7F3A;&#x7701;&#x503C;, &#x90FD;&#x4E0D;&#x4F1A;&#x7EE7;&#x627F;&#x7236;&#x7C7B;&#x4E2D;&#x7684;&#x5176;&#x5B83;&#x6784;&#x9020;&#x65B9;&#x6CD5;.</li>
+<li>&#x5982;&#x679C;&#x5B50;&#x7C7B;&#x91CD;&#x5199;&#x4E86;&#x7236;&#x7C7B;&#x4E2D;&#x6240;&#x6709;&#x7684;&#x6307;&#x5B9A;&#x6784;&#x9020;&#x5668;, &#x4E0D;&#x7BA1;&#x5B50;&#x7C7B;&#x4E2D;&#x7684;&#x5B58;&#x50A8;&#x5C5E;&#x6027;&#x662F;&#x5426;&#x6709;&#x7F3A;&#x7701;&#x503C;, &#x90FD;&#x4F1A;&#x540C;&#x65F6;&#x7EE7;&#x627F;&#x7236;&#x7C7B;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x4FBF;&#x5229;&#x65B9;&#x6CD5;.</li>
+</ul>
+<p>eg:</p>
+<pre><code>class Person6 {
+    var name:String
+    var age:Int
+    init(name:String, age:Int){
+        self.name = name
+        self.age = age
+    }
+    init(name:String){
+        self.name = name
+        self.age = 0
+    }
+    convenience init(){
+        self.init(name:&quot;lnj&quot;)
+    }
+}
+class SuperMan6: Person6 {
+//    var height:Double = 175.0
+    var height:Double
+
+    init(height:Double){
+        self.height = height
+        super.init(name: &quot;lnj&quot;, age: 30)
+    }
+
+    override init(name:String, age:Int){
+       self.height = 175.0
+       super.init(name: name, age: age)
+    }
+    override init(name:String){
+        self.height = 175.0
+        super.init(name: name)
+    }
+}
+</code></pre><h4 id="&#x5FC5;&#x987B;&#x6784;&#x9020;&#x5668;"><a href="#&#x5FC5;&#x987B;&#x6784;&#x9020;&#x5668;" class="headerlink" title="&#x5FC5;&#x987B;&#x6784;&#x9020;&#x5668;"></a>&#x5FC5;&#x987B;&#x6784;&#x9020;&#x5668;</h4><p>&#x5FC5;&#x987B;&#x6784;&#x9020;&#x5668;:&#x53EA;&#x8981;&#x5728;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x7684;&#x524D;&#x9762;&#x52A0;&#x4E0A;&#x4E00;&#x4E2A;required&#x5173;&#x952E;&#x5B57;, &#x90A3;&#x4E48;&#x6240;&#x6709;&#x7684;&#x5B50;&#x7C7B;(&#x540E;&#x7EED;&#x5B50;&#x7C7B;)&#x53EA;&#x8981;&#x5B9A;&#x4E49;&#x4E86;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x90FD;&#x5FC5;&#x987B;&#x5B9E;&#x73B0;&#x8BE5;&#x6784;&#x9020;&#x65B9;&#x6CD5;.</p>
+<ul>
+<li>&#x5982;&#x679C;&#x5B50;&#x7C7B;&#x6CA1;&#x6709;&#x5B9A;&#x4E49;&#x6784;&#x9020;&#x5668;, &#x53EF;&#x4EE5;&#x4E0D;&#x7528;&#x91CD;&#x5199;</li>
+<li>&#x5982;&#x679C;&#x5B50;&#x7C7B;&#x81EA;&#x5B9A;&#x4E49;&#x4E86;&#x6784;&#x9020;&#x5668;, &#x5C31;&#x5FC5;&#x987B;&#x91CD;&#x5199;&#x201D;&#x5FC5;&#x987B;&#x6784;&#x9020;&#x5668;&#x201D;,&#x56E0;&#x4E3A;&#x5982;&#x679C;&#x5B50;&#x7C7B;&#x6CA1;&#x6709;&#x81EA;&#x5B9A;&#x4E49;&#x4EFB;&#x4F55;&#x6784;&#x9020;&#x5668;, &#x9ED8;&#x8BA4;&#x4F1A;&#x7EE7;&#x627F;&#x7236;&#x7C7B;&#x6784;&#x9020;&#x5668;, &#x6240;&#x4EE5;&#x4E0D;&#x7528;&#x91CD;&#x5199;</li>
+<li>&#x91CD;&#x5199;&#x5FC5;&#x987B;&#x6784;&#x9020;&#x5668;&#x4E0D;&#x7528;&#x52A0;override&#x5173;&#x952E;&#x5B57;, &#x56E0;&#x4E3A;&#x7CFB;&#x7EDF;&#x770B;&#x5230;required&#x5173;&#x952E;&#x5B57;&#x5C31;&#x4F1A;&#x81EA;&#x52A8;&#x67E5;&#x770B;&#x7236;&#x7C7B;</li>
+</ul>
+<p>eg:</p>
+<pre><code>class Person7 {
+    var name:String
+    // &#x65E9;&#x671F;Swift&#x7248;&#x672C;&#x4E2D;&#x6CA1;&#x6709;&#x8FD9;&#x4E2A;&#x8BED;&#x6CD5;
+    required init(name:String){
+        self.name = name
+    }
+}
+class SuperMan7: Person7 {
+    var age:Int = 30
+    // &#x5982;&#x679C;&#x5B50;&#x7C7B;&#x6CA1;&#x6709;&#x5B9A;&#x4E49;&#x6784;&#x9020;&#x5668;, &#x53EF;&#x4EE5;&#x4E0D;&#x7528;&#x91CD;&#x5199;
+    init(){
+        self.age = 30
+        super.init(name: &quot;lnj&quot;)
+    }
+    required init(name: String) {
+        self.age = 30
+        super.init(name:name)
+    }
+}
+var sm7 = SuperMan7(name: &quot;lnj&quot;)
 </code></pre>
       
     </div>
@@ -679,7 +948,7 @@ print(p5.height)
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#构造方法"><span class="nav-number">1.</span> <span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结构体的构造方法"><span class="nav-number">2.</span> <span class="nav-text">结构体的构造方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#“值类型”的构造器代理"><span class="nav-number">3.</span> <span class="nav-text">“值类型”的构造器代理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#存储属性的缺省值"><span class="nav-number">4.</span> <span class="nav-text">存储属性的缺省值</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#构造方法"><span class="nav-number">1.</span> <span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结构体的构造方法"><span class="nav-number">2.</span> <span class="nav-text">结构体的构造方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#“值类型”的构造器代理"><span class="nav-number">3.</span> <span class="nav-text">“值类型”的构造器代理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#存储属性的缺省值"><span class="nav-number">4.</span> <span class="nav-text">存储属性的缺省值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指定构造方法与便利构造方法"><span class="nav-number">5.</span> <span class="nav-text">指定构造方法与便利构造方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#子类的构造方法"><span class="nav-number">6.</span> <span class="nav-text">子类的构造方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#必须构造器"><span class="nav-number">7.</span> <span class="nav-text">必须构造器</span></a></li></ol></div>
             
           </div>
         </section>
