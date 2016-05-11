@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="NSApplicationMain,UIApplicationMain," />
 
 
 
@@ -80,15 +80,16 @@
 
 
 
-<meta name="description" content="改变，永远不嫌晚。无论你是几岁，也无论你目前所处的境况有多糟，只要立定目标、一步一步往前走，人生随时都有翻盘的可能性。新的一天，你要加油!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="晴间多云">
-<meta property="og:url" content="http://yoursite.com/tags/类/index.html">
+<meta name="description" content="Swift &amp;#x7684;&amp;#x9879;&amp;#x76EE;&amp;#x4E2D;&amp;#xFF0C;&amp;#x5F15;&amp;#x5165;@NSApplicationMain &amp;#x548C; @UIApplicationMain2&amp;#x4E2A;&amp;#x7279;&amp;#x6027;&amp;#x3002;&amp;#x82F9;&amp;#x679C;&amp;#x5BF9; Swift &amp;#x7684;&amp;#x9879;&amp;#x76EE;&amp;#x8">
+<meta property="og:type" content="article">
+<meta property="og:title" content="@NSApplicationMain 和 @UIApplicationMain">
+<meta property="og:url" content="http://yoursite.com/2016/05/11/NSApplicationMain-和-UIApplicationMain/index.html">
 <meta property="og:site_name" content="晴间多云">
-<meta property="og:description" content="改变，永远不嫌晚。无论你是几岁，也无论你目前所处的境况有多糟，只要立定目标、一步一步往前走，人生随时都有翻盘的可能性。新的一天，你要加油!">
+<meta property="og:description" content="Swift &amp;#x7684;&amp;#x9879;&amp;#x76EE;&amp;#x4E2D;&amp;#xFF0C;&amp;#x5F15;&amp;#x5165;@NSApplicationMain &amp;#x548C; @UIApplicationMain2&amp;#x4E2A;&amp;#x7279;&amp;#x6027;&amp;#x3002;&amp;#x82F9;&amp;#x679C;&amp;#x5BF9; Swift &amp;#x7684;&amp;#x9879;&amp;#x76EE;&amp;#x8">
+<meta property="og:updated_time" content="2016-05-11T07:48:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="晴间多云">
-<meta name="twitter:description" content="改变，永远不嫌晚。无论你是几岁，也无论你目前所处的境况有多糟，只要立定目标、一步一步往前走，人生随时都有翻盘的可能性。新的一天，你要加油!">
+<meta name="twitter:title" content="@NSApplicationMain 和 @UIApplicationMain">
+<meta name="twitter:description" content="Swift &amp;#x7684;&amp;#x9879;&amp;#x76EE;&amp;#x4E2D;&amp;#xFF0C;&amp;#x5F15;&amp;#x5165;@NSApplicationMain &amp;#x548C; @UIApplicationMain2&amp;#x4E2A;&amp;#x7279;&amp;#x6027;&amp;#x3002;&amp;#x82F9;&amp;#x679C;&amp;#x5BF9; Swift &amp;#x7684;&amp;#x9879;&amp;#x76EE;&amp;#x8">
 
 
 
@@ -106,7 +107,7 @@
   };
 </script>
 
-  <title> 标签: 类 | 晴间多云 </title>
+  <title> @NSApplicationMain 和 @UIApplicationMain | 晴间多云 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -137,7 +138,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -255,53 +256,189 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        类
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                @NSApplicationMain 和 @UIApplicationMain
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-11T15:33:05+08:00" content="2016-05-11">
+              2016-05-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift进阶/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift进阶</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/11/NSApplicationMain-和-UIApplicationMain/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/11/NSApplicationMain-和-UIApplicationMain/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/11/NSApplicationMain-和-UIApplicationMain/" class="leancloud_visitors" data-flag-title="@NSApplicationMain 和 @UIApplicationMain">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p>Swift &#x7684;&#x9879;&#x76EE;&#x4E2D;&#xFF0C;&#x5F15;&#x5165;@NSApplicationMain &#x548C; @UIApplicationMain2&#x4E2A;&#x7279;&#x6027;&#x3002;<br>&#x82F9;&#x679C;&#x5BF9; Swift &#x7684;&#x9879;&#x76EE;&#x8FDB;&#x884C;&#x4E86;&#x7B80;&#x5316;&#xFF0C;&#x4F7F;&#x7528;@NSApplicationMain &#x653E;&#x5728; OSX &#x684C;&#x9762;&#x5E94;&#x7528;&#x5DE5;&#x7A0B;&#x4EE3;&#x7406;&#x7C7B;&#x524D;&#x9762;&#xFF0C;&#x4F7F;&#x7528;@UIApplicationMain&#x653E;&#x5728; iOS app &#x5DE5;&#x7A0B;&#x4EE3;&#x7406;&#x7C7B;&#x524D;&#x9762;&#x3002;&#x4E0E; OC &#x5DE5;&#x7A0B;&#x4E2D;&#x7684;main.m&#x7684;&#x529F;&#x80FD;&#x4E00;&#x6A21;&#x4E00;&#x6837;&#x3002;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x4F7F;&#x7528; iOS app&#x4F5C;&#x4E3A;&#x4F8B;&#x5B50;.</p>
+<p>&#x4E0B;&#x9762;&#x662F;&#x7528;main.swift&#x6765;&#x4EE3;&#x66FF;@NSApplicationMain:</p>
+<ol>
+<li>&#x5C06;AppDelegate&#x4E2D;&#x7684;@UIApplicationMain&#x6CE8;&#x91CA;</li>
+<li>&#x65B0;&#x5EFA;main.swift&#x6587;&#x4EF6;</li>
+<li>&#x4FEE;&#x6539;main.swift</li>
+</ol>
+<p>code:</p>
+<pre><code>import UIKit
 
-      <h1 class="post-title">
+UIApplicationMain(Process.argc, Process.unsafeArgv, NSStringFromClass(UIApplication), NSStringFromClass(AppDelegate))
+</code></pre><p>NSApplicationMain&#x7684;main.swift&#x4FEE;&#x6539;&#x5982;&#x4E0B;:</p>
+<pre><code>import Cocoa
+
+NSApplicationMain(Process.argc, Process.unsafeArgv)
+</code></pre>
+      
+    </div>
+    
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/05/09/Swift类/" itemprop="url">
-              
-                <span itemprop="name">Swift类</span>
-              
-            </a>
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
+      
+    </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-05-09T11:15:45+08:00"
-              content="2016-05-09" >
-          05-09
-        </time>
-      </div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/NSApplicationMain/" rel="tag">#NSApplicationMain</a>
+          
+            <a href="/tags/UIApplicationMain/" rel="tag">#UIApplicationMain</a>
+          
+        </div>
+      
 
-    </header>
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/11/度量单位/" rel="next" title="度量单位">
+                <i class="fa fa-chevron-left"></i> 度量单位
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/05/11/NSApplicationMain-和-UIApplicationMain/"
+           data-title="@NSApplicationMain 和 @UIApplicationMain" data-url="http://yoursite.com/2016/05/11/NSApplicationMain-和-UIApplicationMain/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -321,8 +458,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -402,6 +548,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -498,6 +655,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
