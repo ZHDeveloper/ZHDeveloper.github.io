@@ -90,7 +90,7 @@
 <meta property="og:description" content="selectorSwift2.2&amp;#x7684;&amp;#x8BED;&amp;#x6CD5;&amp;#x53D8;&amp;#x5316;
 &amp;#x683C;&amp;#x5F0F;:#selector()
 &amp;#x5728;&amp;#x7C7B;&amp;#x7684;&amp;#x65B9;&amp;#x6CD5;&amp;#x524D;&amp;#x5B9A;&amp;#x4E49;&amp;#x4E00;&amp;#x4E2A;Object-C&amp;#x8FD0;&amp;#x884C;&amp;#x65F6;&amp;#">
-<meta property="og:updated_time" content="2016-05-11T02:37:42.000Z">
+<meta property="og:updated_time" content="2016-05-11T04:07:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift的Selector">
 <meta name="twitter:description" content="selectorSwift2.2&amp;#x7684;&amp;#x8BED;&amp;#x6CD5;&amp;#x53D8;&amp;#x5316;
@@ -382,6 +382,59 @@ button.addTarget(object, action: #selector(MyClass.buttonTapped),
                  forControlEvents: .TouchUpInside)
 view.performSelector(#selector(UIView.insertSubview(_:aboveSubview:)),
                      withObject: button, withObject: otherButton)
+</code></pre><h4 id="selector&#x7684;&#x5176;&#x4ED6;&#x7528;&#x6CD5;"><a href="#selector&#x7684;&#x5176;&#x4ED6;&#x7528;&#x6CD5;" class="headerlink" title="selector&#x7684;&#x5176;&#x4ED6;&#x7528;&#x6CD5;"></a>selector&#x7684;&#x5176;&#x4ED6;&#x7528;&#x6CD5;</h4><pre><code>//&#x81EA;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;view
+class View: UIView {
+
+//button&#x5C5E;&#x6027;
+  let button: UIButton
+
+  override init(frame: CGRect) {
+    button = UIButton(type: .System)
+    button.translatesAutoresizingMaskIntoConstraints = false
+    button.setTitle(&quot;Detail&quot;, forState: .Normal)
+    button.addTarget(nil,
+                     action: Selector.showDetail,
+                     forControlEvents: .TouchUpInside)
+
+    super.init(frame: frame)
+
+    backgroundColor = UIColor.whiteColor()
+
+    addSubview(button)
+    button.centerXAnchor.constraintEqualToAnchor(centerXAnchor).active = true
+    button.centerYAnchor.constraintEqualToAnchor(centerYAnchor).active = true
+  }
+
+  required init?(coder aDecoder: NSCoder) {
+    fatalError(&quot;init(coder:) has not been implemented&quot;)
+  }
+
+}
+
+//&#x4E3A;Selector&#x6DFB;&#x52A0;&#x62D3;&#x5C55;
+//&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;static&#x5168;&#x5C40;&#x5C5E;&#x6027;&#xFF0C;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;Selector.showDetail
+//&#x6216;&#x8005;&#x76F4;&#x63A5;.showDetail
+private extension Selector {
+  static let showDetail = #selector(DetailShowable.showDetail)
+}
+
+//&#x5B9A;&#x4E49;&#x534F;&#x8BAE;&#xFF0C;&#x5728;&#x534F;&#x8BAE;&#x4E2D;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;&#x3002;&#x8C03;&#x7528;&#x534F;&#x8BAE;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;
+@objc protocol DetailShowable {
+  @objc func showDetail()
+}
+
+//&#x5177;&#x4F53;&#x4F7F;&#x7528;&#xFF0C;&#x7EE7;&#x627F;&#x81EA;&#x534F;&#x8BAE;DetailShowable&#xFF0C;&#x5B9E;&#x73B0;&#x534F;&#x8BAE;&#x65B9;&#x6CD5;&#x3002;
+
+class ViewController: UIViewController, DetailShowable {
+
+  override func loadView() {
+    view = View()
+  }
+
+  func showDetail() {
+    navigationController?.pushViewController(DetailViewController(), animated: true)
+  }
+}
 </code></pre>
       
     </div>
@@ -418,6 +471,10 @@ view.performSelector(#selector(UIView.insertSubview(_:aboveSubview:)),
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/11/Swift断言/" rel="prev" title="Swift断言">
+                Swift断言 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -492,7 +549,7 @@ view.performSelector(#selector(UIView.insertSubview(_:aboveSubview:)),
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-count">26</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -500,7 +557,7 @@ view.performSelector(#selector(UIView.insertSubview(_:aboveSubview:)),
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -509,7 +566,7 @@ view.performSelector(#selector(UIView.insertSubview(_:aboveSubview:)),
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -568,7 +625,7 @@ view.performSelector(#selector(UIView.insertSubview(_:aboveSubview:)),
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#selector"><span class="nav-number">1.</span> <span class="nav-text">selector</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#selector"><span class="nav-number">1.</span> <span class="nav-text">selector</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#selector的其他用法"><span class="nav-number">2.</span> <span class="nav-text">selector的其他用法</span></a></li></ol></div>
             
           </div>
         </section>
