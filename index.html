@@ -279,6 +279,212 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/12/Swift面向协议编程/" itemprop="url">
+                  Swift面向协议编程
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-12T18:41:11+08:00" content="2016-05-12">
+              2016-05-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift进阶/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift进阶</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/12/Swift面向协议编程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/12/Swift面向协议编程/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/12/Swift面向协议编程/" class="leancloud_visitors" data-flag-title="Swift面向协议编程">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="SegueHandlerType&#x534F;&#x8BAE;"><a href="#SegueHandlerType&#x534F;&#x8BAE;" class="headerlink" title="SegueHandlerType&#x534F;&#x8BAE;"></a>SegueHandlerType&#x534F;&#x8BAE;</h4><p>&#x5C06;&#x4E00;&#x4E0B;&#x516C;&#x5171;&#x7684;&#x65B9;&#x6CD5;&#x63D0;&#x53D6;&#x5230;&#x534F;&#x8BAE;&#x4E2D;&#xFF0C;&#x5728;&#x534F;&#x8BAE;&#x4E2D;&#x5B9E;&#x73B0;&#xFF0C;&#x5728;&#x7EE7;&#x627F;&#x8BE5;&#x534F;&#x8BAE;&#x7684;&#x7C7B;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x534F;&#x8BAE;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x3002;<br>SegueHandlerType&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x679A;&#x4E3E;SegueIdentifier&#xFF0C;&#x7EE7;&#x627F;&#x81EA;&#x8BE5;&#x534F;&#x8BAE;&#x7684;&#x7C7B;&#x5FC5;&#x987B;&#x5B9E;&#x73B0;SegueIdentifier&#x3002;RawRepresentable&#x8BF4;&#x660E;&#x679A;&#x4E3E;&#x7C7B;&#x578B;&#x5FC5;&#x987B;&#x6709;rawValue.</p>
+<pre><code>import Foundation
+import UIKit
+
+protocol SegueHandlerType {
+    //&#x5B9E;&#x73B0;RawRepresentable&#x7684;&#x7C7B;&#x578B;&#x8981;&#x6709;&#x4E00;&#x4E2A;rawValue
+    associatedtype SegueIdentifier: RawRepresentable
+}
+
+//&#x679A;&#x4E3E;&#x7684;&#x539F;&#x59CB;&#x503C;&#x5FC5;&#x987B;&#x662F;String&#x7C7B;&#x578B;
+extension SegueHandlerType where Self: UIViewController,SegueIdentifier.RawValue == String {
+
+    func performSegueWithIdentifier(identifier:SegueIdentifier,sender:AnyObject?) -&gt; Void {
+        performSegueWithIdentifier(identifier.rawValue, sender: sender)
+    }
+
+    func segueIdentifierForSegue(segue:UIStoryboardSegue) -&gt; SegueIdentifier {
+
+        //&#x901A;&#x8FC7;rawvalue&#x83B7;&#x53D6;,&#x6B64;&#x65B9;&#x6CD5;&#x4E3B;&#x8981;&#x4E3A;&#x4E86;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x679A;&#x4E3E;&#x503C;&#x3002;
+        guard let identifier = segue.identifier,segueIdentifier = SegueIdentifier(rawValue: identifier) else {
+            fatalError(&quot;Invalid segue identifier: \(segue.identifier)&quot;)
+        }
+
+        return segueIdentifier
+    }
+
+}
+
+
+//&#x63A7;&#x5236;&#x5668;&#x7684;&#x5B9E;&#x73B0;
+
+import UIKit
+
+class ViewController: UIViewController,SegueHandlerType {
+
+    enum SegueIdentifier:String {
+        case PushIdentifier
+        case ModalIdentifier
+        case NoneIdentifier
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+    }
+
+    @IBAction func pushAction(sender: AnyObject) {
+
+        performSegueWithIdentifier(.NoneIdentifier, sender: self)
+
+    }
+
+    @IBAction func modalAction(sender: AnyObject) {
+
+        self.performSegueWithIdentifier(SegueIdentifier.ModalIdentifier.rawValue, sender: nil)
+
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+
+        //&#x901A;&#x8FC7;&#x534F;&#x8BAE;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;segueIdentifierForSegue&#x6765;&#x83B7;&#x53D6;&#x679A;&#x4E3E;&#x7684;&#x503C;&#x3002;
+        switch segueIdentifierForSegue(segue) {
+
+        case .PushIdentifier:
+            print(&quot;abc&quot;)
+            break
+
+        case .ModalIdentifier:
+            print(&quot;ijk&quot;)
+            break
+
+        case .NoneIdentifier:
+
+            break
+        }
+    }
+
+}
+</code></pre>
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/11/NSApplicationMain-和-UIApplicationMain/" itemprop="url">
                   @NSApplicationMain 和 @UIApplicationMain
                 </a>
@@ -859,211 +1065,6 @@ precondition(x &gt;= 0, &quot;x can&apos;t be negative here&quot;)
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/11/Swift的Selector/" itemprop="url">
-                  Swift的Selector
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-11T10:08:25+08:00" content="2016-05-11">
-              2016-05-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Swift语法/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift语法</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/11/Swift的Selector/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/11/Swift的Selector/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/05/11/Swift的Selector/" class="leancloud_visitors" data-flag-title="Swift的Selector">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="selector"><a href="#selector" class="headerlink" title="selector"></a>selector</h4><p>Swift2.2&#x7684;&#x8BED;&#x6CD5;&#x53D8;&#x5316;</p>
-<pre><code>&#x683C;&#x5F0F;:#selector()
-</code></pre><p>&#x5728;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x524D;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;Object-C&#x8FD0;&#x884C;&#x65F6;&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
-<pre><code>class SomeClass: NSObject {
-    @objc(doSomethingWithInt:)
-    func doSomething(x: Int) { }
-}
-let x = SomeClass()
-let selector = #selector(x.doSomething(_:))
-
-extension SomeClass {
-    @objc(doSomethingWithString:)
-    func doSomething(x: String) { }
-}
-let anotherSelector = #selector(x.doSomething(_:) as (String) -&gt; Void)
-</code></pre><p>selector&#x662F;&#x5728;&#x7F16;&#x8BD1;&#x65F6;&#x521B;&#x5EFA;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x8FD0;&#x884C;&#x65F6;&#x3002;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x68C0;&#x67E5;&#x65B9;&#x6CD5;&#x662F;&#x5426;&#x5B58;&#x5728;&#x3002;</p>
-<p>&#x4F7F;&#x7528;&#x4F8B;&#x5B50;&#xFF1A;</p>
-<pre><code>let timer = NSTimer(timeInterval: 1, target: object,
-                    selector: #selector(MyClass.test),
-                    userInfo: nil, repeats: false)
-button.addTarget(object, action: #selector(MyClass.buttonTapped),
-                 forControlEvents: .TouchUpInside)
-view.performSelector(#selector(UIView.insertSubview(_:aboveSubview:)),
-                     withObject: button, withObject: otherButton)
-</code></pre><h4 id="selector&#x7684;&#x5176;&#x4ED6;&#x7528;&#x6CD5;"><a href="#selector&#x7684;&#x5176;&#x4ED6;&#x7528;&#x6CD5;" class="headerlink" title="selector&#x7684;&#x5176;&#x4ED6;&#x7528;&#x6CD5;"></a>selector&#x7684;&#x5176;&#x4ED6;&#x7528;&#x6CD5;</h4><pre><code>//&#x81EA;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;view
-class View: UIView {
-
-//button&#x5C5E;&#x6027;
-  let button: UIButton
-
-  override init(frame: CGRect) {
-    button = UIButton(type: .System)
-    button.translatesAutoresizingMaskIntoConstraints = false
-    button.setTitle(&quot;Detail&quot;, forState: .Normal)
-    button.addTarget(nil,
-                     action: Selector.showDetail,
-                     forControlEvents: .TouchUpInside)
-
-    super.init(frame: frame)
-
-    backgroundColor = UIColor.whiteColor()
-
-    addSubview(button)
-    button.centerXAnchor.constraintEqualToAnchor(centerXAnchor).active = true
-    button.centerYAnchor.constraintEqualToAnchor(centerYAnchor).active = true
-  }
-
-  required init?(coder aDecoder: NSCoder) {
-    fatalError(&quot;init(coder:) has not been implemented&quot;)
-  }
-
-}
-
-//&#x4E3A;Selector&#x6DFB;&#x52A0;&#x62D3;&#x5C55;
-//&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;static&#x5168;&#x5C40;&#x5C5E;&#x6027;&#xFF0C;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;Selector.showDetail
-//&#x6216;&#x8005;&#x76F4;&#x63A5;.showDetail
-private extension Selector {
-  static let showDetail = #selector(DetailShowable.showDetail)
-}
-
-//&#x5B9A;&#x4E49;&#x534F;&#x8BAE;&#xFF0C;&#x5728;&#x534F;&#x8BAE;&#x4E2D;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;&#x3002;&#x8C03;&#x7528;&#x534F;&#x8BAE;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;
-@objc protocol DetailShowable {
-  @objc func showDetail()
-}
-
-//&#x5177;&#x4F53;&#x4F7F;&#x7528;&#xFF0C;&#x7EE7;&#x627F;&#x81EA;&#x534F;&#x8BAE;DetailShowable&#xFF0C;&#x5B9E;&#x73B0;&#x534F;&#x8BAE;&#x65B9;&#x6CD5;&#x3002;
-
-class ViewController: UIViewController, DetailShowable {
-
-  override func loadView() {
-    view = View()
-  }
-
-  func showDetail() {
-    navigationController?.pushViewController(DetailViewController(), animated: true)
-  }
-}
-</code></pre>
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1109,7 +1110,7 @@ class ViewController: UIViewController, DetailShowable {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">29</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1126,7 +1127,7 @@ class ViewController: UIViewController, DetailShowable {
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">38</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

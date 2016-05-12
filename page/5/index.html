@@ -279,6 +279,515 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/23/Runtime介绍篇/" itemprop="url">
+                  Runtime介绍篇
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-23T12:12:10+08:00" content="2016-04-23">
+              2016-04-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Object-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Object-C</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/23/Runtime介绍篇/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/23/Runtime介绍篇/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/04/23/Runtime介绍篇/" class="leancloud_visitors" data-flag-title="Runtime介绍篇">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="&#x4E00;&#x3001;&#x7B80;&#x4ECB;"><a href="#&#x4E00;&#x3001;&#x7B80;&#x4ECB;" class="headerlink" title="&#x4E00;&#x3001;&#x7B80;&#x4ECB;"></a>&#x4E00;&#x3001;&#x7B80;&#x4ECB;</h4><p>Runtime:&#x662F;&#x5E95;&#x5C42;&#x7684;c&#x8BED;&#x8A00;API&#x3002;OC&#x7684;&#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x6D88;&#x606F;&#x7684;&#x53D1;&#x9001;&#x673A;&#x5236;&#x3002;OC&#x7684;&#x91CD;&#x8981;&#x7279;&#x6027;&#xFF1A;&#x8FD0;&#x884C;&#x65F6;&#x3002;OC&#x7684;&#x4EE3;&#x7801;&#x5728;&#x7F16;&#x8BD1;&#x65F6;&#x5E76;&#x4E0D;&#x4F1A;&#x53BB;&#x68C0;&#x67E5;&#x771F;&#x6B63;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x53EA;&#x6709;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x624D;&#x56DE;&#x53BB;&#x83B7;&#x53D6;&#x771F;&#x6B63;&#x7684;&#x7C7B;&#x578B;&#x548C;&#x65B9;&#x6CD5;&#xFF0C;&#x5F53;&#x627E;&#x4E0D;&#x5230;&#x5BF9;&#x8C61;&#x7684;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x5C31;&#x4F1A;&#x62A5;&#x51FA;&#x627E;&#x4E0D;&#x5230;&#x65B9;&#x6CD5;&#x3002;</p>
+<h4 id="&#x4E8C;&#x3001;Class&#x7684;&#x672C;&#x8D28;"><a href="#&#x4E8C;&#x3001;Class&#x7684;&#x672C;&#x8D28;" class="headerlink" title="&#x4E8C;&#x3001;Class&#x7684;&#x672C;&#x8D28;"></a>&#x4E8C;&#x3001;Class&#x7684;&#x672C;&#x8D28;</h4><p>Class:&#x662F;&#x7ED3;&#x6784;&#x4F53;&#x7C7B;&#x578B;&#x3002;</p>
+<pre><code>struct objc_class {
+    //isa&#x6307;&#x9488;&#xFF0C;&#x6307;&#x5411;&#x6240;&#x5C5E;&#x7C7B;&#xFF0C;&#x6240;&#x5C5E;&#x7C7B;&#x7BA1;&#x7406;&#x7C7B;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#x3002;
+    Class isa  OBJC_ISA_AVAILABILITY;
+
+#if !__OBJC2__
+    //&#x7236;&#x7C7B;
+    Class super_class                                        OBJC2_UNAVAILABLE;
+    //&#x7C7B;&#x540D;
+    const char *name                                         OBJC2_UNAVAILABLE;
+    //&#x7C7B;&#x7248;&#x672C;&#x4FE1;&#x606F;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;0
+    long version                                             OBJC2_UNAVAILABLE;
+    //&#x7C7B;&#x4FE1;&#x606F;&#xFF0C;&#x8FD0;&#x884C;&#x65F6;&#x4F7F;&#x7528;&#x7684;&#x4F4D;&#x6807;&#x8BC6;&#x7B26;
+    long info                                                OBJC2_UNAVAILABLE;
+    //&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x7684;&#x5927;&#x5C0F;
+    long instance_size                                       OBJC2_UNAVAILABLE;
+    //&#x6210;&#x5458;&#x53D8;&#x91CF;&#x5217;&#x8868;
+    struct objc_ivar_list *ivars                             OBJC2_UNAVAILABLE;
+    //&#x7C7B;&#x65B9;&#x6CD5;&#x5217;&#x8868;
+    struct objc_method_list **methodLists                    OBJC2_UNAVAILABLE;
+    //&#x65B9;&#x6CD5;&#x7F13;&#x5B58;
+    struct objc_cache *cache                                 OBJC2_UNAVAILABLE;
+    //&#x534F;&#x8BAE;
+    struct objc_protocol_list *protocols                     OBJC2_UNAVAILABLE;
+#endif
+
+} OBJC2_UNAVAILABLE;
+</code></pre><p>1.isa&#x548C;super_class&#x662F;&#x627E;&#x5230;&#x5B9E;&#x73B0;&#x51FD;&#x6570;&#x7684;&#x5173;&#x952E;&#x6620;&#x5C04;&#xFF0C;&#x51B3;&#x5B9A;&#x627E;&#x5230;&#x5B58;&#x653E;&#x5728;&#x54EA;&#x4E2A;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x5B9E;&#x73B0;&#x3002;</p>
+<p>2.&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;&#x7684;isa&#x6307;&#x9488;&#x6307;&#x5411;&#x7C7B;&#xFF0C;&#x7C7B;&#x7684;isa&#x6307;&#x9488;&#x6307;&#x5411;&#x5176;&#x5143;&#x7C7B;&#xFF08;metaClass&#xFF09;&#x3002;&#x5BF9;&#x8C61;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x542B;isa&#x6307;&#x9488;&#x7684;&#x7ED3;&#x6784;&#x4F53;&#x3002;&#x7C7B;&#x5B58;&#x50A8;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;&#x7684;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#xFF0C;&#x5143;&#x7C7B;&#x5B58;&#x50A8;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#xFF0C;&#x5143;&#x7C7B;&#x4E5F;&#x662F;&#x7C7B;&#x5BF9;&#x8C61;&#x3002;</p>
+<p>3.&#x521B;&#x5EFA;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;&#x65F6;&#xFF0C;&#x5206;&#x914D;&#x7684;&#x5185;&#x5B58;&#x5305;&#x542B;&#x4E00;&#x4E2A;objc_object&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x7136;&#x540E;&#x662F;&#x7C7B;&#x5230;&#x7236;&#x7C7B;&#x76F4;&#x5230;&#x6839;&#x7C7B;NSObject&#x7684;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x7684;&#x6570;&#x636E;&#x3002;NSObject&#x7C7B;&#x7684;alloc&#x548C;allocWithZone:&#x65B9;&#x6CD5;&#x4F7F;&#x7528;&#x51FD;&#x6570;class_createInstance&#x6765;&#x521B;&#x5EFA;objc_object&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3002;</p>
+<p>4.&#x5411;&#x4E00;&#x4E2A;Objective-C&#x5BF9;&#x8C61;&#x53D1;&#x9001;&#x6D88;&#x606F;&#x65F6;&#xFF0C;&#x8FD0;&#x884C;&#x65F6;&#x5E93;&#x4F1A;&#x6839;&#x636E;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;&#x7684;isa&#x6307;&#x9488;&#x627E;&#x5230;&#x8FD9;&#x4E2A;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;&#x6240;&#x5C5E;&#x7684;&#x7C7B;&#x3002;Runtime&#x5E93;&#x4F1A;&#x5728;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#x7531;super_class&#x6307;&#x9488;&#x627E;&#x5230;&#x7236;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#x76F4;&#x81F3;&#x6839;&#x7C7B;NSObject&#x4E2D;&#x53BB;&#x5BFB;&#x627E;&#x4E0E;&#x6D88;&#x606F;&#x5BF9;&#x5E94;&#x7684;selector&#x6307;&#x5411;&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
+<h4 id="&#x4E09;&#x3001;&#x7C7B;&#x7684;&#x64CD;&#x4F5C;"><a href="#&#x4E09;&#x3001;&#x7C7B;&#x7684;&#x64CD;&#x4F5C;" class="headerlink" title="&#x4E09;&#x3001;&#x7C7B;&#x7684;&#x64CD;&#x4F5C;"></a>&#x4E09;&#x3001;&#x7C7B;&#x7684;&#x64CD;&#x4F5C;</h4><pre><code>#class&#x7684;get&#x64CD;&#x4F5C;
+// &#x83B7;&#x53D6;&#x7C7B;&#x7684;&#x7C7B;&#x540D;
+const char * class_getName ( Class cls );
+// &#x83B7;&#x53D6;&#x7C7B;&#x7684;&#x7236;&#x7C7B;
+Class class_getSuperclass ( Class cls );
+
+// &#x83B7;&#x53D6;&#x5B9E;&#x4F8B;&#x5927;&#x5C0F;
+size_t class_getInstanceSize ( Class cls );
+// &#x83B7;&#x53D6;&#x7C7B;&#x4E2D;&#x6307;&#x5B9A;&#x540D;&#x79F0;&#x5B9E;&#x4F8B;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x7684;&#x4FE1;&#x606F;
+Ivar class_getInstanceVariable ( Class cls, const char *name );
+// &#x83B7;&#x53D6;&#x7C7B;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x7684;&#x4FE1;&#x606F;
+Ivar class_getClassVariable ( Class cls, const char *name );
+// &#x83B7;&#x53D6;&#x6307;&#x5B9A;&#x7684;&#x5C5E;&#x6027;
+objc_property_t class_getProperty ( Class cls, const char *name );
+
+// &#x83B7;&#x53D6;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;
+Method class_getInstanceMethod ( Class cls, SEL name );
+// &#x83B7;&#x53D6;&#x7C7B;&#x65B9;&#x6CD5;
+Method class_getClassMethod ( Class cls, SEL name );
+// &#x83B7;&#x53D6;&#x65B9;&#x6CD5;&#x7684;&#x5177;&#x4F53;&#x5B9E;&#x73B0;
+IMP class_getMethodImplementation ( Class cls, SEL name );
+IMP class_getMethodImplementation_stret ( Class cls, SEL name );
+
+#class&#x7684;copy&#x64CD;&#x4F5C;
+// &#x83B7;&#x53D6;&#x6574;&#x4E2A;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x5217;&#x8868;
+Ivar * class_copyIvarList ( Class cls, unsigned int *outCount );
+// &#x83B7;&#x53D6;&#x5C5E;&#x6027;&#x5217;&#x8868;
+objc_property_t * class_copyPropertyList ( Class cls, unsigned int *outCount );
+/ &#x83B7;&#x53D6;&#x6240;&#x6709;&#x65B9;&#x6CD5;&#x7684;&#x5217;&#x8868;
+Method * class_copyMethodList ( Class cls, unsigned int *outCount );
+// &#x83B7;&#x53D6;&#x7C7B;&#x5B9E;&#x73B0;&#x7684;&#x534F;&#x8BAE;&#x5217;&#x8868;
+Protocol * class_copyProtocolList ( Class cls, unsigned int *outCount );
+
+#class&#x7684;add&#x64CD;&#x4F5C;
+// &#x6DFB;&#x52A0;&#x6210;&#x5458;&#x53D8;&#x91CF;
+BOOL class_addIvar ( Class cls, const char *name, size_t size, uint8_t alignment, const char *types );
+// &#x6DFB;&#x52A0;&#x5C5E;&#x6027;
+BOOL class_addProperty ( Class cls, const char *name, const objc_property_attribute_t *attributes, unsigned int attributeCount );
+// &#x6DFB;&#x52A0;&#x65B9;&#x6CD5;
+BOOL class_addMethod ( Class cls, SEL name, IMP imp, const char *types );
+// &#x6DFB;&#x52A0;&#x534F;&#x8BAE;
+BOOL class_addProtocol ( Class cls, Protocol *protocol );
+
+#class&#x7684;&#x5176;&#x4ED6;&#x64CD;&#x4F5C;
+// &#x66FF;&#x6362;&#x7C7B;&#x7684;&#x5C5E;&#x6027;
+void class_replaceProperty ( Class cls, const char *name, const objc_property_attribute_t *attributes, unsigned int attributeCount );
+// &#x66FF;&#x4EE3;&#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;
+IMP class_replaceMethod ( Class cls, SEL name, IMP imp, const char *types );
+
+// &#x7C7B;&#x5B9E;&#x4F8B;&#x662F;&#x5426;&#x54CD;&#x5E94;&#x6307;&#x5B9A;&#x7684;selector
+BOOL class_respondsToSelector ( Class cls, SEL sel );
+
+// &#x5224;&#x65AD;&#x7ED9;&#x5B9A;&#x7684;Class&#x662F;&#x5426;&#x662F;&#x4E00;&#x4E2A;&#x5143;&#x7C7B;
+BOOL class_isMetaClass ( Class cls );
+</code></pre><h4 id="&#x56DB;&#x3001;&#x5B9E;&#x4F8B;&#x7684;&#x64CD;&#x4F5C;"><a href="#&#x56DB;&#x3001;&#x5B9E;&#x4F8B;&#x7684;&#x64CD;&#x4F5C;" class="headerlink" title="&#x56DB;&#x3001;&#x5B9E;&#x4F8B;&#x7684;&#x64CD;&#x4F5C;"></a>&#x56DB;&#x3001;&#x5B9E;&#x4F8B;&#x7684;&#x64CD;&#x4F5C;</h4><pre><code>// &#x83B7;&#x53D6;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;
+Ivar object_getInstanceVariable ( id obj, const char *name, void **outValue );
+// &#x83B7;&#x53D6;&#x5BF9;&#x8C61;&#x4E2D;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x7684;&#x503C;
+id object_getIvar ( id obj, Ivar ivar );
+// &#x83B7;&#x53D6;&#x5BF9;&#x8C61;&#x7684;&#x7C7B;&#x540D;
+const char * object_getClassName ( id obj );
+// &#x83B7;&#x53D6;&#x5BF9;&#x8C61;&#x7684;&#x7C7B;
+Class object_getClass ( id obj );
+Class objc_getClass ( const char *name );
+// &#x8FD4;&#x56DE;&#x6307;&#x5B9A;&#x7C7B;&#x7684;&#x5143;&#x7C7B;
+Class objc_getMetaClass ( const char *name );
+//&#x83B7;&#x53D6;&#x5173;&#x8054;&#x5BF9;&#x8C61;
+id objc_getAssociatedObject(self, &amp;myKey);
+
+// &#x83B7;&#x53D6;&#x6307;&#x5B9A;&#x5BF9;&#x8C61;&#x7684;&#x4E00;&#x4EFD;&#x62F7;&#x8D1D;
+id object_copy ( id obj, size_t size );
+// &#x521B;&#x5EFA;&#x5E76;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x6307;&#x5411;&#x6240;&#x6709;&#x5DF2;&#x6CE8;&#x518C;&#x7C7B;&#x7684;&#x6307;&#x9488;&#x5217;&#x8868;
+Class * objc_copyClassList ( unsigned int *outCount );
+
+// &#x8BBE;&#x7F6E;&#x7C7B;&#x5B9E;&#x4F8B;&#x7684;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x7684;&#x503C;
+Ivar object_setInstanceVariable ( id obj, const char *name, void *value );
+// &#x8BBE;&#x7F6E;&#x5BF9;&#x8C61;&#x4E2D;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x7684;&#x503C;
+void object_setIvar ( id obj, Ivar ivar, id value );
+//&#x8BBE;&#x7F6E;&#x5173;&#x8054;&#x5BF9;&#x8C61;
+void objc_setAssociatedObject(self, &amp;myKey, anObject, OBJC_ASSOCIATION_RETAIN);
+
+// &#x91CA;&#x653E;&#x6307;&#x5B9A;&#x5BF9;&#x8C61;&#x5360;&#x7528;&#x7684;&#x5185;&#x5B58;
+id object_dispose ( id obj );
+
+// &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7C7B;&#x548C;&#x5143;&#x7C7B;
+Class objc_allocateClassPair ( Class superclass, const char *name, size_t extraBytes );
+
+// &#x9500;&#x6BC1;&#x4E00;&#x4E2A;&#x7C7B;&#x53CA;&#x5176;&#x76F8;&#x5173;&#x8054;&#x7684;&#x7C7B;
+void objc_disposeClassPair ( Class cls );
+
+// &#x5728;&#x5E94;&#x7528;&#x4E2D;&#x6CE8;&#x518C;&#x7531;objc_allocateClassPair&#x521B;&#x5EFA;&#x7684;&#x7C7B;
+void objc_registerClassPair ( Class cls );
+
+// &#x521B;&#x5EFA;&#x7C7B;&#x5B9E;&#x4F8B;
+id class_createInstance ( Class cls, size_t extraBytes );
+
+// &#x5728;&#x6307;&#x5B9A;&#x4F4D;&#x7F6E;&#x521B;&#x5EFA;&#x7C7B;&#x5B9E;&#x4F8B;
+id objc_constructInstance ( Class cls, void *bytes );
+
+// &#x9500;&#x6BC1;&#x7C7B;&#x5B9E;&#x4F8B;
+void * objc_destructInstance ( id obj );
+</code></pre><h4 id="&#x4E94;&#x3001;&#x6570;&#x636E;&#x7C7B;&#x578B;"><a href="#&#x4E94;&#x3001;&#x6570;&#x636E;&#x7C7B;&#x578B;" class="headerlink" title="&#x4E94;&#x3001;&#x6570;&#x636E;&#x7C7B;&#x578B;"></a>&#x4E94;&#x3001;&#x6570;&#x636E;&#x7C7B;&#x578B;</h4><pre><code>typedef struct objc_ivar *Ivar;
+
+struct objc_ivar {
+    char *ivar_name                 OBJC2_UNAVAILABLE;  // &#x53D8;&#x91CF;&#x540D;
+    char *ivar_type                 OBJC2_UNAVAILABLE;  // &#x53D8;&#x91CF;&#x7C7B;&#x578B;
+    int ivar_offset                 OBJC2_UNAVAILABLE;  // &#x57FA;&#x5730;&#x5740;&#x504F;&#x79FB;&#x5B57;&#x8282;
+#ifdef __LP64__
+    int space                       OBJC2_UNAVAILABLE;
+#endif
+}
+
+typedef struct objc_property *objc_property_t;
+
+//objc_property_attribute_t&#xFF08;&#x5C5E;&#x6027;&#x7684;&#x7279;&#x6027;&#x6709;&#xFF1A;&#x8FD4;&#x56DE;&#x503C;&#x3001;&#x662F;&#x5426;&#x4E3A;atomic&#x3001;getter/setter&#x540D;&#x5B57;&#x3001;&#x662F;&#x5426;&#x4E3A;dynamic&#x3001;&#x80CC;&#x540E;&#x4F7F;&#x7528;&#x7684;ivar&#x540D;&#x5B57;&#x3001;&#x662F;&#x5426;&#x4E3A;&#x5F31;&#x5F15;&#x7528;&#x7B49;&#xFF09;&#xFF1B;
+typedef struct {
+    const char *name;           // &#x7279;&#x6027;&#x540D;
+    const char *value;          // &#x7279;&#x6027;&#x503C;
+} objc_property_attribute_t;
+</code></pre><h4 id="&#x516D;&#x3001;&#x5176;&#x4ED6;&#x7684;&#x64CD;&#x4F5C;"><a href="#&#x516D;&#x3001;&#x5176;&#x4ED6;&#x7684;&#x64CD;&#x4F5C;" class="headerlink" title="&#x516D;&#x3001;&#x5176;&#x4ED6;&#x7684;&#x64CD;&#x4F5C;"></a>&#x516D;&#x3001;&#x5176;&#x4ED6;&#x7684;&#x64CD;&#x4F5C;</h4><pre><code>// &#x83B7;&#x53D6;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x540D;
+const char * ivar_getName ( Ivar v );
+
+// &#x83B7;&#x53D6;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x7C7B;&#x578B;&#x7F16;&#x7801;
+const char * ivar_getTypeEncoding ( Ivar v );
+
+// &#x83B7;&#x53D6;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x7684;&#x504F;&#x79FB;&#x91CF;
+ptrdiff_t ivar_getOffset ( Ivar v );
+
+// &#x83B7;&#x53D6;&#x5C5E;&#x6027;&#x540D;
+const char * property_getName ( objc_property_t property );
+
+// &#x83B7;&#x53D6;&#x5C5E;&#x6027;&#x7279;&#x6027;&#x63CF;&#x8FF0;&#x5B57;&#x7B26;&#x4E32;
+const char * property_getAttributes ( objc_property_t property );
+
+// &#x83B7;&#x53D6;&#x5C5E;&#x6027;&#x4E2D;&#x6307;&#x5B9A;&#x7684;&#x7279;&#x6027;
+char * property_copyAttributeValue ( objc_property_t property, const char *attributeName );
+
+// &#x83B7;&#x53D6;&#x5C5E;&#x6027;&#x7684;&#x7279;&#x6027;&#x5217;&#x8868;
+objc_property_attribute_t * property_copyAttributeList ( objc_property_t property, unsigned int *outCount );
+</code></pre><h4 id="&#x4E03;&#x3001;&#x6D88;&#x606F;&#x7684;&#x4F20;&#x9012;&#x673A;&#x5236;"><a href="#&#x4E03;&#x3001;&#x6D88;&#x606F;&#x7684;&#x4F20;&#x9012;&#x673A;&#x5236;" class="headerlink" title="&#x4E03;&#x3001;&#x6D88;&#x606F;&#x7684;&#x4F20;&#x9012;&#x673A;&#x5236;"></a>&#x4E03;&#x3001;&#x6D88;&#x606F;&#x7684;&#x4F20;&#x9012;&#x673A;&#x5236;</h4><p>&#x6D88;&#x606F;&#x4F20;&#x9012;&#x673A;&#x5236;&#x662F;Runtime&#x7684;&#x6838;&#x5FC3;&#xFF0C;&#x4E5F;&#x5373;&#x6D88;&#x606F;&#x5206;&#x6D3E;&#x5668;objc_msgSend&#x3002;</p>
+<p>SEL&#x53C8;&#x53EB;&#x9009;&#x62E9;&#x5668;&#xFF0C;&#x662F;&#x8868;&#x793A;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;selector&#x7684;&#x6307;&#x9488;,&#x6620;&#x5C04;&#x65B9;&#x6CD5;&#x7684;&#x540D;&#x5B57;</p>
+<ul>
+<li><p>Objective-C&#x5728;&#x7F16;&#x8BD1;&#x65F6;&#xFF0C;&#x4F1A;&#x4F9D;&#x636E;&#x6BCF;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x540D;&#x5B57;&#x3001;&#x53C2;&#x6570;&#x5E8F;&#x5217;&#xFF0C;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x552F;&#x4E00;&#x7684;&#x6574;&#x578B;&#x6807;&#x8BC6;(Int&#x7C7B;&#x578B;&#x7684;&#x5730;&#x5740;)&#xFF0C;&#x8FD9;&#x4E2A;&#x6807;&#x8BC6;&#x5C31;&#x662F;SEL&#x3002;</p>
+</li>
+<li><p>SEL&#x7684;&#x4F5C;&#x7528;&#x662F;&#x4F5C;&#x4E3A;IMP&#x7684;KEY&#xFF0C;&#x5B58;&#x50A8;&#x5728;NSSet&#x4E2D;&#xFF0C;&#x4FBF;&#x4E8E;hash&#x5FEB;&#x901F;&#x67E5;&#x8BE2;&#x65B9;&#x6CD5;&#x3002;SEL&#x4E0D;&#x80FD;&#x76F8;&#x540C;&#xFF0C;&#x5BF9;&#x5E94;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x4E0D;&#x540C;&#x3002;</p>
+</li>
+<li><p>&#x7F16;&#x8BD1;&#x5668;&#x5C06;&#x6BCF;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x548C;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x7F16;&#x7801;&#x4E3A;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5E76;&#x5C06;&#x5176;&#x4E0E;&#x65B9;&#x6CD5;&#x7684;selector&#x5173;&#x8054;&#x5728;&#x4E00;&#x8D77;&#x3002;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;@encode&#x7F16;&#x8BD1;&#x5668;&#x6307;&#x4EE4;&#x6765;&#x83B7;&#x53D6;&#x5B83;&#x3002;</p>
+</li>
+<li><p><objc runtime.h="">&#x4E2D;&#x6CA1;&#x6709;&#x516C;&#x5F00;&#x5177;&#x4F53;&#x7684;objc_selector&#x7ED3;&#x6784;&#x4F53;&#x6210;&#x5458;&#x3002;&#x4F46;&#x901A;&#x8FC7;log&#x53EF;&#x77E5;SEL&#x672C;&#x8D28;&#x662F;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x3002;</objc></p>
+</li>
+<li><p>IMP&#x662F;&#x6307;&#x5411;&#x5B9E;&#x73B0;&#x51FD;&#x6570;&#x7684;&#x6307;&#x9488;&#xFF0C;&#x901A;&#x8FC7;SEL&#x53D6;&#x5F97;IMP&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x83B7;&#x5F97;&#x4E86;&#x6700;&#x7EC8;&#x8981;&#x627E;&#x7684;&#x5B9E;&#x73B0;&#x51FD;&#x6570;&#x7684;&#x5165;&#x53E3;&#x3002;</p>
+<p>  // &#x8FD4;&#x56DE;&#x7ED9;&#x5B9A;&#x9009;&#x62E9;&#x5668;&#x6307;&#x5B9A;&#x7684;&#x65B9;&#x6CD5;&#x7684;&#x540D;&#x79F0;<br>  const char * sel_getName ( SEL sel );</p>
+<p>  // &#x5728;Objective-C Runtime&#x7CFB;&#x7EDF;&#x4E2D;&#x6CE8;&#x518C;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x5C06;&#x65B9;&#x6CD5;&#x540D;&#x6620;&#x5C04;&#x5230;&#x4E00;&#x4E2A;&#x9009;&#x62E9;&#x5668;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x8FD9;&#x4E2A;&#x9009;&#x62E9;&#x5668;<br>  SEL sel_registerName ( const char *str );</p>
+<p>  // &#x5728;Objective-C Runtime&#x7CFB;&#x7EDF;&#x4E2D;&#x6CE8;&#x518C;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;<br>  SEL sel_getUid ( const char *str );</p>
+<p>  // &#x6BD4;&#x8F83;&#x4E24;&#x4E2A;&#x9009;&#x62E9;&#x5668;<br>  BOOL sel_isEqual ( SEL lhs, SEL rhs );</p>
+</li>
+</ul>
+<p>Method:&#x7ED3;&#x6784;&#x4F53;&#x76F8;&#x5F53;&#x4E8E;&#x5728;SEL&#x548C;IMP&#x4E4B;&#x95F4;&#x4F5C;&#x4E86;&#x4E00;&#x4E2A;&#x7ED1;&#x5B9A;&#x3002;&#x6709;&#x4E86;SEL&#xFF0C;&#x6211;&#x4EEC;&#x4FBF;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#x5BF9;&#x5E94;&#x7684;IMP&#xFF0C;&#x4ECE;&#x800C;&#x8C03;&#x7528;&#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#x4EE3;&#x7801;&#x3002;&#xFF08;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x624D;&#x5C06;SEL&#x548C;IMP&#x7ED1;&#x5B9A;, &#x52A8;&#x6001;&#x914D;&#x7F6E;&#x65B9;&#x6CD5;&#xFF09;</p>
+<pre><code>typedef struct objc_method *Method;
+
+struct objc_method {
+    SEL method_name                 OBJC2_UNAVAILABLE;  // &#x65B9;&#x6CD5;&#x540D;
+    char *method_types                  OBJC2_UNAVAILABLE; // &#x53C2;&#x6570;&#x7C7B;&#x578B;
+    IMP method_imp                      OBJC2_UNAVAILABLE;  // &#x65B9;&#x6CD5;&#x5B9E;&#x73B0;
+}
+</code></pre><p>objc_method_list &#x5C31;&#x662F;&#x7528;&#x6765;&#x5B58;&#x50A8;&#x5F53;&#x524D;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x94FE;&#x8868;&#xFF0C;objc_method&#x5B58;&#x50A8;&#x4E86;&#x7C7B;&#x7684;&#x67D0;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x4FE1;&#x606F;&#x3002;</p>
+<pre><code>struct objc_method_list {
+    struct objc_method_list *obsolete                        OBJC2_UNAVAILABLE;
+    int method_count                                                 OBJC2_UNAVAILABLE;
+#ifdef __LP64__
+    int space                                                              OBJC2_UNAVAILABLE;
+#endif
+    /* variable length structure */
+    struct objc_method method_list[1]                        OBJC2_UNAVAILABLE;
+}
+</code></pre><p>&#x65B9;&#x6CD5;&#x7684;&#x7F13;&#x5B58;&#xFF1A;&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x6700;&#x5148;&#x662F;&#x5728;&#x65B9;&#x6CD5;&#x7F13;&#x5B58;&#x91CC;&#x627E;&#x7684;&#xFF0C;&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x662F;&#x61D2;&#x8C03;&#x7528;&#xFF0C;&#x7B2C;&#x4E00;&#x6B21;&#x8C03;&#x7528;&#x65F6;&#x52A0;&#x8F7D;&#x540E;&#x52A0;&#x5230;&#x7F13;&#x5B58;&#x6C60;&#x91CC;&#x3002;</p>
+<ul>
+<li>&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x540E;&#xFF0C;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x7C7B;&#x7684;&#x521D;&#x59CB;&#x5316;&#x3001;&#x8C03;&#x7528;&#x65B9;&#x6CD5;&#x65F6;&#x7684;cache&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x518D;&#x53D1;&#x9001;&#x6D88;&#x606F;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x76F4;&#x63A5;&#x8D70;&#x7F13;&#x5B58;</li>
+<li>load&#x65B9;&#x6CD5;&#x662F;&#x9996;&#x6B21;&#x52A0;&#x8F7D;&#x7C7B;&#x65F6;&#x8C03;&#x7528;&#xFF0C;&#x7EDD;&#x5BF9;&#x53EA;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#xFF1B;initialize&#x65B9;&#x6CD5;&#x662F;&#x9996;&#x6B21;&#x7ED9;&#x7C7B;&#x53D1;&#x6D88;&#x606F;&#x65F6;&#x8C03;&#x7528;&#xFF0C;&#x901A;&#x5E38;&#x53EA;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#xFF0C;&#x4F46;&#x5982;&#x679C;&#x5B83;&#x7684;&#x5B50;&#x7C7B;&#x521D;&#x59CB;&#x5316;&#x65F6;&#x672A;&#x5B9A;&#x4E49;initialize&#x65B9;&#x6CD5;&#xFF0C;&#x5219;&#x4F1A;&#x518D;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x5B83;&#x7684;initialize&#x65B9;&#x6CD5; </li>
+</ul>
+<pre><code>struct objc_cache {
+    // &#x7F13;&#x5B58;bucket&#x7684;&#x603B;&#x6570;
+    unsigned int mask /* total = mask + 1 */                 OBJC2_UNAVAILABLE;
+
+    // &#x5B9E;&#x9645;&#x7F13;&#x5B58;bucket&#x7684;&#x603B;&#x6570;
+    unsigned int occupied                                    OBJC2_UNAVAILABLE;
+    // &#x6307;&#x5411;Method&#x6570;&#x636E;&#x7ED3;&#x6784;&#x6307;&#x9488;&#x7684;&#x6570;&#x7EC4;
+    Method buckets[1]                                        OBJC2_UNAVAILABLE;
+};
+</code></pre><p>Method&#x7684;&#x76F8;&#x5173;&#x64CD;&#x4F5C;&#xFF1A;</p>
+<pre><code>// &#x8C03;&#x7528;&#x6307;&#x5B9A;&#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;
+id method_invoke ( id receiver, Method m, ... );
+
+// &#x8C03;&#x7528;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x7684;&#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;
+void method_invoke_stret ( id receiver, Method m, ... );
+// &#x83B7;&#x53D6;&#x65B9;&#x6CD5;&#x540D;
+SEL method_getName ( Method m );
+
+// &#x8FD4;&#x56DE;&#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;
+IMP method_getImplementation ( Method m );
+// &#x83B7;&#x53D6;&#x63CF;&#x8FF0;&#x65B9;&#x6CD5;&#x53C2;&#x6570;&#x548C;&#x8FD4;&#x56DE;&#x503C;&#x7C7B;&#x578B;&#x7684;&#x5B57;&#x7B26;&#x4E32;
+const char * method_getTypeEncoding ( Method m );
+// &#x8FD4;&#x56DE;&#x65B9;&#x6CD5;&#x7684;&#x53C2;&#x6570;&#x7684;&#x4E2A;&#x6570;
+unsigned int method_getNumberOfArguments ( Method m );
+// &#x901A;&#x8FC7;&#x5F15;&#x7528;&#x8FD4;&#x56DE;&#x65B9;&#x6CD5;&#x6307;&#x5B9A;&#x4F4D;&#x7F6E;&#x53C2;&#x6570;&#x7684;&#x7C7B;&#x578B;&#x5B57;&#x7B26;&#x4E32;
+void method_getArgumentType ( Method m, unsigned int index, char *dst, size_t dst_len );
+
+// &#x83B7;&#x53D6;&#x65B9;&#x6CD5;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x7C7B;&#x578B;&#x7684;&#x5B57;&#x7B26;&#x4E32;
+char * method_copyReturnType ( Method m );
+
+// &#x83B7;&#x53D6;&#x65B9;&#x6CD5;&#x7684;&#x6307;&#x5B9A;&#x4F4D;&#x7F6E;&#x53C2;&#x6570;&#x7684;&#x7C7B;&#x578B;&#x5B57;&#x7B26;&#x4E32;
+char * method_copyArgumentType ( Method m, unsigned int index );
+
+// &#x901A;&#x8FC7;&#x5F15;&#x7528;&#x8FD4;&#x56DE;&#x65B9;&#x6CD5;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x7C7B;&#x578B;&#x5B57;&#x7B26;&#x4E32;
+void method_getReturnType ( Method m, char *dst, size_t dst_len );
+
+// &#x8BBE;&#x7F6E;&#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;
+IMP method_setImplementation ( Method m, IMP imp );
+
+// &#x4EA4;&#x6362;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;
+void method_exchangeImplementations ( Method m1, Method m2 );
+
+// &#x8FD4;&#x56DE;&#x6307;&#x5B9A;&#x65B9;&#x6CD5;&#x7684;&#x65B9;&#x6CD5;&#x63CF;&#x8FF0;&#x7ED3;&#x6784;&#x4F53;
+struct objc_method_description * method_getDescription ( Method m );
+</code></pre><p>&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x7684;&#x672C;&#x8D28;&#xFF1A;&#x5411;&#x5BF9;&#x8C61;&#x53D1;&#x9001;&#x6D88;&#x606F;&#x3002;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x8C03;&#x7528;objc_msgSend&#x51FD;&#x6570;&#xFF0C;obj_msgSend&#x7684;&#x5B9E;&#x9645;&#x52A8;&#x4F5C;&#x5C31;&#x662F;&#xFF1A;&#x627E;&#x5230;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x6307;&#x9488;&#xFF0C;&#x7136;&#x540E;&#x8C03;&#x7528;&#x5B83;&#x3002;</p>
+<pre><code>id objc_msgSend(receiver self, selector _cmd, arg1, arg2, ...)
+</code></pre><p>self&#x548C;_cmd&#x662F;&#x9690;&#x85CF;&#x53C2;&#x6570;&#xFF0C;&#x5728;&#x7F16;&#x8BD1;&#x671F;&#x88AB;&#x63D2;&#x5165;&#x5B9E;&#x73B0;&#x4EE3;&#x7801;&#x3002;</p>
+<p>self&#xFF1A;&#x6307;&#x5411;&#x6D88;&#x606F;&#x7684;&#x63A5;&#x53D7;&#x8005;target&#x7684;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;&#xFF0C;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x5360;&#x4F4D;&#x53C2;&#x6570;&#xFF0C;&#x6D88;&#x606F;&#x4F20;&#x9012;&#x6210;&#x529F;&#x540E;self&#x5C06;&#x6307;&#x5411;&#x6D88;&#x606F;&#x7684;receiver&#x3002;</p>
+<p>_cmd: &#x6307;&#x5411;&#x65B9;&#x6CD5;&#x5B9E;&#x73B0;&#x7684;SEL&#x7C7B;&#x578B;&#x3002;</p>
+<p>&#x5411;&#x4E00;&#x822C;&#x5BF9;&#x8C61;&#x53D1;&#x9001;&#x6D88;&#x606F;&#x65F6;&#xFF0C;&#x8C03;&#x7528;objc_msgSend&#xFF1B;&#x5F53;&#x5411;super&#x53D1;&#x9001;&#x6D88;&#x606F;&#x65F6;&#xFF0C;&#x8C03;&#x7528;&#x7684;&#x662F;objc_msgSendSuper&#xFF1B; &#x5982;&#x679C;&#x8FD4;&#x56DE;&#x503C;&#x662F;&#x4E00;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#xFF0C;&#x5219;&#x4F1A;&#x8C03;&#x7528;objc_msgSend_stret&#x6216;objc_msgSendSuper_stret&#x3002;</p>
+<ul>
+<li>&#x68C0;&#x67E5;target&#x662F;&#x5426;&#x4E3A;nil&#x3002;&#x5982;&#x679C;&#x4E3A;nil&#xFF0C;&#x76F4;&#x63A5;cleanup&#xFF0C;&#x7136;&#x540E;return&#x3002;(&#x8FD9;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5411;nil&#x53D1;&#x9001;&#x6D88;&#x606F;&#x7684;&#x539F;&#x56E0;&#x3002;)</li>
+<li>&#x5982;&#x679C;&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x503C;&#x662F;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x90A3;&#x4E48;&#x53D1;&#x9001;&#x7ED9;nil&#x7684;&#x6D88;&#x606F;&#x5C06;&#x8FD4;&#x56DE;nil&#xFF1B;&#x5982;&#x679C;&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x503C;&#x4E3A;&#x6307;&#x9488;&#x7C7B;&#x578B;&#xFF0C;&#x5176;&#x6307;&#x9488;&#x5927;&#x5C0F;&#x4E3A;&#x5C0F;&#x4E8E;&#x6216;&#x8005;&#x7B49;&#x4E8E;sizeof(void*)&#xFF0C;float&#xFF0C;double&#xFF0C;long double &#x6216;&#x8005;long long&#x7684;&#x6574;&#x578B;&#x6807;&#x91CF;&#xFF0C;&#x53D1;&#x9001;&#x7ED9;nil&#x7684;&#x6D88;&#x606F;&#x5C06;&#x8FD4;&#x56DE;0&#xFF1B;&#x5982;&#x679C;&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x503C;&#x4E3A;&#x7ED3;&#x6784;&#x4F53;,&#x53D1;&#x9001;&#x7ED9;nil&#x7684;&#x6D88;&#x606F;&#x5C06;&#x8FD4;&#x56DE;0&#x3002;&#x7ED3;&#x6784;&#x4F53;&#x4E2D;&#x5404;&#x4E2A;&#x5B57;&#x6BB5;&#x7684;&#x503C;&#x5C06;&#x90FD;&#x662F;0&#xFF1B;&#x5982;&#x679C;&#x65B9;&#x6CD5;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x4E0D;&#x662F;&#x4E0A;&#x8FF0;&#x63D0;&#x5230;&#x7684;&#x51E0;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x90A3;&#x4E48;&#x53D1;&#x9001;&#x7ED9;nil&#x7684;&#x6D88;&#x606F;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x5C06;&#x662F;&#x672A;&#x5B9A;&#x4E49;&#x7684;&#x3002;</li>
+<li>&#x5982;&#x679C;target&#x975E;nil&#xFF0C;&#x5728;target&#x7684;Class&#x4E2D;&#x6839;&#x636E;Selector&#x53BB;&#x627E;IMP&#x3002;&#xFF08;&#x56E0;&#x4E3A;&#x540C;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x53EF;&#x80FD;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x7C7B;&#x4E2D;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4F9D;&#x8D56;&#x4E8E;&#x63A5;&#x6536;&#x8005;&#x7684;&#x7C7B;&#x6765;&#x627E;&#x5230;&#x7684;&#x786E;&#x5207;&#x7684;&#x5B9E;&#x73B0;&#xFF09;&#x3002;</li>
+<li>&#x9996;&#x5148;&#x5B83;&#x627E;&#x5230;selector&#x5BF9;&#x5E94;&#x7684;&#x65B9;&#x6CD5;&#x5B9E;&#x73B0;:</li>
+<li>&#x5728;target&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x7F13;&#x5B58;&#x5217;&#x8868;&#x91CC;&#x68C0;&#x67E5;&#x6709;&#x6CA1;&#x6709;&#x5BF9;&#x5E94;&#x7684;&#x65B9;&#x6CD5;&#x5B9E;&#x73B0;&#xFF0C;&#x6709;&#x7684;&#x8BDD;&#xFF0C;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x3002;</li>
+<li>&#x6BD4;&#x8F83;&#x8BF7;&#x6C42;&#x7684;selector&#x548C;&#x7C7B;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#x4E2D;&#x7684;selector&#xFF0C;&#x5BF9;&#x5E94;&#x7684;&#x8BDD;&#xFF0C;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x3002;</li>
+<li>&#x6BD4;&#x8F83;&#x8BF7;&#x6C42;&#x7684;selector&#x548C;&#x7236;&#x7C7B;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#xFF0C;&#x7236;&#x7C7B;&#x7684;&#x7236;&#x7C7B;&#xFF0C;&#x76F4;&#x81F3;&#x6839;&#x7C7B;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x5BF9;&#x5E94;&#xFF0C;&#x5219;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x3002;&#xFF08;&#x65B9;&#x6CD5;&#x91CD;&#x5199;&#x62E6;&#x622A;&#x7236;&#x7C7B;&#x65B9;&#x6CD5;&#x7684;&#x539F;&#x7406;&#xFF09;</li>
+<li>&#x8C03;&#x7528;&#x65B9;&#x6CD5;&#x5B9E;&#x73B0;&#xFF0C;&#x5E76;&#x5C06;&#x63A5;&#x6536;&#x8005;&#x5BF9;&#x8C61;&#x53CA;&#x65B9;&#x6CD5;&#x7684;&#x6240;&#x6709;&#x53C2;&#x6570;&#x4F20;&#x7ED9;&#x5B83;&#x3002;</li>
+<li>&#x6700;&#x540E;&#xFF0C;&#x5C06;&#x5B9E;&#x73B0;&#x51FD;&#x6570;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x4F5C;&#x4E3A;&#x81EA;&#x5DF1;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x3002;</li>
+</ul>
+<h4 id="&#x52A8;&#x6001;&#x65B9;&#x6CD5;&#x89E3;&#x6790;&#x4E0E;&#x6D88;&#x606F;&#x8F6C;&#x53D1;"><a href="#&#x52A8;&#x6001;&#x65B9;&#x6CD5;&#x89E3;&#x6790;&#x4E0E;&#x6D88;&#x606F;&#x8F6C;&#x53D1;" class="headerlink" title="&#x52A8;&#x6001;&#x65B9;&#x6CD5;&#x89E3;&#x6790;&#x4E0E;&#x6D88;&#x606F;&#x8F6C;&#x53D1;"></a>&#x52A8;&#x6001;&#x65B9;&#x6CD5;&#x89E3;&#x6790;&#x4E0E;&#x6D88;&#x606F;&#x8F6C;&#x53D1;</h4><p>&#x5982;&#x679C;&#x7C7B;&#x4E2D;&#x6CA1;&#x6709;&#x627E;&#x5230;&#x5BF9;&#x5E94;&#x7684;selector&#x65B9;&#x6CD5;&#xFF08;&#x4FDD;&#x9669;&#x8D77;&#x89C1;&#x5148;&#x8C03;&#x7528;respondsToSelector&#xFF1A;&#xFF09;&#x8FD8;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#x673A;&#x5236;&#x4F9D;&#x6B21;&#x6267;&#x884C;&#x4EE5;&#x4E0B;&#x6D41;&#x7A0B;&#xFF1A;</p>
+<ul>
+<li>Method Resolution&#xFF08;&#x52A8;&#x6001;&#x65B9;&#x6CD5;&#x89E3;&#x6790;&#xFF09;&#x3002;&#x8C03;&#x7528;&#x7C7B;&#x7684;+&#xFF08;BOOL&#xFF09;resolveInstanceMethod:&#x6216;&#x8005;+&#xFF08;BOOL&#xFF09;resolveClassMethod:(&#x7C7B;&#x65B9;&#x6CD5;)&#xFF0C;&#x5728;&#x6B64;&#x65B9;&#x6CD5;&#x4E2D;&#x6DFB;&#x52A0;class_addMethod&#x51FD;&#x6570;&#x3002;&#x4E00;&#x822C;&#x7528;&#x4E8E;@dynamic&#x52A8;&#x6001;&#x5C5E;&#x6027;&#x3002;&#xFF08;&#x5F53;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#x58F0;&#x660E;&#x4E3A;@dynamic&#xFF0C;&#x5C31;&#x662F;&#x5411;&#x7F16;&#x8BD1;&#x5668;&#x4FDD;&#x8BC1;&#x7F16;&#x8BD1;&#x65F6;&#x4E0D;&#x7528;&#x7BA1;/get&#x5B9E;&#x73B0;&#xFF0C;&#x4E00;&#x5B9A;&#x4F1A;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x5B9E;&#x73B0;&#xFF09;&#x3002;</li>
+<li>Fast Forwarding &#xFF08;&#x5FEB;&#x901F;&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#xFF09;&#xFF1A;&#x5982;&#x679C;&#x4E0A;&#x4E00;&#x6B65;&#x65E0;&#x6CD5;&#x54CD;&#x5E94;&#x6D88;&#x606F;&#xFF0C;&#x8C03;&#x7528;- (id)forwardingTargetForSelector:(SEL)aSelector&#x65B9;&#x6CD5;&#xFF0C;&#x5C06;&#x6D88;&#x606F;&#x63A5;&#x53D7;&#x8005;&#x8F6C;&#x53D1;&#x5230;&#x53E6;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;target&#xFF08;&#x4E0D;&#x80FD;&#x4E3A;self&#xFF0C;&#x5426;&#x5219;&#x6B7B;&#x5FAA;&#x73AF;&#xFF09;&#x3002;</li>
+<li>Normal Forwarding&#xFF08;&#x666E;&#x901A;&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#xFF09;&#xFF1A;&#x5982;&#x679C;&#x4E0A;&#x4E00;&#x6B65;&#x65E0;&#x6CD5;&#x54CD;&#x5E94;&#x6D88;&#x606F;&#xFF1A;<br>&#x8C03;&#x7528;&#x65B9;&#x6CD5;&#x7B7E;&#x540D;- (NSMethodSignature )methodSignatureForSelector:(SEL)aSelector&#xFF0C;&#x65B9;&#x6CD5;&#x7B7E;&#x540D;&#x76EE;&#x7684;&#x5C06;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x548C;&#x8FD4;&#x56DE;&#x503C;&#x5C01;&#x88C5;&#xFF1B;<br>&#x5982;&#x679C;&#x8FD4;&#x56DE;&#x975E;nil&#xFF0C;&#x5219;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;NSInvocation&#x5BF9;&#x8C61;&#x5229;&#x7528;&#x65B9;&#x6CD5;&#x7B7E;&#x540D;&#x548C;selector&#x5C01;&#x88C5;&#x672A;&#x88AB;&#x5904;&#x7406;&#x7684;&#x6D88;&#x606F;&#xFF0C;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x7ED9;- (void)forwardInvocation:(NSInvocation )anInvocation&#x3002;</li>
+<li>&#x5982;&#x679C;&#x4EE5;&#x4E0A;&#x6B65;&#x9AA4;&#xFF08;&#x6D88;&#x606F;&#x4F20;&#x9012;&#x548C;&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#xFF09;&#x8FD8;&#x662F;&#x4E0D;&#x80FD;&#x54CD;&#x5E94;&#x6D88;&#x606F;&#xFF0C;&#x5219;&#x8C03;&#x52A8;doesNotRecognizeSelector&#xFF1A;&#x65B9;&#x6CD5;&#xFF0C;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x3002;</li>
+</ul>
+<h4 id="&#x534F;&#x8BAE;"><a href="#&#x534F;&#x8BAE;" class="headerlink" title="&#x534F;&#x8BAE;"></a>&#x534F;&#x8BAE;</h4><p>&#x534F;&#x8BAE;&#x76F8;&#x5173;&#xFF1A;@protocol&#x58F0;&#x660E;&#x4E86;&#x53EF;&#x4EE5;&#x88AB;&#x5176;&#x4ED6;&#x4EFB;&#x4F55;&#x7C7B;&#x5B9E;&#x73B0;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x534F;&#x8BAE;&#x4EC5;&#x4EC5;&#x662F;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x800C;&#x7531;&#x5176;&#x4ED6;&#x7684;&#x7C7B;&#x53BB;&#x8D1F;&#x8D23;&#x5B9E;&#x73B0;&#x3002;</p>
+<pre><code>typedef struct objc_object Protocol;
+
+protocol&#x662F;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7ED3;&#x6784;&#x4F53;&#x3002;
+
+// &#x8FD4;&#x56DE;&#x6307;&#x5B9A;&#x7684;&#x534F;&#x8BAE;
+Protocol * objc_getProtocol ( const char *name );
+
+// &#x83B7;&#x53D6;&#x8FD0;&#x884C;&#x65F6;&#x6240;&#x77E5;&#x9053;&#x7684;&#x6240;&#x6709;&#x534F;&#x8BAE;&#x7684;&#x6570;&#x7EC4;
+Protocol ** objc_copyProtocolList ( unsigned int *outCount );
+
+// &#x521B;&#x5EFA;&#x65B0;&#x7684;&#x534F;&#x8BAE;&#x5B9E;&#x4F8B;
+Protocol * objc_allocateProtocol ( const char *name );
+
+// &#x5728;&#x8FD0;&#x884C;&#x65F6;&#x4E2D;&#x6CE8;&#x518C;&#x65B0;&#x521B;&#x5EFA;&#x7684;&#x534F;&#x8BAE;
+void objc_registerProtocol ( Protocol *proto );
+
+// &#x8FD4;&#x56DE;&#x534F;&#x8BAE;&#x540D;
+const char * protocol_getName ( Protocol *p );
+// &#x83B7;&#x53D6;&#x534F;&#x8BAE;&#x7684;&#x6307;&#x5B9A;&#x5C5E;&#x6027;
+objc_property_t protocol_getProperty ( Protocol *proto, const char *name, BOOL isRequiredProperty, BOOL isInstanceProperty );
+
+// &#x83B7;&#x53D6;&#x534F;&#x8BAE;&#x4E2D;&#x7684;&#x5C5E;&#x6027;&#x5217;&#x8868;
+objc_property_t * protocol_copyPropertyList ( Protocol *proto, unsigned int *outCount );
+// &#x83B7;&#x53D6;&#x534F;&#x8BAE;&#x91C7;&#x7528;&#x7684;&#x534F;&#x8BAE;
+Protocol ** protocol_copyProtocolList ( Protocol *proto, unsigned int *outCount );
+
+// &#x4E3A;&#x534F;&#x8BAE;&#x6DFB;&#x52A0;&#x65B9;&#x6CD5;
+void protocol_addMethodDescription ( Protocol *proto, SEL name, const char *types, BOOL isRequiredMethod, BOOL isInstanceMethod );
+
+// &#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x5DF2;&#x6CE8;&#x518C;&#x7684;&#x534F;&#x8BAE;&#x5230;&#x534F;&#x8BAE;&#x4E2D;
+void protocol_addProtocol ( Protocol *proto, Protocol *addition );
+
+// &#x4E3A;&#x534F;&#x8BAE;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;
+void protocol_addProperty ( Protocol *proto, const char *name, const objc_property_attribute_t *attributes, unsigned int attributeCount, BOOL isRequiredProperty, BOOL isInstanceProperty );
+
+// &#x6D4B;&#x8BD5;&#x4E24;&#x4E2A;&#x534F;&#x8BAE;&#x662F;&#x5426;&#x76F8;&#x7B49;
+BOOL protocol_isEqual ( Protocol *proto, Protocol *other );
+
+// &#x67E5;&#x770B;&#x534F;&#x8BAE;&#x662F;&#x5426;&#x91C7;&#x7528;&#x4E86;&#x53E6;&#x4E00;&#x4E2A;&#x534F;&#x8BAE;
+BOOL protocol_conformsToProtocol ( Protocol *proto, Protocol *other );
+</code></pre><h4 id="&#x5206;&#x7C7B;&#xFF08;category&#xFF09;"><a href="#&#x5206;&#x7C7B;&#xFF08;category&#xFF09;" class="headerlink" title="&#x5206;&#x7C7B;&#xFF08;category&#xFF09;"></a>&#x5206;&#x7C7B;&#xFF08;category&#xFF09;</h4><pre><code>typedef struct objc_category *Category;
+
+struct objc_category {
+    char *category_name                          OBJC2_UNAVAILABLE; // &#x5206;&#x7C7B;&#x540D;
+    char *class_name                             OBJC2_UNAVAILABLE; // &#x5206;&#x7C7B;&#x6240;&#x5C5E;&#x7684;&#x7C7B;&#x540D;
+    struct objc_method_list *instance_methods    OBJC2_UNAVAILABLE; // &#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#x5217;&#x8868;
+    struct objc_method_list *class_methods       OBJC2_UNAVAILABLE; // &#x7C7B;&#x65B9;&#x6CD5;&#x5217;&#x8868;
+    struct objc_protocol_list *protocols         OBJC2_UNAVAILABLE; // &#x5206;&#x7C7B;&#x6240;&#x5B9E;&#x73B0;&#x7684;&#x534F;&#x8BAE;&#x5217;&#x8868;
+}  
+
+// objc-runtime-new.h&#x4E2D;&#x5B9A;&#x4E49;&#xFF1A;
+struct category_t {
+    const char *name;                        // name &#x662F;&#x6307; class_name &#x800C;&#x4E0D;&#x662F; category_name
+    classref_t cls;                          // cls&#x662F;&#x8981;&#x6269;&#x5C55;&#x7684;&#x7C7B;&#x5BF9;&#x8C61;&#xFF0C;&#x7F16;&#x8BD1;&#x671F;&#x95F4;&#x662F;&#x4E0D;&#x4F1A;&#x5B9A;&#x4E49;&#x7684;&#xFF0C;&#x800C;&#x662F;&#x5728;Runtime&#x9636;&#x6BB5;&#x901A;&#x8FC7;name&#x5BF9;&#x5E94;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x7C7B;&#x5BF9;&#x8C61;
+    struct method_list_t *instanceMethods;       
+    struct method_list_t *classMethods;
+    struct protocol_list_t *protocols;
+    struct property_list_t *instanceProperties;    // instanceProperties&#x8868;&#x793A;Category&#x91CC;&#x6240;&#x6709;&#x7684;properties&#xFF0C;(&#x8FD9;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;objc_setAssociatedObject&#x548C;objc_getAssociatedObject&#x589E;&#x52A0;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x7684;&#x539F;&#x56E0;&#xFF0C;)&#x4E0D;&#x8FC7;&#x8FD9;&#x4E2A;&#x548C;&#x4E00;&#x822C;&#x7684;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x662F;&#x4E0D;&#x4E00;&#x6837;&#x7684;
+
+};
+</code></pre><p>category&#x5C31;&#x662F;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;&#x7684;&#x7ED3;&#x6784;&#x4F53;&#xFF0C;instance_methods&#x5217;&#x8868;&#x662F;objc_class&#x4E2D;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#x7684;&#x4E00;&#x4E2A;&#x5B50;&#x96C6;&#xFF0C;class_methods&#x5217;&#x8868;&#x662F;&#x5143;&#x7C7B;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#x7684;&#x4E00;&#x4E2A;&#x5B50;&#x96C6;&#x3002;</p>
+<p>category&#x4E3A;&#x4EC0;&#x4E48;&#x4E0D;&#x80FD;&#x6DFB;&#x52A0;&#x6210;&#x5458;&#x53D8;&#x91CF;&#xFF08;&#x53EF;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;&#xFF0C;&#x53EA;&#x6709;set/get&#x65B9;&#x6CD5;&#xFF09;&#x3002;</p>
+<p>&#x7ED9;category&#x6DFB;&#x52A0;&#x65B9;&#x6CD5;&#x540E;&#xFF0C;category_list&#x4F1A;&#x751F;&#x6210;method list&#x3002;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#x662F;&#x5012;&#x5E8F;&#x6DFB;&#x52A0;&#x7684;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x65B0;&#x751F;&#x6210;&#x7684;category&#x7684;&#x65B9;&#x6CD5;&#x4F1A;&#x5148;&#x4E8E;&#x65E7;&#x7684;category&#x7684;&#x65B9;&#x6CD5;&#x63D2;&#x5165;&#x3002;&#xFF08;category&#x7684;&#x65B9;&#x6CD5;&#x4F1A;&#x4F18;&#x5148;&#x4E8E;&#x7C7B;&#x65B9;&#x6CD5;&#x6267;&#x884C;&#xFF09;&#x3002;</p>
+<h4 id="Super"><a href="#Super" class="headerlink" title="Super"></a>Super</h4><p>super&#x5E76;&#x4E0D;&#x662F;&#x9690;&#x85CF;&#x53C2;&#x6570;&#xFF0C;&#x5B83;&#x5B9E;&#x9645;&#x4E0A;&#x53EA;&#x662F;&#x4E00;&#x4E2A;&#x201D;&#x7F16;&#x8BD1;&#x5668;&#x6807;&#x793A;&#x7B26;&#x201D;&#xFF0C;&#x5B83;&#x8D1F;&#x8D23;&#x544A;&#x8BC9;&#x7F16;&#x8BD1;&#x5668;&#xFF0C;&#x5F53;&#x8C03;&#x7528;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x8DF3;&#x8FC7;&#x5F53;&#x524D;&#x7C7B;&#x53BB;&#x8C03;&#x7528;&#x7236;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x672C;&#x7C7B;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>self&#x662F;&#x7C7B;&#x7684;&#x4E00;&#x4E2A;&#x9690;&#x85CF;&#x53C2;&#x6570;&#xFF0C;&#x6BCF;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x5373;&#x4E3A;self&#x3002;&#x5B9E;&#x9645;&#x4E0A;&#x7ED9;super&#x53D1;&#x6D88;&#x606F;&#x65F6;&#xFF0C;super&#x8FD8;&#x662F;&#x4E0E;self&#x6307;&#x5411;&#x7684;&#x662F;&#x76F8;&#x540C;&#x7684;&#x6D88;&#x606F;&#x63A5;&#x6536;&#x8005;&#x3002;</p>
+<pre><code>struct objc_super {
+   __unsafe_unretained id receiver;
+   __unsafe_unretained Class super_class;
+};
+</code></pre><p>&#x4F7F;&#x7528;super&#x6765;&#x63A5;&#x6536;&#x6D88;&#x606F;&#x65F6;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x751F;&#x6210;&#x4E00;&#x4E2A;objc_super&#x7ED3;&#x6784;&#x4F53;&#x3002;&#x53D1;&#x9001;&#x6D88;&#x606F;&#x65F6;&#xFF0C;&#x4E0D;&#x662F;&#x8C03;&#x7528;objc_msgSend&#x51FD;&#x6570;&#xFF0C;&#x800C;&#x662F;&#x8C03;&#x7528;objc_msgSendSuper&#x51FD;&#x6570;:</p>
+<pre><code>id objc_msgSendSuper ( struct objc_super *super, SEL op, ... );
+</code></pre><p>&#x8BE5;&#x51FD;&#x6570;&#x5B9E;&#x9645;&#x7684;&#x64CD;&#x4F5C;&#x662F;&#xFF1A;&#x4ECE;objc_super&#x7ED3;&#x6784;&#x4F53;&#x6307;&#x5411;&#x7684;superClass&#x7684;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#x5F00;&#x59CB;&#x67E5;&#x627E;selector&#xFF0C;&#x627E;&#x5230;&#x540E;&#x4EE5;objc-&gt;receiver&#x53BB;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;selector&#x3002;</p>
+<h4 id="Runtime&#x5F00;&#x6E90;&#x4EE3;&#x7801;&#x7684;&#x5B9E;&#x73B0;"><a href="#Runtime&#x5F00;&#x6E90;&#x4EE3;&#x7801;&#x7684;&#x5B9E;&#x73B0;" class="headerlink" title="Runtime&#x5F00;&#x6E90;&#x4EE3;&#x7801;&#x7684;&#x5B9E;&#x73B0;"></a>Runtime&#x5F00;&#x6E90;&#x4EE3;&#x7801;&#x7684;&#x5B9E;&#x73B0;</h4><pre><code>- (Class)class ;
+
+- (Class)class {
+    return object_getClass(self);
+}
+
++ (Class)class;
+
++ (Class)class {
+    return self;
+}
+
+- (BOOL)isKindOf:aClass;// (for&#x5FAA;&#x73AF;&#x904D;&#x5386;&#x7236;&#x7C7B;&#xFF0C;&#x6BCF;&#x6B21;&#x5224;&#x65AD;&#x8FD4;&#x56DE;&#x7684;&#x7ED3;&#x679C;&#x53EF;&#x80FD;&#x4E0D;&#x540C;)
+
+- (BOOL)isKindOf:aClass
+{
+    Class cls;
+    for (cls = isa; cls; cls = cls-&gt;superclass) 
+        if (cls == (Class)aClass)
+            return YES;
+    return NO;
+}
+
+- (BOOL)isMemberOf:aClass;
+
+- (BOOL)isMemberOf:aClass
+{
+    return isa == (Class)aClass;
+}
+</code></pre>
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/23/Launch-Once与Dispatch-Once/" itemprop="url">
                   Launch Once与Dispatch Once
                 </a>
@@ -884,224 +1393,6 @@ dispatch_once(&amp;onceToken, ^{
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/21/KVO底层实现/" itemprop="url">
-                  KVO底层实现
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-21T16:33:44+08:00" content="2016-04-21">
-              2016-04-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Object-C/" itemprop="url" rel="index">
-                    <span itemprop="name">Object-C</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/21/KVO底层实现/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/21/KVO底层实现/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/04/21/KVO底层实现/" class="leancloud_visitors" data-flag-title="KVO底层实现">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>&#x89C2;&#x5BDF;&#x8005;&#x6A21;&#x5F0F;&#xFF08;KVO&#xFF09;&#xFF0C;&#x5F53;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x503C;&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x4F1A;&#x901A;&#x8FC7;&#x8C03;&#x7528;&#x65B9;&#x6CD5;observeValueForKeyPath:ofObject:change:context:&#x6765;&#x8BF4;&#x660E;&#x5C5E;&#x6027;&#x7684;&#x503C;&#x53D1;&#x751F;&#x4E86;&#x6539;&#x53D8;&#x3002;KVO&#x7684;&#x5B9E;&#x73B0;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
-<pre><code>- (void)viewDidLoad {
-[super viewDidLoad];
-
-Person *p = [Person new];
-
-p.name = @&quot;&#x5F20;&#x4E09;&quot;;
-
-[p addObserver:self forKeyPath:@&quot;name&quot; options:NSKeyValueObservingOptionNew context:nil];
-
-    p.name = @&quot;&#x674E;&#x601D;&quot;;
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary&lt;NSString *, id&gt; *)change context:(void *)context {
-    NSLog(@&quot;%@&quot;, change);
-}
-</code></pre><p>&#x4ECE;&#x4E0B;&#x56FE;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x5F53;&#x8FD8;&#x672A;&#x7ED9;&#x5BF9;&#x8C61;&#x6DFB;&#x52A0;&#x89C2;&#x5BDF;&#x8005;&#x524D;&#xFF0C;p&#x5BF9;&#x8C61;&#x662F;Person&#x7C7B;&#x3002;<br><img src="/2016/04/21/KVO&#x5E95;&#x5C42;&#x5B9E;&#x73B0;/kvo_tip1.png" alt="&#x6DFB;&#x52A0;&#x89C2;&#x5BDF;&#x8005;&#x524D;"></p>
-<p>&#x5F53;&#x7ED9;&#x5BF9;&#x8C61;&#x6DFB;&#x52A0;&#x89C2;&#x5BDF;&#x8005;&#x540E;&#xFF0C;P&#x5BF9;&#x8C61;&#x7684;&#x7C7B;&#x53D8;&#x6210;&#x4E3A;NSKVONotifying_Person&#x3002;<br><img src="/2016/04/21/KVO&#x5E95;&#x5C42;&#x5B9E;&#x73B0;/kvo_tip2.png" alt="&#x6DFB;&#x52A0;&#x89C2;&#x5BDF;&#x8005;&#x524D;"></p>
-<p>&#x6CE8;&#xFF1A;&#x53EA;&#x7528;&#x8C03;&#x7528;&#x5C5E;&#x6027;&#x7684;set&#x65B9;&#x6CD5;&#x6765;&#x6539;&#x53D8;&#x5C5E;&#x6027;&#x7684;&#x503C;&#x65F6;&#xFF0C;&#x624D;&#x4F1A;&#x89C2;&#x5BDF;&#x8005;&#x624D;&#x4F1A;&#x77E5;&#x9053;&#x5C5E;&#x6027;&#x503C;&#x53D1;&#x751F;&#x6539;&#x53D8;&#x3002;</p>
-<p>KVO&#x5E95;&#x5C42;&#x5B9E;&#x73B0;&#x7684;&#x5206;&#x6790;&#xFF1A;</p>
-<p>1.&#x5F53;&#x4E3A;&#x5BF9;&#x8C61;&#x6DFB;&#x52A0;&#x89C2;&#x5BDF;&#x8005;&#x65F6;&#xFF0C;&#x52A8;&#x6001;&#x521B;&#x5EFA;NSKVONotifying_Person&#xFF0C;NSKVONotifying_Person&#x662F;Person&#x7C7B;&#x7684;&#x5B50;&#x7C7B;&#x3002;</p>
-<p>2.&#x4FEE;&#x6539;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x7684;isa&#x6307;&#x9488;-&gt;NSKVONotifying_Person</p>
-<p>3.&#x5F53;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x503C;&#x53D1;&#x751F;&#x6539;&#x53D8;&#x65F6;&#xFF0C;&#x4F1A;&#x8C03;&#x7528;NSKVONotifying_Person&#x7684;set&#x65B9;&#x6CD5;</p>
-<p>4.&#x91CD;&#x5199;NSKVONotifying_Person&#x7684;set&#x65B9;&#x6CD5;&#xFF0C;&#x8C03;&#x7528;&#x89C2;&#x5BDF;&#x8005;&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
-<p>&#x91CD;&#x5199;KVO&#x7684;&#x5B9E;&#x73B0;&#xFF1A;</p>
-<p>NSObject (KVO)&#x7684;&#x58F0;&#x660E;&#x4E0E;&#x5B9E;&#x73B0;</p>
-<pre><code>//NSObject (KVO).h
-#import &lt;Foundation/Foundation.h&gt;
-
-@interface NSObject (KVO)
-
-- (void)ZHAddObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options context:(nullable void *)context;
-
-@end
-
-//NSObject (KVO).m
-#import &quot;NSObject+KVO.h&quot;
-#import &lt;objc/runtime.h&gt;
-#import &quot;ZHNSKVONotifying_Person.h&quot;
-
-@implementation NSObject (KVO)
-
-- (void)ZHAddObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options context:(nullable void *)context {
-    //&#x4FEE;&#x6539;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x7684;isa&#x6307;&#x9488;
-    object_setClass(self, [ZHNSKVONotifying_Person class]);
-
-    //&#x4FDD;&#x5B58;&#x628A;&#x89C2;&#x5BDF;&#x8005;
-    objc_setAssociatedObject(self, @&quot;observer&quot;, observer, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-@end
-</code></pre><p>ZHNSKVONotifying_Person&#x7684;&#x58F0;&#x660E;&#x4E0E;&#x5B9E;&#x73B0;</p>
-<pre><code>#import &quot;Person.h&quot;
-
-@interface ZHNSKVONotifying_Person : Person
-
-@end
-
-#import &quot;ZHNSKVONotifying_Person.h&quot;
-#import &lt;objc/runtime.h&gt;
-
-@implementation ZHNSKVONotifying_Person
-
-- (void)setName:(NSString *)name {
-    [super setName:name];
-
-    id observer = objc_getAssociatedObject(self, @&quot;observer&quot;);
-
-    NSDictionary *change = @{ @&quot;change&quot; : name };
-
-    [observer observeValueForKeyPath:@&quot;name&quot; ofObject:self change:change context:nil];
-}
-
-@end
-</code></pre><p>&#x5B9E;&#x73B0;&#x8C03;&#x7528;</p>
-<pre><code>- (void)viewDidLoad {
-    [super viewDidLoad];
-
-    Person *p = [Person new];
-
-    p.name = @&quot;&#x5F20;&#x4E09;&quot;;
-
-    [p ZHAddObserver:self forKeyPath:@&quot;name&quot; options:NSKeyValueObservingOptionNew context:nil];
-
-    p.name = @&quot;&#x674E;&#x601D;&quot;;
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary&lt;NSString *, id&gt; *)change context:(void *)context {
-    NSLog(@&quot;%@&quot;, change);
-}
-</code></pre>
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1147,7 +1438,7 @@ p.name = @&quot;&#x5F20;&#x4E09;&quot;;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">29</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1164,7 +1455,7 @@ p.name = @&quot;&#x5F20;&#x4E09;&quot;;
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">38</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
