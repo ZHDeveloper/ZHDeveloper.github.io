@@ -279,6 +279,239 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/18/ZHRefresh-Swift上下拉刷新/" itemprop="url">
+                  ZHRefresh(Swift上下拉刷新)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-18T16:38:36+08:00" content="2016-05-18">
+              2016-05-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift进阶/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift进阶</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/18/ZHRefresh-Swift上下拉刷新/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/18/ZHRefresh-Swift上下拉刷新/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/18/ZHRefresh-Swift上下拉刷新/" class="leancloud_visitors" data-flag-title="ZHRefresh(Swift上下拉刷新)">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>&#x6574;&#x4E2A;&#x6846;&#x67B6;&#x4E2D;&#x5305;&#x542B;&#x4E09;&#x4E2A;&#x6587;&#x4EF6;ZHRefresh.swift&#x3001;ZHRefreshView.swift&#x3001;ZHRefreshConsts.swift&#xFF0C;&#x5176;&#x4E2D;ZHRefresh&#x5305;&#x542B;&#x4E00;&#x4E9B;&#x516C;&#x5F00;&#x7684;&#x8C03;&#x7528;&#x7684;API</p>
+<h4 id="ZHRefresh"><a href="#ZHRefresh" class="headerlink" title="ZHRefresh"></a>ZHRefresh</h4><p>ZHRefresh&#x662F;UIScrollView&#x7684;&#x62D3;&#x5C55;&#xFF0C;ZHRefresh&#x4E2D;&#x5305;&#x542B;&#x4E24;&#x4E2A;&#x8BA1;&#x7B97;&#x5C5E;&#x6027;headerView&#x3001;footerView&#xFF0C;&#x90FD;&#x662F;&#x4F7F;&#x7528;Runtime&#x5C06;&#x5C5E;&#x6027;&#x5173;&#x8054;&#x3002;&#x4E24;&#x4E2A;&#x5C5E;&#x6027;&#x4F7F;&#x7528;private&#x6765;&#x4FEE;&#x9970;&#xFF0C;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x88AB;&#x5916;&#x90E8;&#x8C03;&#x7528;&#x3002;</p>
+<pre><code>//&#x6DFB;&#x52A0;&#x4E0B;&#x62C9;&#x5237;&#x65B0;&#x7684;&#x56DE;&#x8C03;&#x65B9;&#x6CD5;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x662F;&#x4E0D;&#x4F1A;&#x751F;&#x6210;&#x4E0B;&#x62C9;&#x7684;&#x5934;&#x90E8;view
+func addHeaderWithCallback(headerCallback:CompleteHandler) {
+
+    self.headerView?.handler = headerCallback
+
+}
+
+//&#x6DFB;&#x52A0;&#x4E0A;&#x62C9;&#x5237;&#x65B0;&#x7684;&#x56DE;&#x8C03;&#x65B9;&#x6CD5;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x662F;&#x4E0D;&#x4F1A;&#x751F;&#x6210;&#x4E0B;&#x62C9;&#x7684;&#x5E95;&#x90E8;view
+func addFooterWithCallback(footerCallback:CompleteHandler) {
+
+    self.footerView?.handler = footerCallback
+
+}
+
+//&#x5F00;&#x59CB;&#x5237;&#x65B0;
+func headerBeginRefreshing() {
+    self.headerView?.headerBeginRefresh()
+}
+
+//&#x7ED3;&#x675F;&#x5237;&#x65B0;
+func headerEndRefreshing() {
+    self.headerView?.headerEndRefresh()
+}
+
+//&#x5F00;&#x59CB;&#x52A0;&#x8F7D;&#x66F4;&#x591A;
+func footerBeginRefreshing() {
+    self.footerView?.footerBeginLoadMore()
+}
+
+//&#x7ED3;&#x675F;&#x52A0;&#x8F7D;&#x66F4;&#x591A;
+func footerEndRefreshing() {
+    self.footerView?.footerEndLoadMore()
+}
+</code></pre><h4 id="ZHRefreshComponent"><a href="#ZHRefreshComponent" class="headerlink" title="ZHRefreshComponent"></a>ZHRefreshComponent</h4><p>ZHRefreshComponent&#x5B9A;&#x4E49;&#x4E86;&#x4E0A;&#x62C9;&#x3001;&#x4E0B;&#x62C9;view&#x3002;</p>
+<p>ZHRefreshComponent&#x7C7B;&#x662F;&#x4E0A;&#x62C9;&#x3001;&#x4E0B;&#x62C9;view&#x7684;&#x7236;&#x7C7B;&#xFF0C;&#x5305;&#x542B;&#x4E86;&#x4E0A;&#x62C9;&#x3001;&#x4E0B;&#x62C9;&#x5237;&#x65B0;view&#x5171;&#x6709;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;&#x3002;&#x5B50;&#x7C7B;&#x901A;&#x8FC7;&#x7EE7;&#x627F;&#x83B7;&#x53D6;&#x7236;&#x7C7B;&#x7684;&#x5171;&#x6709;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>ZHRefreshComponent&#x5171;&#x6709;&#x7684;&#x5C5E;&#x6027;&#xFF1A;</p>
+<ol>
+<li>handler:&#x4E0A;&#x62C9;&#x6216;&#x8005;&#x4E0B;&#x62C9;&#x5237;&#x65B0;&#x7684;&#x56DE;&#x8C03;&#x65B9;&#x6CD5;</li>
+<li>isRefreshing:&#x662F;&#x5426;&#x6B63;&#x5728;&#x6267;&#x884C;&#x5237;&#x65B0;&#x4E2D;</li>
+<li>oldStatus:&#x4E0A;&#x4E00;&#x6B21;&#x7684;&#x5237;&#x65B0;&#x72B6;&#x6001;</li>
+<li>status:&#x5F53;&#x524D;&#x7684;&#x5237;&#x65B0;&#x72B6;&#x6001;</li>
+<li>indicatorView&#xFF1A;&#x83CA;&#x82B1;view</li>
+<li>titleLabel:&#x6807;&#x9898;Label</li>
+</ol>
+<p>&#x901A;&#x8FC7;&#x91CD;&#x5199;&#x65B9;&#x6CD5;willMoveToSuperview&#xFF0C;&#x5C06;&#x7236;view(UIScrollView)&#x4F5C;&#x4E3A;ZHRefreshComponent&#x7684;&#x5C5E;&#x6027;&#x3002;</p>
+<pre><code>override func willMoveToSuperview(newSuperview: UIView?) {
+    super.willMoveToSuperview(newSuperview)
+    scrollView = newSuperview as? UIScrollView
+}
+</code></pre><h4 id="ZHHeaderView&#x3001;ZHFooterView"><a href="#ZHHeaderView&#x3001;ZHFooterView" class="headerlink" title="ZHHeaderView&#x3001;ZHFooterView"></a>ZHHeaderView&#x3001;ZHFooterView</h4><p>ZHHeaderView&#x4E0A;&#x62C9;&#x5237;&#x65B0;&#x7684;view&#xFF0C;&#x7EE7;&#x627F;&#x81EA;ZHRefreshComponent&#x3002;</p>
+<p>&#x901A;&#x8FC7;&#x91CD;&#x5199;&#x7236;&#x7C7B;scrollView&#x5C5E;&#x6027;&#xFF0C;&#x5C06;ZHHeaderView&#x8BBE;&#x7F6E;&#x4E3A;scrollview&#x7684;&#x4EE3;&#x7406;&#xFF0C;&#x5E76;&#x4E14;&#x8BBE;&#x7F6E;&#x5C5E;&#x6027;insetTop&#xFF08;scrollview.contentInset.top&#xFF09;</p>
+<p>ZHHeaderView&#x7C7B;&#x4E2D;&#x6DFB;&#x52A0;&#x591A;&#x4E00;&#x4E2A;&#x5B50;view(arrowView)&#x3002;</p>
+<p>&#x5B9A;&#x4E49;ZHHeaderView&#x7684;&#x62D3;&#x5C55;&#xFF0C;&#x5B9E;&#x73B0;UIScrollViewDelegate</p>
+<pre><code>func scrollViewDidScroll(scrollView: UIScrollView) {
+
+    //&#x4E0B;&#x62C9;&#x5237;&#x65B0;&#xFF0C;refreshOffset&#x5224;&#x65AD;&#x5237;&#x65B0;&#x72B6;&#x6001;&#x3002;
+    let refreshOffset = -(scrollView.contentOffset.y+scrollView.contentInset.top)
+
+    //&#x89E6;&#x53D1;&#x6761;&#x4EF6;
+    if refreshOffset &gt; headerViewH {
+        self.status = .releaseToRefresh
+        releaseToRefresh()
+    }
+    else
+    {
+        self.status = .pullToRefresh
+        pullToRefresh()
+    }
+
+}
+
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+
+    let refreshOffset = -(scrollView.contentOffset.y+scrollView.contentInset.top)
+
+    //&#x5F53;&#x7528;&#x6237;&#x7ED3;&#x675F;&#x62D6;&#x62FD;&#x65F6;&#xFF0C;&#x5224;&#x65AD;offset&#x662F;&#x5426;&#x5927;&#x4E8E;&#x5934;&#x90E8;&#x8BD5;&#x56FE;&#x7684;&#x9AD8;&#x5EA6;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x7684;&#x6267;&#x884C;&#x5237;&#x65B0;&#x7684;&#x65B9;&#x6CD5;
+    if refreshOffset &gt; headerViewH {
+        headerBeginRefresh()
+    }
+
+    //scroll&#x7684;&#x4EE3;&#x7406;&#x5BF9;&#x8C61;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#xFF0C;&#x6240;&#x4EE5;&#x4E0B;&#x62C9;&#x5237;&#x65B0;&#x7684;&#x5224;&#x65AD;&#x4E5F;&#x653E;&#x5728;&#x8FD9;&#x91CC;&#x8FDB;&#x884C;
+    let loadMoreOffset = scrollView.contentSize.height - scrollView.contentOffset.y - (scrollView.frame.height - scrollView.contentInset.bottom)
+
+    if (loadMoreOffset &lt; -footerViewH) {
+        scrollView.footerBeginRefreshing()
+    }
+}
+</code></pre><p> ZHFooterView&#x7684;&#x5B9E;&#x73B0;&#x548C;ZHHeaderView&#x5DEE;&#x4E0D;&#x591A;&#x3002;</p>
+<h4 id="ZHRefreshConsts"><a href="#ZHRefreshConsts" class="headerlink" title="ZHRefreshConsts"></a>ZHRefreshConsts</h4><p> ZHRefreshConsts&#x5B9A;&#x4E49;&#x4E00;&#x4E9B;&#x5E38;&#x4EAE;</p>
+<pre><code>typealias CompleteHandler = ()-&gt;()
+
+let headerViewH: CGFloat = 60
+let footerViewH: CGFloat = 44
+
+let componentsMarin:CGFloat = 10
+
+let screenH = UIScreen.mainScreen().bounds.size.height
+let screenW = UIScreen.mainScreen().bounds.size.width
+
+//&#x5237;&#x65B0;&#x7684;&#x72B6;&#x6001;
+enum ZHRefreshStatus {
+    case loading,pullToRefresh,releaseToRefresh
+}
+</code></pre>
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/16/Swfit的extension/" itemprop="url">
                   Swfit的extension
                 </a>
@@ -1096,120 +1329,11 @@ total.inSeconds
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/11/Swift中的过滤器/" itemprop="url">
-                  Swift中的过滤器
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-11T12:07:59+08:00" content="2016-05-11">
-              2016-05-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/11/Swift中的过滤器/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/11/Swift中的过滤器/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/05/11/Swift中的过滤器/" class="leancloud_visitors" data-flag-title="Swift中的过滤器">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1250,7 +1374,7 @@ total.inSeconds
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
