@@ -279,6 +279,211 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/11/Swift的Selector/" itemprop="url">
+                  Swift的Selector
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-11T10:08:25+08:00" content="2016-05-11">
+              2016-05-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift语法/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift语法</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/11/Swift的Selector/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/11/Swift的Selector/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/11/Swift的Selector/" class="leancloud_visitors" data-flag-title="Swift的Selector">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="selector"><a href="#selector" class="headerlink" title="selector"></a>selector</h4><p>Swift2.2&#x7684;&#x8BED;&#x6CD5;&#x53D8;&#x5316;</p>
+<pre><code>&#x683C;&#x5F0F;:#selector()
+</code></pre><p>&#x5728;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x524D;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;Object-C&#x8FD0;&#x884C;&#x65F6;&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
+<pre><code>class SomeClass: NSObject {
+    @objc(doSomethingWithInt:)
+    func doSomething(x: Int) { }
+}
+let x = SomeClass()
+let selector = #selector(x.doSomething(_:))
+
+extension SomeClass {
+    @objc(doSomethingWithString:)
+    func doSomething(x: String) { }
+}
+let anotherSelector = #selector(x.doSomething(_:) as (String) -&gt; Void)
+</code></pre><p>selector&#x662F;&#x5728;&#x7F16;&#x8BD1;&#x65F6;&#x521B;&#x5EFA;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x8FD0;&#x884C;&#x65F6;&#x3002;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x68C0;&#x67E5;&#x65B9;&#x6CD5;&#x662F;&#x5426;&#x5B58;&#x5728;&#x3002;</p>
+<p>&#x4F7F;&#x7528;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre><code>let timer = NSTimer(timeInterval: 1, target: object,
+                    selector: #selector(MyClass.test),
+                    userInfo: nil, repeats: false)
+button.addTarget(object, action: #selector(MyClass.buttonTapped),
+                 forControlEvents: .TouchUpInside)
+view.performSelector(#selector(UIView.insertSubview(_:aboveSubview:)),
+                     withObject: button, withObject: otherButton)
+</code></pre><h4 id="selector&#x7684;&#x5176;&#x4ED6;&#x7528;&#x6CD5;"><a href="#selector&#x7684;&#x5176;&#x4ED6;&#x7528;&#x6CD5;" class="headerlink" title="selector&#x7684;&#x5176;&#x4ED6;&#x7528;&#x6CD5;"></a>selector&#x7684;&#x5176;&#x4ED6;&#x7528;&#x6CD5;</h4><pre><code>//&#x81EA;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;view
+class View: UIView {
+
+//button&#x5C5E;&#x6027;
+  let button: UIButton
+
+  override init(frame: CGRect) {
+    button = UIButton(type: .System)
+    button.translatesAutoresizingMaskIntoConstraints = false
+    button.setTitle(&quot;Detail&quot;, forState: .Normal)
+    button.addTarget(nil,
+                     action: Selector.showDetail,
+                     forControlEvents: .TouchUpInside)
+
+    super.init(frame: frame)
+
+    backgroundColor = UIColor.whiteColor()
+
+    addSubview(button)
+    button.centerXAnchor.constraintEqualToAnchor(centerXAnchor).active = true
+    button.centerYAnchor.constraintEqualToAnchor(centerYAnchor).active = true
+  }
+
+  required init?(coder aDecoder: NSCoder) {
+    fatalError(&quot;init(coder:) has not been implemented&quot;)
+  }
+
+}
+
+//&#x4E3A;Selector&#x6DFB;&#x52A0;&#x62D3;&#x5C55;
+//&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;static&#x5168;&#x5C40;&#x5C5E;&#x6027;&#xFF0C;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;Selector.showDetail
+//&#x6216;&#x8005;&#x76F4;&#x63A5;.showDetail
+private extension Selector {
+  static let showDetail = #selector(DetailShowable.showDetail)
+}
+
+//&#x5B9A;&#x4E49;&#x534F;&#x8BAE;&#xFF0C;&#x5728;&#x534F;&#x8BAE;&#x4E2D;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;&#x3002;&#x8C03;&#x7528;&#x534F;&#x8BAE;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;
+@objc protocol DetailShowable {
+  @objc func showDetail()
+}
+
+//&#x5177;&#x4F53;&#x4F7F;&#x7528;&#xFF0C;&#x7EE7;&#x627F;&#x81EA;&#x534F;&#x8BAE;DetailShowable&#xFF0C;&#x5B9E;&#x73B0;&#x534F;&#x8BAE;&#x65B9;&#x6CD5;&#x3002;
+
+class ViewController: UIViewController, DetailShowable {
+
+  override func loadView() {
+    view = View()
+  }
+
+  func showDetail() {
+    navigationController?.pushViewController(DetailViewController(), animated: true)
+  }
+}
+</code></pre>
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/11/Swift可选类型/" itemprop="url">
                   Swift可选类型
                 </a>
@@ -1376,180 +1581,6 @@ var sm7 = SuperMan7(name: &quot;lnj&quot;)
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/10/Swift继承/" itemprop="url">
-                  Swift继承
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-10T11:33:25+08:00" content="2016-05-10">
-              2016-05-10
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Swift语法/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift语法</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/10/Swift继承/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/10/Swift继承/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/05/10/Swift继承/" class="leancloud_visitors" data-flag-title="Swift继承">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>&#x7EE7;&#x627F;:&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x6700;&#x663E;&#x8457;&#x7684;&#x4E00;&#x4E2A;&#x7279;&#x6027;, &#x7EE7;&#x627F;&#x662F;&#x4ECE;&#x5DF2;&#x7ECF;&#x6709;&#x7684;&#x7C7B;&#x4E2D;&#x6D3E;&#x751F;&#x51FA;&#x65B0;&#x7684;&#x7C7B;&#x3002;&#x65B0;&#x7684;&#x7C7B;&#x80FD;&#x591F;&#x7EE7;&#x627F;&#x5DF2;&#x6709;&#x7C7B;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;, &#x5E76;&#x80FD;&#x6269;&#x5C55;&#x65B0;&#x7684;&#x80FD;&#x529B;</p>
-<p>&#x8BED;&#x6CD5;:</p>
-<pre><code>class &#x5B50;&#x7C7B;: &#x7236;&#x7C7B;{
-
-}
-</code></pre><p>&#x7EE7;&#x627F;&#x6709;&#x70B9;: &#x4EE3;&#x7801;&#x91CD;&#x7528;<br>&#x7EE7;&#x627F;&#x7F3A;&#x70B9;: &#x589E;&#x52A0;&#x7A0B;&#x5E8F;&#x8026;&#x5408;&#x5EA6;, &#x7236;&#x7C7B;&#x6539;&#x53D8;&#x4F1A;&#x5F71;&#x54CD;&#x5B50;&#x7C7B;<br>&#x6CE8;&#x610F;:Swift&#x548C;OC&#x4E00;&#x6837;&#x6CA1;&#x6709;&#x591A;&#x7EE7;&#x627F;</p>
-<p>super&#x5173;&#x952E;&#x5B57;:</p>
-<p>&#x6D3E;&#x751F;&#x7C7B;&#x4E2D;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;super&#x5173;&#x952E;&#x5B57;&#x6765;&#x5F15;&#x7528;&#x7236;&#x7C7B;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;</p>
-<p>&#x65B9;&#x6CD5;&#x91CD;&#x5199;: override<br>&#x91CD;&#x5199;&#x7236;&#x7C7B;&#x65B9;&#x6CD5;, &#x5FC5;&#x987B;&#x52A0;&#x4E0A;override&#x5173;&#x952E;&#x5B57;</p>
-<pre><code>// override&#x5173;&#x952E;&#x5B57;&#x4E3B;&#x8981;&#x662F;&#x4E3A;&#x4E86;&#x660E;&#x786E;&#x8868;&#x793A;&#x91CD;&#x5199;&#x7236;&#x7C7B;&#x65B9;&#x6CD5;, 
-// &#x6240;&#x4EE5;&#x5982;&#x679C;&#x8981;&#x91CD;&#x5199;&#x7236;&#x7C7B;&#x65B9;&#x6CD5;, &#x5FC5;&#x987B;&#x52A0;&#x4E0A;override&#x5173;&#x952E;&#x5B57;
-
-// &#x5B50;&#x7C7B;&#x53EF;&#x4EE5;&#x7EE7;&#x627F;&#x7236;&#x7C7B;&#x7684;&#x5C5E;&#x6027;
-</code></pre><p>&#x91CD;&#x5199;&#x5C5E;&#x6027;<br>&#x65E0;&#x8BBA;&#x662F;&#x5B58;&#x50A8;&#x5C5E;&#x6027;&#x8FD8;&#x662F;&#x8BA1;&#x7B97;&#x5C5E;&#x6027;, &#x90FD;&#x53EA;&#x80FD;&#x91CD;&#x5199;&#x4E3A;&#x8BA1;&#x7B97;&#x5C5E;&#x6027;</p>
-<pre><code>// &#x53EF;&#x4EE5;&#x5C06;&#x7236;&#x7C7B;&#x7684;&#x5B58;&#x50A8;&#x5C5E;&#x6027;&#x91CD;&#x5199;&#x4E3A;&#x8BA1;&#x7B97;&#x5C5E;&#x6027;
-// &#x4F46;&#x4E0D;&#x53EF;&#x4EE5;&#x5C06;&#x7236;&#x7C7B;&#x7684;&#x5B58;&#x50A8;&#x5C5E;&#x6027;&#x53C8;&#x91CD;&#x5199;&#x4E3A;&#x5B58;&#x50A8;&#x5C5E;&#x6027;, &#x56E0;&#x4E3A;&#x8FD9;&#x6837;&#x6CA1;&#x6709;&#x610F;&#x4E49;
-override var name:String{
-    get{
-        return &quot;zs&quot;
-    }
-    set{
-        print(&quot;SuperMan new name \(newValue)&quot;)
-    }
-}
-
-// &#x53EF;&#x4EE5;&#x5C06;&#x7236;&#x7C7B;&#x7684;&#x8BA1;&#x7B97;&#x5C5E;&#x6027;&#x91CD;&#x5199;&#x4E3A;&#x8BA1;&#x7B97;&#x5C5E;&#x6027;, &#x540C;&#x6837;&#x4E0D;&#x80FD;&#x91CD;&#x5199;&#x4E3A;&#x5B58;&#x50A8;&#x5C5E;&#x6027;
-override var age: Int { // &#x8BA1;&#x7B97;&#x5C5E;&#x6027;
-    get{
-        return 30
-    }
-    set{
-        print(&quot;superMan new age \(newValue)&quot;)
-    }
-}
-</code></pre><p>&#x91CD;&#x5199;&#x5C5E;&#x6027;&#x7684;&#x9650;&#x5236;</p>
-<ol>
-<li>&#x8BFB;&#x5199;&#x8BA1;&#x7B97;&#x5C5E;&#x6027;/&#x5B58;&#x50A8;&#x5C5E;&#x6027;, &#x662F;&#x5426;&#x53EF;&#x4EE5;&#x91CD;&#x5199;&#x4E3A;&#x53EA;&#x8BFB;&#x8BA1;&#x7B97;&#x5C5E;&#x6027;? (&#x6743;&#x9650;&#x53D8;&#x5C0F;)&#x4E0D;&#x53EF;&#x4EE5;</li>
-<li>&#x53EA;&#x8BFB;&#x8BA1;&#x7B97;&#x5C5E;&#x6027;, &#x662F;&#x5426;&#x53EF;&#x4EE5;&#x5728;&#x91CD;&#x5199;&#x65F6;&#x53D8;&#x6210;&#x8BFB;&#x5199;&#x8BA1;&#x7B97;&#x5C5E;&#x6027;? (&#x6743;&#x9650;&#x53D8;&#x5927;)&#x53EF;&#x4EE5;</li>
-<li>&#x53EA;&#x9700;</li>
-</ol>
-<p>&#x91CD;&#x5199;&#x5C5E;&#x6027;&#x89C2;&#x5BDF;&#x5668;</p>
-<p>&#x53EA;&#x80FD;&#x7ED9;&#x975E;lazy&#x5C5E;&#x6027;&#x7684;&#x53D8;&#x91CF;&#x5B58;&#x50A8;&#x5C5E;&#x6027;&#x8BBE;&#x5B9A;&#x5C5E;&#x6027;&#x89C2;&#x5BDF;&#x5668;, </p>
-<p>&#x4E0D;&#x80FD;&#x7ED9;&#x8BA1;&#x7B97;&#x5C5E;&#x6027;&#x8BBE;&#x7F6E;&#x5C5E;&#x6027;&#x89C2;&#x5BDF;&#x5668;,&#x7ED9;&#x8BA1;&#x7B97;&#x5C5E;&#x6027;&#x8BBE;&#x7F6E;&#x5C5E;&#x6027;&#x89C2;&#x5BDF;&#x5668;&#x6CA1;&#x6709;&#x610F;&#x4E49;</p>
-<p>&#x5C5E;&#x6027;&#x89C2;&#x5BDF;&#x5668;&#x9650;&#x5236;:</p>
-<pre><code>1.&#x4E0D;&#x80FD;&#x5728;&#x5B50;&#x7C7B;&#x4E2D;&#x91CD;&#x5199;&#x7236;&#x7C7B;&#x53EA;&#x8BFB;&#x7684;&#x5B58;&#x50A8;&#x5C5E;&#x6027;
-2.&#x4E0D;&#x80FD;&#x7ED9;lazy&#x7684;&#x5C5E;&#x6027;&#x8BBE;&#x7F6E;&#x5C5E;&#x6027;&#x89C2;&#x5BDF;&#x5668;
-</code></pre>
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1595,7 +1626,7 @@ override var age: Int { // &#x8BA1;&#x7B97;&#x5C5E;&#x6027;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-count">34</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1612,7 +1643,7 @@ override var age: Int { // &#x8BA1;&#x7B97;&#x5C5E;&#x6027;
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
