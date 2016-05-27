@@ -279,6 +279,286 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/23/Launch-Once与Dispatch-Once/" itemprop="url">
+                  Launch Once与Dispatch Once
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-23T12:11:22+08:00" content="2016-04-23">
+              2016-04-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Object-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Object-C</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/23/Launch-Once与Dispatch-Once/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/23/Launch-Once与Dispatch-Once/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/04/23/Launch-Once与Dispatch-Once/" class="leancloud_visitors" data-flag-title="Launch Once与Dispatch Once">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="&#x4E00;&#x3001;Launch-Once&#xFF1A;&#x5728;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#xFF0C;&#x65B9;&#x6CD5;&#x503C;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;"><a href="#&#x4E00;&#x3001;Launch-Once&#xFF1A;&#x5728;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#xFF0C;&#x65B9;&#x6CD5;&#x503C;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;" class="headerlink" title="&#x4E00;&#x3001;Launch Once&#xFF1A;&#x5728;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#xFF0C;&#x65B9;&#x6CD5;&#x503C;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;"></a>&#x4E00;&#x3001;Launch Once&#xFF1A;&#x5728;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#xFF0C;&#x65B9;&#x6CD5;&#x503C;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;</h4><pre><code>- (void)launchOnce {
+    // _cmd&#xFF1A;&#x5F53;&#x524D;&#x65B9;&#x6CD5;&#x540D;&#x79F0;
+    if (objc_getAssociatedObject(self, _cmd)) return;
+
+    objc_setAssociatedObject(self, _cmd, @&quot;Launched&quot;, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+
+    NSLog(@&quot;launch only once&quot;);
+}
+</code></pre><p>&#x539F;&#x7406;&#x5206;&#x6790;&#x5206;&#x6790;&#xFF1A;</p>
+<p>1.&#x5728;&#x6267;&#x884C;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x5224;&#x65AD;&#x662F;&#x5426;&#x5C06;&#x65B9;&#x6CD5;&#x5173;&#x8054;&#x8D77;&#x6765;&#x3002;</p>
+<p>2.&#x7B2C;&#x4E00;&#x6B21;&#x8C03;&#x7528;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8FD8;&#x6CA1;&#x6709;&#x5C06;&#x65B9;&#x6CD5;&#x5173;&#x8054;&#x8D77;&#x6765;&#xFF0C;&#x5219;&#x5EFA;&#x7ACB;&#x5173;&#x8054;&#x3002;</p>
+<p>3.&#x6267;&#x884C;&#x65B9;&#x6CD5;&#x7684;&#x4EE3;&#x7801;&#x3002;</p>
+<p>4.&#x7B2C;&#x4E8C;&#x6B21;&#x8C03;&#x7528;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x5224;&#x65AD;&#x5DF2;&#x5C06;&#x8BE5;&#x65B9;&#x6CD5;&#x5173;&#x8054;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;&#x3002;</p>
+<h4 id="&#x4E8C;&#x3001;Dispatch-Once-&#x5728;&#x5E94;&#x7528;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#x4EE3;&#x7801;&#x5FEB;&#x53EA;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;"><a href="#&#x4E8C;&#x3001;Dispatch-Once-&#x5728;&#x5E94;&#x7528;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#x4EE3;&#x7801;&#x5FEB;&#x53EA;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;" class="headerlink" title="&#x4E8C;&#x3001;Dispatch Once:&#x5728;&#x5E94;&#x7528;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#x4EE3;&#x7801;&#x5FEB;&#x53EA;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;"></a>&#x4E8C;&#x3001;Dispatch Once:&#x5728;&#x5E94;&#x7528;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#x4EE3;&#x7801;&#x5FEB;&#x53EA;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;</h4><pre><code>static dispatch_once_t onceToken;
+dispatch_once(&amp;onceToken, ^{
+
+});
+</code></pre><p>&#x7B80;&#x7B54;&#x5206;&#x6790;&#xFF1A;&#x6211;&#x4EEC;&#x5E38;&#x7528;&#x7684;Dispatch Once&#x4F7F;&#x7528;statc&#x53D8;&#x91CF;&#x4F5C;&#x4E3A;onceToken&#xFF0C;&#x6240;&#x4EE5;&#x4F1A;&#x5728;App&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x5185;&#x503C;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;</p>
+<p><a href="http://www.dreamingwish.com/article/gcd-guide-dispatch-once-1.html" target="_blank" rel="external">Dispatch Once&#x7684;&#x5185;&#x90E8;&#x8BBE;&#x8BA1;</a></p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/23/iOS学习分享/" itemprop="url">
+                  iOS学习分享
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-23T12:09:12+08:00" content="2016-04-23">
+              2016-04-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术分享/" itemprop="url" rel="index">
+                    <span itemprop="name">技术分享</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/23/iOS学习分享/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/23/iOS学习分享/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/04/23/iOS学习分享/" class="leancloud_visitors" data-flag-title="iOS学习分享">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>&#x738B;&#x5DCD; (@onevcat)&#x535A;&#x5BA2;:<a href="https://onevcat.com" target="_blank" rel="external">https://onevcat.com</a></p>
+<p>Swift&#x7FFB;&#x8BD1;&#x7EC4;:<a href="http://swift.gg/" target="_blank" rel="external">http://swift.gg/</a></p>
+<p>&#x5F00;&#x53D1;&#x8005;&#x3001;&#x9879;&#x76EE;&#x3001;&#x6700;&#x4F73;&#x5B9E;&#x8DF5;:<a href="https://github.com/ipader/SwiftGuide/wiki/%E5%BC%80%E5%8F%91%E8%80%85%E3%80%81%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5" target="_blank" rel="external">https://github.com/ipader/SwiftGuide/wiki/%E5%BC%80%E5%8F%91%E8%80%85%E3%80%81%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5</a></p>
+<h3 id="&#x5B9E;&#x7528;&#x7F51;&#x7AD9;&#x5907;&#x4EFD;"><a href="#&#x5B9E;&#x7528;&#x7F51;&#x7AD9;&#x5907;&#x4EFD;" class="headerlink" title="&#x5B9E;&#x7528;&#x7F51;&#x7AD9;&#x5907;&#x4EFD;"></a>&#x5B9E;&#x7528;&#x7F51;&#x7AD9;&#x5907;&#x4EFD;</h3><p>iOS App&#x9884;&#x89C8;&#x56FE;&#xFF1A;<a href="https://appscreens.io/" target="_blank" rel="external">https://appscreens.io/</a></p>
+<p>&#x90AE;&#x7BB1;&#x5934;&#x50CF;&#xFF1A;<a href="http://en.gravatar.com/" target="_blank" rel="external">http://en.gravatar.com/</a></p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/22/应用备份/" itemprop="url">
                   应用备份
                 </a>
@@ -825,269 +1105,6 @@ p.name = @&quot;&#x5F20;&#x4E09;&quot;;
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/21/iOS开发技巧/" itemprop="url">
-                  iOS开发技巧
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-21T15:49:40+08:00" content="2016-04-21">
-              2016-04-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Object-C/" itemprop="url" rel="index">
-                    <span itemprop="name">Object-C</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/21/iOS开发技巧/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/21/iOS开发技巧/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/04/21/iOS开发技巧/" class="leancloud_visitors" data-flag-title="iOS开发技巧">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Xcode-IB&#x5C0F;&#x6280;&#x5DE7;"><a href="#Xcode-IB&#x5C0F;&#x6280;&#x5DE7;" class="headerlink" title="Xcode IB&#x5C0F;&#x6280;&#x5DE7;"></a>Xcode IB&#x5C0F;&#x6280;&#x5DE7;</h3><p>1.&#x53EF;&#x89C6;&#x5316;&#x5750;&#x6807;&#x8DDD;&#x79BB;&#x3002;&#x6211;&#x4EEC;&#x4F7F;&#x7528;StroyBoard&#x6216;&#x8005;Xib&#x6765;&#x5E03;&#x5C40;&#x754C;&#x9762;&#x65F6;&#xFF0C;&#x5F53;&#x9700;&#x8981;&#x8BA1;&#x7B97;&#x4E24;&#x4E2A;&#x89C6;&#x56FE;&#x7684;&#x8DDD;&#x79BB;&#xFF0C;&#x5206;&#x522B;&#x8BB0;&#x4E0B;&#x4E24;&#x4E2A;&#x89C6;&#x56FE;&#x7684;&#x5750;&#x6807;&#x503C;&#xFF0C;&#x7136;&#x540E;&#x624B;&#x52A8;&#x8BA1;&#x7B97;&#x89C6;&#x56FE;&#x95F4;&#x7684;&#x8DDD;&#x79BB;&#x3002;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x786E;&#x5B9E;&#x80FD;&#x7B97;&#x51FA;&#x4E24;&#x4E2A;&#x89C6;&#x56FE;&#x4E4B;&#x95F4;&#x7684;&#x8DDD;&#x79BB;&#xFF0C;&#x4F46;&#x660E;&#x663E;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x4E0D;&#x591F;&#x4F18;&#x96C5;&#x3002;Xcode&#x7684;IB&#x63D0;&#x4F9B;&#x53EF;&#x89C6;&#x5316;&#x8DDD;&#x79BB;&#x7684;&#x663E;&#x793A;&#xFF0C;&#x9F20;&#x6807;<code>&#x5355;&#x51FB;</code>&#x9009;&#x4E2D;&#x7B2C;&#x4E00;&#x4E2A;&#x8BD5;&#x56FE;,&#x6309;&#x4F4F;<code>Option</code>&#x952E;&#xFF0C;&#x9F20;&#x6807;&#x79FB;&#x52A8;&#x5230;&#x7B2C;&#x4E8C;&#x4E2A;&#x8BD5;&#x56FE;&#x4E0A;&#xFF0C;&#x4FBF;&#x53EF;&#x4EE5;&#x663E;&#x793A;&#x7B2C;&#x4E00;&#x4E2A;&#x89C6;&#x56FE;&#x76F8;&#x5BF9;&#x4E8E;&#x53E6;&#x4E00;&#x4E2A;&#x8BD5;&#x56FE;&#x7684;&#x8DDD;&#x79BB;&#x3002;</p>
-<p><img src="/2016/04/21/iOS&#x5F00;&#x53D1;&#x6280;&#x5DE7;/IB-tip1.png" alt="&#x6548;&#x679C;&#x56FE;"></p>
-<p>2.&#x663E;&#x793A;view&#x7684;&#x5C42;&#x6B21;&#x7ED3;&#x6784;&#x3002;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x67E5;&#x770B;&#x4E00;&#x4E2A;&#x8BD5;&#x56FE;&#x7684;&#x5C42;&#x6B21;&#x7ED3;&#x6784;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x5DE6;&#x4FA7;&#x7684;&#x5C42;&#x6B21;&#x7ED3;&#x6784;&#x8868;&#x4E2D;&#x67E5;&#x770B;&#x3002;&#x5F53;&#x4E00;&#x4E2A;&#x89C6;&#x56FE;&#x7684;&#x5C42;&#x6B21;&#x7ED3;&#x6784;&#x6BD4;&#x8F83;&#x590D;&#x6742;&#x65F6;&#xFF0C;&#x5219;&#x9700;&#x8981;&#x5728;&#x5DE6;&#x4FA7;&#x7684;&#x5C42;&#x7EA7;&#x83DC;&#x5355;&#x4E00;&#x7EA7;&#x4E00;&#x7EA7;&#x7684;&#x70B9;&#x51FB;&#x8FDB;&#x53BB;&#x3002;&#x5F53;&#x7136;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5FEB;&#x6377;&#x952E;&#x6765;&#x663E;&#x793A;&#x4E00;&#x4E2A;view&#x5728;&#x5F53;&#x524D;&#x7684;Xib&#x4E2D;&#x7684;&#x5C42;&#x6B21;&#x7ED3;&#x6784;&#x3002;&#x5FEB;&#x6377;&#x952E;&#x4E3A;<code>control</code>+<code>shift</code>&#x3002;</p>
-<p><img src="/2016/04/21/iOS&#x5F00;&#x53D1;&#x6280;&#x5DE7;/IB-tip2.png" alt="&#x6548;&#x679C;&#x56FE;"></p>
-<p>3.&#x6DFB;&#x52A0;&#x8F85;&#x52A9;&#x7EBF;&#x3002;&#x5BF9;&#x4E8E;&#x505A;&#x8BBE;&#x8BA1;&#x7684;&#x540C;&#x5B66;&#x6765;&#x5B66;&#xFF0C;&#x8F85;&#x52A9;&#x7EBF;&#x662F;&#x4E00;&#x4E2A;&#x5FC5;&#x4E0D;&#x53EF;&#x5C11;&#x7684;&#x5229;&#x5668;&#x3002;&#x9009;&#x4E2D;&#x67D0;&#x4E2A;&#x89C6;&#x56FE;&#xFF0C;&#x540C;&#x65F6;&#x6309;&#x4F4F;<code>cmd</code>+<code>shift</code>+<code>|</code>&#xFF0C;&#x5C31;&#x4F1A;&#x5728;&#x9009;&#x4E2D;&#x7684;&#x4E2D;&#x95F4;&#x6DFB;&#x52A0;&#x4E00;&#x6761;&#x8F85;&#x52A9;&#x7EBF;&#x3002;&#x5F53;&#x628A;&#x9F20;&#x6807;&#x653E;&#x5728;&#x663E;&#x793A;&#x7684;&#x8F85;&#x52A9;&#x7EBF;&#x5F80;&#x5DE6;&#x6216;&#x8005;&#x53F3;&#x62D6;&#x62FD;&#x5C31;&#x53EF;&#x4EE5;&#x6DFB;&#x52A0;&#x66F4;&#x591A;&#x7684;&#x8F85;&#x52A9;&#x7EBF;&#xFF0C;&#x5F53;&#x4E0D;&#x9700;&#x8981;&#x8F85;&#x52A9;&#x7EBF;&#x65F6;&#xFF0C;&#x628A;&#x8F85;&#x52A9;&#x7EBF;&#x5F80;&#x5916;&#x62D6;&#x5C31;&#x4F1A;&#x628A;&#x8F85;&#x52A9;&#x7EBF;&#x7ED9;&#x9500;&#x6BC1;&#x3002;</p>
-<p><img src="/2016/04/21/iOS&#x5F00;&#x53D1;&#x6280;&#x5DE7;/IB-tip3.png" alt="&#x6548;&#x679C;&#x56FE;"></p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/14/ReactiveCocoa基础篇/" itemprop="url">
-                  ReactiveCocoa基础篇
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-14T09:23:16+08:00" content="2016-04-14">
-              2016-04-14
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Object-C/" itemprop="url" rel="index">
-                    <span itemprop="name">Object-C</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/14/ReactiveCocoa基础篇/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/14/ReactiveCocoa基础篇/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/04/14/ReactiveCocoa基础篇/" class="leancloud_visitors" data-flag-title="ReactiveCocoa基础篇">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://github.com/ReactiveCocoa/ReactiveCocoa" target="_blank" rel="external">ReactiveCocoa</a>(&#x7B80;&#x79F0;&#x4E3A;<code>RAC</code>)&#xFF1A;&#x662F;github&#x4E0A;&#x5F00;&#x6E90;&#x7684;iOS&#x548C;OS&#x6846;&#x67B6;&#x3002;</p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1133,7 +1150,7 @@ p.name = @&quot;&#x5F20;&#x4E09;&quot;;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-count">38</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1150,7 +1167,7 @@ p.name = @&quot;&#x5F20;&#x4E09;&quot;;
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -279,6 +279,512 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/06/Swift函数/" itemprop="url">
+                  Swift函数
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-06T10:19:40+08:00" content="2016-05-06">
+              2016-05-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift语法/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift语法</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/06/Swift函数/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/06/Swift函数/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/06/Swift函数/" class="leancloud_visitors" data-flag-title="Swift函数">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>&#x51FD;&#x6570;:&#x5B8C;&#x6210;&#x7279;&#x5B9A;&#x529F;&#x80FD;&#x7684;&#x4EE3;&#x7801;&#x5757;&#x3002;&#x7ED9;&#x51FD;&#x6570;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x6709;&#x610F;&#x4E49;&#x7684;&#x540D;&#x5B57;&#xFF0C;&#x5728;&#x5408;&#x9002;&#x7684;&#x65F6;&#x5019;&#x8C03;&#x7528;&#x3002;</p>
+<p>&#x5B9A;&#x4E49;:<br>func &#x51FD;&#x6570;&#x540D;&#x79F0;(&#x53C2;&#x6570;&#x540D;:&#x53C2;&#x6570;&#x7C7B;&#x578B;, &#x53C2;&#x6570;&#x540D;:&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x2026;) -&gt; &#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x503C; {&#x51FD;&#x6570;&#x5B9E;&#x73B0;&#x90E8;&#x5206;}</p>
+<pre><code>//&#x65E0;&#x8FD4;&#x56DE;&#x503C;
+func say() -&gt; Void{
+    print(&quot;hello&quot;)
+}
+
+func say() {
+    print(&quot;hello&quot;)
+}
+
+//&#x6709;&#x53C2;&#x65E0;&#x8FD4;&#x56DE;&#x503C;
+func sayWith(name:String) {
+    print(&quot;hello \(name)&quot;)
+}
+
+//&#x65E0;&#x53C2;&#x6709;&#x8FD4;&#x56DE;&#x503C;
+func personInfo() -&gt; (String,Int) {
+    return (&quot;zhangsan&quot;,23)
+}
+
+//&#x6709;&#x53C2;&#x6709;&#x8FD4;&#x56DE;&#x503C;
+func info(name:String, age:Int) -&gt; String
+{
+    return &quot;name = \(name), age = \(age)&quot;
+}
+
+//&#x51FD;&#x6570;&#x5D4C;&#x5957;
+func bubbleSort(inout array:[Int]) -&gt; Void {
+
+    //&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x4EA4;&#x6362;&#x51FD;&#x6570;
+    func swap(inout a:Int,inout b:Int)
+    {
+        let temp = a
+        a = b
+        b = temp
+    }
+
+    let count = array.count
+
+    for i in 1..&lt;count {
+        for j in 0 ..&lt; (count-i) {
+            if array[j]&gt;array[j+1]
+            {
+                swap(&amp;array[j], b: &amp;array[j+1])
+            }
+        }
+    }
+
+}
+
+//&#x8981;&#x4F7F;&#x7528;inout&#x5FC5;&#x987B;&#x662F;&#x53D8;&#x91CF;&#xFF0C;&#x56E0;&#x4E3A;inout&#x4F1A;&#x6539;&#x53D8;&#x503C;
+var array = [54,43,6,63,23,1,52]
+bubbleSort(&amp;array)
+</code></pre><h4 id="&#x51FD;&#x6570;&#x53C2;&#x6570;"><a href="#&#x51FD;&#x6570;&#x53C2;&#x6570;" class="headerlink" title="&#x51FD;&#x6570;&#x53C2;&#x6570;"></a>&#x51FD;&#x6570;&#x53C2;&#x6570;</h4><ol>
+<li>&#x51FD;&#x6570;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x9ED8;&#x8BA4;&#x662F;&#x5185;&#x90E8;&#x53C2;&#x6570;&#xFF0C;&#x4E4B;&#x540E;&#x7684;&#x53C2;&#x6570;&#x5373;&#x662F;&#x5185;&#x90E8;&#x53C2;&#x6570;&#x4E5F;&#x662F;&#x5916;&#x90E8;&#x53C2;&#x6570;&#x3002;</li>
+<li>&#x81EA;&#x5B9A;&#x4E49;&#x5916;&#x90E8;&#x53C2;&#x6570;&#xFF0C;&#x5728;&#x5185;&#x90E8;&#x53C2;&#x6570;&#x524D;&#x52A0;&#x5916;&#x90E8;&#x53C2;&#x6570;&#x548C;&#x7A7A;&#x683C;</li>
+<li>Swift2.0&#x8FC7;&#x65F6;,&#x5728;&#x53C2;&#x6570;&#x524D;&#x9762;&#x52A0;&#x4E0A;#&#x76F8;&#x5F53;&#x4E8E;&#x8BE5;&#x53C2;&#x6570;&#x5373;&#x662F;&#x5185;&#x90E8;&#x53C2;&#x6570;, &#x4E5F;&#x662F;&#x5916;&#x90E8;&#x53C2;&#x6570;</li>
+<li>&#x53C2;&#x6570;&#x9ED8;&#x8BA4;&#x503C;&#xFF0C;&#x5728;&#x5B9A;&#x4E49;&#x51FD;&#x6570;&#x7684;&#x65F6;&#x5019;&#x7ED9;&#x67D0;&#x4E2A;&#x53C2;&#x6570;&#x8D4B;&#x503C;, &#x5F53;&#x5916;&#x90E8;&#x8C03;&#x7528;&#x6CA1;&#x6709;&#x4F20;&#x9012;&#x8BE5;&#x53C2;&#x6570;&#x65F6;&#x4F1A;&#x81EA;&#x52A8;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x503C;</li>
+<li>&#x5728;&#x5176;&#x5B83;&#x8BED;&#x8A00;&#x4E2D;&#x9ED8;&#x8BA4;&#x53C2;&#x6570;&#x667A;&#x80FD;&#x51FA;&#x73B0;&#x5728;&#x53C2;&#x6570;&#x5217;&#x8868;&#x7684;&#x6700;&#x540E;&#x9762;, &#x4F46;&#x662F;&#x5728;Swift&#x4E2D;&#x53EF;&#x4EE5;&#x51FA;&#x73B0;&#x5728;&#x4EFB;&#x4F55;&#x4F4D;&#x7F6E;</li>
+<li>inout&#x53C2;&#x6570;, &#x5982;&#x679C;&#x60F3;&#x5728;&#x51FD;&#x6570;&#x4E2D;&#x4FEE;&#x6539;&#x5916;&#x754C;&#x4F20;&#x5165;&#x7684;&#x53C2;&#x6570;, &#x4F20;&#x9012;&#x53C2;&#x6570;&#x672C;&#x8EAB;&#x800C;&#x4E0D;&#x662F;&#x53C2;&#x6570;&#x7684;&#x503C;</li>
+<li>&#x2026;&#x8868;&#x793A;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x6709;&#x591A;&#x4E2A;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#x6570;&#x7EC4;&#x3002;&#x53D8;&#x53C2;&#x5FC5;&#x987B;&#x653E;&#x5230;&#x51FD;&#x6570;&#x5217;&#x8868;&#x7684;&#x6700;&#x540E;&#x3002;</li>
+</ol>
+<p>eg:</p>
+<pre><code>dividend&#x548C;divisor&#x90FD;&#x662F;&#x5916;&#x90E8;&#x53C2;&#x6570;&#xFF0C;a&#x548C;b&#x662F;&#x5185;&#x90E8;&#x53C2;&#x6570;
+func divisionOpertaion(dividend a: Double, divisor b:Double) -&gt; Double{
+    return a / b
+}
+
+//&#x53C2;&#x6570;&#x9ED8;&#x8BA4;&#x503C;&#x7684;&#x4F7F;&#x7528;
+func calculateWith(number1 a:Int,andNumber b:Int = 10) -&gt; Int {
+    return a+b
+}
+
+let a = calculateWith(number1: 8)
+</code></pre><h4 id="&#x51FD;&#x6570;&#x7C7B;&#x578B;"><a href="#&#x51FD;&#x6570;&#x7C7B;&#x578B;" class="headerlink" title="&#x51FD;&#x6570;&#x7C7B;&#x578B;"></a>&#x51FD;&#x6570;&#x7C7B;&#x578B;</h4><p>&#x51FD;&#x6570;&#x7684;&#x7C7B;&#x578B;&#x662F;&#x7531;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x548C;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x7C7B;&#x578B;&#x7EC4;&#x6210;&#x3002;<br>&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x51FD;&#x6570;&#x7C7B;&#x578B;&#x6765;&#x5B9A;&#x4E49;&#x5E38;&#x4EAE;&#x548C;&#x53D8;&#x91CF;&#x3002;</p>
+<pre><code>//&#x51FD;&#x6570;&#x7684;&#x7C7B;&#x578B;&#x4E3A;(Double,Double)-&gt;Double
+func divisionOpertaion(dividend a: Double, divisor b:Double) -&gt; Double{
+    return a / b
+}
+
+//&#x51FD;&#x6570;&#x7C7B;&#x578B;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x5728;&#x51FD;&#x6570;&#x5185;&#x90E8;&#x8C03;&#x7528;
+func calFunc(a: Int, b: Int ,Option:(Int, Int) -&gt; Int) -&gt;Int
+{
+    return Option(a, b)
+}
+
+//&#x51FD;&#x6570;&#x7C7B;&#x578B;&#x4F5C;&#x4E3A;&#x8FD4;&#x56DE;&#x503C;
+func max(a:Int,b:Int) -&gt; Int {
+    return a&gt;b ? a:b
+}
+
+func min(a:Int,b:Int) -&gt; Int {
+    return a&lt;b ? a:b
+}
+
+func getMax(getMax:Bool) -&gt; (Int,Int)-&gt;Int {
+    return getMax ? max : min
+}
+
+let choose = getMax(true)
+
+choose(12,3)
+</code></pre>
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/05/Swift分支/" itemprop="url">
+                  Swift分支
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-05T10:12:02+08:00" content="2016-05-05">
+              2016-05-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift语法/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift语法</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/05/Swift分支/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/05/Swift分支/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/05/Swift分支/" class="leancloud_visitors" data-flag-title="Swift分支">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="if&#x5206;&#x652F;"><a href="#if&#x5206;&#x652F;" class="headerlink" title="if&#x5206;&#x652F;"></a>if&#x5206;&#x652F;</h4><p>if &#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F; {&#x6307;&#x4EE4;}   if &#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F; {&#x6307;&#x4EE4;} else{&#x6307;&#x4EE4;}</p>
+<ol>
+<li>if&#x540E;&#x7684;&#x5706;&#x62EC;&#x53F7;&#x53EF;&#x4EE5;&#x7701;&#x7565;</li>
+<li>&#x53EA;&#x80FD;&#x4EE5;bool&#x4F5C;&#x4E3A;&#x6761;&#x4EF6;&#x8BED;&#x53E5;</li>
+<li>&#x5982;&#x679C;&#x53EA;&#x6709;&#x6761;&#x6307;&#x4EE4;if&#x540E;&#x9762;&#x7684;&#x5927;&#x62EC;&#x53F7;&#x4E0D;&#x53EF;&#x4EE5;&#x7701;&#x7565;</li>
+</ol>
+<p>eg:</p>
+<pre><code>var i:Int = 0
+var sum:Int = 0
+while (i &lt;= 10)
+{
+    sum = i++
+}
+print(&quot;\(sum)&quot;)
+
+var i1:Int = 0
+var sum1:Int = 0
+while i1 &lt;= 10
+{
+    sum1 = i1++
+}
+print(&quot;\(sum1)&quot;)
+</code></pre><h4 id="while&#x5FAA;&#x73AF;"><a href="#while&#x5FAA;&#x73AF;" class="headerlink" title="while&#x5FAA;&#x73AF;"></a>while&#x5FAA;&#x73AF;</h4><ol>
+<li>while&#x540E;&#x7684;&#x5706;&#x62EC;&#x53F7;&#x53EF;&#x4EE5;&#x7701;&#x7565;</li>
+<li>&#x53EA;&#x80FD;&#x4EE5;bool&#x4F5C;&#x4E3A;&#x6761;&#x4EF6;&#x8BED;&#x53E5;</li>
+<li>&#x5982;&#x679C;&#x53EA;&#x6709;&#x6761;&#x6307;&#x4EE4;while&#x540E;&#x9762;&#x7684;&#x5927;&#x62EC;&#x53F7;&#x4E0D;&#x53EF;&#x4EE5;&#x7701;&#x7565;</li>
+</ol>
+<p>eg:</p>
+<pre><code>var i:Int = 0
+var sum:Int = 0
+while (i &lt;= 10)
+{
+    sum = i++
+}
+print(&quot;\(sum)&quot;)
+</code></pre><p>OC&#x4E2D;&#x7684;do while&#x76F8;&#x5F53;&#x4E8E;Swift&#x4E2D;repeat<br>Swift2.0&#x4E4B;&#x540E;&#x53D8;&#x4E3A; repeat while, do&#x7528;&#x4E8E;&#x6355;&#x6349;&#x5F02;&#x5E38;.</p>
+<pre><code>var i2:Int = 0
+var sum2:Int = 0
+repeat{
+    sum2 = i2++;
+}while(i2 &lt;= 10)
+print(sum2)
+
+var i3:Int = 0
+var sum3:Int = 0
+repeat{
+    sum3 = i3++;
+}while i3 &lt;= 10
+print(sum3)
+</code></pre><h4 id="for&#x5FAA;&#x73AF;"><a href="#for&#x5FAA;&#x73AF;" class="headerlink" title="for&#x5FAA;&#x73AF;"></a>for&#x5FAA;&#x73AF;</h4><pre><code>var sum:Int = 0
+for var i = 0 ; i &lt;= 10 ; i++
+{
+    sum = i++
+}
+
+//i++,i-- &#x5728;swift3.0&#x4E2D;&#x5C06;&#x4E0D;&#x518D;&#x4F7F;&#x7528;&#xFF0C;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;&#x4E0B;&#x9762;&#x7684;&#x8BED;&#x6CD5;&#x6765;&#x8FDB;&#x884C;&#x5FAA;&#x73AF;&#x3002;
+for i in 0...10 {
+
+}
+</code></pre><h4 id="break&#x3001;continue"><a href="#break&#x3001;continue" class="headerlink" title="break&#x3001;continue"></a>break&#x3001;continue</h4><ol>
+<li>break&#x7ED3;&#x675F;&#x5F53;&#x524D;&#x5FAA;&#x73AF;&#x3002;</li>
+<li>continue&#x5FFD;&#x7565;continue&#x540E;&#x9762;&#x7684;&#x8BED;&#x53E5;&#x3002;</li>
+</ol>
+<h4 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h4><p>&#x7279;&#x70B9;&#xFF1A;</p>
+<ol>
+<li>&#x9ED8;&#x8BA4;&#x4E0D;&#x53EF;&#x4EE5;&#x7A7F;&#x900F;&#xFF0C;&#x4F7F;&#x7528;&#x5173;&#x952E;&#x5B57;fallthrough&#x4F7F;&#x8BED;&#x53E5;&#x7A7F;&#x900F;</li>
+<li>&#x53EF;&#x4EE5;&#x4E0D;&#x5199;break</li>
+<li>&#x5FC5;&#x987B;&#x6709;default</li>
+<li>&#x5728;case&#x4E2D;&#x5B9A;&#x4E49;&#x53D8;&#x91CF;&#x53EF;&#x4EE5;&#x4E0D;&#x7528;&#x52A0;&#x5927;&#x62EC;&#x53F7;</li>
+<li>&#x53EF;&#x4EE5;&#x548C;&#x533A;&#x95F4;&#x548C;&#x5143;&#x7EC4;&#x5339;&#x914D;</li>
+<li>switch&#x7684;&#x7ED3;&#x6784;&#x76F8;&#x5BF9;&#x4E8E;if(){}else if(){}else{}</li>
+</ol>
+<p>eg.</p>
+<pre><code>var rank1 = &quot;A&quot;
+switch rank1{
+    case &quot;A&quot;, &quot;B&quot;: // &#x6CE8;&#x610F;OC&#x4E0D;&#x80FD;&#x8FD9;&#x6837;&#x5199;
+        print(&quot;&#x4F18;&quot;)
+    case &quot;C&quot;:
+        print(&quot;&#x5DEE;&quot;)
+    default:
+        print(&quot;&#x6CA1;&#x6709;&#x8BC4;&#x7EA7;&quot;)
+}
+//&#x4E24;&#x4E2A;&#x5B9E;&#x73B0;&#x7684;&#x6548;&#x679C;&#x662F;&#x4E00;&#x6837;&#x7684;
+switch (rank) {
+    case &quot;A&quot;:
+        fallthrough
+    case &quot;B&quot;:
+        NSLog(&quot;&#x4F18;&quot;);
+    case &quot;C&quot;:
+        NSLog(&quot;&#x5DEE;&quot;);
+    default:
+        NSLog(&quot;&#x6CA1;&#x6709;&#x8BC4;&#x7EA7;&quot;);
+}
+
+//&#x4E0E;&#x533A;&#x95F4;&#x5339;&#x914D;
+let aNum = 10
+
+switch aNum {
+    case 0...10:
+        print(0)
+    case 10...20:
+        print(1)
+    case 20...30:
+        print(2)
+    case 30...40:
+        print(3)
+    default:
+        print(aNum)
+}
+//&#x533A;&#x95F4;&#x4E0E;&#x5143;&#x7EC4;&#x642D;&#x914D;
+let aNum = (89,97)
+
+switch aNum {
+    case (0..&lt;60,0..&lt;60):
+        print(&quot;&#x4E0D;&#x53CA;&#x683C;&quot;)
+    case (60..&lt;70,60..&lt;70):
+        print(&quot;&#x5DEE;&quot;)
+    case (70..&lt;80,60..&lt;80):
+        print(&quot;&#x826F;&quot;)
+    case (80...100,80...100):
+        print(&quot;&#x4F18;&#x79C0;&quot;)
+    default:
+        print(aNum)
+}
+
+//&#x503C;&#x7ED1;&#x5B9A;
+var point = (1, 10)
+switch point{
+    case (var x, 10): // &#x4F1A;&#x5C06;point&#x4E2D;X&#x7684;&#x503C;&#x8D4B;&#x503C;&#x7ED9;X
+        print(&quot;x= \(x)&quot;)
+    case (var x, var y): // &#x4F1A;&#x5C06;point&#x4E2D;XY&#x7684;&#x503C;&#x8D4B;&#x503C;&#x7ED9;XY
+        print(&quot;x= \(x) y= \(y)&quot;)
+    case var( x, y):
+        print(&quot;x= \(x) y= \(y)&quot;)
+    default:
+        print(&quot;Other&quot;)
+}
+
+//&#x6839;&#x636E;&#x6761;&#x4EF6;&#x7ED1;&#x5B9A;
+var point = (100, 10)
+switch point{
+    // &#x53EA;&#x6709;where&#x540E;&#x9762;&#x7684;&#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F;&#x4E3A;&#x771F;&#x624D;&#x8D4B;&#x503C;&#x5E76;&#x6267;&#x884C;case&#x540E;&#x7684;&#x8BED;&#x53E5;
+    case var(x, y) where x &gt; y: 
+        print(&quot;x= \(x) y= \(y)&quot;)
+    default:
+        print(&quot;Other&quot;)
+}
+</code></pre>
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/25/Swift数组、字典/" itemprop="url">
                   Swift数组、字典
                 </a>
@@ -1724,286 +2230,6 @@ struct category_t {
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/23/Launch-Once与Dispatch-Once/" itemprop="url">
-                  Launch Once与Dispatch Once
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-23T12:11:22+08:00" content="2016-04-23">
-              2016-04-23
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Object-C/" itemprop="url" rel="index">
-                    <span itemprop="name">Object-C</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/23/Launch-Once与Dispatch-Once/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/23/Launch-Once与Dispatch-Once/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/04/23/Launch-Once与Dispatch-Once/" class="leancloud_visitors" data-flag-title="Launch Once与Dispatch Once">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="&#x4E00;&#x3001;Launch-Once&#xFF1A;&#x5728;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#xFF0C;&#x65B9;&#x6CD5;&#x503C;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;"><a href="#&#x4E00;&#x3001;Launch-Once&#xFF1A;&#x5728;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#xFF0C;&#x65B9;&#x6CD5;&#x503C;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;" class="headerlink" title="&#x4E00;&#x3001;Launch Once&#xFF1A;&#x5728;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#xFF0C;&#x65B9;&#x6CD5;&#x503C;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;"></a>&#x4E00;&#x3001;Launch Once&#xFF1A;&#x5728;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#xFF0C;&#x65B9;&#x6CD5;&#x503C;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;</h4><pre><code>- (void)launchOnce {
-    // _cmd&#xFF1A;&#x5F53;&#x524D;&#x65B9;&#x6CD5;&#x540D;&#x79F0;
-    if (objc_getAssociatedObject(self, _cmd)) return;
-
-    objc_setAssociatedObject(self, _cmd, @&quot;Launched&quot;, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-
-    NSLog(@&quot;launch only once&quot;);
-}
-</code></pre><p>&#x539F;&#x7406;&#x5206;&#x6790;&#x5206;&#x6790;&#xFF1A;</p>
-<p>1.&#x5728;&#x6267;&#x884C;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x5224;&#x65AD;&#x662F;&#x5426;&#x5C06;&#x65B9;&#x6CD5;&#x5173;&#x8054;&#x8D77;&#x6765;&#x3002;</p>
-<p>2.&#x7B2C;&#x4E00;&#x6B21;&#x8C03;&#x7528;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8FD8;&#x6CA1;&#x6709;&#x5C06;&#x65B9;&#x6CD5;&#x5173;&#x8054;&#x8D77;&#x6765;&#xFF0C;&#x5219;&#x5EFA;&#x7ACB;&#x5173;&#x8054;&#x3002;</p>
-<p>3.&#x6267;&#x884C;&#x65B9;&#x6CD5;&#x7684;&#x4EE3;&#x7801;&#x3002;</p>
-<p>4.&#x7B2C;&#x4E8C;&#x6B21;&#x8C03;&#x7528;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x5224;&#x65AD;&#x5DF2;&#x5C06;&#x8BE5;&#x65B9;&#x6CD5;&#x5173;&#x8054;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;&#x3002;</p>
-<h4 id="&#x4E8C;&#x3001;Dispatch-Once-&#x5728;&#x5E94;&#x7528;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#x4EE3;&#x7801;&#x5FEB;&#x53EA;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;"><a href="#&#x4E8C;&#x3001;Dispatch-Once-&#x5728;&#x5E94;&#x7528;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#x4EE3;&#x7801;&#x5FEB;&#x53EA;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;" class="headerlink" title="&#x4E8C;&#x3001;Dispatch Once:&#x5728;&#x5E94;&#x7528;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#x4EE3;&#x7801;&#x5FEB;&#x53EA;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;"></a>&#x4E8C;&#x3001;Dispatch Once:&#x5728;&#x5E94;&#x7528;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#x4EE3;&#x7801;&#x5FEB;&#x53EA;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;</h4><pre><code>static dispatch_once_t onceToken;
-dispatch_once(&amp;onceToken, ^{
-
-});
-</code></pre><p>&#x7B80;&#x7B54;&#x5206;&#x6790;&#xFF1A;&#x6211;&#x4EEC;&#x5E38;&#x7528;&#x7684;Dispatch Once&#x4F7F;&#x7528;statc&#x53D8;&#x91CF;&#x4F5C;&#x4E3A;onceToken&#xFF0C;&#x6240;&#x4EE5;&#x4F1A;&#x5728;App&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x5185;&#x503C;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;</p>
-<p><a href="http://www.dreamingwish.com/article/gcd-guide-dispatch-once-1.html" target="_blank" rel="external">Dispatch Once&#x7684;&#x5185;&#x90E8;&#x8BBE;&#x8BA1;</a></p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/23/iOS学习分享/" itemprop="url">
-                  iOS学习分享
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-23T12:09:12+08:00" content="2016-04-23">
-              2016-04-23
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术分享/" itemprop="url" rel="index">
-                    <span itemprop="name">技术分享</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/23/iOS学习分享/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/23/iOS学习分享/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/04/23/iOS学习分享/" class="leancloud_visitors" data-flag-title="iOS学习分享">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>&#x738B;&#x5DCD; (@onevcat)&#x535A;&#x5BA2;:<a href="https://onevcat.com" target="_blank" rel="external">https://onevcat.com</a></p>
-<p>Swift&#x7FFB;&#x8BD1;&#x7EC4;:<a href="http://swift.gg/" target="_blank" rel="external">http://swift.gg/</a></p>
-<p>&#x5F00;&#x53D1;&#x8005;&#x3001;&#x9879;&#x76EE;&#x3001;&#x6700;&#x4F73;&#x5B9E;&#x8DF5;:<a href="https://github.com/ipader/SwiftGuide/wiki/%E5%BC%80%E5%8F%91%E8%80%85%E3%80%81%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5" target="_blank" rel="external">https://github.com/ipader/SwiftGuide/wiki/%E5%BC%80%E5%8F%91%E8%80%85%E3%80%81%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5</a></p>
-<h3 id="&#x5B9E;&#x7528;&#x7F51;&#x7AD9;&#x5907;&#x4EFD;"><a href="#&#x5B9E;&#x7528;&#x7F51;&#x7AD9;&#x5907;&#x4EFD;" class="headerlink" title="&#x5B9E;&#x7528;&#x7F51;&#x7AD9;&#x5907;&#x4EFD;"></a>&#x5B9E;&#x7528;&#x7F51;&#x7AD9;&#x5907;&#x4EFD;</h3><p>iOS App&#x9884;&#x89C8;&#x56FE;&#xFF1A;<a href="https://appscreens.io/" target="_blank" rel="external">https://appscreens.io/</a></p>
-<p>&#x90AE;&#x7BB1;&#x5934;&#x50CF;&#xFF1A;<a href="http://en.gravatar.com/" target="_blank" rel="external">http://en.gravatar.com/</a></p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2049,7 +2275,7 @@ dispatch_once(&amp;onceToken, ^{
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-count">38</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -2066,7 +2292,7 @@ dispatch_once(&amp;onceToken, ^{
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

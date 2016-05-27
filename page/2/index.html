@@ -279,6 +279,302 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/19/Swift的Set集合/" itemprop="url">
+                  Swift的Set集合
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-19T16:30:43+08:00" content="2016-05-19">
+              2016-05-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift语法/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift语法</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/19/Swift的Set集合/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/19/Swift的Set集合/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/19/Swift的Set集合/" class="leancloud_visitors" data-flag-title="Swift的Set集合">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>//: &#x96C6;&#x5408;(Set): &#x503C;&#x65E0;&#x5E8F;&#x4E0D;&#x91CD;&#x590D;. </p>
+<p>//:  - &#x5B9A;&#x4E49;: Set&lt;&#x5143;&#x7D20;&#x7C7B;&#x578B;&gt;<br>//let &#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7; : Set<string></string></p>
+<p>//:  - &#x7528;&#x6570;&#x7EC4;&#x5B57;&#x9762;&#x91CF;&#x521B;&#x5EFA;&#x96C6;&#x5408;<br>var &#x4E00;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7; : Set<string> = [&#x201C;123&#x201D;, &#x201C;456&#x201D;, &#x201C;789&#x201D;, &#x201C;12X&#x201D;, &#x201C;123&#x201D;]</string></p>
+<p>//:  - &#x867D;&#x5B9A;&#x4E49;&#x65E0;&#x6CD5;&#x4F7F;&#x7528;&#x7C7B;&#x578B;&#x63A8;&#x65AD;, &#x4F46;&#x53EF;&#x4EE5;&#x628A;&#x7C7B;&#x578B;&#x7701;&#x7565;&#x4E0D;&#x5199;,&#x53EA;&#x4FDD;&#x7559; :Set<br>var &#x4E8C;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7; : Set = [&#x201C;333&#x201D;, &#x201C;456&#x201D;, &#x201C;666&#x201D;, &#x201C;12X&#x201D;, &#x201C;091&#x201D;]</p>
+<p>//:  - &#x2460;&#x5143;&#x7D20;&#x8BA1;&#x6570;: count, &#x7A7A;&#x5426;: isEmpty<br>&#x4E00;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;.count<br>&#x4E8C;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;.isEmpty</p>
+<p>//:  - &#x2461;&#x2199;&#xFE0F;&#x63D2;&#x5165;:insert<br>&#x4E00;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;.insert(&#x201C;34X&#x201D;)<br>//:  - &#x2462;&#x2197;&#xFE0F;&#x79FB;&#x9664;:remove<br>&#x4E8C;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;.remove(&#x201C;091&#x201D;)</p>
+<p>&#x4E8C;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;</p>
+<p>//:  - &#x2463;&#x662F;&#x5426;&#x5305;&#x542B;&#x67D0;&#x5143;&#x7D20;:contains<br>&#x4E8C;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;.contains(&#x201C;777&#x201D;)</p>
+<p>//:  - &#x2464;&#x8F6C;&#x6362;&#x4E3A;&#x6570;&#x7EC4;:sort<br>let &#x4E8C;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;&#x6570;&#x7EC4; = &#x4E8C;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;.sort()</p>
+<p>//:  - &#x96C6;&#x5408;&#x64CD;&#x4F5C;: &#x4EA4;&#x5DEE;&#x5E76;&#x8865;<br>&#x96C6;&#x5408;&#x64CD;&#x4F5C;()</p>
+<p>//:  - 1&#x20E3;&#xFE0F;&#x4EA4;&#x96C6; intersect<br>&#x4E00;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;.intersect(&#x4E8C;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;)</p>
+<p>//:  - 2&#x20E3;&#xFE0F;&#x5DEE;&#x96C6; subtract<br>&#x4E00;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;.subtract(&#x4E8C;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;)</p>
+<p>//:  - 3&#x20E3;&#xFE0F;&#x5E76;&#x96C6; union<br>&#x4E00;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;.union(&#x4E8C;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;)</p>
+<p>//:  - 4&#x20E3;&#xFE0F;&#x8865;&#x96C6; exclusive<br>&#x4E00;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;.exclusiveOr(&#x4E8C;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;)</p>
+<p>//:  - &#x96C6;&#x5408;&#x5173;&#x7CFB;<br>&#x96C6;&#x5408;&#x5173;&#x7CFB;()</p>
+<p>//:  - &#x1F4A1;&#x76F8;&#x7B49;: &#x4E24;&#x4E2A;&#x96C6;&#x5408;&#x6709;&#x5B8C;&#x5168;&#x76F8;&#x540C;&#x7684;&#x5143;&#x7D20;.<br>let set1 : Set = [1,2,3,4,5]<br>let set4 : Set = [5,2,3,4,1]</p>
+<p>let set100 : Set = [100,101,102]</p>
+<p>let set2 : Set = [4,5,6,7,8]</p>
+<p>let set3 : Set = [1,2,3,4,5,4,5,6,7,8]<br>//:  - 1&#x20E3;&#xFE0F;&#x5B50;&#x96C6;: isSubsetOf(&#x53EF;&#x4EE5;&#x76F8;&#x7B49;), &#x4E25;&#x683C;&#x5B50;&#x96C6;isStrictSubsetOf<br>set1.isSubsetOf(set3)</p>
+<p>set1.isSubsetOf(set4)<br>set1.isStrictSubsetOf(set4)<br>//:  - 2&#x20E3;&#xFE0F;&#x7236;&#x96C6;: isSupersetOf(&#x53EF;&#x4EE5;&#x76F8;&#x7B49;), &#x4E25;&#x683C;&#x7236;&#x96C6;isStrictSuperSetOf<br>set3.isSupersetOf(set1)<br>set3.isSupersetOf(set2)</p>
+<p>set3.isStrictSupersetOf(set1)</p>
+<p>//:  - 3&#x20E3;&#xFE0F;&#x65E0;&#x4EA4;&#x96C6;: isDisjointWith<br>set1.isDisjointWith(set100)</p>
+<p>set1.isDisjointWith(set2)<br>//: <a href="@next">&#x5B57;&#x5178;</a></p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/19/CAGradientLayer-渐变图层/" itemprop="url">
+                  CAGradientLayer(渐变图层)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-19T15:33:46+08:00" content="2016-05-19">
+              2016-05-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift进阶/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift进阶</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/19/CAGradientLayer-渐变图层/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/19/CAGradientLayer-渐变图层/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/19/CAGradientLayer-渐变图层/" class="leancloud_visitors" data-flag-title="CAGradientLayer(渐变图层)">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="CAGradientLayer"><a href="#CAGradientLayer" class="headerlink" title="CAGradientLayer"></a>CAGradientLayer</h4><p>CAGradientLayer&#x662F;CALayer&#x7684;&#x5B50;&#x7C7B;&#x3002;&#x7528;&#x6765;&#x5904;&#x7406;&#x6E10;&#x53D8;&#x8272;&#x7684;&#x5C42;&#x7ED3;&#x6784;&#x3002;</p>
+<p>loacations&#x5C5E;&#x6027;&#xFF0C;&#x6E10;&#x53D8;&#x7684;&#x8303;&#x56F4;&#x3002;</p>
+<pre><code>//&#x521B;&#x5EFA;&#x6E10;&#x53D8;&#x56FE;&#x5C42;
+let grandientLayer = CAGradientLayer()
+
+//&#x6E10;&#x53D8;&#x7684;&#x989C;&#x8272;
+grandientLayer.colors = [UIColor.init(white: 0, alpha: 0.3).CGColor,UIColor.init(white: 0, alpha: 0).CGColor]
+
+//&#x6E10;&#x53D8;&#x7684;&#x65B9;&#x5411;
+grandientLayer.startPoint = CGPoint(x: 0, y: 0)
+grandientLayer.endPoint = CGPoint(x: 0, y: 1)
+
+   //&#x56FE;&#x5C42;&#x7684;frame
+grandientLayer.frame = view.bounds
+
+//&#x6DFB;&#x52A0;&#x56FE;&#x5C42;
+view.layer.addSublayer(grandientLayer)
+</code></pre>
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/18/ZHRefresh-Swift上下拉刷新/" itemprop="url">
                   ZHRefresh(Swift上下拉刷新)
                 </a>
@@ -1070,357 +1366,6 @@ class ViewController: UIViewController,SegueHandlerType {
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/11/NSApplicationMain-和-UIApplicationMain/" itemprop="url">
-                  @NSApplicationMain 和 @UIApplicationMain
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-11T15:33:05+08:00" content="2016-05-11">
-              2016-05-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Swift进阶/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift进阶</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/11/NSApplicationMain-和-UIApplicationMain/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/11/NSApplicationMain-和-UIApplicationMain/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/05/11/NSApplicationMain-和-UIApplicationMain/" class="leancloud_visitors" data-flag-title="@NSApplicationMain 和 @UIApplicationMain">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Swift &#x7684;&#x9879;&#x76EE;&#x4E2D;&#xFF0C;&#x5F15;&#x5165;@NSApplicationMain &#x548C; @UIApplicationMain2&#x4E2A;&#x7279;&#x6027;&#x3002;<br>&#x82F9;&#x679C;&#x5BF9; Swift &#x7684;&#x9879;&#x76EE;&#x8FDB;&#x884C;&#x4E86;&#x7B80;&#x5316;&#xFF0C;&#x4F7F;&#x7528;@NSApplicationMain &#x653E;&#x5728; OSX &#x684C;&#x9762;&#x5E94;&#x7528;&#x5DE5;&#x7A0B;&#x4EE3;&#x7406;&#x7C7B;&#x524D;&#x9762;&#xFF0C;&#x4F7F;&#x7528;@UIApplicationMain&#x653E;&#x5728; iOS app &#x5DE5;&#x7A0B;&#x4EE3;&#x7406;&#x7C7B;&#x524D;&#x9762;&#x3002;&#x4E0E; OC &#x5DE5;&#x7A0B;&#x4E2D;&#x7684;main.m&#x7684;&#x529F;&#x80FD;&#x4E00;&#x6A21;&#x4E00;&#x6837;&#x3002;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x4F7F;&#x7528; iOS app&#x4F5C;&#x4E3A;&#x4F8B;&#x5B50;.</p>
-<p>&#x4E0B;&#x9762;&#x662F;&#x7528;main.swift&#x6765;&#x4EE3;&#x66FF;@NSApplicationMain:</p>
-<ol>
-<li>&#x5C06;AppDelegate&#x4E2D;&#x7684;@UIApplicationMain&#x6CE8;&#x91CA;</li>
-<li>&#x65B0;&#x5EFA;main.swift&#x6587;&#x4EF6;</li>
-<li>&#x4FEE;&#x6539;main.swift</li>
-</ol>
-<p>code:</p>
-<pre><code>import UIKit
-
-UIApplicationMain(Process.argc, Process.unsafeArgv, NSStringFromClass(UIApplication), NSStringFromClass(AppDelegate))
-</code></pre><p>NSApplicationMain&#x7684;main.swift&#x4FEE;&#x6539;&#x5982;&#x4E0B;:</p>
-<pre><code>import Cocoa
-
-NSApplicationMain(Process.argc, Process.unsafeArgv)
-</code></pre>
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/11/度量单位/" itemprop="url">
-                  度量单位
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-11T15:01:40+08:00" content="2016-05-11">
-              2016-05-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Swift进阶/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift进阶</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/11/度量单位/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/11/度量单位/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/05/11/度量单位/" class="leancloud_visitors" data-flag-title="度量单位">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>&#x76F8;&#x5173;&#x77E5;&#x8BC6;&#xFF1A;</p>
-<ul>
-<li><a href="http://www.cnblogs.com/comsokey/p/Swift1.html" target="_blank" rel="external">&#x81EA;&#x5B9A;&#x4E49;&#x64CD;&#x4F5C;&#x8FD0;&#x7B97;&#x7B26;</a></li>
-<li><a href="http://www.cocoachina.com/swift/20150204/11091.html" target="_blank" rel="external">&#x8FD0;&#x7B97;&#x7B26;&#x91CD;&#x8F7D;</a></li>
-<li><a href="http://blog.csdn.net/chaoyuan899/article/details/39208875" target="_blank" rel="external">swift_&#x91CD;&#x8F7D;&#x548C;&#x81EA;&#x5B9A;&#x4E49;&#x8FD0;&#x7B97;&#x7B26;</a></li>
-</ul>
-<p>eg:</p>
-<pre><code>//&#x5B9A;&#x4E49;Time&#x534F;&#x8BAE;
-protocol Time {
-    //&#x534F;&#x8BAE;&#x4E2D;&#x7684;&#x5FC5;&#x987B;&#x5B9E;&#x73B0;&#x7684;&#x65B9;&#x6CD5;
-    var inSeconds:Double{get}
-}
-
-extension Time {
-
-    //&#x5C06;second&#x8F6C;&#x5316;&#x4E3A;minute
-    var inMinutes:Double {
-        return inSeconds/60
-    }
-
-    //&#x5C06;second&#x8F6C;&#x5316;&#x4E3A;hour
-    var inHours:Double {
-        return inMinutes/60
-    }
-
-}
-
-//&#x5B9A;&#x4E49;Hours&#x7ED3;&#x6784;&#x4F53;&#xFF0C;&#x9075;&#x5B88;Time&#x534F;&#x8BAE;
-struct Hours:Time {
-    let value:Double
-
-    var inSeconds: Double {
-        return value*3600
-    }
-}
-
-struct Minutes:Time {
-    let value:Double
-
-    var inSeconds: Double {
-        return value*60
-    }
-}
-
-struct Seconds:Time {
-
-    let value:Double
-
-    var inSeconds: Double{
-        return value
-    }
-
-}
-
-//&#x4F7F;&#x7528;&#x540C;&#x6837;&#x7684;&#x65B9;&#x5F0F;&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;Weaks&#x3001;Day&#x7B49;&#x7ED3;&#x6784;&#x4F53;
-
-//&#x5B9A;&#x4E49;int&#x7684;&#x62D3;&#x5C55;&#xFF0C;
-extension Int {
-
-    var hours:Time {
-        return Hours(value: Double(self))
-    }
-
-    var minutes:Time {
-        return Minutes(value: Double(self))
-    }
-}
-
-infix operator ++&gt; {associativity none}
-
-func ++&gt; (lhs: Time, rhs: Time) -&gt; Time {
-
-    print(lhs.inHours)
-
-    return Seconds(value: lhs.inSeconds + rhs.inSeconds)
-}
-
-let total = 3.hours ++&gt; 4.minutes
-
-total.inSeconds
-</code></pre>
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1466,7 +1411,7 @@ total.inSeconds
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-count">38</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1483,7 +1428,7 @@ total.inSeconds
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
