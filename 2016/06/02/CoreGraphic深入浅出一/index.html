@@ -1,0 +1,903 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x6CE8;&amp;#x610F;&amp;#x70B9;&amp;#xFF1A;
+
+&amp;#x8C03;&amp;#x7528;[self setNeedsDisplay];&amp;#x53EF;&amp;#x4EE5;&amp;#x91CD;&amp;#x65B0;&amp;#x7ED8;&amp;#x5236;&amp;#x56FE;&amp;#x5F62;&amp;#x3002;
+
+&amp;#x753B;&amp;#x7EBF;- (void)drawRect:(CGRect)rect {">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CoreGraphic深入浅出(一)">
+<meta property="og:url" content="http://yoursite.com/2016/06/02/CoreGraphic深入浅出一/index.html">
+<meta property="og:site_name" content="晴间多云">
+<meta property="og:description" content="&amp;#x6CE8;&amp;#x610F;&amp;#x70B9;&amp;#xFF1A;
+
+&amp;#x8C03;&amp;#x7528;[self setNeedsDisplay];&amp;#x53EF;&amp;#x4EE5;&amp;#x91CD;&amp;#x65B0;&amp;#x7ED8;&amp;#x5236;&amp;#x56FE;&amp;#x5F62;&amp;#x3002;
+
+&amp;#x753B;&amp;#x7EBF;- (void)drawRect:(CGRect)rect {">
+<meta property="og:updated_time" content="2016-06-02T10:32:47.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CoreGraphic深入浅出(一)">
+<meta name="twitter:description" content="&amp;#x6CE8;&amp;#x610F;&amp;#x70B9;&amp;#xFF1A;
+
+&amp;#x8C03;&amp;#x7528;[self setNeedsDisplay];&amp;#x53EF;&amp;#x4EE5;&amp;#x91CD;&amp;#x65B0;&amp;#x7ED8;&amp;#x5236;&amp;#x56FE;&amp;#x5F62;&amp;#x3002;
+
+&amp;#x753B;&amp;#x7EBF;- (void)drawRect:(CGRect)rect {">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> CoreGraphic深入浅出(一) | 晴间多云 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?4de1a1eb152307ab99735102567a9249";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">晴间多云</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">多读书、多看报、少吃零食、多睡觉。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'hZPX6os5HstQeMmKo4X_','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                CoreGraphic深入浅出(一)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-02T16:39:09+08:00" content="2016-06-02">
+              2016-06-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/CoreGraphic/" itemprop="url" rel="index">
+                    <span itemprop="name">CoreGraphic</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/02/CoreGraphic深入浅出一/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/02/CoreGraphic深入浅出一/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/06/02/CoreGraphic深入浅出一/" class="leancloud_visitors" data-flag-title="CoreGraphic深入浅出(一)">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&#x6CE8;&#x610F;&#x70B9;&#xFF1A;</p>
+<ol>
+<li>&#x8C03;&#x7528;[self setNeedsDisplay];&#x53EF;&#x4EE5;&#x91CD;&#x65B0;&#x7ED8;&#x5236;&#x56FE;&#x5F62;&#x3002;</li>
+</ol>
+<h4 id="&#x753B;&#x7EBF;"><a href="#&#x753B;&#x7EBF;" class="headerlink" title="&#x753B;&#x7EBF;"></a>&#x753B;&#x7EBF;</h4><pre><code>- (void)drawRect:(CGRect)rect {
+
+    //&#x83B7;&#x53D6;&#x56FE;&#x5F62;&#x4E0A;&#x4E0B;&#x6587;&#xFF0C;&#x56FE;&#x5F62;&#x4E0A;&#x4E0B;&#x6587;&#x8F93;&#x51FA;&#x7684;&#x76EE;&#x6807;&#x662F;self-&#x300B;&#x4E5F;&#x5C31;&#x662F;&#x5F53;&#x524D;&#x7684;&#x8BD5;&#x56FE;&#x5BF9;&#x8C61;&#x3002;
+    CGContextRef context = UIGraphicsGetCurrentContext();
+
+    //&#x8BBE;&#x7F6E;&#x7EBF;&#x6761;&#x7684;&#x989C;&#x8272;
+    [[UIColor yellowColor] set];
+
+    //&#x8BBE;&#x7F6E;&#x7EBF;&#x5BBD;
+    CGContextSetLineWidth(context, 4);
+
+    // &#x8BBE;&#x7F6E;&#x7EBF;&#x7684;&#x5934;&#x5C3E;&#x7684;&#x6837;&#x5F0F;
+    CGContextSetLineCap(context, kCGLineCapButt);
+
+    //&#x8FDE;&#x63A5;&#x70B9;&#x7684;&#x6837;&#x5F0F;
+    CGContextSetLineJoin(context, kCGLineJoinRound);
+
+    //&#x7EBF;&#x6761;&#x7684;&#x8D77;&#x70B9;
+    CGContextMoveToPoint(context, 5, 5);
+    //&#x7EBF;&#x6761;&#x7684;&#x7EC8;&#x70B9;
+    CGContextAddLineToPoint(context, CGRectGetWidth(rect), CGRectGetHeight(rect));
+    //&#x6E32;&#x67D3;&#x7EBF;&#x6761;
+    CGContextStrokePath(context);
+}
+</code></pre><h4 id="&#x753B;&#x4E09;&#x89D2;&#x5F62;"><a href="#&#x753B;&#x4E09;&#x89D2;&#x5F62;" class="headerlink" title="&#x753B;&#x4E09;&#x89D2;&#x5F62;"></a>&#x753B;&#x4E09;&#x89D2;&#x5F62;</h4><p>&#x539F;&#x7406;&#xFF1A;&#x5728;&#x753B;&#x7EBF;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x6DFB;&#x52A0;&#x591A;&#x4E2A;&#x70B9;&#x6765;&#x8FDE;&#x6210;&#x8FDE;&#x7EED;&#x7684;&#x7EBF;&#xFF0C;&#x5C06;&#x8DEF;&#x5F84;&#x5173;&#x95ED;&#x8D77;&#x6765;CGContextClosePath(context);&#x5C31;&#x53EF;&#x4EE5;&#x5F62;&#x6210;&#x4E09;&#x89D2;&#x5F62;&#x3002;</p>
+<h4 id="&#x753B;&#x77E9;&#x5F62;"><a href="#&#x753B;&#x77E9;&#x5F62;" class="headerlink" title="&#x753B;&#x77E9;&#x5F62;"></a>&#x753B;&#x77E9;&#x5F62;</h4><p>&#x65B9;&#x6CD5;&#x4E00;&#xFF1A;&#x901A;&#x8FC7;&#x753B;&#x56DB;&#x4E2A;&#x70B9;&#x8FDE;&#x6210;&#x4E09;&#x6761;&#x7EBF;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x8D77;&#x70B9;&#x548C;&#x7EC8;&#x70B9;&#x8FDE;&#x63A5;&#x8D77;&#x6765;&#x3002;</p>
+<p>&#x65B9;&#x6CD5;&#x4E8C;&#xFF1A;</p>
+<pre><code>- (void)drawRect:(CGRect)rect {
+
+    CGContextRef context = UIGraphicsGetCurrentContext();
+
+    CGContextAddRect(context, CGRectMake(100, 100, 50, 50));
+
+    //&#x8BBE;&#x7F6E;&#x7EBF;&#x6761;&#x7684;&#x989C;&#x8272;
+    CGContextSetRGBFillColor(context, 0.2, 0.8, 0.2, 1);
+
+//    [[UIColor yellowColor] setFill];
+
+//    //&#x6E32;&#x67D3;-&#x300B;&#x3010;&#x7A7A;&#x5FC3;&#x3011;
+//    CGContextStrokePath(context);
+    //&#x6E32;&#x67D3;-&#x300B;&#x3010;&#x5B9E;&#x5FC3;&#x3011;
+    CGContextFillPath(context);
+}
+</code></pre><h4 id="&#x753B;&#x5706;&#x3001;&#x5F27;&#x5F62;&#x3001;&#x6247;&#x5F62;"><a href="#&#x753B;&#x5706;&#x3001;&#x5F27;&#x5F62;&#x3001;&#x6247;&#x5F62;" class="headerlink" title="&#x753B;&#x5706;&#x3001;&#x5F27;&#x5F62;&#x3001;&#x6247;&#x5F62;"></a>&#x753B;&#x5706;&#x3001;&#x5F27;&#x5F62;&#x3001;&#x6247;&#x5F62;</h4><pre><code>//&#x753B;&#x5F27;&#x5F62;
+- (void)drawRect:(CGRect)rect {
+
+    CGContextRef context = UIGraphicsGetCurrentContext();
+
+    /*!
+     *  @author zhihua, 16-06-02 17:06:03
+     *  &#x5706;&#x5FC3;&#x7684;&#x70B9;
+     *  &#x534A;&#x5F84;
+     *  &#x8D77;&#x59CB;&#x7684;&#x5F27;&#x5EA6;
+     *  &#x7ED3;&#x675F;&#x7684;&#x5F27;&#x5EA6;
+     *  clockwise 0 &#x987A;&#x9488; 1 &#x9006;&#x65F6;&#x9488;
+     *  @brief
+     */
+    CGContextAddArc(context, CGRectGetMidX(rect), CGRectGetMidY(rect), 100, 0, M_PI*0.65, 1);
+
+    CGContextStrokePath(context);
+
+}
+
+//&#x753B;&#x6247;&#x5F62;
+- (void)drawRect:(CGRect)rect {
+
+    //&#x83B7;&#x53D6;&#x56FE;&#x5F62;&#x4E0A;&#x4E0B;&#x6587;
+    CGContextRef context = UIGraphicsGetCurrentContext();
+
+    CGContextMoveToPoint(context, CGRectGetMidX(rect), CGRectGetMidY(rect));
+    CGContextAddArc(context, CGRectGetMidX(rect), CGRectGetMidY(rect), 50, 0, M_PI*0.25, 1);
+
+    CGContextClosePath(context);
+
+    CGContextStrokePath(context);
+}
+
+//&#x753B;&#x5F27;&#x5F62;
+- (void)drawRect:(CGRect)rect {
+
+    //&#x83B7;&#x53D6;&#x56FE;&#x5F62;&#x4E0A;&#x4E0B;&#x6587;
+    CGContextRef context = UIGraphicsGetCurrentContext();
+
+    CGContextAddEllipseInRect(context, CGRectMake(CGRectGetMidX(rect), CGRectGetMidY(rect), 50, 50));
+
+    CGContextStrokePath(context);
+
+}
+</code></pre><h4 id="&#x753B;&#x6587;&#x5B57;&#x3001;&#x753B;&#x56FE;&#x7247;"><a href="#&#x753B;&#x6587;&#x5B57;&#x3001;&#x753B;&#x56FE;&#x7247;" class="headerlink" title="&#x753B;&#x6587;&#x5B57;&#x3001;&#x753B;&#x56FE;&#x7247;"></a>&#x753B;&#x6587;&#x5B57;&#x3001;&#x753B;&#x56FE;&#x7247;</h4><pre><code>- (void)drawRect:(CGRect)rect {
+
+    //&#x753B;&#x56FE;&#x7247;
+    UIImage *image = [UIImage imageNamed:@&quot;papa&quot;];
+    //[image drawAtPoint:CGPointZero];
+    //[image drawInRect:CGRectMake(10, 10, 50, 50)];
+
+    //&#x5E73;&#x94FA;
+    [image drawAsPatternInRect:CGRectMake(0, 0, 180, 180)];
+
+    //&#x753B;&#x6587;&#x5B57;
+    NSString *text = @&quot;&#x5EFA;&#x8BBE;&#x4E16;&#x754C;&#x79D1;&#x6280;&#x5F3A;&#x56FD;&#x7684;&#x53F7;&#x89D2;&#x5DF2;&#x7ECF;&#x5439;&#x54CD;&#xFF0C;&#x79D1;&#x6280;&#x521B;&#x65B0;&#x7684;&#x6625;&#x5929;&#x5DF2;&#x7ECF;&#x6765;&#x4E34;&#x3002;&quot;;
+
+    NSDictionary *attr = @{NSFontAttributeName:[UIFont systemFontOfSize:13],NSForegroundColorAttributeName:[UIColor yellowColor]};
+
+    [text drawInRect:rect withAttributes:attr];
+    //&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4E0D;&#x4F1A;&#x6362;&#x884C;
+    //[text drawAtPoint:CGPointMake(10, 100) withAttributes:nil];
+}
+</code></pre>
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/02/Sublime3搭建GO开发环境/" rel="next" title="Sublime3搭建GO开发环境">
+                <i class="fa fa-chevron-left"></i> Sublime3搭建GO开发环境
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/13/知识整理/" rel="prev" title="知识整理">
+                知识整理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/06/02/CoreGraphic深入浅出一/"
+           data-title="CoreGraphic深入浅出(一)" data-url="http://yoursite.com/2016/06/02/CoreGraphic深入浅出一/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="晴间多云" />
+          <p class="site-author-name" itemprop="name">晴间多云</p>
+          <p class="site-description motion-element" itemprop="description">改变，永远不嫌晚。无论你是几岁，也无论你目前所处的境况有多糟，只要立定目标、一步一步往前走，人生随时都有翻盘的可能性。新的一天，你要加油!</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ZHDeveloper" target="_blank" title="GitHub">
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/ZHDeveloper" target="_blank" title="微博">
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element">
+            <div class="links-of-blogroll-title">
+              <i class="fa fa-globe fa-fw"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://9di0.com/" title="封子" target="_blank">封子</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#画线"><span class="nav-number">1.</span> <span class="nav-text">画线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#画三角形"><span class="nav-number">2.</span> <span class="nav-text">画三角形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#画矩形"><span class="nav-number">3.</span> <span class="nav-text">画矩形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#画圆、弧形、扇形"><span class="nav-number">4.</span> <span class="nav-text">画圆、弧形、扇形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#画文字、画图片"><span class="nav-number">5.</span> <span class="nav-text">画文字、画图片</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">晴间多云</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zhcoder"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("xcPF8ycYjdUilVfVqFXEGs5R-gzGzoHsz", "iJNnynVYmX2tly4gdQbfy2mB");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

@@ -279,6 +279,818 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/18/ZHRefresh-Swift上下拉刷新/" itemprop="url">
+                  ZHRefresh(Swift上下拉刷新)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-18T16:38:36+08:00" content="2016-05-18">
+              2016-05-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift进阶/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift进阶</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/18/ZHRefresh-Swift上下拉刷新/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/18/ZHRefresh-Swift上下拉刷新/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/18/ZHRefresh-Swift上下拉刷新/" class="leancloud_visitors" data-flag-title="ZHRefresh(Swift上下拉刷新)">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>&#x6574;&#x4E2A;&#x6846;&#x67B6;&#x4E2D;&#x5305;&#x542B;&#x4E09;&#x4E2A;&#x6587;&#x4EF6;ZHRefresh.swift&#x3001;ZHRefreshView.swift&#x3001;ZHRefreshConsts.swift&#xFF0C;&#x5176;&#x4E2D;ZHRefresh&#x5305;&#x542B;&#x4E00;&#x4E9B;&#x516C;&#x5F00;&#x7684;&#x8C03;&#x7528;&#x7684;API</p>
+<h4 id="ZHRefresh"><a href="#ZHRefresh" class="headerlink" title="ZHRefresh"></a>ZHRefresh</h4><p>ZHRefresh&#x662F;UIScrollView&#x7684;&#x62D3;&#x5C55;&#xFF0C;ZHRefresh&#x4E2D;&#x5305;&#x542B;&#x4E24;&#x4E2A;&#x8BA1;&#x7B97;&#x5C5E;&#x6027;headerView&#x3001;footerView&#xFF0C;&#x90FD;&#x662F;&#x4F7F;&#x7528;Runtime&#x5C06;&#x5C5E;&#x6027;&#x5173;&#x8054;&#x3002;&#x4E24;&#x4E2A;&#x5C5E;&#x6027;&#x4F7F;&#x7528;private&#x6765;&#x4FEE;&#x9970;&#xFF0C;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x88AB;&#x5916;&#x90E8;&#x8C03;&#x7528;&#x3002;</p>
+<pre><code>//&#x6DFB;&#x52A0;&#x4E0B;&#x62C9;&#x5237;&#x65B0;&#x7684;&#x56DE;&#x8C03;&#x65B9;&#x6CD5;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x662F;&#x4E0D;&#x4F1A;&#x751F;&#x6210;&#x4E0B;&#x62C9;&#x7684;&#x5934;&#x90E8;view
+func addHeaderWithCallback(headerCallback:CompleteHandler) {
+
+    self.headerView?.handler = headerCallback
+
+}
+
+//&#x6DFB;&#x52A0;&#x4E0A;&#x62C9;&#x5237;&#x65B0;&#x7684;&#x56DE;&#x8C03;&#x65B9;&#x6CD5;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x662F;&#x4E0D;&#x4F1A;&#x751F;&#x6210;&#x4E0B;&#x62C9;&#x7684;&#x5E95;&#x90E8;view
+func addFooterWithCallback(footerCallback:CompleteHandler) {
+
+    self.footerView?.handler = footerCallback
+
+}
+
+//&#x5F00;&#x59CB;&#x5237;&#x65B0;
+func headerBeginRefreshing() {
+    self.headerView?.headerBeginRefresh()
+}
+
+//&#x7ED3;&#x675F;&#x5237;&#x65B0;
+func headerEndRefreshing() {
+    self.headerView?.headerEndRefresh()
+}
+
+//&#x5F00;&#x59CB;&#x52A0;&#x8F7D;&#x66F4;&#x591A;
+func footerBeginRefreshing() {
+    self.footerView?.footerBeginLoadMore()
+}
+
+//&#x7ED3;&#x675F;&#x52A0;&#x8F7D;&#x66F4;&#x591A;
+func footerEndRefreshing() {
+    self.footerView?.footerEndLoadMore()
+}
+</code></pre><h4 id="ZHRefreshComponent"><a href="#ZHRefreshComponent" class="headerlink" title="ZHRefreshComponent"></a>ZHRefreshComponent</h4><p>ZHRefreshComponent&#x5B9A;&#x4E49;&#x4E86;&#x4E0A;&#x62C9;&#x3001;&#x4E0B;&#x62C9;view&#x3002;</p>
+<p>ZHRefreshComponent&#x7C7B;&#x662F;&#x4E0A;&#x62C9;&#x3001;&#x4E0B;&#x62C9;view&#x7684;&#x7236;&#x7C7B;&#xFF0C;&#x5305;&#x542B;&#x4E86;&#x4E0A;&#x62C9;&#x3001;&#x4E0B;&#x62C9;&#x5237;&#x65B0;view&#x5171;&#x6709;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;&#x3002;&#x5B50;&#x7C7B;&#x901A;&#x8FC7;&#x7EE7;&#x627F;&#x83B7;&#x53D6;&#x7236;&#x7C7B;&#x7684;&#x5171;&#x6709;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>ZHRefreshComponent&#x5171;&#x6709;&#x7684;&#x5C5E;&#x6027;&#xFF1A;</p>
+<ol>
+<li>handler:&#x4E0A;&#x62C9;&#x6216;&#x8005;&#x4E0B;&#x62C9;&#x5237;&#x65B0;&#x7684;&#x56DE;&#x8C03;&#x65B9;&#x6CD5;</li>
+<li>isRefreshing:&#x662F;&#x5426;&#x6B63;&#x5728;&#x6267;&#x884C;&#x5237;&#x65B0;&#x4E2D;</li>
+<li>oldStatus:&#x4E0A;&#x4E00;&#x6B21;&#x7684;&#x5237;&#x65B0;&#x72B6;&#x6001;</li>
+<li>status:&#x5F53;&#x524D;&#x7684;&#x5237;&#x65B0;&#x72B6;&#x6001;</li>
+<li>indicatorView&#xFF1A;&#x83CA;&#x82B1;view</li>
+<li>titleLabel:&#x6807;&#x9898;Label</li>
+</ol>
+<p>&#x901A;&#x8FC7;&#x91CD;&#x5199;&#x65B9;&#x6CD5;willMoveToSuperview&#xFF0C;&#x5C06;&#x7236;view(UIScrollView)&#x4F5C;&#x4E3A;ZHRefreshComponent&#x7684;&#x5C5E;&#x6027;&#x3002;&#x5E76;&#x6DFB;&#x52A0;&#x89C2;&#x5BDF;&#x8005;&#xFF0C;&#x5728;&#x9500;&#x6BC1;&#x65F6;&#x53D6;&#x6D88;&#x89C2;&#x5BDF;&#x8005;&#x3002;</p>
+<pre><code>    override func willMoveToSuperview(newSuperview: UIView?) {
+    super.willMoveToSuperview(newSuperview)
+
+    removeObserver()
+
+    scrollView = newSuperview as? UIScrollView
+
+    addObserver(scrollView!)
+}
+
+func addObserver(scrollView:UIScrollView) {
+
+    scrollView.addObserver(self, forKeyPath: kContentOffsetKey, options: [.New,.Initial], context: nil)
+    scrollView.addObserver(self, forKeyPath: kContentSizeKey, options: [.New,.Initial], context: nil)
+}
+
+func removeObserver() {
+
+    scrollView?.removeObserver(self, forKeyPath: kContentOffsetKey)
+    scrollView?.removeObserver(self, forKeyPath: kContentSizeKey)
+
+}
+</code></pre><h4 id="ZHHeaderView&#x3001;ZHFooterView"><a href="#ZHHeaderView&#x3001;ZHFooterView" class="headerlink" title="ZHHeaderView&#x3001;ZHFooterView"></a>ZHHeaderView&#x3001;ZHFooterView</h4><p>ZHHeaderView&#x4E0A;&#x62C9;&#x5237;&#x65B0;&#x7684;view&#xFF0C;&#x7EE7;&#x627F;&#x81EA;ZHRefreshComponent&#x3002;</p>
+<p>&#x901A;&#x8FC7;&#x91CD;&#x5199;&#x7236;&#x7C7B;scrollView&#x5C5E;&#x6027;&#xFF0C;&#x5C06;ZHHeaderView&#x8BBE;&#x7F6E;&#x4E3A;scrollview&#x7684;&#x89C2;&#x5BDF;&#x8005;&#xFF0C;&#x5E76;&#x4E14;&#x8BBE;&#x7F6E;&#x5C5E;&#x6027;insetTop&#xFF08;scrollview.contentInset.top&#xFF09;</p>
+<p>ZHHeaderView&#x7C7B;&#x4E2D;&#x6DFB;&#x52A0;&#x591A;&#x4E00;&#x4E2A;&#x5B50;view(arrowView)&#x3002;</p>
+<p>&#x5B9A;&#x4E49;ZHHeaderView&#x7684;&#x62D3;&#x5C55;&#xFF0C;&#x89C2;&#x5BDF;&#x5C5E;&#x6027;&#x7684;&#x53D8;&#x5316;</p>
+<pre><code>override func contentOffsetChange(object object: AnyObject?, change: [String : AnyObject]?) {
+
+    //&#x56E0;&#x4E3A;&#x5C5E;&#x6027;scrollView&#x662F;&#x53EF;&#x9009;&#x7C7B;&#x578B;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x9700;&#x8981;&#x5224;&#x65AD;scrollView&#x662F;&#x5426;&#x6709;&#x503C;
+    guard let scrollView = scrollView else {
+        return
+    }
+
+    //&#x4E0B;&#x62C9;&#x5237;&#x65B0;
+    let refreshOffset = -(scrollView.contentOffset.y+scrollView.contentInset.top)
+
+    //&#x5224;&#x65AD;&#x5237;&#x65B0;&#x72B6;&#x6001;&#x53D8;&#x5316;&#x7684;&#x4E34;&#x754C;&#x70B9;
+    if refreshOffset &gt; headerViewH {
+        self.status = .releaseToRefresh
+
+        if scrollView.dragging {
+            releaseToRefresh()
+        }
+        else
+        {
+            scrollViewDidEndDragging(scrollView)
+        }
+    }
+    else
+    {
+        self.status = .pullToRefresh
+        pullToRefresh()
+    }
+
+}
+</code></pre><p> ZHFooterView&#x7684;&#x5B9E;&#x73B0;&#x548C;ZHHeaderView&#x5DEE;&#x4E0D;&#x591A;&#x3002;</p>
+<h4 id="ZHRefreshConsts"><a href="#ZHRefreshConsts" class="headerlink" title="ZHRefreshConsts"></a>ZHRefreshConsts</h4><p> ZHRefreshConsts&#x5B9A;&#x4E49;&#x4E00;&#x4E9B;&#x5E38;&#x4EAE;</p>
+<pre><code>typealias CompleteHandler = ()-&gt;()
+
+let headerViewH: CGFloat = 60
+let footerViewH: CGFloat = 44
+
+let componentsMarin:CGFloat = 10
+
+let screenH = UIScreen.mainScreen().bounds.size.height
+let screenW = UIScreen.mainScreen().bounds.size.width
+
+//&#x5237;&#x65B0;&#x7684;&#x72B6;&#x6001;
+enum ZHRefreshStatus {
+    case loading,pullToRefresh,releaseToRefresh
+}
+</code></pre><h4 id="&#x5206;&#x6790;"><a href="#&#x5206;&#x6790;" class="headerlink" title="&#x5206;&#x6790;"></a>&#x5206;&#x6790;</h4><p>1&#x3001;&#x4E0B;&#x62C9;&#x5237;&#x65B0;&#x72B6;&#x6001;&#x7684;&#x53D8;&#x5316;&#x3002;</p>
+<pre><code>    let refreshOffset = -(scrollView.contentOffset.y+scrollView.contentInset.top)
+
+    //&#x5224;&#x65AD;&#x4E0B;&#x62C9;&#x7684;&#x8DDD;&#x79BB;&#x662F;&#x5426;&#x8FBE;&#x5230;&#x4E00;&#x5B9A;&#x7684;&#x8DDD;&#x79BB;
+    if refreshOffset &gt; headerViewH {
+        self.status = .releaseToRefresh
+
+        //&#x5224;&#x65AD;&#x662F;&#x5426;&#x7ED3;&#x675F;&#x5237;&#x65B0;
+        if scrollView.dragging {
+            releaseToRefresh()
+        }
+        else
+        {
+            scrollViewDidEndDragging(scrollView)
+        }
+    }
+    else
+    {
+        self.status = .pullToRefresh
+        pullToRefresh()
+    }
+
+//&#x6B63;&#x5728;&#x5237;&#x65B0;&#x7684;&#x65B9;&#x6CD5;
+func headerBeginRefresh() {
+
+    guard isRefreshing == false,let refreshHandler = handler else {
+        return
+    }
+
+    self.isRefreshing = true
+
+    status = .loading
+
+    refreshHeaderView(.loading)
+
+    UIView.animateKeyframesWithDuration(0.3, delay: 0, options: .BeginFromCurrentState, animations: {
+        // &#x628A; contentInsetTop &#x8BBE;&#x4E3A;&#x5237;&#x65B0;&#x5934;&#x9AD8;&#x5EA6;&#x52A0;&#x4E0A;&#x521D;&#x59CB;&#x72B6;&#x6001;&#x65F6;&#x7684;&#x503C;&#xFF0C;&#x9732;&#x51FA;&#x5237;&#x65B0;&#x5934;&#xFF0C;&#x4FDD;&#x6301;&#x5728;&#x90A3;&#x4E2A;&#x4F4D;&#x7F6E;&#x7B49;&#x5F85;&#x5237;&#x65B0;&#x7ED3;&#x675F;
+        self.scrollView!.contentInset.top = headerViewH + self.insetTop
+        // scrollIndicator&#xFF0C;&#x5373;&#x65C1;&#x8FB9;&#x7684;&#x6EDA;&#x52A8;&#x63D0;&#x793A;&#xFF0C;&#x770B;&#x8D77;&#x6765;&#x66F4;&#x597D;&#x4E9B;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4E0D;&#x8BBE;&#x7F6E;&#x3002;
+        self.scrollView!.scrollIndicatorInsets = self.scrollView!.contentInset
+
+    }) { (finished: Bool) in
+        //&#x6267;&#x884C;block
+        refreshHandler()
+    }
+}
+</code></pre><p>2&#x3001;&#x4E0A;&#x62C9;&#x5237;&#x65B0;&#x7684;&#x5224;&#x65AD;</p>
+<pre><code>override func contentOffsetChange(object object: AnyObject?, change: [String : AnyObject]?) {
+
+        //&#x4E0A;&#x62C9;&#x5237;&#x65B0;
+        guard let scrollView = scrollView else {
+            return
+        }
+
+        guard isRefreshing == false else {
+            return
+        }
+
+        //&#x5224;&#x65AD;&#x662F;&#x4E0A;&#x62C9;&#x8FD8;&#x662F;&#x4E0B;&#x62C9;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x4E0B;&#x62C9;&#x5219;&#x9690;&#x85CF;
+        if scrollView.contentSize.height &lt;= 0.0 || scrollView.contentOffset.y + scrollView.contentInset.top &lt;= 0.0 {
+            self.alpha = 0.0
+            return
+        } else {
+            self.alpha = 1.0
+        }
+
+        if scrollView.contentSize.height + scrollView.contentInset.top &gt; scrollView.bounds.size.height {
+            // &#x5185;&#x5BB9;&#x8D85;&#x8FC7;&#x4E00;&#x4E2A;&#x5C4F;&#x5E55; &#x8BA1;&#x7B97;&#x516C;&#x5F0F;&#xFF0C;&#x5224;&#x65AD;&#x662F;&#x4E0D;&#x662F;&#x5728;&#x62D6;&#x5728;&#x5230;&#x4E86;&#x5E95;&#x90E8;
+            if scrollView.contentSize.height - scrollView.contentOffset.y + scrollView.contentInset.bottom  &lt;= scrollView.bounds.size.height {
+                footerBeginLoadMore()
+            }
+        } else {
+            //&#x5185;&#x5BB9;&#x6CA1;&#x6709;&#x8D85;&#x8FC7;&#x4E00;&#x4E2A;&#x5C4F;&#x5E55;&#xFF0C;&#x8FD9;&#x65F6;&#x62D6;&#x62FD;&#x9AD8;&#x5EA6;&#x5927;&#x4E8E;1/2footer&#x7684;&#x9AD8;&#x5EA6;&#x5C31;&#x8868;&#x793A;&#x8BF7;&#x6C42;&#x4E0A;&#x62C9;
+            if scrollView.contentOffset.y + scrollView.contentInset.top &gt;= footerViewH / 2.0 {
+                footerBeginLoadMore()
+            }
+        }
+
+    }
+</code></pre>
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/16/Swfit的extension/" itemprop="url">
+                  Swfit的extension
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-16T15:42:36+08:00" content="2016-05-16">
+              2016-05-16
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/16/Swfit的extension/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/16/Swfit的extension/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/16/Swfit的extension/" class="leancloud_visitors" data-flag-title="Swfit的extension">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Swift&#x5408;&#x7406;&#x7684;&#x4F7F;&#x7528;extension&#x80FD;&#x6709;&#x6548;&#x7684;&#x63D0;&#x9AD8;&#x4EE3;&#x7801;&#x7684;&#x53EF;&#x8BFB;&#x6027;&#x3002;</p>
+<p>extension&#x6709;&#x4E00;&#x4E0B;&#x7684;&#x4F7F;&#x7528;&#x573A;&#x666F;:</p>
+<h4 id="&#x79C1;&#x6709;&#x7684;&#x8F85;&#x52A9;&#x51FD;&#x6570;"><a href="#&#x79C1;&#x6709;&#x7684;&#x8F85;&#x52A9;&#x51FD;&#x6570;" class="headerlink" title="&#x79C1;&#x6709;&#x7684;&#x8F85;&#x52A9;&#x51FD;&#x6570;"></a>&#x79C1;&#x6709;&#x7684;&#x8F85;&#x52A9;&#x51FD;&#x6570;</h4><p>&#x5C06;Swift&#x7C7B;&#x4E2D;&#x516C;&#x5F00;&#x7684;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x88AB;&#x5916;&#x90E8;&#x8BBF;&#x95EE;&#xFF0C;&#x6211;&#x4EEC;&#x628A;&#x5185;&#x90E8;&#x7684;&#x5B9E;&#x73B0;&#x5199;&#x6210;&#x79C1;&#x6709;&#x7684;extension.&#x4F7F;&#x7528; extension&#x4F7F;&#x6211;&#x7684;&#x4EE3;&#x7801;&#x7ED3;&#x6784;&#x53D8;&#x5F97;&#x66F4;&#x52A0;&#x6E05;&#x6670;&#x6574;&#x6D01;&#x3002;</p>
+<pre><code>// &#x628A;&#x6240;&#x6709;&#x5185;&#x90E8;&#x903B;&#x8F91;&#x548C;&#x5916;&#x90E8;&#x8BBF;&#x95EE;&#x7684; API &#x533A;&#x9694;&#x5F00;&#x6765;
+// MARK: &#x79C1;&#x6709;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;
+private extension TodoItemViewModel {
+
+}
+</code></pre><h4 id="&#x5206;&#x7EC4;"><a href="#&#x5206;&#x7EC4;" class="headerlink" title="&#x5206;&#x7EC4;"></a>&#x5206;&#x7EC4;</h4><p>Swift&#x5DE5;&#x7A0B;&#x5E08;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;extension&#x6765;&#x4EE3;&#x66FF;pragma&#x6807;&#x8BB0;&#x3002;&#x5C3D;&#x7BA1; pragma &#x6807;&#x8BB0;&#xFF08;Swift &#x4E2D;&#x7684; //MARK&#xFF09;&#x5F88;&#x597D;&#x7528;&#xFF0C;&#x4F46;&#x6211;&#x4EEC;&#x5F88;&#x5BB9;&#x6613;&#x5FD8;&#x8BB0;&#x7ED9;&#x4E00;&#x6BB5;&#x65B0;&#x7684;&#x4EE3;&#x7801;&#x52A0;&#x4E0A; MARK &#x6807;&#x8BB0;&#xFF0C;&#x5C24;&#x5176;&#x662F;&#x4F60;&#x5904;&#x5728;&#x4E00;&#x4E2A;&#x5177;&#x6709;&#x4E0D;&#x540C;&#x4EE3;&#x7801;&#x98CE;&#x683C;&#x7684;&#x5C0F;&#x7EC4;&#x4E2D;&#x65F6;&#x3002;&#x8FD9;&#x5F80;&#x5F80;&#x4F1A;&#x5BFC;&#x81F4;&#x82E5;&#x5E72;&#x4E2A;&#x65E0;&#x5173;&#x51FD;&#x6570;&#x88AB;&#x653E;&#x5728;&#x4E86;&#x540C;&#x4E00;&#x4E2A;&#x7EC4;&#x4E2D;&#xFF0C;&#x6216;&#x8005;&#x67D0;&#x4E2A;&#x51FD;&#x6570;&#x5904;&#x4E8E;&#x9519;&#x8BEF;&#x7684;&#x4F4D;&#x7F6E;&#x3002;&#x6240;&#x4EE5;&#x5982;&#x679C;&#x6709;&#x4E00;&#x7EC4;&#x51FD;&#x6570;&#x5E94;&#x8BE5;&#x5199;&#x5728;&#x4E00;&#x8D77;&#xFF0C;&#x6211;&#x503E;&#x5411;&#x4E8E;&#x628A;&#x4ED6;&#x4EEC;&#x653E;&#x5230;&#x4E00;&#x4E2A; extension &#x4E2D;&#x3002;</p>
+<p>&#x4E00;&#x822C;&#x6211;&#x4F1A;&#x7528;&#x4E00;&#x4E2A; extension &#x5B58;&#x653E; ViewController &#x6216;&#x8005; AppDelegate &#x4E2D;&#x6240;&#x6709;&#x521D;&#x59CB;&#x5316; UI &#x7684;&#x51FD;&#x6570;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;</p>
+<pre><code>private extension AppDelegate {
+
+    func configureAppStyling() {
+        styleNavigationBar()
+        styleBarButtons()
+    }
+
+    func styleNavigationBar() {
+        UINavigationBar.appearance().barTintColor = ColorPalette.ThemeColor
+        UINavigationBar.appearance().tintColor = ColorPalette.TintColor
+
+        UINavigationBar.appearance().titleTextAttributes = [
+            NSFontAttributeName : SmoresFont.boldFontOfSize(19.0),
+            NSForegroundColorAttributeName : UIColor.blackColor()
+        ]
+    }
+
+    func styleBarButtons() {
+        let barButtonTextAttributes = [
+            NSFontAttributeName : SmoresFont.regularFontOfSize(17.0),
+            NSForegroundColorAttributeName : ColorPalette.TintColor
+        ]
+        UIBarButtonItem.appearance().setTitleTextAttributes(barButtonTextAttributes, forState: .Normal)
+    }
+}
+</code></pre><p>&#x6216;&#x8005;&#x628A;&#x6240;&#x6709;&#x548C;&#x901A;&#x77E5;&#x76F8;&#x5173;&#x7684;&#x903B;&#x8F91;&#x653E;&#x5728;&#x4E00;&#x8D77;:</p>
+<pre><code>extension TodoListViewController {
+
+    // &#x521D;&#x59CB;&#x5316;&#x65F6;&#x5019;&#x8C03;&#x7528;
+    func addNotificationObservers() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector(&quot;onViewModelUpdate:&quot;), name: TodoItemViewModel.viewModelViewUpdatedNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector(&quot;onTodoItemUpdate:&quot;), name: TodoItemDelegate.todoItemUpdatedNotification, object: nil)
+    }
+
+    func onViewModelUpdate(notification: NSNotification) {
+        if let indexPath = notification.object as? NSIndexPath {
+            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+        }
+    }
+
+    func onTodoItemUpdate(notification: NSNotification) {
+        if let itemObject = notification.object as? ValueWrapper&lt;TodoItem&gt; {
+            let updatedItem = itemObject.value
+            let updatedTodoList = dataSource.listFromUpdatedItem(updatedItem)
+            dataSource = TodoListDataSource(todoList: updatedTodoList)
+        }
+    }
+}
+</code></pre><h4 id="&#x9075;&#x5B88;&#x534F;&#x8BAE;"><a href="#&#x9075;&#x5B88;&#x534F;&#x8BAE;" class="headerlink" title="&#x9075;&#x5B88;&#x534F;&#x8BAE;"></a>&#x9075;&#x5B88;&#x534F;&#x8BAE;</h4><p>&#x8FD9;&#x662F;&#x4E00;&#x79CD;&#x7279;&#x6B8A;&#x7684;&#x5206;&#x7EC4;&#xFF0C;&#x6211;&#x4F1A;&#x628A;&#x6240;&#x6709;&#x7528;&#x6765;&#x5B9E;&#x73B0;&#x67D0;&#x4E2A;&#x534F;&#x8BAE;&#x7684;&#x65B9;&#x6CD5;&#x653E;&#x5230;&#x4E00;&#x4E2A; extension &#x4E2D;&#x3002;&#x5728; Objective-C &#x4E2D;&#xFF0C;&#x6211;&#x4E60;&#x60EF;&#x4F7F;&#x7528; pragma &#x6807;&#x8BB0;&#x3002;&#x4E0D;&#x8FC7;&#x6211;&#x559C;&#x6B22; extension &#x66F4;&#x52A0;&#x5F7B;&#x5E95;&#x7684;&#x5206;&#x5272;&#x548C;&#x66F4;&#x597D;&#x7684;&#x53EF;&#x8BFB;&#x6027;&#xFF1A;</p>
+<pre><code>// MARK: &#x8868;&#x683C;&#x89C6;&#x56FE;&#x6570;&#x636E;&#x6E90;
+extension TodoListViewController: UITableViewDataSource {
+
+    func numberOfSectionsInTableView(tableView: UITableView) -&gt; Int {
+        return dataSource.sections.count
+    }
+
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -&gt; Int {
+        return dataSource.numberOfItemsInSection(section)
+    }
+
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -&gt; UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(String.fromClass(ImageWithTextTableViewCell), forIndexPath: indexPath) as! ImageWithTextTableViewCell
+        let viewModel = dataSource.viewModelForCell(atIndexPath: indexPath)
+        cell.configure(withDataSource: viewModel, delegate: viewModel.delegate)
+        return cell
+    }
+}
+
+// MARK: &#x8868;&#x683C;&#x89C6;&#x56FE;&#x4EE3;&#x7406;
+extension TodoListViewController: UITableViewDelegate {
+
+    // MARK: &#x54CD;&#x5E94;&#x5217;&#x9009;&#x62E9;
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier(todoItemSegueIdentifier, sender: self)
+    }
+
+    // MARK: &#x5934;&#x90E8;&#x89C6;&#x56FE;&#x586B;&#x5145;
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -&gt; UIView? {
+        if dataSource.sections[section] == TodoListDataSource.Section.DoneItems {
+            let view = UIView()
+            view.backgroundColor = ColorPalette.SectionSeparatorColor
+            return view
+        }
+        return nil
+    }
+
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -&gt; CGFloat {
+        if dataSource.sections[section] == TodoListDataSource.Section.DoneItems {
+            return 1.0
+        }
+
+        return 0.0
+    }
+
+    // MARK: &#x5220;&#x9664;&#x64CD;&#x4F5C;&#x5904;&#x7406;
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -&gt; Bool {
+        return true
+    }
+
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -&gt; [UITableViewRowAction]?  {
+
+        let deleteAction = UITableViewRowAction(style: .Destructive, title: &quot;Delete&quot;) { [weak self] action , indexPath in
+            if let updatedTodoList = self?.dataSource.listFromDeletedIndexPath(indexPath) {
+                self?.dataSource = TodoListDataSource(todoList: updatedTodoList)
+            }
+        }
+
+        return [deleteAction]
+    }
+}
+</code></pre><h4 id="&#x6A21;&#x578B;"><a href="#&#x6A21;&#x578B;" class="headerlink" title="&#x6A21;&#x578B;"></a>&#x6A21;&#x578B;</h4><p>&#x8FD9;&#x662F;&#x4E00;&#x79CD;&#x6211;&#x5728;&#x4F7F;&#x7528; Objective-C &#x64CD;&#x4F5C; Core Data &#x65F6;&#x5C31;&#x559C;&#x6B22;&#x91C7;&#x7528;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x7531;&#x4E8E;&#x6A21;&#x578B;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x65F6;&#xFF0C;Xcode &#x4F1A;&#x751F;&#x6210;&#x76F8;&#x5E94;&#x7684;&#x6A21;&#x578B;&#xFF0C;&#x6240;&#x4EE5;&#x51FD;&#x6570;&#x548C;&#x5176;&#x4ED6;&#x7684;&#x4E1C;&#x897F;&#x90FD;&#x662F;&#x5199;&#x5728; extension &#x6216;&#x8005; category &#x91CC;&#x9762;&#x7684;&#x3002;</p>
+<p>&#x5728; Swift &#x4E2D;&#xFF0C;&#x6211;&#x5C3D;&#x53EF;&#x80FD;&#x591A;&#x7684;&#x5C1D;&#x8BD5;&#x4F7F;&#x7528;&#x7ED3;&#x6784;&#x4F53;&#xFF0C;&#x4F46;&#x6211;&#x4F9D;&#x7136;&#x559C;&#x6B22;&#x4F7F;&#x7528; extension &#x5C06; Model &#x7684;&#x5C5E;&#x6027;&#x548C;&#x57FA;&#x4E8E;&#x5C5E;&#x6027;&#x7684;&#x8BA1;&#x7B97;&#x5206;&#x5272;&#x5F00;&#x6765;&#x3002;&#x8FD9;&#x4F7F; Model &#x7684;&#x4EE3;&#x7801;&#x66F4;&#x5BB9;&#x6613;&#x9605;&#x8BFB;&#xFF1A;</p>
+<pre><code>struct User {
+    let id: Int
+    let name: String
+    let avatarResource: Resource?
+}
+
+extension User {
+
+    var avatar: UIImage? {
+        if let resource = avatarResource {
+            if let avatarImage = ImageCache.defaultCache.retrieveImageInDiskCacheForKey(resource.cacheKey) {
+                let imageSize = CGSize(width: 27, height: 27)
+                let resizedImage = Toucan(image: avatarImage).resize(imageSize, fitMode: Toucan.Resize.FitMode.Scale).image
+                return Toucan.Mask.maskImageWithEllipse(resizedImage)
+            }
+        }
+        return nil
+    }
+
+    var defaultAvatar: UIImage? {
+        if let defaultImageView = DefaultImageView.viewFromNib() {
+            defaultImageView.configure(withLetters: initials)
+            if let defaultImage = UIImage.imageFromView(defaultImageView) {
+                return Toucan.Mask.maskImageWithEllipse(defaultImage)
+            }
+        }
+
+        return nil
+    }
+
+    var initials: String {
+        var initials = &quot;&quot;
+
+        let nameComponents = name.componentsSeparatedByCharactersInSet(.whitespaceAndNewlineCharacterSet())
+
+        // &#x5F97;&#x5230;&#x7B2C;&#x4E00;&#x4E2A;&#x5355;&#x8BCD;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x5B57;&#x6BCD;
+        if let firstName = nameComponents.first, let firstCharacter = firstName.characters.first {
+            initials.append(firstCharacter)
+        }
+
+        // &#x5F97;&#x5230;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5355;&#x8BCD;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x5B57;&#x6BCD;
+        if nameComponents.count &gt; 1 {
+            if let lastName = nameComponents.last, let firstCharacter = lastName.characters.first {
+                initials.append(firstCharacter)
+            }
+        }
+
+        return initials
+    }
+}
+</code></pre>
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/12/Swift面向协议编程/" itemprop="url">
+                  Swift面向协议编程
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-12T18:41:11+08:00" content="2016-05-12">
+              2016-05-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift进阶/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift进阶</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/12/Swift面向协议编程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/12/Swift面向协议编程/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/12/Swift面向协议编程/" class="leancloud_visitors" data-flag-title="Swift面向协议编程">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="SegueHandlerType&#x534F;&#x8BAE;"><a href="#SegueHandlerType&#x534F;&#x8BAE;" class="headerlink" title="SegueHandlerType&#x534F;&#x8BAE;"></a>SegueHandlerType&#x534F;&#x8BAE;</h4><p>&#x5C06;&#x4E00;&#x4E0B;&#x516C;&#x5171;&#x7684;&#x65B9;&#x6CD5;&#x63D0;&#x53D6;&#x5230;&#x534F;&#x8BAE;&#x4E2D;&#xFF0C;&#x5728;&#x534F;&#x8BAE;&#x4E2D;&#x5B9E;&#x73B0;&#xFF0C;&#x5728;&#x7EE7;&#x627F;&#x8BE5;&#x534F;&#x8BAE;&#x7684;&#x7C7B;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x534F;&#x8BAE;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x3002;<br>SegueHandlerType&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x679A;&#x4E3E;SegueIdentifier&#xFF0C;&#x7EE7;&#x627F;&#x81EA;&#x8BE5;&#x534F;&#x8BAE;&#x7684;&#x7C7B;&#x5FC5;&#x987B;&#x5B9E;&#x73B0;SegueIdentifier&#x3002;RawRepresentable&#x8BF4;&#x660E;&#x679A;&#x4E3E;&#x7C7B;&#x578B;&#x5FC5;&#x987B;&#x6709;rawValue.</p>
+<pre><code>import Foundation
+import UIKit
+
+protocol SegueHandlerType {
+    //&#x5B9E;&#x73B0;RawRepresentable&#x7684;&#x7C7B;&#x578B;&#x8981;&#x6709;&#x4E00;&#x4E2A;rawValue
+    associatedtype SegueIdentifier: RawRepresentable
+}
+
+//&#x679A;&#x4E3E;&#x7684;&#x539F;&#x59CB;&#x503C;&#x5FC5;&#x987B;&#x662F;String&#x7C7B;&#x578B;
+extension SegueHandlerType where Self: UIViewController,SegueIdentifier.RawValue == String {
+
+    func performSegueWithIdentifier(identifier:SegueIdentifier,sender:AnyObject?) -&gt; Void {
+        performSegueWithIdentifier(identifier.rawValue, sender: sender)
+    }
+
+    func segueIdentifierForSegue(segue:UIStoryboardSegue) -&gt; SegueIdentifier {
+
+        //&#x901A;&#x8FC7;rawvalue&#x83B7;&#x53D6;,&#x6B64;&#x65B9;&#x6CD5;&#x4E3B;&#x8981;&#x4E3A;&#x4E86;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x679A;&#x4E3E;&#x503C;&#x3002;
+        guard let identifier = segue.identifier,segueIdentifier = SegueIdentifier(rawValue: identifier) else {
+            fatalError(&quot;Invalid segue identifier: \(segue.identifier)&quot;)
+        }
+
+        return segueIdentifier
+    }
+
+}
+
+
+//&#x63A7;&#x5236;&#x5668;&#x7684;&#x5B9E;&#x73B0;
+
+import UIKit
+
+class ViewController: UIViewController,SegueHandlerType {
+
+    enum SegueIdentifier:String {
+        case PushIdentifier
+        case ModalIdentifier
+        case NoneIdentifier
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+    }
+
+    @IBAction func pushAction(sender: AnyObject) {
+
+        performSegueWithIdentifier(.NoneIdentifier, sender: self)
+
+    }
+
+    @IBAction func modalAction(sender: AnyObject) {
+
+        self.performSegueWithIdentifier(SegueIdentifier.ModalIdentifier.rawValue, sender: nil)
+
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+
+        //&#x901A;&#x8FC7;&#x534F;&#x8BAE;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;segueIdentifierForSegue&#x6765;&#x83B7;&#x53D6;&#x679A;&#x4E3E;&#x7684;&#x503C;&#x3002;
+        switch segueIdentifierForSegue(segue) {
+
+        case .PushIdentifier:
+            print(&quot;abc&quot;)
+            break
+
+        case .ModalIdentifier:
+            print(&quot;ijk&quot;)
+            break
+
+        case .NoneIdentifier:
+
+            break
+        }
+    }
+
+}
+</code></pre>
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/11/NSApplicationMain-和-UIApplicationMain/" itemprop="url">
                   @NSApplicationMain 和 @UIApplicationMain
                 </a>
@@ -609,466 +1421,11 @@ total.inSeconds
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/11/Swift中的过滤器/" itemprop="url">
-                  Swift中的过滤器
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-11T12:07:59+08:00" content="2016-05-11">
-              2016-05-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/11/Swift中的过滤器/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/11/Swift中的过滤器/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/05/11/Swift中的过滤器/" class="leancloud_visitors" data-flag-title="Swift中的过滤器">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/11/Swift断言/" itemprop="url">
-                  Swift断言
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-11T10:39:48+08:00" content="2016-05-11">
-              2016-05-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Swift进阶/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift进阶</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/11/Swift断言/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/11/Swift断言/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/05/11/Swift断言/" class="leancloud_visitors" data-flag-title="Swift断言">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>&#x65AD;&#x8A00;&#xFF1A;&#x65AD;&#x8A00;&#x662F;&#x4E00;&#x79CD;&#x673A;&#x5236;&#x3002;</p>
-<p>assert&#x51FD;&#x6570;:&#x53C2;&#x6570;&#x662F;&#x4E00;&#x4E2A;bool,&#x5F53;&#x6761;&#x4EF6;&#x4E3A;true&#x65F6;,&#x7EE7;&#x7EED;&#x5F80;&#x4E0B;&#x6267;&#x884C;&#x3002;&#x5F53;&#x6761;&#x4EF6;&#x4E3A;false&#x65F6;&#xFF0C;&#x4F1A;&#x62A5;&#x9519;&#x8BEF;&#xFF0C;&#x7A0B;&#x5E8F;&#x505C;&#x6B62;&#x6267;&#x884C;&#x3002;</p>
-<pre><code>assert(&lt;#T##condition: Bool##Bool#&gt;)
-
-//&#x5E26;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#x7684;assert
-assert(x &gt;= 0, &quot;x can&apos;t be negative here&quot;)
-</code></pre><p>assert&#x53EA;&#x6709;&#x5728;&#x975E;&#x4F18;&#x5316;&#x6784;&#x5EFA;&#x65F6;&#x6709;&#x6548;&#x3002;&#x5728;&#x5F00;&#x542F;&#x4F18;&#x5316;&#x6761;&#x4EF6;&#x4E0B;&#xFF0C;&#x8FD9;&#x884C;&#x4EE3;&#x7801;&#x4E0D;&#x4F1A;&#x88AB;&#x7F16;&#x8BD1;&#x3002;&#x5F53;&#x5B58;&#x5728;&#x67D0;&#x4E9B;&#x6761;&#x4EF6;&#x8BA1;&#x7B97;&#x8017;&#x6027;&#x80FD;&#xFF0C;&#x4ECE;&#x800C;&#x62D6;&#x6162;&#x6784;&#x5EFA;&#x901F;&#x5EA6;&#xFF0C;&#x4F46;&#x8FD9;&#x4E9B;&#x6761;&#x4EF6;&#x53C8;&#x662F;&#x6709;&#x7528;&#x7684;&#xFF0C;&#x8C03;&#x8BD5;&#x65F6;&#x5FC5;&#x987B;&#x8FDB;&#x884C;&#x68C0;&#x67E5;&#xFF0C;&#x90A3;&#x4E48;&#x65AD;&#x8A00;&#x7684;&#x8FD9;&#x4E00;&#x7279;&#x6027;&#x5C31;&#x663E;&#x5F97;&#x5F88;&#x6709;&#x7528;&#x4E86;&#x3002;</p>
-<p>&#x6709;&#x4E9B;&#x4EBA;&#x503E;&#x5411;&#x4EC5;&#x5728;&#x8C03;&#x8BD5;&#x7248;&#x672C;&#x4E2D;&#x4F7F;&#x7528;&#x65AD;&#x8A00;&#xFF0C;&#x7406;&#x8BBA;&#x4E0A;&#x8C03;&#x8BD5;&#x7684;&#x65F6;&#x5019;&#x53BB;&#x505A;&#x4E00;&#x4E9B;&#x68C0;&#x67E5;&#x662F;&#x4E2A;&#x597D;&#x4E60;&#x60EF;&#xFF0C;&#x4F46;&#x6700;&#x597D;&#x4FDD;&#x8BC1; app &#x4E0D;&#x4F1A;&#x5728;&#x5B9E;&#x9645;&#x4F7F;&#x7528;&#x65F6;&#x5D29;&#x6E83;&#x3002;&#x4E0D;&#x7BA1;&#x5728;&#x65AD;&#x8A00;&#x68C0;&#x67E5;&#x4E2D;&#x6709;&#x6CA1;&#x6709;&#x51FA;&#x73B0;&#x8FC7;&#xFF0C;&#x4E00;&#x65E6;&#xFF08;&#x5728;&#x5B9E;&#x9645;&#x4F7F;&#x7528;&#x4E2D;&#xFF09;&#x51FA;&#x73B0;&#x9519;&#x8BEF;&#xFF0C;&#x90FD;&#x4F1A;&#x5BFC;&#x81F4;&#x975E;&#x5E38;&#x4E25;&#x91CD;&#x7684;&#x540E;&#x679C;&#x3002;&#x66F4;&#x597D;&#x7684;&#x505A;&#x6CD5;&#x662F;&#x5982;&#x679C;&#x5728;&#x5B9E;&#x9645;&#x4F7F;&#x7528;&#x65F6;&#x51FA;&#x73B0;&#x4E86;&#x9519;&#x8BEF;&#xFF0C;&#x5E94;&#x7528;&#x80FD;&#x591F;&#x5FEB;&#x901F;&#x9000;&#x51FA;&#x3002;&#x7531;&#x6B64;&#x5F15;&#x51FA;&#x4E0B;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x3002;</p>
-<p>&#x51FD;&#x6570; precondition &#x4E0E; assert &#x975E;&#x5E38;&#x50CF;&#xFF0C;&#x8C03;&#x7528;&#x65F6;&#x4E8C;&#x8005;&#x770B;&#x8D77;&#x6765;&#x4E00;&#x6837;&#xFF1A;</p>
-<pre><code>precondition(x &gt;= 0) // x &#x4E0D;&#x80FD;&#x4E3A;&#x8D1F;
-precondition(x &gt;= 0, &quot;x can&apos;t be negative here&quot;)
-</code></pre><p>&#x4E0D;&#x540C;&#x4E4B;&#x5904;&#x5728;&#x4E8E;&#x8BE5;&#x51FD;&#x6570;&#x5728;&#x4F18;&#x5316;&#x6784;&#x5EFA;&#x6761;&#x4EF6;&#x4E0B;&#x4E5F;&#x4F1A;&#x6267;&#x884C;&#x68C0;&#x67E5;&#x3002;&#x8FD9;&#x4F7F;&#x5F97;&#x5B83;&#x6210;&#x4E3A;&#x65AD;&#x8A00;&#x68C0;&#x67E5;&#x7684;&#x4E00;&#x4E2A;&#x66F4;&#x597D;&#x7684;&#x9009;&#x62E9;&#xFF0C;&#x5E76;&#x4E14;&#x68C0;&#x67E5;&#x901F;&#x5EA6;&#x8DB3;&#x591F;&#x5FEB;&#x3002;</p>
-<p>&#x5C3D;&#x7BA1; precondition &#x5728;&#x4F18;&#x5316;&#x6784;&#x5EFA;&#x4E2D;&#x6709;&#x6548;&#xFF0C;&#x5728;&#x300C;&#x975E;&#x68C0;&#x67E5;&#xFF08;unchecked&#xFF09;&#x300D;&#x7684;&#x4F18;&#x5316;&#x6784;&#x5EFA;&#x4E2D;&#x4ECD;&#x662F;&#x65E0;&#x6548;&#x7684;&#x3002;&#x300C;&#x975E;&#x68C0;&#x67E5;&#x300D;&#x7684;&#x6784;&#x5EFA;&#x662F;&#x901A;&#x8FC7;&#x5728;&#x547D;&#x4EE4;&#x884C;&#x6307;&#x5B9A; -Ounchecked &#x6765;&#x5B9E;&#x73B0;&#x7684;&#x3002;&#x8BE5;&#x6307;&#x4EE4;&#x7684;&#x6267;&#x884C;&#x4E0D;&#x4EC5;&#x4F1A;&#x79FB;&#x9664; precondition &#x8C03;&#x7528;&#xFF0C;&#x8FD8;&#x4F1A;&#x8FDB;&#x884C;&#x6570;&#x7EC4;&#x8FB9;&#x754C;&#x68C0;&#x67E5;&#x3002;&#x8FD9;&#x662F;&#x5F88;&#x5371;&#x9669;&#x7684;&#xFF0C;&#x9664;&#x975E;&#x4F60;&#x522B;&#x65E0;&#x9009;&#x62E9;&#xFF0C;&#x4E0D;&#x5F97;&#x4E0D;&#x6267;&#x884C;&#x8BE5;&#x547D;&#x4EE4;&#x5916;&#x5C3D;&#x91CF;&#x4E0D;&#x8981;&#x7528;&#x3002;</p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/11/Swift的Selector/" itemprop="url">
-                  Swift的Selector
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-11T10:08:25+08:00" content="2016-05-11">
-              2016-05-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Swift语法/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift语法</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/11/Swift的Selector/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/11/Swift的Selector/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/05/11/Swift的Selector/" class="leancloud_visitors" data-flag-title="Swift的Selector">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="selector"><a href="#selector" class="headerlink" title="selector"></a>selector</h4><p>Swift2.2&#x7684;&#x8BED;&#x6CD5;&#x53D8;&#x5316;</p>
-<pre><code>&#x683C;&#x5F0F;:#selector()
-</code></pre><p>&#x5728;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x524D;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;Object-C&#x8FD0;&#x884C;&#x65F6;&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
-<pre><code>class SomeClass: NSObject {
-    @objc(doSomethingWithInt:)
-    func doSomething(x: Int) { }
-}
-let x = SomeClass()
-let selector = #selector(x.doSomething(_:))
-
-extension SomeClass {
-    @objc(doSomethingWithString:)
-    func doSomething(x: String) { }
-}
-let anotherSelector = #selector(x.doSomething(_:) as (String) -&gt; Void)
-</code></pre><p>selector&#x662F;&#x5728;&#x7F16;&#x8BD1;&#x65F6;&#x521B;&#x5EFA;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x8FD0;&#x884C;&#x65F6;&#x3002;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x68C0;&#x67E5;&#x65B9;&#x6CD5;&#x662F;&#x5426;&#x5B58;&#x5728;&#x3002;</p>
-<p>&#x4F7F;&#x7528;&#x4F8B;&#x5B50;&#xFF1A;</p>
-<pre><code>let timer = NSTimer(timeInterval: 1, target: object,
-                    selector: #selector(MyClass.test),
-                    userInfo: nil, repeats: false)
-button.addTarget(object, action: #selector(MyClass.buttonTapped),
-                 forControlEvents: .TouchUpInside)
-view.performSelector(#selector(UIView.insertSubview(_:aboveSubview:)),
-                     withObject: button, withObject: otherButton)
-</code></pre><h4 id="selector&#x7684;&#x5176;&#x4ED6;&#x7528;&#x6CD5;"><a href="#selector&#x7684;&#x5176;&#x4ED6;&#x7528;&#x6CD5;" class="headerlink" title="selector&#x7684;&#x5176;&#x4ED6;&#x7528;&#x6CD5;"></a>selector&#x7684;&#x5176;&#x4ED6;&#x7528;&#x6CD5;</h4><pre><code>//&#x81EA;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;view
-class View: UIView {
-
-//button&#x5C5E;&#x6027;
-  let button: UIButton
-
-  override init(frame: CGRect) {
-    button = UIButton(type: .System)
-    button.translatesAutoresizingMaskIntoConstraints = false
-    button.setTitle(&quot;Detail&quot;, forState: .Normal)
-    button.addTarget(nil,
-                     action: Selector.showDetail,
-                     forControlEvents: .TouchUpInside)
-
-    super.init(frame: frame)
-
-    backgroundColor = UIColor.whiteColor()
-
-    addSubview(button)
-    button.centerXAnchor.constraintEqualToAnchor(centerXAnchor).active = true
-    button.centerYAnchor.constraintEqualToAnchor(centerYAnchor).active = true
-  }
-
-  required init?(coder aDecoder: NSCoder) {
-    fatalError(&quot;init(coder:) has not been implemented&quot;)
-  }
-
-}
-
-//&#x4E3A;Selector&#x6DFB;&#x52A0;&#x62D3;&#x5C55;
-//&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;static&#x5168;&#x5C40;&#x5C5E;&#x6027;&#xFF0C;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;Selector.showDetail
-//&#x6216;&#x8005;&#x76F4;&#x63A5;.showDetail
-private extension Selector {
-  static let showDetail = #selector(DetailShowable.showDetail)
-}
-
-//&#x5B9A;&#x4E49;&#x534F;&#x8BAE;&#xFF0C;&#x5728;&#x534F;&#x8BAE;&#x4E2D;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;&#x3002;&#x8C03;&#x7528;&#x534F;&#x8BAE;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;
-@objc protocol DetailShowable {
-  @objc func showDetail()
-}
-
-//&#x5177;&#x4F53;&#x4F7F;&#x7528;&#xFF0C;&#x7EE7;&#x627F;&#x81EA;&#x534F;&#x8BAE;DetailShowable&#xFF0C;&#x5B9E;&#x73B0;&#x534F;&#x8BAE;&#x65B9;&#x6CD5;&#x3002;
-
-class ViewController: UIViewController, DetailShowable {
-
-  override func loadView() {
-    view = View()
-  }
-
-  func showDetail() {
-    navigationController?.pushViewController(DetailViewController(), animated: true)
-  }
-}
-</code></pre>
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1109,7 +1466,7 @@ class ViewController: UIViewController, DetailShowable {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-count">41</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1117,7 +1474,7 @@ class ViewController: UIViewController, DetailShowable {
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
