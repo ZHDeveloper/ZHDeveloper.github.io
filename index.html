@@ -339,7 +339,84 @@
       
         
           
-            
+            <h3 id="1&#x3001;&#x8C03;&#x6574;TableViewCell&#x7684;&#x5206;&#x5272;&#x7EBF;&#x5230;&#x5DE6;&#x8FB9;&#x7684;&#x8DDD;&#x79BB;"><a href="#1&#x3001;&#x8C03;&#x6574;TableViewCell&#x7684;&#x5206;&#x5272;&#x7EBF;&#x5230;&#x5DE6;&#x8FB9;&#x7684;&#x8DDD;&#x79BB;" class="headerlink" title="1&#x3001;&#x8C03;&#x6574;TableViewCell&#x7684;&#x5206;&#x5272;&#x7EBF;&#x5230;&#x5DE6;&#x8FB9;&#x7684;&#x8DDD;&#x79BB;"></a>1&#x3001;&#x8C03;&#x6574;TableViewCell&#x7684;&#x5206;&#x5272;&#x7EBF;&#x5230;&#x5DE6;&#x8FB9;&#x7684;&#x8DDD;&#x79BB;</h3><pre><code>-(void)viewDidLayoutSubviews {
+    if ([self.tableview respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.tableview setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([self.tableview respondsToSelector:@selector(setLayoutMargins:)])  {
+        [self.tableview setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPat{
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]){
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+}
+</code></pre><h3 id="2&#x3001;TableView&#x6EDA;&#x52A8;&#x65F6;&#x6536;&#x8D77;&#x952E;&#x76D8;"><a href="#2&#x3001;TableView&#x6EDA;&#x52A8;&#x65F6;&#x6536;&#x8D77;&#x952E;&#x76D8;" class="headerlink" title="2&#x3001;TableView&#x6EDA;&#x52A8;&#x65F6;&#x6536;&#x8D77;&#x952E;&#x76D8;"></a>2&#x3001;TableView&#x6EDA;&#x52A8;&#x65F6;&#x6536;&#x8D77;&#x952E;&#x76D8;</h3><pre><code>tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+
+&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x679A;&#x4E3E;&#x4E3A;UIScrollViewKeyboardDismissModeInteractive&#xFF0C;&#x8868;&#x793A;&#x5728;&#x952E;&#x76D8;&#x5185;&#x90E8;&#x6ED1;&#x52A8;&#xFF0C;&#x952E;&#x76D8;&#x9010;&#x6E10;&#x4E0B;&#x53BB;&#x3002;
+</code></pre><h3 id="3&#x3001;&#x6ED1;&#x52A8;&#x65F6;&#x9690;&#x85CF;&#x5BFC;&#x822A;&#x6761;"><a href="#3&#x3001;&#x6ED1;&#x52A8;&#x65F6;&#x9690;&#x85CF;&#x5BFC;&#x822A;&#x6761;" class="headerlink" title="3&#x3001;&#x6ED1;&#x52A8;&#x65F6;&#x9690;&#x85CF;&#x5BFC;&#x822A;&#x6761;"></a>3&#x3001;&#x6ED1;&#x52A8;&#x65F6;&#x9690;&#x85CF;&#x5BFC;&#x822A;&#x6761;</h3><pre><code>navigationController.hidesBarsOnSwipe = Yes;
+</code></pre><h3 id="4&#x3001;&#x7981;&#x6B62;&#x7A0B;&#x5E8F;&#x81EA;&#x52A8;&#x9501;&#x5C4F;"><a href="#4&#x3001;&#x7981;&#x6B62;&#x7A0B;&#x5E8F;&#x81EA;&#x52A8;&#x9501;&#x5C4F;" class="headerlink" title="4&#x3001;&#x7981;&#x6B62;&#x7A0B;&#x5E8F;&#x81EA;&#x52A8;&#x9501;&#x5C4F;"></a>4&#x3001;&#x7981;&#x6B62;&#x7A0B;&#x5E8F;&#x81EA;&#x52A8;&#x9501;&#x5C4F;</h3><pre><code>[[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+</code></pre><h3 id="5&#x3001;&#x4FEE;&#x6539;UITextField&#x7684;placeholder&#x7684;&#x989C;&#x8272;&#x548C;&#x5B57;&#x4F53;"><a href="#5&#x3001;&#x4FEE;&#x6539;UITextField&#x7684;placeholder&#x7684;&#x989C;&#x8272;&#x548C;&#x5B57;&#x4F53;" class="headerlink" title="5&#x3001;&#x4FEE;&#x6539;UITextField&#x7684;placeholder&#x7684;&#x989C;&#x8272;&#x548C;&#x5B57;&#x4F53;"></a>5&#x3001;&#x4FEE;&#x6539;UITextField&#x7684;placeholder&#x7684;&#x989C;&#x8272;&#x548C;&#x5B57;&#x4F53;</h3><pre><code>[textField setValue:[UIColor redColor] forKeyPath:@&quot;_placeholderLabel.textColor&quot;];  
+[textField setValue:[UIFont boldSystemFontOfSize:16] forKeyPath:@&quot;_placeholderLabel.font&quot;];
+</code></pre><h3 id="6&#x3001;&#x9690;&#x85CF;UITabBar"><a href="#6&#x3001;&#x9690;&#x85CF;UITabBar" class="headerlink" title="6&#x3001;&#x9690;&#x85CF;UITabBar"></a>6&#x3001;&#x9690;&#x85CF;UITabBar</h3><pre><code>UIViewController *vc = [UIViewController new];
+vc.hidesBottomBarWhenPushed = YES;
+[self.navigationController pushViewController:vc animated:YES];
+</code></pre><h3 id="7&#x3001;&#x53D6;&#x6D88;&#x7CFB;&#x7EDF;&#x7684;&#x8FD4;&#x56DE;&#x624B;&#x52BF;"><a href="#7&#x3001;&#x53D6;&#x6D88;&#x7CFB;&#x7EDF;&#x7684;&#x8FD4;&#x56DE;&#x624B;&#x52BF;" class="headerlink" title="7&#x3001;&#x53D6;&#x6D88;&#x7CFB;&#x7EDF;&#x7684;&#x8FD4;&#x56DE;&#x624B;&#x52BF;"></a>7&#x3001;&#x53D6;&#x6D88;&#x7CFB;&#x7EDF;&#x7684;&#x8FD4;&#x56DE;&#x624B;&#x52BF;</h3><pre><code>self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+</code></pre><h3 id="8&#x3001;AFnetWorking&#x62A5;&#x201D;Request-failed-unacceptable-content-type-text-html&#x201D;&#x9519;&#x8BEF;"><a href="#8&#x3001;AFnetWorking&#x62A5;&#x201D;Request-failed-unacceptable-content-type-text-html&#x201D;&#x9519;&#x8BEF;" class="headerlink" title="8&#x3001;AFnetWorking&#x62A5;&#x201D;Request failed: unacceptable content-type: text/html&#x201D;&#x9519;&#x8BEF;"></a>8&#x3001;AFnetWorking&#x62A5;&#x201D;Request failed: unacceptable content-type: text/html&#x201D;&#x9519;&#x8BEF;</h3><pre><code>AFURLResponseSerialization.m
+self.acceptableContentTypes = [NSSetsetWithObjects:@&quot;application/json&quot;, @&quot;text/html&quot;,@&quot;text/json&quot;,@&quot;text/javascript&quot;, nil];
+</code></pre><h3 id="9&#x3001;&#x9690;&#x85CF;navigation&#x8DF3;&#x8F6C;&#x540E;&#x7684;&#x8FD4;&#x56DE;&#x6309;&#x94AE;"><a href="#9&#x3001;&#x9690;&#x85CF;navigation&#x8DF3;&#x8F6C;&#x540E;&#x7684;&#x8FD4;&#x56DE;&#x6309;&#x94AE;" class="headerlink" title="9&#x3001;&#x9690;&#x85CF;navigation&#x8DF3;&#x8F6C;&#x540E;&#x7684;&#x8FD4;&#x56DE;&#x6309;&#x94AE;"></a>9&#x3001;&#x9690;&#x85CF;navigation&#x8DF3;&#x8F6C;&#x540E;&#x7684;&#x8FD4;&#x56DE;&#x6309;&#x94AE;</h3><pre><code>//&#x9690;&#x85CF;&#x5934;&#x90E8;&#x5DE6;&#x8FB9;&#x7684;&#x8FD4;&#x56DE;
+self.navigationItem.hidesBackButton=YES;
+</code></pre><h3 id="10&#x3001;&#x4E24;&#x79CD;&#x65B9;&#x6CD5;&#x5220;&#x9664;NSUserDefaults&#x6240;&#x6709;&#x8BB0;&#x5F55;"><a href="#10&#x3001;&#x4E24;&#x79CD;&#x65B9;&#x6CD5;&#x5220;&#x9664;NSUserDefaults&#x6240;&#x6709;&#x8BB0;&#x5F55;" class="headerlink" title="10&#x3001;&#x4E24;&#x79CD;&#x65B9;&#x6CD5;&#x5220;&#x9664;NSUserDefaults&#x6240;&#x6709;&#x8BB0;&#x5F55;"></a>10&#x3001;&#x4E24;&#x79CD;&#x65B9;&#x6CD5;&#x5220;&#x9664;NSUserDefaults&#x6240;&#x6709;&#x8BB0;&#x5F55;</h3><pre><code>//&#x65B9;&#x6CD5;&#x4E00;
+NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
+[[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+
+//&#x65B9;&#x6CD5;&#x4E8C;
+- (void)resetDefaults {
+    NSUserDefaults * defs = [NSUserDefaults standardUserDefaults];
+    NSDictionary * dict = [defs dictionaryRepresentation];
+    for (id key in dict) {
+        [defs removeObjectForKey:key];
+    }
+    [defs synchronize];
+}
+</code></pre><h3 id="11&#x3001;NSLog&#x7684;&#x683C;&#x5F0F;&#x8F93;&#x51FA;"><a href="#11&#x3001;NSLog&#x7684;&#x683C;&#x5F0F;&#x8F93;&#x51FA;" class="headerlink" title="11&#x3001;NSLog&#x7684;&#x683C;&#x5F0F;&#x8F93;&#x51FA;"></a>11&#x3001;NSLog&#x7684;&#x683C;&#x5F0F;&#x8F93;&#x51FA;</h3><pre><code>&#x2022; %@ &#x3000;&#x3000;&#x3000;&#x3000;&#x5BF9;&#x8C61;
+&#x2022; %d, %i &#x3000;&#x3000; &#x6574;&#x6570;
+&#x2022; %u &#x3000;&#x3000;&#x3000;&#x3000; &#x65E0;&#x7B26;&#x6574;&#x5F62;
+&#x2022; %f &#x3000;&#x3000;&#x3000;&#x3000;  &#x6D6E;&#x70B9;/&#x53CC;&#x5B57;
+&#x2022; %x, %X &#x3000;&#x3000;&#x4E8C;&#x8FDB;&#x5236;&#x6574;&#x6570;
+&#x2022; %o &#x3000;&#x3000;&#x3000;&#x3000; &#x516B;&#x8FDB;&#x5236;&#x6574;&#x6570;
+&#x2022; %zu &#x3000;&#x3000;&#x3000;&#x3000;size_t
+&#x2022; %p &#x3000;&#x3000;&#x3000;&#x3000; &#x6307;&#x9488;
+&#x2022; %e &#x3000;&#x3000;&#x3000;&#x3000; &#x6D6E;&#x70B9;/&#x53CC;&#x5B57; &#xFF08;&#x79D1;&#x5B66;&#x8BA1;&#x7B97;&#xFF09;
+&#x2022; %g &#x3000;&#x3000;&#x3000;&#x3000; &#x6D6E;&#x70B9;/&#x53CC;&#x5B57;
+&#x2022; %s &#x3000;&#x3000;&#x3000;&#x3000;  C &#x5B57;&#x7B26;&#x4E32;
+&#x2022; %.*s &#x3000;&#x3000;&#x3000;  Pascal&#x5B57;&#x7B26;&#x4E32;
+&#x2022; %c &#x3000;&#x3000;&#x3000;&#x3000;  &#x5B57;&#x7B26;
+&#x2022; %C &#x3000;&#x3000;&#x3000;&#x3000;  unichar
+&#x2022; %lld &#x3000;&#x3000;&#x3000;&#x3000; 64&#x4F4D;&#x957F;&#x6574;&#x6570;&#xFF08;long long&#xFF09;
+&#x2022; %llu &#x3000;&#x3000;&#x3000;&#x3000; &#x65E0;&#x7B26;64&#x4F4D;&#x957F;&#x6574;&#x6570;
+&#x2022; %Lf &#x3000;&#x3000;&#x3000;&#x3000;  64&#x4F4D;&#x53CC;&#x5B57;
+</code></pre><h3 id="12&#x3001;&#x7ED8;&#x5236;1&#x50CF;&#x7D20;&#x7684;&#x7EBF;"><a href="#12&#x3001;&#x7ED8;&#x5236;1&#x50CF;&#x7D20;&#x7684;&#x7EBF;" class="headerlink" title="12&#x3001;&#x7ED8;&#x5236;1&#x50CF;&#x7D20;&#x7684;&#x7EBF;"></a>12&#x3001;&#x7ED8;&#x5236;1&#x50CF;&#x7D20;&#x7684;&#x7EBF;</h3><pre><code>#define SINGLE_LINE_WIDTH           (1 / [UIScreen mainScreen].scale)
+#define SINGLE_LINE_ADJUST_OFFSET   ((1 / [UIScreen mainScreen].scale) / 2)
+
+UIView *view = [[UIView alloc] initWithFrame:CGrect(x - SINGLE_LINE_ADJUST_OFFSET, 0, SINGLE_LINE_WIDTH, 100)];
+</code></pre><h3 id="13&#x3001;&#x53BB;&#x9664;&#x7F16;&#x8BD1;&#x5668;&#x8B66;&#x544A;"><a href="#13&#x3001;&#x53BB;&#x9664;&#x7F16;&#x8BD1;&#x5668;&#x8B66;&#x544A;" class="headerlink" title="13&#x3001;&#x53BB;&#x9664;&#x7F16;&#x8BD1;&#x5668;&#x8B66;&#x544A;"></a>13&#x3001;&#x53BB;&#x9664;&#x7F16;&#x8BD1;&#x5668;&#x8B66;&#x544A;</h3><pre><code>//-Wdeprecated-declarations &#x7F16;&#x8BD1;&#x5668;&#x8B66;&#x544A;&#x7684;&#x7C7B;&#x578B;
+
+#pragma clang diagnostic push  
+
+#pragma clang diagnostic ignored &quot;-Wdeprecated-declarations&quot;      
+
+#pragma clang diagnostic pop  
+</code></pre><h3 id="14&#x3001;&#x5224;&#x65AD;&#x89C6;&#x56FE;&#x662F;&#x5426;&#x53D1;&#x751F;&#x5F62;&#x53D8;"><a href="#14&#x3001;&#x5224;&#x65AD;&#x89C6;&#x56FE;&#x662F;&#x5426;&#x53D1;&#x751F;&#x5F62;&#x53D8;" class="headerlink" title="14&#x3001;&#x5224;&#x65AD;&#x89C6;&#x56FE;&#x662F;&#x5426;&#x53D1;&#x751F;&#x5F62;&#x53D8;"></a>14&#x3001;&#x5224;&#x65AD;&#x89C6;&#x56FE;&#x662F;&#x5426;&#x53D1;&#x751F;&#x5F62;&#x53D8;</h3><pre><code>if (CGAffineTransformIsIdentity(self.view.transform))
+{//&#x8FD8;&#x539F;&#x5F62;&#x53D8;
+    self.view.transform = CGAffineTransformIdentity;
+}
+</code></pre>
           
         
       
