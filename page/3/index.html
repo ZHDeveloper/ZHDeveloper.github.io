@@ -279,6 +279,151 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/19/CAGradientLayer-渐变图层/" itemprop="url">
+                  CAGradientLayer(渐变图层)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-19T15:33:46+08:00" content="2016-05-19">
+              2016-05-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift进阶/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift进阶</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/19/CAGradientLayer-渐变图层/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/19/CAGradientLayer-渐变图层/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/19/CAGradientLayer-渐变图层/" class="leancloud_visitors" data-flag-title="CAGradientLayer(渐变图层)">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="CAGradientLayer"><a href="#CAGradientLayer" class="headerlink" title="CAGradientLayer"></a>CAGradientLayer</h4><p>CAGradientLayer&#x662F;CALayer&#x7684;&#x5B50;&#x7C7B;&#x3002;&#x7528;&#x6765;&#x5904;&#x7406;&#x6E10;&#x53D8;&#x8272;&#x7684;&#x5C42;&#x7ED3;&#x6784;&#x3002;</p>
+<p>loacations&#x5C5E;&#x6027;&#xFF0C;&#x6E10;&#x53D8;&#x7684;&#x8303;&#x56F4;&#x3002;</p>
+<pre><code>//&#x521B;&#x5EFA;&#x6E10;&#x53D8;&#x56FE;&#x5C42;
+let grandientLayer = CAGradientLayer()
+
+//&#x6E10;&#x53D8;&#x7684;&#x989C;&#x8272;
+grandientLayer.colors = [UIColor.init(white: 0, alpha: 0.3).CGColor,UIColor.init(white: 0, alpha: 0).CGColor]
+
+//&#x6E10;&#x53D8;&#x7684;&#x65B9;&#x5411;
+grandientLayer.startPoint = CGPoint(x: 0, y: 0)
+grandientLayer.endPoint = CGPoint(x: 0, y: 1)
+
+   //&#x56FE;&#x5C42;&#x7684;frame
+grandientLayer.frame = view.bounds
+
+//&#x6DFB;&#x52A0;&#x56FE;&#x5C42;
+view.layer.addSublayer(grandientLayer)
+</code></pre>
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/18/ZHRefresh-Swift上下拉刷新/" itemprop="url">
                   ZHRefresh(Swift上下拉刷新)
                 </a>
@@ -1213,214 +1358,6 @@ NSApplicationMain(Process.argc, Process.unsafeArgv)
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/11/度量单位/" itemprop="url">
-                  度量单位
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-11T15:01:40+08:00" content="2016-05-11">
-              2016-05-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Swift进阶/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift进阶</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/11/度量单位/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/11/度量单位/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/05/11/度量单位/" class="leancloud_visitors" data-flag-title="度量单位">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>&#x76F8;&#x5173;&#x77E5;&#x8BC6;&#xFF1A;</p>
-<ul>
-<li><a href="http://www.cnblogs.com/comsokey/p/Swift1.html" target="_blank" rel="external">&#x81EA;&#x5B9A;&#x4E49;&#x64CD;&#x4F5C;&#x8FD0;&#x7B97;&#x7B26;</a></li>
-<li><a href="http://www.cocoachina.com/swift/20150204/11091.html" target="_blank" rel="external">&#x8FD0;&#x7B97;&#x7B26;&#x91CD;&#x8F7D;</a></li>
-<li><a href="http://blog.csdn.net/chaoyuan899/article/details/39208875" target="_blank" rel="external">swift_&#x91CD;&#x8F7D;&#x548C;&#x81EA;&#x5B9A;&#x4E49;&#x8FD0;&#x7B97;&#x7B26;</a></li>
-</ul>
-<p>eg:</p>
-<pre><code>//&#x5B9A;&#x4E49;Time&#x534F;&#x8BAE;
-protocol Time {
-    //&#x534F;&#x8BAE;&#x4E2D;&#x7684;&#x5FC5;&#x987B;&#x5B9E;&#x73B0;&#x7684;&#x65B9;&#x6CD5;
-    var inSeconds:Double{get}
-}
-
-extension Time {
-
-    //&#x5C06;second&#x8F6C;&#x5316;&#x4E3A;minute
-    var inMinutes:Double {
-        return inSeconds/60
-    }
-
-    //&#x5C06;second&#x8F6C;&#x5316;&#x4E3A;hour
-    var inHours:Double {
-        return inMinutes/60
-    }
-
-}
-
-//&#x5B9A;&#x4E49;Hours&#x7ED3;&#x6784;&#x4F53;&#xFF0C;&#x9075;&#x5B88;Time&#x534F;&#x8BAE;
-struct Hours:Time {
-    let value:Double
-
-    var inSeconds: Double {
-        return value*3600
-    }
-}
-
-struct Minutes:Time {
-    let value:Double
-
-    var inSeconds: Double {
-        return value*60
-    }
-}
-
-struct Seconds:Time {
-
-    let value:Double
-
-    var inSeconds: Double{
-        return value
-    }
-
-}
-
-//&#x4F7F;&#x7528;&#x540C;&#x6837;&#x7684;&#x65B9;&#x5F0F;&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;Weaks&#x3001;Day&#x7B49;&#x7ED3;&#x6784;&#x4F53;
-
-//&#x5B9A;&#x4E49;int&#x7684;&#x62D3;&#x5C55;&#xFF0C;
-extension Int {
-
-    var hours:Time {
-        return Hours(value: Double(self))
-    }
-
-    var minutes:Time {
-        return Minutes(value: Double(self))
-    }
-}
-
-infix operator ++&gt; {associativity none}
-
-func ++&gt; (lhs: Time, rhs: Time) -&gt; Time {
-
-    print(lhs.inHours)
-
-    return Seconds(value: lhs.inSeconds + rhs.inSeconds)
-}
-
-let total = 3.hours ++&gt; 4.minutes
-
-total.inSeconds
-</code></pre>
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1466,7 +1403,7 @@ total.inSeconds
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-count">42</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1474,7 +1411,7 @@ total.inSeconds
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1483,7 +1420,7 @@ total.inSeconds
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-count">49</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

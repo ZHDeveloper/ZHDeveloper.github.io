@@ -1,0 +1,857 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Python,环境搭建," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="###Mac&amp;#x7CFB;&amp;#x7EDF;&amp;#x81EA;&amp;#x5E26;Python2.7
+PIP&amp;#x7684;&amp;#x5B89;&amp;#x88C5;mac&amp;#x5B89;&amp;#x88C5;pip
+sudo easy_install pip
+pycharm&amp;#x81EA;&amp;#x5E26;Python2.6&amp;#xFF0C;&amp;#x9700;&amp;#x8981;&amp;#x901A;&amp;#x8FC7;Project">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python-环境的搭建">
+<meta property="og:url" content="http://yoursite.com/2016/09/03/Python-环境的搭建/index.html">
+<meta property="og:site_name" content="晴间多云">
+<meta property="og:description" content="###Mac&amp;#x7CFB;&amp;#x7EDF;&amp;#x81EA;&amp;#x5E26;Python2.7
+PIP&amp;#x7684;&amp;#x5B89;&amp;#x88C5;mac&amp;#x5B89;&amp;#x88C5;pip
+sudo easy_install pip
+pycharm&amp;#x81EA;&amp;#x5E26;Python2.6&amp;#xFF0C;&amp;#x9700;&amp;#x8981;&amp;#x901A;&amp;#x8FC7;Project">
+<meta property="og:updated_time" content="2016-09-03T07:31:39.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python-环境的搭建">
+<meta name="twitter:description" content="###Mac&amp;#x7CFB;&amp;#x7EDF;&amp;#x81EA;&amp;#x5E26;Python2.7
+PIP&amp;#x7684;&amp;#x5B89;&amp;#x88C5;mac&amp;#x5B89;&amp;#x88C5;pip
+sudo easy_install pip
+pycharm&amp;#x81EA;&amp;#x5E26;Python2.6&amp;#xFF0C;&amp;#x9700;&amp;#x8981;&amp;#x901A;&amp;#x8FC7;Project">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Python-环境的搭建 | 晴间多云 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?4de1a1eb152307ab99735102567a9249";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">晴间多云</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">多读书、多看报、少吃零食、多睡觉。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'hZPX6os5HstQeMmKo4X_','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Python-环境的搭建
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-03T10:04:59+08:00" content="2016-09-03">
+              2016-09-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/03/Python-环境的搭建/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/03/Python-环境的搭建/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/09/03/Python-环境的搭建/" class="leancloud_visitors" data-flag-title="Python-环境的搭建">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>###Mac&#x7CFB;&#x7EDF;&#x81EA;&#x5E26;Python2.7</p>
+<h3 id="PIP&#x7684;&#x5B89;&#x88C5;"><a href="#PIP&#x7684;&#x5B89;&#x88C5;" class="headerlink" title="PIP&#x7684;&#x5B89;&#x88C5;"></a>PIP&#x7684;&#x5B89;&#x88C5;</h3><p>mac&#x5B89;&#x88C5;pip</p>
+<pre><code>sudo easy_install pip
+</code></pre><p>pycharm&#x81EA;&#x5E26;Python2.6&#xFF0C;&#x9700;&#x8981;&#x901A;&#x8FC7;Project Interpreter&#x6765;&#x8BBE;&#x7F6E;Python2.7&#x6765;&#x52A0;&#x8F7D;&#x66F4;&#x591A;&#x7B2C;&#x4E09;&#x65B9;&#x6A21;&#x5757;&#x3002;</p>
+<h3 id="MySQL&#x5B89;&#x88C5;"><a href="#MySQL&#x5B89;&#x88C5;" class="headerlink" title="MySQL&#x5B89;&#x88C5;"></a>MySQL&#x5B89;&#x88C5;</h3><p>&#x5B89;&#x88C5;&#x5B8C;&#x6210;MySQL&#xFF0C;&#x9700;&#x8981;&#x5728;&#x7CFB;&#x7EDF;&#x7684;&#x504F;&#x597D;&#x8BBE;&#x7F6E;&#x542F;&#x52A8;MySQL&#x670D;&#x52A1;&#x3002;</p>
+<p>&#x8BBE;&#x7F6E;MySQL&#x547D;&#x4EE4;&#x522B;&#x540D;&#xFF1A;</p>
+<pre><code>alias mysql=/usr/local/mysql/bin/mysql
+//&#x8BBE;&#x7F6E;MySQL&#x7684;&#x5BC6;&#x7801;
+alias mysqladmin=/usr/local/mysql/bin/mysqladmin
+</code></pre><p>&#x8BBE;&#x7F6E;MySQL&#x7684;&#x5BC6;&#x7801;</p>
+<pre><code>//&#x521D;&#x6B21;&#x5B89;&#x88C5;MySQL&#x9700;&#x8981;&#x8BBE;&#x7F6E;&#x5BC6;&#x7801;
+mysqladmin -u root password ***(#&#x521D;&#x59CB;&#x5BC6;&#x7801;)
+
+//&#x4FEE;&#x6539;&#x5BC6;&#x7801;
+mysqladmin -u root -p password new***(#&#x6700;&#x65B0;&#x5BC6;&#x7801;)
+</code></pre><p>&#x8FDE;&#x63A5;&#x6570;&#x636E;&#x5E93;</p>
+<pre><code>mysql -u root -p
+&#x5982;&#x679C;&#x662F;&#x767B;&#x5F55;&#x8FDC;&#x7A0B;&#x4E3B;&#x673A;&#x4E0A;&#x7684;mysql&#x6570;&#x636E;&#x5E93;
+mysql -h &#x4E3B;&#x673A;&#x5730;&#x5740; -u &#x7528;&#x6237;&#x540D; -p &#x7528;&#x6237;&#x5BC6;&#x7801;
+</code></pre><p>&#x8BBE;&#x7F6E;MySQL&#x7684;&#x7F16;&#x7801;&#x65B9;&#x5F0F;&#xFF1A;</p>
+<p>&#x5728;Mac&#x6216;Linux&#x4E0A;&#xFF0C;&#x9700;&#x8981;&#x7F16;&#x8F91;MySQL&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x628A;&#x6570;&#x636E;&#x5E93;&#x9ED8;&#x8BA4;&#x7684;&#x7F16;&#x7801;&#x5168;&#x90E8;&#x6539;&#x4E3A;UTF-8&#x3002;MySQL&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x9ED8;&#x8BA4;&#x5B58;&#x653E;&#x5728;/etc/my.cnf&#x6216;&#x8005;/etc/mysql/my.cnf&#xFF1A;</p>
+<pre><code>[client]
+default-character-set = utf8
+
+[mysqld]
+default-storage-engine = INNODB
+character-set-server = utf8
+collation-server = utf8_general_ci
+</code></pre><p>&#x91CD;&#x542F;MySQL&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;MySQL&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x547D;&#x4EE4;&#x884C;&#x68C0;&#x67E5;&#x7F16;&#x7801;&#xFF1A;</p>
+<pre><code>$ mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor...
+...
+
+mysql&gt; show variables like &apos;%char%&apos;;
++--------------------------+--------------------------------------------------------+
+| Variable_name            | Value                                                  |
++--------------------------+--------------------------------------------------------+
+| character_set_client     | utf8                                                   |
+| character_set_connection | utf8                                                   |
+| character_set_database   | utf8                                                   |
+| character_set_filesystem | binary                                                 |
+| character_set_results    | utf8                                                   |
+| character_set_server     | utf8                                                   |
+| character_set_system     | utf8                                                   |
+| character_sets_dir       | /usr/local/mysql-5.1.65-osx10.6-x86_64/share/charsets/ |
++--------------------------+--------------------------------------------------------+
+8 rows in set (0.00 sec)
+</code></pre><h3 id="&#x5B89;&#x88C5;MySQL&#x9A71;&#x52A8;"><a href="#&#x5B89;&#x88C5;MySQL&#x9A71;&#x52A8;" class="headerlink" title="&#x5B89;&#x88C5;MySQL&#x9A71;&#x52A8;"></a>&#x5B89;&#x88C5;MySQL&#x9A71;&#x52A8;</h3><p>MySQL-python-1.2.5&#x4E0B;&#x8F7D;</p>
+<p>&#x4FEE;&#x6539;&#x884C;&#xFF1A;</p>
+<pre><code>mysql_config = /usr/local/mysql/bin/mysql_config
+
+//&#x5B89;&#x88C5;
+sudo python setup.py install
+
+
+&#x5728;&#x4EE3;&#x7801;&#x4E2D;&#x5BFC;&#x5165;import MySQLdb
+
+&#x63D0;&#x793A;&#x62A5;&#x9519;&#xFF1A;    
+ Reason: unsafe use of relative rpath libmysqlclient.18.dylib in /Users/ZhiHua/.python-eggs/MySQL_python-1.2.5-py2.7-macosx-10.11-intel.egg-tmp/_mysql.so with restricted binary
+
+//&#x89E3;&#x653E;&#x65B9;&#x6CD5;
+//&#x91CD;&#x542F;&#x7CFB;&#x7EDF; command+r &#x8FDB;&#x5165;&#x547D;&#x4EE4;&#x884C;&#x6A21;&#x5F0F;
+csrutil disable
+</code></pre>
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag">#Python</a>
+          
+            <a href="/tags/环境搭建/" rel="tag">#环境搭建</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/13/知识整理/" rel="next" title="知识整理">
+                <i class="fa fa-chevron-left"></i> 知识整理
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/03/Python-环境的搭建/"
+           data-title="Python-环境的搭建" data-url="http://yoursite.com/2016/09/03/Python-环境的搭建/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="晴间多云" />
+          <p class="site-author-name" itemprop="name">晴间多云</p>
+          <p class="site-description motion-element" itemprop="description">改变，永远不嫌晚。无论你是几岁，也无论你目前所处的境况有多糟，只要立定目标、一步一步往前走，人生随时都有翻盘的可能性。新的一天，你要加油!</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ZHDeveloper" target="_blank" title="GitHub">
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/ZHDeveloper" target="_blank" title="微博">
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element">
+            <div class="links-of-blogroll-title">
+              <i class="fa fa-globe fa-fw"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://9di0.com/" title="封子" target="_blank">封子</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#PIP的安装"><span class="nav-number">1.</span> <span class="nav-text">PIP的安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL安装"><span class="nav-number">2.</span> <span class="nav-text">MySQL安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装MySQL驱动"><span class="nav-number">3.</span> <span class="nav-text">安装MySQL驱动</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">晴间多云</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zhcoder"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("xcPF8ycYjdUilVfVqFXEGs5R-gzGzoHsz", "iJNnynVYmX2tly4gdQbfy2mB");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
