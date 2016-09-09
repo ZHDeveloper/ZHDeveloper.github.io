@@ -279,6 +279,503 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/02/Sublime3搭建GO开发环境/" itemprop="url">
+                  Sublime3搭建GO开发环境
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-02T10:08:46+08:00" content="2016-06-02">
+              2016-06-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/golang/" itemprop="url" rel="index">
+                    <span itemprop="name">golang</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/02/Sublime3搭建GO开发环境/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/02/Sublime3搭建GO开发环境/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/06/02/Sublime3搭建GO开发环境/" class="leancloud_visitors" data-flag-title="Sublime3搭建GO开发环境">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="Sublime3&#x642D;&#x5EFA;GO&#x5F00;&#x53D1;&#x73AF;&#x5883;"><a href="#Sublime3&#x642D;&#x5EFA;GO&#x5F00;&#x53D1;&#x73AF;&#x5883;" class="headerlink" title="Sublime3&#x642D;&#x5EFA;GO&#x5F00;&#x53D1;&#x73AF;&#x5883;"></a>Sublime3&#x642D;&#x5EFA;GO&#x5F00;&#x53D1;&#x73AF;&#x5883;</h4><p>Sublime3&#x5E8F;&#x5217;&#x53F7;</p>
+<p>++++++++++++++++++++++++++++++</p>
+<p>MinBan<br>Single User License<br>EA7E-806395<br>318133A3 8F202A61 B0DBB8EB 21E17D2E<br>97D540E6 34079344 54620650 71E47589<br>9EF87857 345F5042 0D728DD1 8D8C979D<br>6A4F4DD2 67BB0345 746CA297 515BDA91<br>6CEAB381 4DB56700 D77DCD14 977BD326<br>1AC309ED 0EB414B8 4730DA10 99DBD291<br>FC88E0EF DCC7E3A9 56E4FFED 7629746B<br>E529AECA 92A96B60 72AE8928 8A240AAC</p>
+<p>++++++++++++++++++++++++++++++</p>
+<h4 id="&#x5B89;&#x88C5;&#x6B65;&#x9AA4;"><a href="#&#x5B89;&#x88C5;&#x6B65;&#x9AA4;" class="headerlink" title="&#x5B89;&#x88C5;&#x6B65;&#x9AA4;"></a>&#x5B89;&#x88C5;&#x6B65;&#x9AA4;</h4><ul>
+<li>&#x5B89;&#x88C5;Sublime3</li>
+<li>&#x5B89;&#x88C5;Package Control</li>
+</ul>
+<p>&#x6309;&#x4F4F;&#x547D;&#x4EE4;&#x884C; Ctrl+` &#x8C03;&#x51FA;&#x547D;&#x4EE4;&#x884C;&#x8F93;&#x5165;&#x4EE5;&#x4E0B;&#x4EE3;&#x7801;:</p>
+<pre><code>import urllib.request,os; pf = &apos;Package Control.sublime-package&apos;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), &apos;wb&apos;).write(urllib.request.urlopen( &apos;http://sublime.wbond.net/&apos; + pf.replace(&apos; &apos;,&apos;%20&apos;)).read()) 
+</code></pre><p>&#x5B89;&#x88C5;&#x597D;&#x4EE5;&#x540E;&#x91CD;&#x542F;ST&#xFF0C;&#x5C31;&#x80FD;&#x4F7F;&#x7528;Package Control </p>
+<ul>
+<li><p>&#x5B89;&#x88C5;Gosublime&#x3002;&#x6309;&#x5FEB;&#x6377;&#x952E; Ctrl+Shift+p &#x952E;&#x5165; pci&#xFF0C;&#x9009;&#x62E9;&#x7B2C;&#x4E00;&#x4E2A;Install Package:</p>
+</li>
+<li><p>&#x7F16;&#x5199;go&#x4EE3;&#x7801;</p>
+</li>
+</ul>
+<p>&#x901A;&#x8FC7;&#x7F16;&#x5199;go&#x4EE3;&#x7801;&#x6765;&#x6D4B;&#x8BD5;</p>
+<pre><code>package main  
+
+import &quot;fmt&quot;  
+
+func main() {  
+    fmt.Println(&quot;Hello, World&quot;)  
+} 
+</code></pre><ul>
+<li>&#x8FD0;&#x884C;go run hello.go</li>
+</ul>
+<h4 id="Sublime3&#x63D2;&#x4EF6;"><a href="#Sublime3&#x63D2;&#x4EF6;" class="headerlink" title="Sublime3&#x63D2;&#x4EF6;"></a>Sublime3&#x63D2;&#x4EF6;</h4><p>&#x63A8;&#x8350;&#x51E0;&#x4E2A;ST3&#x7684;&#x63D2;&#x4EF6;:<br>ConvertToUTF8</p>
+<p>Alignment<br>:&#x90E8;&#x5206;&#x4EE3;&#x7801;&#x5BF9;&#x9F50;&#xFF0C;&#x5982;&#x80FD;&#x5BF9;&#x9F50;&#x7B49;&#x53F7;</p>
+<p>BracketHighlighter<br>:&#x4EE3;&#x7801;&#x9AD8;&#x4EAE;</p>
+<p>SideBarEnhancements</p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/27/IB-DESIGNABLE-IBInspectable/" itemprop="url">
+                  IB_DESIGNABLE&IBInspectable
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-27T14:18:24+08:00" content="2016-05-27">
+              2016-05-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift进阶/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift进阶</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/27/IB-DESIGNABLE-IBInspectable/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/27/IB-DESIGNABLE-IBInspectable/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/27/IB-DESIGNABLE-IBInspectable/" class="leancloud_visitors" data-flag-title="IB_DESIGNABLE&IBInspectable">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="IBInspectable"><a href="#IBInspectable" class="headerlink" title="IBInspectable"></a>IBInspectable</h4><p>&#x56E0;&#x4E3A;&#x53EF;&#x68C0;&#x67E5;&#x5C5E;&#x6027;&#x4EC5;&#x4EC5;&#x662F;&#x7528;&#x6237;&#x5B9A;&#x4E49;&#x7684;&#x8FD0;&#x884C;&#x65F6;&#x5C5E;&#x6027;&#x9876;&#x90E8;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x6240;&#x4EE5;&#x652F;&#x6301;&#x76F8;&#x540C;&#x7684;&#x7C7B;&#x578B;&#x5217;&#x8868;&#xFF1A;&#x5E03;&#x5C14;&#xFF0C;&#x5B57;&#x7B26;&#x4E32;&#x548C;&#x6570;&#x5B57;&#xFF08;&#x5373;&#xFF0C;NSNumber &#x6216;&#x4EFB;&#x4F55;&#x6570;&#x503C;&#x7C7B;&#x578B;&#xFF09;&#xFF0C;&#x4EE5;&#x53CA; CGPoint&#x3001;CGSize&#x3001;CGRect&#x3001;UIColor &#x548C; NSRange&#xFF0C;&#x989D;&#x5916;&#x589E;&#x52A0;&#x4E86; UIImage&#x3002;</p>
+<h4 id="IBDesignable"><a href="#IBDesignable" class="headerlink" title="IBDesignable"></a>IBDesignable</h4><p>&#x4EE3;&#x7801;:</p>
+<pre><code>import UIKit
+
+@IBDesignable
+class VisiableView: UIView {
+
+    @IBInspectable var cornerRadius:CGFloat = 0.0 {
+        didSet {
+            layer.cornerRadius = cornerRadius
+        }
+    }
+
+    @IBInspectable var masksToBounds:Bool = false {
+        didSet {
+            layer.masksToBounds = masksToBounds
+        }
+    }
+}
+</code></pre><p>&#x5728;OC&#x4E2D;&#x7684;&#x5B9E;&#x7528;&#x65B9;&#x6CD5;&#x57FA;&#x672C;&#x7C7B;&#x4F3C;&#x3002;</p>
+<p>prepareForInterfaceBuilder()&#xFF1A;&#x6B64;&#x65B9;&#x6CD5;&#x4E0E;&#x4F60;&#x4EE3;&#x7801;&#x7684;&#x5176;&#x4F59;&#x90E8;&#x5206;&#x4E00;&#x8D77;&#x7F16;&#x8BD1;&#xFF0C;&#x4F46;&#x53EA;&#x6709;&#x5F53;&#x89C6;&#x56FE;&#x6B63;&#x5728;&#x51C6;&#x5907;&#x5728; Interface Builder &#x663E;&#x793A;&#x65F6;&#x6267;&#x884C;&#x3002;</p>
+<pre><code>#if !TARGET_INTERFACE_BUILDER
+    // this code will run in the app itself
+#else
+    // this code will execute only in IB
+#endif
+</code></pre><p>&#x4E0B;&#x9762;&#x4ECB;&#x7ECD;&#x7EAF;&#x4EE3;&#x7801;&#x5E03;&#x5C40;&#xFF0C;&#x5728;XIB&#x4E2D;&#x663E;&#x793A;&#x6548;&#x679C;&#xFF1A;</p>
+<pre><code>#import &quot;ScheduleHeaderView.h&quot;
+#import &quot;Masonry.h&quot;
+#import &quot;UIImage+imageForIBWithImageNamed.h&quot;
+#import &quot;LGRelativePostionHelper.h&quot;
+
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue &amp; 0xFF0000) &gt;&gt; 16)) / 255.0f green:((float)((rgbValue &amp; 0xFF00) &gt;&gt; 8)) / 255.0f blue:((float)(rgbValue &amp; 0xFF)) / 255.0f alpha:1.0f]
+
+IB_DESIGNABLE
+@interface ScheduleHeaderView()
+/**
+ *  &#x80CC;&#x666F;
+ */
+@property (nonatomic ,strong)UIImageView *backgroundImageView;
+/**
+ *  &#x4E2D;&#x5FC3;&#x5706;
+ */
+@property (nonatomic ,strong)UIImageView *centerImageView;
+/**
+ *  &#x5706;&#x73AF;
+ */
+@property (nonatomic ,strong)UIImageView *ringImageView;
+/**
+ *  &quot;&#x672A;&#x6765;7&#x5929;&quot;label
+ */
+@property (nonatomic ,strong)UILabel *futurelabel;
+/**
+ *  &quot;&#x60A8;&#x6709; &#x4E2A;&#x4EFB;&#x52A1;&quot;label
+ */
+@property (nonatomic ,strong)UILabel *orderNumberLabel;
+/**
+ * &#x6708;&#x6570;label
+ */
+@property (nonatomic ,strong)UILabel *monthLabel;
+/**
+ *&#x201C;&#x6708;&#x201D;label
+ */
+@property (nonatomic ,strong)UILabel *showMonthLabel;
+/**
+ * &#x5E74;&#x6570;label
+ */
+@property (nonatomic ,strong)UILabel *yearLabel;
+@end
+
+@implementation ScheduleHeaderView
+
+-(instancetype)initWithFrame:(CGRect)frame
+{
+
+    if (self = [super initWithFrame:frame]) {
+        [self setupView];
+    }
+    return self;
+}
+
+-(instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder:aDecoder]) {
+        [self setupView];
+    }
+    return self;
+}
+-(void)setupView{
+    //&#x8BBE;&#x7F6E;&#x80CC;&#x666F;
+    _backgroundImageView =  ({
+        UIImageView   *imageView   = [[UIImageView alloc]init];
+        imageView.image = [UIImage imageForIBWithImageNamed:@&quot;bg_diamond_gallery_normal&quot; classForBundle:[self class]];
+        [self  addSubview:imageView];
+        imageView;
+    });
+
+    //&#x4E2D;&#x5FC3;&#x5706;
+    _centerImageView =  ({
+        UIImageView   *imageView   = [[UIImageView alloc]init];
+        imageView.image = [UIImage imageForIBWithImageNamed:@&quot;bg_transparent_gallerynormal&quot; classForBundle:[self class]];
+        [self addSubview:imageView];
+        imageView;
+    });
+    //&#x5706;&#x73AF;
+    _ringImageView =  ({
+        UIImageView   *imageView   = [[UIImageView alloc]init];
+        imageView.image = [UIImage imageForIBWithImageNamed:@&quot;bg_circle_gallery_normal&quot; classForBundle:[self class]];
+        [self addSubview:imageView];
+        imageView;
+    });
+    //&#x672A;&#x6765;&#x4E03;&#x5929;label
+    _futurelabel  =  ({
+        UILabel *label = [[UILabel alloc]init];
+        label.font = [UIFont systemFontOfSize:15];
+        label.textColor = UIColorFromRGB(0x1ca4a4);
+        label.text = @&quot;&#x672A;&#x6765;&#x4E03;&#x5929;&quot;;
+        [self addSubview:label];
+        label;
+    });
+    //&#x60A8;&#x6709; &#x7B14;&#x4EFB;&#x52A1;
+    _orderNumberLabel =  ({
+        UILabel *label = [[UILabel alloc]init];
+        label.font = [UIFont systemFontOfSize:15];
+        label.textColor = UIColorFromRGB(0x1ca4a4);
+        label.text = @&quot;&#x60A8;&#x6709;5&#x4E2A;&#x4EFB;&#x52A1;&quot;;
+        [self addSubview:label];
+        label;
+    });
+
+
+    _monthLabel =  ({
+        UILabel *label = [[UILabel alloc]init];
+        label.font = [UIFont systemFontOfSize:24];
+        label.textColor = UIColorFromRGB(0xffffff);
+        label.text = @&quot;&#x516B;&quot;;
+        [self addSubview:label];
+        label;
+    });
+
+    _showMonthLabel =  ({
+        UILabel *label = [[UILabel alloc]init];
+        label.font = [UIFont systemFontOfSize:11];
+        label.textColor = UIColorFromRGB(0xffffff);
+        label.text = @&quot;&#x6708;&quot;;
+        [self addSubview:label];
+        label;
+    });
+
+    _yearLabel = ({
+        UILabel *label = [[UILabel alloc]init];
+        label.font = [UIFont systemFontOfSize:24];
+        label.textColor = UIColorFromRGB(0xffffff);
+        label.text = @&quot;2011&quot;;
+        [self addSubview:label];
+        label;
+    });
+
+    [self layout];
+}
+
+-(void)layout{
+
+     __weak __typeof(self) weakSelf = self;
+    //&#x80CC;&#x666F;
+    [self.backgroundImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(weakSelf);
+        make.center.mas_equalTo(weakSelf);
+    }];
+    //&#x4E2D;&#x5FC3;&#x56ED;
+    [_centerImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.mas_equalTo(weakSelf);
+        make.size.mas_equalTo(CGSizeMake(RELATIVE_WIDTH(220),RELATIVE_HEIGHT(220)));
+    }];
+    //&#x5706;&#x73AF;
+    [_ringImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.mas_equalTo(weakSelf);
+        make.size.mas_equalTo(CGSizeMake(RELATIVE_WIDTH(240), RELATIVE_HEIGHT(240)));
+    }];
+    //&#x201C;&#x672A;&#x6765;&#x4E03;&#x5929;&#x201D;
+    [_futurelabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(weakSelf);
+        make.bottom.mas_equalTo(weakSelf.mas_centerY);
+    }];
+    //&#x8BA2;&#x5355;&#x6570;
+    [_orderNumberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+          make.centerX.mas_equalTo(weakSelf);
+         make.top.mas_equalTo(weakSelf.mas_centerY);
+    }];
+    //&#x6708;&#x6570;
+    [_monthLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(RELATIVE_X(30));
+        make.bottom.mas_equalTo(weakSelf.mas_top).offset(RELATIVE_Y(48+30));
+        make.height.mas_equalTo(RELATIVE_Y(48) )  ;
+    }];
+    //&quot;&#x6708;&quot;
+    [_showMonthLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(_monthLabel.mas_right).mas_equalTo(RELATIVE_X(12));
+        make.bottom.mas_equalTo(weakSelf.mas_top).mas_equalTo(RELATIVE_HEIGHT(48+30));
+    }];
+    //&#x5E74;
+    [_yearLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(RELATIVE_Y(30+48+10));
+        make.left.mas_equalTo(RELATIVE_X(30));
+        make.height.mas_equalTo(RELATIVE_HEIGHT(48));
+    }];
+}
+
+@end
+</code></pre>
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/27/毛玻璃效果/" itemprop="url">
                   毛玻璃效果
                 </a>
@@ -778,339 +1275,6 @@ NSLog(@&quot;%@&quot;, NSStringFromClass([Sark class])); // &quot;SarkGay&quot;
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/19/convention关键字/" itemprop="url">
-                  @convention关键字
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-19T18:41:14+08:00" content="2016-05-19">
-              2016-05-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Swift进阶/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift进阶</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/19/convention关键字/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/19/convention关键字/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/05/19/convention关键字/" class="leancloud_visitors" data-flag-title="@convention关键字">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>@convention&#x5173;&#x952E;&#x5B57;&#x7684;&#x7279;&#x6027;&#xFF1A;</p>
-<ul>
-<li>&#x4FEE;&#x9970; Swift &#x4E2D;&#x7684;&#x51FD;&#x6570;&#x7C7B;&#x578B;&#xFF0C;&#x8C03;&#x7528; C &#x7684;&#x51FD;&#x6570;&#x65F6;&#x5019;&#xFF0C;&#x53EF;&#x4EE5;&#x4F20;&#x5165;&#x4FEE;&#x9970;&#x8FC7;@convention(c)&#x7684;&#x51FD;&#x6570;&#x7C7B;&#x578B;&#xFF0C;&#x5339;&#x914D; C &#x51FD;&#x6570;&#x53C2;&#x6570;&#x4E2D;&#x7684;&#x51FD;&#x6570;&#x6307;&#x9488;&#x3002;</li>
-<li>&#x4FEE;&#x9970; Swift &#x4E2D;&#x7684;&#x51FD;&#x6570;&#x7C7B;&#x578B;&#xFF0C;&#x8C03;&#x7528; Objective-C &#x7684;&#x65B9;&#x6CD5;&#x65F6;&#x5019;&#xFF0C;&#x53EF;&#x4EE5;&#x4F20;&#x5165;&#x4FEE;&#x9970;&#x8FC7;@convention(block)&#x7684;&#x51FD;&#x6570;&#x7C7B;&#x578B;&#xFF0C;&#x5339;&#x914D; Objective-C &#x65B9;&#x6CD5;&#x53C2;&#x6570;&#x4E2D;&#x7684; block &#x53C2;&#x6570;&#x3002;</li>
-</ul>
-<h4 id="&#x4F7F;&#x7528;&#x4E3E;&#x4F8B;"><a href="#&#x4F7F;&#x7528;&#x4E3E;&#x4F8B;" class="headerlink" title="&#x4F7F;&#x7528;&#x4E3E;&#x4F8B;"></a>&#x4F7F;&#x7528;&#x4E3E;&#x4F8B;</h4><ol>
-<li>&#x5728;Swift&#x4E2D;&#x521B;&#x5EFA;&#x53EF;&#x4EE5;C&#x8BED;&#x8A00;&#x7684;&#x6587;&#x4EF6;</li>
-<li>&#x5728;SwiftMain-Bridging-Header.h&#x4E2D;&#x5BFC;&#x5165;C&#x6587;&#x4EF6;</li>
-<li>C&#x6587;&#x4EF6;&#x4E2D;&#x5B9A;&#x4E49;&#x51FD;&#x6570;</li>
-</ol>
-<p>eg:</p>
-<pre><code>CGFloat numMultTwo(CGFloat (callback)(CGFloat x,CGFloat y) ) {
-    return callback(1.2,1.2);
-}
-</code></pre><p>&#x5728;&#x51FD;&#x6570;&#x4E2D;&#x5B9A;&#x4E49;&#x4E86;&#x5305;&#x542B;&#x4E86;&#x51FD;&#x6570;&#x6307;&#x9488;&#x53C2;&#x6570;&#xFF0C;&#x5728;&#x65B9;&#x6CD5;&#x4E2D;&#x8C03;&#x7528;&#x51FD;&#x6570;&#x53C2;&#x6570;&#x3002;</p>
-<p>&#x5728;Swift&#x4E2D;&#x8C03;&#x7528;C&#x51FD;&#x6570;&#xFF1A;</p>
-<pre><code>let result:@convention(c) (CGFloat,CGFloat)-&gt;CGFloat = {
-
-    x,y -&gt; CGFloat in
-
-    return x*2+8
-}
-
-//&#x8C03;&#x7528;C&#x51FD;&#x6570;
-let res = numMultTwo(result)
-</code></pre><p>&#x4E0D;&#x4F7F;&#x7528;@convention(c)&#x4E5F;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x8C03;&#x7528;</p>
-<pre><code>let res = numMultTwo {
-    x,y -&gt; CGFloat in
-
-    return x*2+8
-}
-</code></pre><p>&#x4E0E;&#x8C03;&#x7528; C &#x7684;&#x51FD;&#x6570;&#x6307;&#x9488;&#x7C7B;&#x4F3C;&#xFF0C;&#x8981;&#x5728; Swift &#x4E2D;&#x8C03;&#x7528;&#x4E00;&#x4E2A;&#x542B;&#x6709; block &#x7684; Objective-C &#x7684;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x4F7F;&#x7528;@convention(block)&#x5B9A;&#x4E49; Swift &#x53D8;&#x91CF;&#x624D;&#x80FD;&#x4F20;&#x5165;&#x5230; Objective-C &#x7684;&#x65B9;&#x6CD5;&#x4E2D;&#x3002;&#x5F53;&#x7136;&#x4E5F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x95ED;&#x5305;&#xFF0C;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x4E3E;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x65B9;&#x6CD5;&#x7684;&#x4F8B;&#x5B50;&#xFF1A;</p>
-<pre><code>[UIView animateWithDuration:2 animations:^{
-    NSLog(@&quot;start&quot;);
-} completion:^(BOOL finished){
-     NSLog(@&quot;completion&quot;);
-}];
-</code></pre><p>&#x4F7F;&#x7528;Swift&#x7684;&#x8C03;&#x7528;&#x65B9;&#x6CD5;&#xFF1A;</p>
-<pre><code>let animationsBlock : @convention(block) () -&gt; () = {
-        NSLog(&quot;start&quot;)
-}
-let completionBlock : @convention(block) (Bool) -&gt; () = {
-        (Bool completion) in
-            NSLog(&quot;start&quot;)
-}
-
-UIView.animateWithDuration(2, animations: animationsBlock, completion: completionBlock)
-</code></pre><p>&#x540C;&#x6837;&#x7B49;&#x4EF7;&#x4E8E;&#xFF1A;</p>
-<pre><code>UIView.animateWithDuration(2, animations: {
-    NSLog(&quot;start&quot;)
-}, completion: {
-    (Bool completion) in
-        NSLog(&quot;completion&quot;)
-})
-</code></pre>
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/19/Swift的Set集合/" itemprop="url">
-                  Swift的Set集合
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-19T16:30:43+08:00" content="2016-05-19">
-              2016-05-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Swift语法/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift语法</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/19/Swift的Set集合/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/19/Swift的Set集合/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/05/19/Swift的Set集合/" class="leancloud_visitors" data-flag-title="Swift的Set集合">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>//: &#x96C6;&#x5408;(Set): &#x503C;&#x65E0;&#x5E8F;&#x4E0D;&#x91CD;&#x590D;. </p>
-<p>//:  - &#x5B9A;&#x4E49;: Set&lt;&#x5143;&#x7D20;&#x7C7B;&#x578B;&gt;<br>//let &#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7; : Set<string></string></p>
-<p>//:  - &#x7528;&#x6570;&#x7EC4;&#x5B57;&#x9762;&#x91CF;&#x521B;&#x5EFA;&#x96C6;&#x5408;<br>var &#x4E00;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7; : Set<string> = [&#x201C;123&#x201D;, &#x201C;456&#x201D;, &#x201C;789&#x201D;, &#x201C;12X&#x201D;, &#x201C;123&#x201D;]</string></p>
-<p>//:  - &#x867D;&#x5B9A;&#x4E49;&#x65E0;&#x6CD5;&#x4F7F;&#x7528;&#x7C7B;&#x578B;&#x63A8;&#x65AD;, &#x4F46;&#x53EF;&#x4EE5;&#x628A;&#x7C7B;&#x578B;&#x7701;&#x7565;&#x4E0D;&#x5199;,&#x53EA;&#x4FDD;&#x7559; :Set<br>var &#x4E8C;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7; : Set = [&#x201C;333&#x201D;, &#x201C;456&#x201D;, &#x201C;666&#x201D;, &#x201C;12X&#x201D;, &#x201C;091&#x201D;]</p>
-<p>//:  - &#x2460;&#x5143;&#x7D20;&#x8BA1;&#x6570;: count, &#x7A7A;&#x5426;: isEmpty<br>&#x4E00;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;.count<br>&#x4E8C;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;.isEmpty</p>
-<p>//:  - &#x2461;&#x2199;&#xFE0F;&#x63D2;&#x5165;:insert<br>&#x4E00;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;.insert(&#x201C;34X&#x201D;)<br>//:  - &#x2462;&#x2197;&#xFE0F;&#x79FB;&#x9664;:remove<br>&#x4E8C;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;.remove(&#x201C;091&#x201D;)</p>
-<p>&#x4E8C;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;</p>
-<p>//:  - &#x2463;&#x662F;&#x5426;&#x5305;&#x542B;&#x67D0;&#x5143;&#x7D20;:contains<br>&#x4E8C;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;.contains(&#x201C;777&#x201D;)</p>
-<p>//:  - &#x2464;&#x8F6C;&#x6362;&#x4E3A;&#x6570;&#x7EC4;:sort<br>let &#x4E8C;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;&#x6570;&#x7EC4; = &#x4E8C;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;.sort()</p>
-<p>//:  - &#x96C6;&#x5408;&#x64CD;&#x4F5C;: &#x4EA4;&#x5DEE;&#x5E76;&#x8865;<br>&#x96C6;&#x5408;&#x64CD;&#x4F5C;()</p>
-<p>//:  - 1&#x20E3;&#xFE0F;&#x4EA4;&#x96C6; intersect<br>&#x4E00;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;.intersect(&#x4E8C;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;)</p>
-<p>//:  - 2&#x20E3;&#xFE0F;&#x5DEE;&#x96C6; subtract<br>&#x4E00;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;.subtract(&#x4E8C;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;)</p>
-<p>//:  - 3&#x20E3;&#xFE0F;&#x5E76;&#x96C6; union<br>&#x4E00;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;.union(&#x4E8C;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;)</p>
-<p>//:  - 4&#x20E3;&#xFE0F;&#x8865;&#x96C6; exclusive<br>&#x4E00;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;.exclusiveOr(&#x4E8C;&#x7FA4;&#x53CB;&#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;)</p>
-<p>//:  - &#x96C6;&#x5408;&#x5173;&#x7CFB;<br>&#x96C6;&#x5408;&#x5173;&#x7CFB;()</p>
-<p>//:  - &#x1F4A1;&#x76F8;&#x7B49;: &#x4E24;&#x4E2A;&#x96C6;&#x5408;&#x6709;&#x5B8C;&#x5168;&#x76F8;&#x540C;&#x7684;&#x5143;&#x7D20;.<br>let set1 : Set = [1,2,3,4,5]<br>let set4 : Set = [5,2,3,4,1]</p>
-<p>let set100 : Set = [100,101,102]</p>
-<p>let set2 : Set = [4,5,6,7,8]</p>
-<p>let set3 : Set = [1,2,3,4,5,4,5,6,7,8]<br>//:  - 1&#x20E3;&#xFE0F;&#x5B50;&#x96C6;: isSubsetOf(&#x53EF;&#x4EE5;&#x76F8;&#x7B49;), &#x4E25;&#x683C;&#x5B50;&#x96C6;isStrictSubsetOf<br>set1.isSubsetOf(set3)</p>
-<p>set1.isSubsetOf(set4)<br>set1.isStrictSubsetOf(set4)<br>//:  - 2&#x20E3;&#xFE0F;&#x7236;&#x96C6;: isSupersetOf(&#x53EF;&#x4EE5;&#x76F8;&#x7B49;), &#x4E25;&#x683C;&#x7236;&#x96C6;isStrictSuperSetOf<br>set3.isSupersetOf(set1)<br>set3.isSupersetOf(set2)</p>
-<p>set3.isStrictSupersetOf(set1)</p>
-<p>//:  - 3&#x20E3;&#xFE0F;&#x65E0;&#x4EA4;&#x96C6;: isDisjointWith<br>set1.isDisjointWith(set100)</p>
-<p>set1.isDisjointWith(set2)<br>//: <a href="@next">&#x5B57;&#x5178;</a></p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1156,7 +1320,7 @@ UIView.animateWithDuration(2, animations: animationsBlock, completion: completio
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">44</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1173,7 +1337,7 @@ UIView.animateWithDuration(2, animations: animationsBlock, completion: completio
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

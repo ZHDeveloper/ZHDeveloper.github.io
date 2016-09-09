@@ -279,6 +279,374 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/10/Swift继承/" itemprop="url">
+                  Swift继承
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-10T11:33:25+08:00" content="2016-05-10">
+              2016-05-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift语法/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift语法</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/10/Swift继承/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/10/Swift继承/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/10/Swift继承/" class="leancloud_visitors" data-flag-title="Swift继承">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>&#x7EE7;&#x627F;:&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x6700;&#x663E;&#x8457;&#x7684;&#x4E00;&#x4E2A;&#x7279;&#x6027;, &#x7EE7;&#x627F;&#x662F;&#x4ECE;&#x5DF2;&#x7ECF;&#x6709;&#x7684;&#x7C7B;&#x4E2D;&#x6D3E;&#x751F;&#x51FA;&#x65B0;&#x7684;&#x7C7B;&#x3002;&#x65B0;&#x7684;&#x7C7B;&#x80FD;&#x591F;&#x7EE7;&#x627F;&#x5DF2;&#x6709;&#x7C7B;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;, &#x5E76;&#x80FD;&#x6269;&#x5C55;&#x65B0;&#x7684;&#x80FD;&#x529B;</p>
+<p>&#x8BED;&#x6CD5;:</p>
+<pre><code>class &#x5B50;&#x7C7B;: &#x7236;&#x7C7B;{
+
+}
+</code></pre><p>&#x7EE7;&#x627F;&#x6709;&#x70B9;: &#x4EE3;&#x7801;&#x91CD;&#x7528;<br>&#x7EE7;&#x627F;&#x7F3A;&#x70B9;: &#x589E;&#x52A0;&#x7A0B;&#x5E8F;&#x8026;&#x5408;&#x5EA6;, &#x7236;&#x7C7B;&#x6539;&#x53D8;&#x4F1A;&#x5F71;&#x54CD;&#x5B50;&#x7C7B;<br>&#x6CE8;&#x610F;:Swift&#x548C;OC&#x4E00;&#x6837;&#x6CA1;&#x6709;&#x591A;&#x7EE7;&#x627F;</p>
+<p>super&#x5173;&#x952E;&#x5B57;:</p>
+<p>&#x6D3E;&#x751F;&#x7C7B;&#x4E2D;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;super&#x5173;&#x952E;&#x5B57;&#x6765;&#x5F15;&#x7528;&#x7236;&#x7C7B;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;</p>
+<p>&#x65B9;&#x6CD5;&#x91CD;&#x5199;: override<br>&#x91CD;&#x5199;&#x7236;&#x7C7B;&#x65B9;&#x6CD5;, &#x5FC5;&#x987B;&#x52A0;&#x4E0A;override&#x5173;&#x952E;&#x5B57;</p>
+<pre><code>// override&#x5173;&#x952E;&#x5B57;&#x4E3B;&#x8981;&#x662F;&#x4E3A;&#x4E86;&#x660E;&#x786E;&#x8868;&#x793A;&#x91CD;&#x5199;&#x7236;&#x7C7B;&#x65B9;&#x6CD5;, 
+// &#x6240;&#x4EE5;&#x5982;&#x679C;&#x8981;&#x91CD;&#x5199;&#x7236;&#x7C7B;&#x65B9;&#x6CD5;, &#x5FC5;&#x987B;&#x52A0;&#x4E0A;override&#x5173;&#x952E;&#x5B57;
+
+// &#x5B50;&#x7C7B;&#x53EF;&#x4EE5;&#x7EE7;&#x627F;&#x7236;&#x7C7B;&#x7684;&#x5C5E;&#x6027;
+</code></pre><p>&#x91CD;&#x5199;&#x5C5E;&#x6027;<br>&#x65E0;&#x8BBA;&#x662F;&#x5B58;&#x50A8;&#x5C5E;&#x6027;&#x8FD8;&#x662F;&#x8BA1;&#x7B97;&#x5C5E;&#x6027;, &#x90FD;&#x53EA;&#x80FD;&#x91CD;&#x5199;&#x4E3A;&#x8BA1;&#x7B97;&#x5C5E;&#x6027;</p>
+<pre><code>// &#x53EF;&#x4EE5;&#x5C06;&#x7236;&#x7C7B;&#x7684;&#x5B58;&#x50A8;&#x5C5E;&#x6027;&#x91CD;&#x5199;&#x4E3A;&#x8BA1;&#x7B97;&#x5C5E;&#x6027;
+// &#x4F46;&#x4E0D;&#x53EF;&#x4EE5;&#x5C06;&#x7236;&#x7C7B;&#x7684;&#x5B58;&#x50A8;&#x5C5E;&#x6027;&#x53C8;&#x91CD;&#x5199;&#x4E3A;&#x5B58;&#x50A8;&#x5C5E;&#x6027;, &#x56E0;&#x4E3A;&#x8FD9;&#x6837;&#x6CA1;&#x6709;&#x610F;&#x4E49;
+override var name:String{
+    get{
+        return &quot;zs&quot;
+    }
+    set{
+        print(&quot;SuperMan new name \(newValue)&quot;)
+    }
+}
+
+// &#x53EF;&#x4EE5;&#x5C06;&#x7236;&#x7C7B;&#x7684;&#x8BA1;&#x7B97;&#x5C5E;&#x6027;&#x91CD;&#x5199;&#x4E3A;&#x8BA1;&#x7B97;&#x5C5E;&#x6027;, &#x540C;&#x6837;&#x4E0D;&#x80FD;&#x91CD;&#x5199;&#x4E3A;&#x5B58;&#x50A8;&#x5C5E;&#x6027;
+override var age: Int { // &#x8BA1;&#x7B97;&#x5C5E;&#x6027;
+    get{
+        return 30
+    }
+    set{
+        print(&quot;superMan new age \(newValue)&quot;)
+    }
+}
+</code></pre><p>&#x91CD;&#x5199;&#x5C5E;&#x6027;&#x7684;&#x9650;&#x5236;</p>
+<ol>
+<li>&#x8BFB;&#x5199;&#x8BA1;&#x7B97;&#x5C5E;&#x6027;/&#x5B58;&#x50A8;&#x5C5E;&#x6027;, &#x662F;&#x5426;&#x53EF;&#x4EE5;&#x91CD;&#x5199;&#x4E3A;&#x53EA;&#x8BFB;&#x8BA1;&#x7B97;&#x5C5E;&#x6027;? (&#x6743;&#x9650;&#x53D8;&#x5C0F;)&#x4E0D;&#x53EF;&#x4EE5;</li>
+<li>&#x53EA;&#x8BFB;&#x8BA1;&#x7B97;&#x5C5E;&#x6027;, &#x662F;&#x5426;&#x53EF;&#x4EE5;&#x5728;&#x91CD;&#x5199;&#x65F6;&#x53D8;&#x6210;&#x8BFB;&#x5199;&#x8BA1;&#x7B97;&#x5C5E;&#x6027;? (&#x6743;&#x9650;&#x53D8;&#x5927;)&#x53EF;&#x4EE5;</li>
+<li>&#x53EA;&#x9700;</li>
+</ol>
+<p>&#x91CD;&#x5199;&#x5C5E;&#x6027;&#x89C2;&#x5BDF;&#x5668;</p>
+<p>&#x53EA;&#x80FD;&#x7ED9;&#x975E;lazy&#x5C5E;&#x6027;&#x7684;&#x53D8;&#x91CF;&#x5B58;&#x50A8;&#x5C5E;&#x6027;&#x8BBE;&#x5B9A;&#x5C5E;&#x6027;&#x89C2;&#x5BDF;&#x5668;, </p>
+<p>&#x4E0D;&#x80FD;&#x7ED9;&#x8BA1;&#x7B97;&#x5C5E;&#x6027;&#x8BBE;&#x7F6E;&#x5C5E;&#x6027;&#x89C2;&#x5BDF;&#x5668;,&#x7ED9;&#x8BA1;&#x7B97;&#x5C5E;&#x6027;&#x8BBE;&#x7F6E;&#x5C5E;&#x6027;&#x89C2;&#x5BDF;&#x5668;&#x6CA1;&#x6709;&#x610F;&#x4E49;</p>
+<p>&#x5C5E;&#x6027;&#x89C2;&#x5BDF;&#x5668;&#x9650;&#x5236;:</p>
+<pre><code>1.&#x4E0D;&#x80FD;&#x5728;&#x5B50;&#x7C7B;&#x4E2D;&#x91CD;&#x5199;&#x7236;&#x7C7B;&#x53EA;&#x8BFB;&#x7684;&#x5B58;&#x50A8;&#x5C5E;&#x6027;
+2.&#x4E0D;&#x80FD;&#x7ED9;lazy&#x7684;&#x5C5E;&#x6027;&#x8BBE;&#x7F6E;&#x5C5E;&#x6027;&#x89C2;&#x5BDF;&#x5668;
+</code></pre>
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/10/subscripts下标/" itemprop="url">
+                  subscripts下标
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-10T11:14:29+08:00" content="2016-05-10">
+              2016-05-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift语法/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift语法</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/10/subscripts下标/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/10/subscripts下标/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/10/subscripts下标/" class="leancloud_visitors" data-flag-title="subscripts下标">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="subscripts"><a href="#subscripts" class="headerlink" title="subscripts"></a>subscripts</h4><p>subscripts(&#x4E0B;&#x6807;): &#x8BBF;&#x95EE;&#x5BF9;&#x8C61;&#x4E2D;&#x6570;&#x636E;&#x7684;&#x5FEB;&#x6377;&#x65B9;&#x5F0F;</p>
+<p>&#x6240;&#x8C13;&#x4E0B;&#x6807;&#x811A;&#x672C;&#x8BED;&#x6CD5;&#x5C31;&#x662F;&#x80FD;&#x591F;&#x901A;&#x8FC7;, &#x5B9E;&#x4F8B;[&#x7D22;&#x5F15;&#x503C;]&#x6765;&#x8BBF;&#x95EE;&#x5B9E;&#x4F8B;&#x4E2D;&#x7684;&#x6570;&#x636E;</p>
+<p>&#x7C7B;&#x4F3C;&#x4E8E;&#x4EE5;&#x524D;&#x6211;&#x4EEC;&#x8BBF;&#x95EE;&#x6570;&#x5B57;&#x548C;&#x5B57;&#x5178;, &#x5176;&#x5B9E;Swift&#x4E2D;&#x7684;&#x6570;&#x7EC4;&#x548C;&#x5B57;&#x5178;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;</p>
+<pre><code>struct Student {
+    var name:String = &quot;lnj&quot;
+    var math:Double = 99.0
+    var chinese:Double = 99.0
+    var english:Double = 99.0
+
+    func score(course:String) -&gt;Double?
+    {
+        switch course{
+            case &quot;math&quot;:
+                return math
+            case &quot;chinese&quot;:
+                return chinese
+            case &quot;english&quot;:
+                return english
+            default:
+                return nil
+        }
+    }
+
+    // &#x8981;&#x60F3;&#x5B9E;&#x73B0;&#x4E0B;&#x6807;&#x8BBF;&#x95EE;, &#x5FC5;&#x987B;&#x5B9E;&#x73B0;subscript&#x65B9;&#x6CD5;
+    // &#x5982;&#x679C;&#x60F3;&#x8981;&#x901A;&#x8FC7;&#x4E0B;&#x6807;&#x8BBF;&#x95EE;, &#x5FC5;&#x987B;&#x5B9E;&#x73B0;get&#x65B9;&#x6CD5;
+    // &#x5982;&#x679C;&#x60F3;&#x8981;&#x901A;&#x8FC7;&#x4E0B;&#x8868;&#x8D4B;&#x503C;, &#x5FC5;&#x987B;&#x5B9E;&#x73B0;set&#x65B9;&#x6CD5;
+    subscript(course:String) -&gt;Double?{
+        get{
+            switch course{
+            case &quot;math&quot;:
+                return math
+            case &quot;chinese&quot;:
+                return chinese
+            case &quot;english&quot;:
+                return english
+            default:
+                return nil
+            }
+        }
+        set{
+            switch course{
+            case &quot;math&quot;:
+                // &#x56E0;&#x4E3A;&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x53EF;&#x9009;&#x7C7B;&#x578B;
+                math = newValue!
+            case &quot;chinese&quot;:
+                chinese = newValue!
+            case &quot;english&quot;:
+                english = newValue!
+            default:
+                print(&quot;not found&quot;)
+            }
+
+        }
+    }
+}
+
+Swift&#x4E2D;&#x662F;&#x5141;&#x8BB8;&#x591A;&#x7D22;&#x5F15;&#x7684;&#x4E0B;&#x6807;&#x7684;
+*/
+struct Mul {
+    subscript(a:Int, b:Int) -&gt; Int
+    {
+        return a * b
+    }
+}
+var m = Mul()
+print(m[3, 5])
+</code></pre>
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/09/Swift类/" itemprop="url">
                   Swift类
                 </a>
@@ -960,449 +1328,6 @@ switch lsd
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/09/Swift闭包/" itemprop="url">
-                  Swift闭包
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-09T09:21:22+08:00" content="2016-05-09">
-              2016-05-09
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Swift语法/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift语法</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/09/Swift闭包/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/09/Swift闭包/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/05/09/Swift闭包/" class="leancloud_visitors" data-flag-title="Swift闭包">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>&#x95ED;&#x5305;:</p>
-<ol>
-<li>&#x51FD;&#x6570;&#x662F;&#x95ED;&#x5305;&#x7684;&#x4E00;&#x79CD;&#x7279;&#x6B8A;&#x3002;</li>
-<li>&#x95ED;&#x5305;&#x8868;&#x8FBE;&#x5F0F;&#xFF08;&#x533F;&#x540D;&#x95ED;&#x5305;&#xFF09;- &#x80FD;&#x6355;&#x83B7;&#x4E0A;&#x4E0B;&#x6587;&#x4E2D;&#x95ED;&#x5305;&#x7684;&#x503C;&#x3002;</li>
-</ol>
-<p>&#x95ED;&#x5305;&#x7684;&#x8BED;&#x6CD5;:</p>
-<ol>
-<li>in&#x5173;&#x952E;&#x5B57;&#x662F;&#x4FBF;&#x4E8E;&#x533A;&#x5206;&#x8FD4;&#x56DE;&#x503C;&#x548C;&#x6267;&#x884C;&#x8BED;&#x53E5;&#x3002;</li>
-<li>&#x95ED;&#x5305;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x7C7B;&#x578B;&#x548C;&#x51FD;&#x6570;&#x7684;&#x7C7B;&#x578B;&#x4E00;&#x6837;&#xFF0C;&#x662F;&#x53C2;&#x6570;&#x4E0A;&#x52A0;&#x8FD4;&#x56DE;&#x503C;&#x3002;&#x4E5F;&#x5C31;&#x662F;in&#x4E4B;&#x524D;&#x7684;&#x90E8;&#x5206;&#x3002;</li>
-<li>&#x5982;&#x679C;&#x95ED;&#x5305;&#x662F;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x53C2;&#x6570;, &#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5C06;&#x95ED;&#x5305;&#x5199;&#x5230;&#x53C2;&#x6570;&#x5217;&#x8868;&#x540E;&#x9762;, &#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x63D0;&#x9AD8;&#x9605;&#x8BFB;&#x6027;. &#x79F0;&#x4E4B;&#x4E3A;&#x5C3E;&#x968F;&#x95ED;&#x5305;</li>
-</ol>
-<p>eg:</p>
-<pre><code>//&#x5B8C;&#x6574;&#x5199;&#x6CD5;
-let say:(String)-&gt;String = {
-    (name:String) -&gt; String in
-    return &quot;hello \(name)&quot;
-}
-
-//&#x6CA1;&#x6709;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x5199;&#x6CD5;
-let say:(String)-&gt;Void = {
-    (name:String) in
-    print(&quot;hello \(name)&quot;)
-}
-
-//&#x65E0;&#x53C2;&#x65E0;&#x8FD4;&#x56DE;&#x503C;
-let say = {
-    print(&quot;hello&quot;)
-}
-
-func bubbleSort(inout array:[Int], cmp: (Int, Int) -&gt; Int)
-{
-    let count = array.count;
-    for var i = 1; i &lt; count; i++
-    {
-        for var j = 0; j &lt; (count - i); j++
-        {
-            if cmp(array[j], array[j + 1]) == -1
-            {
-                let temp = array[j]
-                array[j] = array[j + 1]
-                array[j + 1] = temp
-            }
-        }
-    }
-}
-
-// &#x95ED;&#x5305;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x9012;
-bubbleSort(&amp;arr, cmp: {
-    (a: Int, b: Int) -&gt; Int in
-    if a &gt; b{
-        return 1;
-    }else if a &lt; b
-    {
-        return -1;
-    }else
-    {
-        return 0;
-    }
-})
-</code></pre><p>&#x95ED;&#x5305;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x4F18;&#x5316;:</p>
-<ol>
-<li>&#x7C7B;&#x578B;&#x4F18;&#x5316;, &#x7531;&#x4E8E;&#x51FD;&#x6570;&#x4E2D;&#x5DF2;&#x7ECF;&#x58F0;&#x660E;&#x4E86;&#x95ED;&#x5305;&#x53C2;&#x6570;&#x7684;&#x7C7B;&#x578B;, &#x6240;&#x4EE5;&#x4F20;&#x5165;&#x7684;&#x5B9E;&#x53C2;&#x53EF;&#x4EE5;&#x4E0D;&#x7528;&#x5199;&#x7C7B;&#x578B;</li>
-<li>&#x8FD4;&#x56DE;&#x503C;&#x4F18;&#x5316;, &#x540C;&#x7406;&#x7531;&#x4E8E;&#x51FD;&#x6570;&#x4E2D;&#x5DF2;&#x7ECF;&#x58F0;&#x660E;&#x4E86;&#x95ED;&#x5305;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x7C7B;&#x578B;,&#x6240;&#x4EE5;&#x4F20;&#x5165;&#x7684;&#x5B9E;&#x53C2;&#x53EF;&#x4EE5;&#x4E0D;&#x7528;&#x5199;&#x7C7B;&#x578B;</li>
-<li>&#x53C2;&#x6570;&#x4F18;&#x5316;, swift&#x53EF;&#x4EE5;&#x4F7F;&#x7528;$&#x7D22;&#x5F15;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x8BBF;&#x95EE;&#x95ED;&#x5305;&#x7684;&#x53C2;&#x6570;, &#x9ED8;&#x8BA4;&#x4ECE;0&#x5F00;&#x59CB;</li>
-<li>&#x5982;&#x679C;&#x53EA;&#x6709;&#x4E00;&#x6761;&#x8BED;&#x53E5;&#x53EF;&#x4EE5;&#x7701;&#x7565;return</li>
-</ol>
-<p>eg:</p>
-<pre><code>bubbleSort(&amp;arr){
-//    (a , b) -&gt; Int in
-//    (a , b) in
-    if $0 &gt; $1{
-        return 1;
-    }else if $0 &lt; $1
-    {
-        return -1;
-    }else
-    {
-        return 0;
-    }
-}
-
-let hehe = {
-    &quot;&#x6211;&#x662F;lnj&quot;
-}
-</code></pre>
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/06/Swift函数/" itemprop="url">
-                  Swift函数
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-06T10:19:40+08:00" content="2016-05-06">
-              2016-05-06
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Swift语法/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift语法</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/06/Swift函数/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/06/Swift函数/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/05/06/Swift函数/" class="leancloud_visitors" data-flag-title="Swift函数">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>&#x51FD;&#x6570;:&#x5B8C;&#x6210;&#x7279;&#x5B9A;&#x529F;&#x80FD;&#x7684;&#x4EE3;&#x7801;&#x5757;&#x3002;&#x7ED9;&#x51FD;&#x6570;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x6709;&#x610F;&#x4E49;&#x7684;&#x540D;&#x5B57;&#xFF0C;&#x5728;&#x5408;&#x9002;&#x7684;&#x65F6;&#x5019;&#x8C03;&#x7528;&#x3002;</p>
-<p>&#x5B9A;&#x4E49;:<br>func &#x51FD;&#x6570;&#x540D;&#x79F0;(&#x53C2;&#x6570;&#x540D;:&#x53C2;&#x6570;&#x7C7B;&#x578B;, &#x53C2;&#x6570;&#x540D;:&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x2026;) -&gt; &#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x503C; {&#x51FD;&#x6570;&#x5B9E;&#x73B0;&#x90E8;&#x5206;}</p>
-<pre><code>//&#x65E0;&#x8FD4;&#x56DE;&#x503C;
-func say() -&gt; Void{
-    print(&quot;hello&quot;)
-}
-
-func say() {
-    print(&quot;hello&quot;)
-}
-
-//&#x6709;&#x53C2;&#x65E0;&#x8FD4;&#x56DE;&#x503C;
-func sayWith(name:String) {
-    print(&quot;hello \(name)&quot;)
-}
-
-//&#x65E0;&#x53C2;&#x6709;&#x8FD4;&#x56DE;&#x503C;
-func personInfo() -&gt; (String,Int) {
-    return (&quot;zhangsan&quot;,23)
-}
-
-//&#x6709;&#x53C2;&#x6709;&#x8FD4;&#x56DE;&#x503C;
-func info(name:String, age:Int) -&gt; String
-{
-    return &quot;name = \(name), age = \(age)&quot;
-}
-
-//&#x51FD;&#x6570;&#x5D4C;&#x5957;
-func bubbleSort(inout array:[Int]) -&gt; Void {
-
-    //&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x4EA4;&#x6362;&#x51FD;&#x6570;
-    func swap(inout a:Int,inout b:Int)
-    {
-        let temp = a
-        a = b
-        b = temp
-    }
-
-    let count = array.count
-
-    for i in 1..&lt;count {
-        for j in 0 ..&lt; (count-i) {
-            if array[j]&gt;array[j+1]
-            {
-                swap(&amp;array[j], b: &amp;array[j+1])
-            }
-        }
-    }
-
-}
-
-//&#x8981;&#x4F7F;&#x7528;inout&#x5FC5;&#x987B;&#x662F;&#x53D8;&#x91CF;&#xFF0C;&#x56E0;&#x4E3A;inout&#x4F1A;&#x6539;&#x53D8;&#x503C;
-var array = [54,43,6,63,23,1,52]
-bubbleSort(&amp;array)
-</code></pre><h4 id="&#x51FD;&#x6570;&#x53C2;&#x6570;"><a href="#&#x51FD;&#x6570;&#x53C2;&#x6570;" class="headerlink" title="&#x51FD;&#x6570;&#x53C2;&#x6570;"></a>&#x51FD;&#x6570;&#x53C2;&#x6570;</h4><ol>
-<li>&#x51FD;&#x6570;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x9ED8;&#x8BA4;&#x662F;&#x5185;&#x90E8;&#x53C2;&#x6570;&#xFF0C;&#x4E4B;&#x540E;&#x7684;&#x53C2;&#x6570;&#x5373;&#x662F;&#x5185;&#x90E8;&#x53C2;&#x6570;&#x4E5F;&#x662F;&#x5916;&#x90E8;&#x53C2;&#x6570;&#x3002;</li>
-<li>&#x81EA;&#x5B9A;&#x4E49;&#x5916;&#x90E8;&#x53C2;&#x6570;&#xFF0C;&#x5728;&#x5185;&#x90E8;&#x53C2;&#x6570;&#x524D;&#x52A0;&#x5916;&#x90E8;&#x53C2;&#x6570;&#x548C;&#x7A7A;&#x683C;</li>
-<li>Swift2.0&#x8FC7;&#x65F6;,&#x5728;&#x53C2;&#x6570;&#x524D;&#x9762;&#x52A0;&#x4E0A;#&#x76F8;&#x5F53;&#x4E8E;&#x8BE5;&#x53C2;&#x6570;&#x5373;&#x662F;&#x5185;&#x90E8;&#x53C2;&#x6570;, &#x4E5F;&#x662F;&#x5916;&#x90E8;&#x53C2;&#x6570;</li>
-<li>&#x53C2;&#x6570;&#x9ED8;&#x8BA4;&#x503C;&#xFF0C;&#x5728;&#x5B9A;&#x4E49;&#x51FD;&#x6570;&#x7684;&#x65F6;&#x5019;&#x7ED9;&#x67D0;&#x4E2A;&#x53C2;&#x6570;&#x8D4B;&#x503C;, &#x5F53;&#x5916;&#x90E8;&#x8C03;&#x7528;&#x6CA1;&#x6709;&#x4F20;&#x9012;&#x8BE5;&#x53C2;&#x6570;&#x65F6;&#x4F1A;&#x81EA;&#x52A8;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x503C;</li>
-<li>&#x5728;&#x5176;&#x5B83;&#x8BED;&#x8A00;&#x4E2D;&#x9ED8;&#x8BA4;&#x53C2;&#x6570;&#x667A;&#x80FD;&#x51FA;&#x73B0;&#x5728;&#x53C2;&#x6570;&#x5217;&#x8868;&#x7684;&#x6700;&#x540E;&#x9762;, &#x4F46;&#x662F;&#x5728;Swift&#x4E2D;&#x53EF;&#x4EE5;&#x51FA;&#x73B0;&#x5728;&#x4EFB;&#x4F55;&#x4F4D;&#x7F6E;</li>
-<li>inout&#x53C2;&#x6570;, &#x5982;&#x679C;&#x60F3;&#x5728;&#x51FD;&#x6570;&#x4E2D;&#x4FEE;&#x6539;&#x5916;&#x754C;&#x4F20;&#x5165;&#x7684;&#x53C2;&#x6570;, &#x4F20;&#x9012;&#x53C2;&#x6570;&#x672C;&#x8EAB;&#x800C;&#x4E0D;&#x662F;&#x53C2;&#x6570;&#x7684;&#x503C;</li>
-<li>&#x2026;&#x8868;&#x793A;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x6709;&#x591A;&#x4E2A;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#x6570;&#x7EC4;&#x3002;&#x53D8;&#x53C2;&#x5FC5;&#x987B;&#x653E;&#x5230;&#x51FD;&#x6570;&#x5217;&#x8868;&#x7684;&#x6700;&#x540E;&#x3002;</li>
-</ol>
-<p>eg:</p>
-<pre><code>dividend&#x548C;divisor&#x90FD;&#x662F;&#x5916;&#x90E8;&#x53C2;&#x6570;&#xFF0C;a&#x548C;b&#x662F;&#x5185;&#x90E8;&#x53C2;&#x6570;
-func divisionOpertaion(dividend a: Double, divisor b:Double) -&gt; Double{
-    return a / b
-}
-
-//&#x53C2;&#x6570;&#x9ED8;&#x8BA4;&#x503C;&#x7684;&#x4F7F;&#x7528;
-func calculateWith(number1 a:Int,andNumber b:Int = 10) -&gt; Int {
-    return a+b
-}
-
-let a = calculateWith(number1: 8)
-</code></pre><h4 id="&#x51FD;&#x6570;&#x7C7B;&#x578B;"><a href="#&#x51FD;&#x6570;&#x7C7B;&#x578B;" class="headerlink" title="&#x51FD;&#x6570;&#x7C7B;&#x578B;"></a>&#x51FD;&#x6570;&#x7C7B;&#x578B;</h4><p>&#x51FD;&#x6570;&#x7684;&#x7C7B;&#x578B;&#x662F;&#x7531;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x548C;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x7C7B;&#x578B;&#x7EC4;&#x6210;&#x3002;<br>&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x51FD;&#x6570;&#x7C7B;&#x578B;&#x6765;&#x5B9A;&#x4E49;&#x5E38;&#x4EAE;&#x548C;&#x53D8;&#x91CF;&#x3002;</p>
-<pre><code>//&#x51FD;&#x6570;&#x7684;&#x7C7B;&#x578B;&#x4E3A;(Double,Double)-&gt;Double
-func divisionOpertaion(dividend a: Double, divisor b:Double) -&gt; Double{
-    return a / b
-}
-
-//&#x51FD;&#x6570;&#x7C7B;&#x578B;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x5728;&#x51FD;&#x6570;&#x5185;&#x90E8;&#x8C03;&#x7528;
-func calFunc(a: Int, b: Int ,Option:(Int, Int) -&gt; Int) -&gt;Int
-{
-    return Option(a, b)
-}
-
-//&#x51FD;&#x6570;&#x7C7B;&#x578B;&#x4F5C;&#x4E3A;&#x8FD4;&#x56DE;&#x503C;
-func max(a:Int,b:Int) -&gt; Int {
-    return a&gt;b ? a:b
-}
-
-func min(a:Int,b:Int) -&gt; Int {
-    return a&lt;b ? a:b
-}
-
-func getMax(getMax:Bool) -&gt; (Int,Int)-&gt;Int {
-    return getMax ? max : min
-}
-
-let choose = getMax(true)
-
-choose(12,3)
-</code></pre>
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1448,7 +1373,7 @@ choose(12,3)
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">44</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1465,7 +1390,7 @@ choose(12,3)
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
