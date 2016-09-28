@@ -92,7 +92,7 @@ pycharm&amp;#x81EA;&amp;#x5E26;Python2.6&amp;#xFF0C;&amp;#x9700;&amp;#x8981;&amp
 PIP&amp;#x7684;&amp;#x5B89;&amp;#x88C5;mac&amp;#x5B89;&amp;#x88C5;pip
 sudo easy_install pip
 pycharm&amp;#x81EA;&amp;#x5E26;Python2.6&amp;#xFF0C;&amp;#x9700;&amp;#x8981;&amp;#x901A;&amp;#x8FC7;Project">
-<meta property="og:updated_time" content="2016-09-03T07:31:39.000Z">
+<meta property="og:updated_time" content="2016-09-10T02:21:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python-环境的搭建">
 <meta name="twitter:description" content="###Mac&amp;#x7CFB;&amp;#x7EDF;&amp;#x81EA;&amp;#x5E26;Python2.7
@@ -425,6 +425,38 @@ sudo python setup.py install
 //&#x89E3;&#x653E;&#x65B9;&#x6CD5;
 //&#x91CD;&#x542F;&#x7CFB;&#x7EDF; command+r &#x8FDB;&#x5165;&#x547D;&#x4EE4;&#x884C;&#x6A21;&#x5F0F;
 csrutil disable
+</code></pre><h3 id="redis&#x5B89;&#x88C5;"><a href="#redis&#x5B89;&#x88C5;" class="headerlink" title="redis&#x5B89;&#x88C5;"></a>redis&#x5B89;&#x88C5;</h3><pre><code>~ wget http://download.redis.io/releases/redis-3.0.5.tar.gz 
+~ tar xzf redis-3.0.5.tar.gz
+~ mv redis-3.0.5 redis
+~ cd redis
+~ make
+~ make test
+~ make install
+</code></pre><p>&#x7F16;&#x8F91;redis.config&#x6587;&#x4EF6;&#x6307;&#x5B9A;&#x6570;&#x636E;&#x6587;&#x4EF6;&#x4FDD;&#x5B58;&#x7684;&#x8DEF;&#x52B2;</p>
+<pre><code>dir /Users/ZhiHua/redis_config/redis_data/
+</code></pre><p>&#x542F;&#x52A8;redis&#x670D;&#x52A1;</p>
+<pre><code>redis-server /Users/ZhiHua/redis_config/redis.conf
+</code></pre><h3 id="&#x8BBE;&#x7F6E;redis&#x5F00;&#x673A;&#x542F;&#x52A8;"><a href="#&#x8BBE;&#x7F6E;redis&#x5F00;&#x673A;&#x542F;&#x52A8;" class="headerlink" title="&#x8BBE;&#x7F6E;redis&#x5F00;&#x673A;&#x542F;&#x52A8;"></a>&#x8BBE;&#x7F6E;redis&#x5F00;&#x673A;&#x542F;&#x52A8;</h3><pre><code>~ sudo vi /Library/LaunchDaemons/io.redis.redis-server.plist
+</code></pre><p>&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#xFF1A;</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE plist PUBLIC &quot;-//Apple Computer//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;
+&lt;plist version=&quot;1.0&quot;&gt;
+&lt;dict&gt;
+  &lt;key&gt;Label&lt;/key&gt;
+  &lt;string&gt;io.redis.redis-server&lt;/string&gt;
+  &lt;key&gt;ProgramArguments&lt;/key&gt;
+  &lt;array&gt;
+        &lt;string&gt;/usr/local/bin/redis-server&lt;/string&gt;
+        &lt;string&gt;/usr/local/etc/redis.conf&lt;/string&gt;
+  &lt;/array&gt;
+  &lt;key&gt;RunAtLoad&lt;/key&gt;&lt;true/&gt; &lt;/dict&gt;
+&lt;/plist&gt;
+</code></pre><p>&#x4F7F;&#x7528;launchctl&#x8BBE;&#x7F6E;&#x5F00;&#x673A;&#x81EA;&#x52A8;&#x542F;&#x52A8;</p>
+<pre><code>~ sudo launchctl load /Library/LaunchDaemons/io.redis.redis-server.plist
+</code></pre><p>&#x4F7F;&#x7528;launchctl&#x542F;&#x52A8;redis server</p>
+<pre><code>~ sudo launchctl start io.redis.redis-server
+</code></pre><p>&#x4F7F;&#x7528;launchctl&#x505C;&#x6B62;redis server</p>
+<pre><code>~ sudo launchctl stop io.redis.redis-server
 </code></pre>
       
     </div>
@@ -617,7 +649,7 @@ csrutil disable
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#PIP的安装"><span class="nav-number">1.</span> <span class="nav-text">PIP的安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL安装"><span class="nav-number">2.</span> <span class="nav-text">MySQL安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装MySQL驱动"><span class="nav-number">3.</span> <span class="nav-text">安装MySQL驱动</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#PIP的安装"><span class="nav-number">1.</span> <span class="nav-text">PIP的安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL安装"><span class="nav-number">2.</span> <span class="nav-text">MySQL安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装MySQL驱动"><span class="nav-number">3.</span> <span class="nav-text">安装MySQL驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redis安装"><span class="nav-number">4.</span> <span class="nav-text">redis安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置redis开机启动"><span class="nav-number">5.</span> <span class="nav-text">设置redis开机启动</span></a></li></ol></div>
             
           </div>
         </section>
