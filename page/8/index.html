@@ -279,6 +279,457 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/25/Swift数据类型/" itemprop="url">
+                  Swift数据类型
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-25T09:52:45+08:00" content="2016-04-25">
+              2016-04-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift语法/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift语法</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/25/Swift数据类型/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/25/Swift数据类型/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/04/25/Swift数据类型/" class="leancloud_visitors" data-flag-title="Swift数据类型">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="&#x5E38;&#x4EAE;&#x3001;&#x53D8;&#x91CF;"><a href="#&#x5E38;&#x4EAE;&#x3001;&#x53D8;&#x91CF;" class="headerlink" title="&#x5E38;&#x4EAE;&#x3001;&#x53D8;&#x91CF;"></a>&#x5E38;&#x4EAE;&#x3001;&#x53D8;&#x91CF;</h4><p>&#x5E38;&#x91CF;&#xFF1A;&#x4F7F;&#x7528;let&#x6765;&#x58F0;&#x660E;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x5E38;&#x4EAE;&#x7684;&#x503C;&#x4E00;&#x65E6;&#x786E;&#x5B9A;&#x5C31;&#x4E0D;&#x53EF;&#x518D;&#x6539;&#x53D8;&#xFF0C;&#x5E76;&#x4E14;&#x5E38;&#x4EAE;&#x8981;&#x5728;&#x521D;&#x59CB;&#x5316;&#x65F6;&#x8FDB;&#x884C;&#x8D4B;&#x503C;&#xFF0C;&#x5426;&#x5219;&#x62A5;&#x9519;&#x3002;<br>&#x53D8;&#x91CF;&#xFF1A;&#x4F7F;&#x7528;var&#x6765;&#x58F0;&#x660E;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x53D8;&#x91CF;&#x7684;&#x503C;&#x53EF;&#x4EE5;&#x591A;&#x6B21;&#x6539;&#x53D8;&#x3002;</p>
+<pre><code>1.&#x5148;&#x5B9A;&#x4E49;&#x540E;&#x521D;&#x59CB;&#x5316;
+var num: Int
+num = 3
+
+&#x6CE8;&#xFF1A;&#x5982;&#x679C;&#x58F0;&#x660E;&#x53D8;&#x91CF;&#x65F6;&#x6CA1;&#x6709;&#x6307;&#x5B9A;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x4F1A;&#x62A5;&#x9519;&#xFF1A;&#x6CA1;&#x6709;&#x6307;&#x5B9A;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF08;type annotation missing in pattern&#xFF09;&#x3002;&#x5728;Swift&#x4E2D;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#xFF0C;&#x4EE5;&#x540E;&#x4F7F;&#x7528;&#x518D;&#x521D;&#x59CB;&#x5316;&#x5FC5;&#x987B;&#x5728;&#x5B9A;&#x4E49;&#x65F6;&#x6307;&#x5B9A;&#x53D8;&#x91CF;&#x7684;&#x7C7B;&#x578B;&#xFF08;&#x7C7B;&#x578B;&#x6807;&#x6CE8;&#xFF09;
+
+2.&#x5B9A;&#x4E49;&#x7684;&#x540C;&#x65F6;&#x521D;&#x59CB;&#x5316;
+var num: Int = 3
+var num = 3
+
+&#x6CE8;&#xFF1A;&#x5728;Swift&#x4E2D;&#x53D8;&#x91CF;&#x7684;&#x5B9A;&#x4E49;&#x7684;&#x540C;&#x65F6;&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x53EF;&#x4EE5;&#x4E0D;&#x6307;&#x5B9A;&#x53D8;&#x91CF;&#x7684;&#x7C7B;&#x578B;&#x3002;&#x56E0;&#x4E3A;&#x5728;&#x7F16;&#x8BD1;&#x671F;&#x95F4;&#x4F1A;&#x6839;&#x636E;&#x521D;&#x59CB;&#x5316;&#x7684;&#x503C;&#x6765;&#x81EA;&#x52A8;&#x63A8;&#x65AD;&#x53D8;&#x91CF;&#x7684;&#x7C7B;&#x578B;&#x3002;&#x4EE5;&#x540E;&#x5728;&#x5F00;&#x53D1;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x540C;&#x65F6;&#x521D;&#x59CB;&#x5316;&#x53D8;&#x91CF;&#xFF0C;&#x53EF;&#x4EE5;&#x4E0D;&#x7528;&#x5199;&#x53D8;&#x91CF;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x9664;&#x975E;&#x9700;&#x8981;&#x660E;&#x786E;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;&#x957F;&#x5EA6;&#x3002;
+</code></pre><p>&#x5E38;&#x4EAE;&#x3001;&#x53D8;&#x91CF;&#x547D;&#x540D;&#xFF1A;&#x4E0D;&#x80FD;&#x5305;&#x542B;&#x6570;&#x5B66;&#x7B26;&#x53F7;&#xFF0C;&#x7BAD;&#x5934;&#xFF0C;&#x4FDD;&#x7559;&#x7684;&#xFF08;&#x6216;&#x8005;&#x975E;&#x6CD5;&#x7684;&#xFF09;Unicode &#x7801;&#x4F4D;&#xFF0C;&#x8FDE;&#x7EBF;&#x4E0E;&#x5236;&#x8868;&#x7B26;&#x3002;&#x4E5F;&#x4E0D;&#x80FD;&#x4EE5;&#x6570;&#x5B57;&#x5F00;&#x5934;&#xFF0C;&#x4F46;&#x662F;&#x53EF;&#x4EE5;&#x5728;&#x5E38;&#x91CF;&#x4E0E;&#x53D8;&#x91CF;&#x540D;&#x7684;&#x5176;&#x4ED6;&#x5730;&#x65B9;&#x5305;&#x542B;&#x6570;&#x5B57;&#x3002;</p>
+<pre><code>&#x9519;&#x8BEF;&#xFF1A;
+var 3x = 10
+var x-+3 = 10
+
+&#x6B63;&#x786E;&#xFF1A;
+var &#x1F436; = 10
+var &#x54C8;&#x54C8; = 20
+</code></pre><h4 id="&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;"><a href="#&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;" class="headerlink" title="&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;"></a>&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;</h4><pre><code>//&#x6574;&#x578B;
+var intValue: Int = 5
+
+//&#x6309;&#x7167;&#x957F;&#x5EA6;&#x5212;&#x5206;
+Int8&#x3001;Int16&#x3001;Int32&#x3001;Int64
+//&#x6709;&#x65E0;&#x7B26;&#x53F7;
+UInt
+&#x6CE8;&#x610F;: &#x65E0;&#x7B26;&#x53F7;&#x7684;&#x6570;&#x6BD4;&#x6709;&#x7B26;&#x53F7;&#x7684;&#x53D6;&#x503C;&#x8303;&#x56F4;&#x66F4;&#x5927;, &#x56E0;&#x4E3A;&#x7B26;&#x53F7;&#x4F4D;&#x4E5F;&#x7528;&#x6765;&#x5B58;&#x503C;
+
+Swfit&#x662F;&#x7C7B;&#x578B;&#x5B89;&#x5168;&#x8BED;&#x8A00;&#xFF0C;&#x5982;&#x679C;&#x53D6;&#x503C;&#x9519;&#x8BEF;&#x4F1A;&#x76F4;&#x63A5;&#x62A5;&#x9519;&#x3002;
+//&#x53D6;&#x503C;&#x4E0D;&#x5BF9;
+OC:unsigned int intValue = -10; &#x4E0D;&#x4F1A;&#x62A5;&#x9519;
+Swift:var intValue:UInt = -10 &#x4F1A;&#x62A5;&#x9519;
+//&#x6EA2;&#x51FA;
+OC:int intValue = INT_MAX + 1; &#x4E0D;&#x4F1A;&#x62A5;&#x9519;
+Swift:var intValue:UInt = UInt.max + 1 &#x4F1A;&#x62A5;&#x9519;
+
+&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;&#x76F8;&#x4E92;&#x8D4B;&#x503C;(&#x9690;&#x5F0F;&#x7C7B;&#x578B;&#x8F6C;&#x6362;)
+OC&#x53EF;&#x4EE5;
+int intValue = 10;
+double doubleValue = intValue;
+
+Swift:&#x4E0D;&#x53EF;&#x4EE5;
+var intValue:Int = 10
+var doubleValue:Double = intValue
+&#x5728;Swift&#x4E2D;&#x201C;&#x503C;&#x6C38;&#x8FDC;&#x4E0D;&#x4F1A;&#x88AB;&#x9690;&#x5F0F;&#x8F6C;&#x6362;&#x4E3A;&#x5176;&#x4ED6;&#x7C7B;&#x578B;&#x201D;(OC&#x4E2D;&#x53EF;&#x4EE5;&#x9690;&#x5F0F;&#x7C7B;&#x578B;&#x8F6C;&#x6362;), &#x4EE5;&#x4E0A;&#x8BED;&#x53E5;&#x4F1A;&#x62A5;&#x9519;
+</code></pre><h4 id="&#x7C7B;&#x578B;&#x8F6C;&#x6362;"><a href="#&#x7C7B;&#x578B;&#x8F6C;&#x6362;" class="headerlink" title="&#x7C7B;&#x578B;&#x8F6C;&#x6362;"></a>&#x7C7B;&#x578B;&#x8F6C;&#x6362;</h4><p>Swift&#x4E2D;&#x662F;&#x4E0D;&#x4F1A;&#x8FDB;&#x884C;&#x9690;&#x5F0F;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#xFF0C;&#x4F46;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x663E;&#x793A;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x3002;</p>
+<pre><code>var intValue: Int = 5
+var doubleValue: Double
+doubleValue = Double(intValue)
+&#x6CE8;&#x610F;:Double()&#x5E76;&#x4E0D;&#x4F1A;&#x4FEE;&#x6539;intValue&#x7684;&#x503C;, &#x800C;&#x662F;&#x901A;&#x8FC7;intValue&#x7684;&#x503C;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x4E34;&#x65F6;&#x7684;&#x503C;&#x8D4B;&#x503C;&#x7ED9;doubleValue
+</code></pre><h4 id="Bool&#x7C7B;&#x578B;"><a href="#Bool&#x7C7B;&#x578B;" class="headerlink" title="Bool&#x7C7B;&#x578B;"></a>Bool&#x7C7B;&#x578B;</h4><pre><code>let isOpen = true;
+let isOpen = 1; //&#x4F1A;&#x62A5;&#x9519;
+</code></pre><p>Swift&#x4E2D;&#x7684;if&#x7684;&#x6761;&#x4EF6;&#x53EA;&#x80FD;&#x662F;&#x4E00;&#x4E2A;BOOL&#x503C;&#x6216;&#x8005;&#x8FD4;&#x56DE;BOOL&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#x3002;</p>
+<h4 id="&#x5143;&#x7EC4;"><a href="#&#x5143;&#x7EC4;" class="headerlink" title="&#x5143;&#x7EC4;"></a>&#x5143;&#x7EC4;</h4><p>&#x5143;&#x7EC4;&#xFF1A;&#x5728;&#x5176;&#x4ED6;&#x8BED;&#x8A00;&#x4E2D;&#x65E9;&#x5C31;&#x6709;&#x5143;&#x7EC4;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x4F46;&#x76F8;&#x5BF9;&#x4E8E;OC&#x7684;&#x5F00;&#x53D1;&#x8005;&#x6765;&#x8BF4;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x6982;&#x5FF5;&#x3002;&#x5C06;&#x591A;&#x4E2A;&#x7C7B;&#x578B;&#x76F8;&#x540C;&#x6216;&#x8005;&#x4E0D;&#x540C;&#x7684;&#x7C7B;&#x578B;&#x7684;&#x503C;&#x7528;&#x62EC;&#x53F7;&#x62EC;&#x8D77;&#x6765;&#x8868;&#x793A;&#x5143;&#x7EC4;&#x3002;</p>
+<pre><code>let score = (&quot;&#x5F20;&#x4E09;&quot;,90,89.4)
+print(score)
+print(score.0)
+print(score.1)
+print(score.2)
+</code></pre><p>&#x5143;&#x7EC4;&#x5176;&#x5B9E;&#x548C;&#x7ED3;&#x6784;&#x4F53;&#x5F88;&#x50CF;&#xFF0C;&#x53EA;&#x662F;&#x4E0D;&#x9700;&#x8981;&#x63D0;&#x524D;&#x5B9A;&#x4E49;&#x7C7B;&#x578B;&#x3002;&#x5143;&#x7EC4;&#x5176;&#x5B9E;&#x662F;&#x590D;&#x5408;&#x7C7B;&#x578B;&#xFF0C;&#x5C0F;&#x62EC;&#x53F7;&#x4E2D;&#x53EF;&#x4EE5;&#x5199;&#x4EFB;&#x4F55;&#x7C7B;&#x578B;&#x3002;</p>
+<pre><code>let score: (String,Double,Double) = (&quot;&#x5F20;&#x4E09;&quot;,90,89.4)
+</code></pre><p>&#x5143;&#x7EC4;&#x7684;&#x5176;&#x4ED6;&#x5B9A;&#x4E49;&#x65B9;&#x5F0F;&#xFF1A;&#x6307;&#x660E;&#x5143;&#x7EC4;&#x5143;&#x7D20;&#x7684;&#x540D;&#x79F0;&#x3002;</p>
+<pre><code>let score = (s_name:&quot;&#x5F20;&#x4E09;&quot;,math_score:90.0,chinese_score:89.4)
+print(score)
+print(score.s_name)
+print(score.math_score)
+print(score.chinese_score)
+</code></pre><p>&#x901A;&#x8FC7;&#x6307;&#x5B9A;&#x540D;&#x79F0;&#x63D0;&#x53D6;&#x5143;&#x7EC4;&#x5BF9;&#x5E94;&#x7684;&#x503C;&#xFF0C;&#x5BF9;&#x5E94;&#x4F4D;&#x7F6E;&#x7684;&#x503C;&#x8D4B;&#x4E88;&#x5BF9;&#x5E94;&#x4F4D;&#x7F6E;&#x7684;&#x540D;&#x79F0;&#x3002;</p>
+<pre><code>let (s_name,math_score,chinese_score) = (&quot;&#x5F20;&#x4E09;&quot;,90.0,89.4)
+print(s_name)
+print(chinese_score)
+</code></pre><p>&#x5982;&#x679C;&#x4E0D;&#x5173;&#x5FC3;&#x5143;&#x7EC4;&#x4E2D;&#x7684;&#x67D0;&#x4E2A;&#x503C;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;_&#x5FFD;&#x7565;&#x63D0;&#x53D6;&#x3002;</p>
+<pre><code>let (s_name,math_score,_) = (&quot;&#x5F20;&#x4E09;&quot;,90.0,89.4)
+</code></pre><h4 id="&#x53EF;&#x9009;&#x503C;"><a href="#&#x53EF;&#x9009;&#x503C;" class="headerlink" title="&#x53EF;&#x9009;&#x503C;"></a>&#x53EF;&#x9009;&#x503C;</h4><p>&#x53EF;&#x9009;&#x503C;optionals&#x6709;&#x4E24;&#x79CD;&#x72B6;&#x6001;&#xFF1A;</p>
+<ol>
+<li>&#x6709;&#x503C;</li>
+<li>&#x6CA1;&#x6709;&#x503C;&#xFF0C;&#x6CA1;&#x6709;&#x503C;&#x5C31;&#x662F;nil</li>
+</ol>
+<p>eg:</p>
+<pre><code>// &#x6709;&#x503C;
+var optionValue: Int? = 9
+
+// &#x6CA1;&#x503C;
+var optionValue1: Int?
+var optionValue2: Int? = nil
+</code></pre><p>&#x53EF;&#x9009;&#x503C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;if&#x6765;&#x5224;&#x65AD;</p>
+<pre><code>if optionValue != nil
+{
+    print(&quot;&#x6709;&#x503C;&quot;)
+}
+else
+{
+    print(&quot;&#x6CA1;&#x503C;&quot;)
+}
+</code></pre><p>&#x63D0;&#x53D6;&#x53EF;&#x9009;&#x7C7B;&#x578B;&#x7684;&#x503C;&#xFF08;&#x5F3A;&#x5236;&#x89E3;&#x5305;&#xFF09;</p>
+<p>&#x4F1A;&#x5C06;optValue&#x4E2D;&#x7684;&#x6574;&#x578B;&#x503C;&#x5F3A;&#x5236;&#x62FF;&#x51FA;&#x6765;&#x8D4B;&#x503C;&#x7ED9;&#x53D8;&#x91CF;result, &#x6362;&#x53E5;&#x8BDD;&#x8BF4;&#x5C31;&#x662F;&#x544A;&#x8BC9;&#x7F16;&#x8BD1;&#x5668;optValue&#x4E00;&#x5B9A;&#x6709;&#x503C;, &#x56E0;&#x4E3A;&#x53EF;&#x9009;&#x7C7B;&#x578B;&#x6709;&#x4E24;&#x79CD;&#x72B6;&#x6001;&#x6709;&#x503C;&#x548C;&#x6CA1;&#x6709;&#x503C;, &#x6240;&#x4EE5;&#x9700;&#x8981;&#x544A;&#x8BC9;&#x7F16;&#x8BD1;&#x5668;&#x5230;&#x5E95;&#x6709;&#x6CA1;&#x6709;&#x503C;</p>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x5982;&#x679C;&#x5F3A;&#x5236;&#x89E3;&#x6790;optValue, &#x4F46;&#x662F;optValue&#x4E2D;&#x6CA1;&#x6709;&#x503C;&#x65F6;&#x4F1A;&#x5F15;&#x53D1;&#x4E00;&#x4E2A;&#x8FD0;&#x884C;&#x65F6;&#x9519;&#x8BEF;</p>
+<pre><code>var optValue5: Int? = 9
+var result1: Int = optValue5!
+print(result1)
+
+//&#x62A5;&#x9519;:
+var optValue6: Int?
+var result2: Int = optValue6!
+print(result2)
+</code></pre><p>&#x53EF;&#x9009;&#x7ED1;&#x5B9A;&#xFF1A;<br>&#x4E3A;&#x4E86;&#x66F4;&#x5B89;&#x5168;&#x7684;&#x89E3;&#x6790;&#x53EF;&#x9009;&#x7C7B;&#x578B;&#x7684;&#x503C;&#xFF0C;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#x4F7F;&#x7528;&#x53EF;&#x9009;&#x7ED1;&#x5B9A;&#x3002;<br>&#x5982;&#x679C;optValue&#x6CA1;&#x6709;&#x503C;&#x662F;&#x4E0D;&#x4F1A;&#x8FDB;&#x884C;&#x4EFB;&#x4F55;&#x64CD;&#x4F5C;&#xFF0C;&#x5982;&#x679C;optionValue&#x6709;&#x503C;&#x5C31;&#x4F1A;&#x8FD4;&#x56DE;true&#x5E76;&#x5C06;optionValue&#x7684;&#x503C;&#x8D4B;&#x4E88;result,&#x7136;&#x540E;&#x6267;&#x884C;&#x5927;&#x62EC;&#x53F7;&#x4E2D;&#x7684;&#x5185;&#x5BB9;&#x3002;</p>
+<pre><code>if let result = optionValue
+{
+    print(result)
+}
+</code></pre><h4 id="&#x5B57;&#x7B26;&#x548C;&#x5B57;&#x7B26;&#x4E32;"><a href="#&#x5B57;&#x7B26;&#x548C;&#x5B57;&#x7B26;&#x4E32;" class="headerlink" title="&#x5B57;&#x7B26;&#x548C;&#x5B57;&#x7B26;&#x4E32;"></a>&#x5B57;&#x7B26;&#x548C;&#x5B57;&#x7B26;&#x4E32;</h4><p>&#x5B57;&#x7B26;&#xFF1A;</p>
+<ol>
+<li>Swift&#x7684;&#x5B57;&#x7B26;&#x662F;&#x4F7F;&#x7528;&#x53CC;&#x5F15;&#x53F7;</li>
+<li>Swift&#x4E2D;&#x7684;&#x5B57;&#x7B26;&#x7C7B;&#x578B;&#x548C;OC&#x4E2D;&#x7684;&#x4E5F;&#x4E0D;&#x4E00;&#x6837;, OC&#x4E2D;&#x7684;&#x5B57;&#x7B26;&#x5360;&#x4E00;&#x4E2A;&#x5B57;&#x8282;,&#x56E0;&#x4E3A;&#x5B83;&#x53EA;&#x5305;&#x542B;ASCII&#x8868;&#x4E2D;&#x7684;&#x5B57;&#x7B26;, &#x800C;Swift&#x4E2D;&#x7684;&#x5B57;&#x7B26;&#x9664;&#x4E86;&#x53EF;&#x4EE5;&#x5B58;&#x50A8;ASCII&#x8868;&#x4E2D;&#x7684;&#x5B57;&#x7B26;&#x8FD8;&#x53EF;&#x4EE5;&#x5B58;&#x50A8;unicode&#x5B57;&#x7B26;</li>
+</ol>
+<p>eg:</p>
+<pre><code>var chara: Character = &quot;a&quot;
+//&#x53CC;&#x5F15;&#x53F7;&#x4E2D;&#x53EA;&#x80FD;&#x653E;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;
+var chara: Character = &quot;ab&quot;        //&#x9519;&#x8BEF;
+</code></pre><p>&#x5B57;&#x7B26;&#x4E32;&#xFF1A;</p>
+<p>&#x5B57;&#x7B26;&#x662F;&#x5355;&#x4E2A;&#x5B57;&#x7B26;&#x7684;&#x96C6;&#x5408;&#xFF0C;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x591A;&#x4E2A;&#x5B57;&#x7B26;&#x7684;&#x96C6;&#x5408;&#xFF0C;&#x60F3;&#x8981;&#x5B58;&#x653E;&#x591A;&#x4E2A;&#x5B57;&#x7B26;&#xFF0C;&#x4F7F;&#x7528;&#x5B57;&#x7B26;&#x4E32;&#x3002;</p>
+<pre><code>var str: String = &quot;Product&quot;
+
+
+C&#x8BED;&#x8A00;&#x4E2D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x4EE5;\0&#x7ED3;&#x5C3E;&#x7684;, &#x4F8B;&#x5982;:
+char *stringValue = &quot;abc\0bcd&quot;;
+printf(&quot;%s&quot;, stringValue);
+&#x6253;&#x5370;&#x7ED3;&#x679C;&#x4E3A;abc
+
+OC&#x8BED;&#x8A00;&#x4E2D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x4E5F;&#x662F;&#x4EE5;\0&#x7ED3;&#x5C3E;&#x7684;, &#x4F8B;&#x5982;:
+NSString *stringValue = @&quot;abc\0bcd&quot;;
+NSLog(@&quot;%@&quot;, stringValue);
+&#x6253;&#x5370;&#x7ED3;&#x679C;&#x4E3A;abc
+
+var stringValue2 = &quot;abc\0bcd&quot;
+print(stringValue2)
+// &#x6253;&#x5370;&#x7ED3;&#x679C;&#x4E3A;abcbcd
+// &#x4ECE;&#x6B64;&#x53EF;&#x4EE5;&#x770B;&#x51FA;Swift&#x4E2D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x548C;C&#x8BED;&#x8A00;/OC&#x8BED;&#x8A00;&#x4E2D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x4E0D;&#x4E00;&#x6837;&#x7684;
+</code></pre><h4 id="&#x5B57;&#x7B26;&#x4E32;&#x5E38;&#x7528;&#x7684;&#x65B9;&#x6CD5;"><a href="#&#x5B57;&#x7B26;&#x4E32;&#x5E38;&#x7528;&#x7684;&#x65B9;&#x6CD5;" class="headerlink" title="&#x5B57;&#x7B26;&#x4E32;&#x5E38;&#x7528;&#x7684;&#x65B9;&#x6CD5;"></a>&#x5B57;&#x7B26;&#x4E32;&#x5E38;&#x7528;&#x7684;&#x65B9;&#x6CD5;</h4><p>&#x8BA1;&#x7B97;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x957F;&#x5EA6;</p>
+<pre><code>/*
+&#x8BA1;&#x7B97;&#x5B57;&#x7B26;&#x4E32;&#x957F;&#x5EA6;:
+C:
+char *stringValue = &quot;abc&#x674E;&quot;;
+printf(&quot;%tu&quot;, strlen(stringValue));
+&#x6253;&#x5370;&#x7ED3;&#x679C;6
+
+OC:
+NSString *stringValue = @&quot;abc&#x674E;&quot;;
+NSLog(@&quot;%tu&quot;, stringValue.length);
+&#x6253;&#x5370;&#x7ED3;&#x679C;4, &#x4EE5;UTF16&#x8BA1;&#x7B97;
+*/
+
+var stringValue = &quot;abc&#x674E;&quot;
+print(stringValue.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
+// &#x6253;&#x5370;&#x7ED3;&#x679C;6, &#x548C;C&#x8BED;&#x8A00;&#x4E00;&#x6837;&#x8BA1;&#x7B97;&#x5B57;&#x8282;&#x6570;
+</code></pre><p>&#x5B57;&#x7B26;&#x4E32;&#x62FC;&#x63A5;</p>
+<pre><code>/*
+&#x5B57;&#x7B26;&#x4E32;&#x62FC;&#x63A5;
+C:
+char str1[] = &quot;abc&quot;;
+char *str2 = &quot;bcd&quot;;
+char *str = strcat(str1, str2);
+
+OC:
+NSMutableString *str1 = [NSMutableString stringWithString:@&quot;abc&quot;];
+NSString *str2 = @&quot;bcd&quot;;
+[str1 appendString:str2];
+NSLog(@&quot;%@&quot;, str1);
+
+*/
+var str1 = &quot;abc&quot;;
+var str2 = &quot;lnj&quot;;
+var str = str1 + str2;
+print(str)
+</code></pre><p>&#x683C;&#x5F0F;&#x5316;&#x5B57;&#x7B26;&#x4E32;</p>
+<pre><code>/*
+&#x683C;&#x5F0F;&#x5316;&#x5B57;&#x7B26;&#x4E32;
+C: &#x76F8;&#x5F53;&#x9EBB;&#x70E6;, &#x6307;&#x9488;, &#x4E0B;&#x6807;&#x7B49;&#x65B9;&#x5F0F;
+OC:
+NSInteger index = 1;
+NSString *str1 = [NSMutableString stringWithFormat:@&quot;http://ios.itcast.cn/pic/%tu.png&quot;, index];
+NSLog(@&quot;%@&quot;, str1);
+*/
+
+var index = 1
+var str3 = &quot;http://www.520it.com/pic/\(index).png&quot;
+print(str3)
+</code></pre><p>&#x5B57;&#x7B26;&#x4E32;&#x6BD4;&#x8F83;:</p>
+<pre><code>/*
+&#x5B57;&#x7B26;&#x4E32;&#x6BD4;&#x8F83;:
+OC:
+NSString *str1 = @&quot;abc&quot;;
+NSString *str2 = @&quot;abc&quot;;
+if ([str1 compare:str2] == NSOrderedSame)
+{
+    NSLog(@&quot;&#x76F8;&#x7B49;&quot;);
+}else
+{
+    NSLog(@&quot;&#x4E0D;&#x76F8;&#x7B49;&quot;);
+}
+
+if ([str1 isEqualToString:str2])
+{
+NSLog(@&quot;&#x76F8;&#x7B49;&quot;);
+}else
+{
+NSLog(@&quot;&#x4E0D;&#x76F8;&#x7B49;&quot;);
+}
+
+Swift:(== / != / &gt;= / &lt;=), &#x548C;C&#x8BED;&#x8A00;&#x7684;strcmp&#x4E00;&#x6837;&#x662F;&#x9010;&#x4E2A;&#x6BD4;&#x8F83;
+*/
+
+var str4 = &quot;abc&quot;;
+var str5 = &quot;abc&quot;;
+if str4 == str5
+{
+    print(&quot;&#x76F8;&#x7B49;&quot;);
+}else
+{
+    print(&quot;&#x4E0D;&#x76F8;&#x7B49;&quot;);
+}
+
+var str6 = &quot;abd&quot;;
+var str7 = &quot;abc&quot;;
+if str6 &gt;= str7
+{
+    print(&quot;&#x5927;&#x4E8E;&#x7B49;&#x4E8E;&quot;);
+}else
+{
+    print(&quot;&#x4E0D;&#x5927;&#x4E8E;&#x7B49;&#x4E8E;&quot;);
+}
+</code></pre><p>&#x5224;&#x65AD;&#x524D;&#x540E;&#x7F00;</p>
+<pre><code>/*
+&#x5224;&#x65AD;&#x524D;&#x540E;&#x7F00;
+OC:
+NSString *str = @&quot;http://ios.itcast.cn&quot;;
+if ([str hasPrefix:@&quot;http&quot;]) {
+    NSLog(@&quot;&#x662F;url&quot;);
+}
+
+if ([str hasSuffix:@&quot;.cn&quot;]) {
+    NSLog(@&quot;&#x662F;&#x5929;&#x671D;&#x9876;&#x7EA7;&#x57DF;&#x540D;&quot;);
+}
+*/
+
+var str8 = &quot;http://www.520it.com&quot;
+if str8.hasPrefix(&quot;http&quot;) {
+    print(&quot;&#x662F;url&quot;);
+}
+
+if str8.hasSuffix(&quot;.com&quot;) {
+    print(&quot;&#x662F;&#x9876;&#x7EA7;&#x57DF;&#x540D;&quot;);
+}
+</code></pre><p>&#x5927;&#x5C0F;&#x5199;&#x8F6C;&#x6362;</p>
+<pre><code>/*
+&#x5927;&#x5C0F;&#x5199;&#x8F6C;&#x6362;
+OC:
+NSString *str = @&quot;abc.txt&quot;;
+NSLog(@&quot;%@&quot;, [str uppercaseString]);
+NSLog(@&quot;%@&quot;, [str lowercaseString]);
+*/
+
+var str9 = &quot;abc.txt&quot;;
+print(str9.uppercaseString)
+print(str9.lowercaseString)
+</code></pre><p>&#x8F6C;&#x6362;&#x4E3A;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;</p>
+<pre><code>/*
+&#x8F6C;&#x6362;&#x4E3A;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;
+OC:
+NSString *str = @&quot;250&quot;;
+NSInteger number = [str integerValue];
+NSLog(@&quot;%tu&quot;, number);
+*/
+
+var str10 = &quot;250&quot;
+// &#x5982;&#x679C;str&#x4E0D;&#x80FD;&#x8F6C;&#x6362;&#x4E3A;&#x6574;&#x6570;, &#x90A3;&#x4E48;&#x53EF;&#x9009;&#x7C7B;&#x578B;&#x8FD4;&#x56DE;nil
+// str = &quot;250sb&quot; &#x4E0D;&#x80FD;&#x8F6C;&#x6362;&#x6240;&#x4EE5;&#x53EF;&#x80FD;&#x4E3A;nil
+var number:Int? = Int(str10)
+if number != nil
+{
+    // &#x4EE5;&#x524D;&#x7684;&#x7248;&#x672C;println&#x4F1A;&#x81EA;&#x52A8;&#x62C6;&#x5305;, &#x73B0;&#x5728;&#x7684;&#x4E0D;&#x4F1A;
+    print(number!)
+}
+</code></pre><h4 id="&#x8FD0;&#x7B97;&#x7B26;"><a href="#&#x8FD0;&#x7B97;&#x7B26;" class="headerlink" title="&#x8FD0;&#x7B97;&#x7B26;"></a>&#x8FD0;&#x7B97;&#x7B26;</h4><p>&#x7B97;&#x672F;&#x8FD0;&#x7B97;&#x7B26;&#xFF1A;&#x9664;&#x4E86;&#x53D6;&#x6A21;&#xFF0C;&#x5176;&#x4ED6;&#x8DDF;OC&#x4E00;&#x6837;&#xFF0C;&#x5305;&#x62EC;&#x4F18;&#x5148;&#x7EA7;&#x3002;</p>
+<p>&#x6CE8;&#x610F;:Swift&#x662F;&#x5B89;&#x5168;&#x4E25;&#x683C;&#x7684;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;, &#x4F1A;&#x5728;&#x7F16;&#x8BD1;&#x65F6;&#x5019;&#x68C0;&#x67E5;&#x662F;&#x5426;&#x6EA2;&#x51FA;, &#x4F46;&#x662F;&#x53EA;&#x4F1A;&#x68C0;&#x67E5;&#x5B57;&#x9762;&#x91CF;&#x800C;&#x4E0D;&#x4F1A;&#x68C0;&#x67E5;&#x53D8;&#x91CF;, &#x6240;&#x4EE5;&#x5728;Swift&#x4E2D;&#x4E00;&#x5B9A;&#x8981;&#x6CE8;&#x610F;&#x9690;&#x5F0F;&#x6EA2;&#x51FA;</p>
+<pre><code>&#x53EF;&#x4EE5;&#x68C0;&#x6D4B;
+var num1:UInt8 = 255 + 1;
+&#x65E0;&#x6CD5;&#x68C0;&#x6D4B;
+var num1:UInt8 = 255
+var num2:UInt8 = 250
+var result = num1 + num2
+println(result)
+</code></pre><p>&#x9047;&#x5230;&#x8FD9;&#x79CD;&#x95EE;&#x9898;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x6EA2;&#x51FA;&#x8FD0;&#x7B97;&#x7B26;&#x89E3;&#x51B3;&#x8BE5;&#x95EE;&#x9898;:<a href="http://www.yiibai.com/swift/overflow_operators.html" target="_blank" rel="external">http://www.yiibai.com/swift/overflow_operators.html</a></p>
+<p>&#x6EA2;&#x51FA;&#x8FD0;&#x7B97;&#x7B26;&#xFF1A;&amp;+ &amp;- &amp;* &amp;/ &amp;%</p>
+<p>&#x53D6;&#x6A21;&#xFF1A;&#x6C42;&#x4F59;&#x201D;&#x6BD4;&#x201D;&#x53D6;&#x6A21;&#x201D;</p>
+<pre><code>/*
+&#x53D6;&#x6A21; %
+OC: &#x53EA;&#x80FD;&#x5BF9;&#x6574;&#x6570;&#x53D6;&#x6A21;
+NSLog(@&quot;%tu&quot;, 10 % 3);
+
+Swift: &#x652F;&#x6301;&#x5C0F;&#x6570;&#x53D6;&#x6A21;
+*/
+print(10 % 3.5)
+</code></pre><p>&#x533A;&#x95F4;&#x8FD0;&#x7B97;&#x7B26;</p>
+<pre><code>/*
+&#x533A;&#x95F4;
+&#x95ED;&#x533A;&#x95F4;: &#x5305;&#x542B;&#x533A;&#x95F4;&#x5185;&#x6240;&#x6709;&#x503C;  a...b &#x4F8B;&#x5982;: 1...5
+&#x534A;&#x95ED;&#x533A;&#x95F4;: &#x5305;&#x542B;&#x5934;&#x4E0D;&#x5305;&#x542B;&#x5C3E;  a..&lt;b  &#x4F8B;&#x5982;: 1..&lt;5
+&#x6CE8;&#x610F;: 
+ 1.Swift&#x521A;&#x51FA;&#x6765;&#x65F6;&#x7684;&#x5199;&#x6CD5;&#x662F; a..b
+ 2.&#x533A;&#x95F4;&#x53EA;&#x80FD;&#x7528;&#x4E8E;&#x6574;&#x6570;, &#x5199;&#x5C0F;&#x6570;&#x4F1A;&#x6709;&#x95EE;&#x9898;
+&#x5E94;&#x7528;&#x573A;&#x666F;: &#x904D;&#x5386;, &#x6570;&#x7EC4;&#x7B49;
+*/
+for i in 1...5
+{
+    print(i)
+}
+
+for i in 1..&lt;5
+{
+    print(i)
+}
+</code></pre>
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/23/Runtime介绍篇/" itemprop="url">
                   Runtime介绍篇
                 </a>
@@ -1216,226 +1667,6 @@ Nginx: &#x94FE;&#x63A5;&#xFF1A;http://pan.baidu.com/s/1o8lKNXo &#x5BC6;&#x7801;&
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/21/链式编程思想/" itemprop="url">
-                  链式编程思想
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-21T17:28:44+08:00" content="2016-04-21">
-              2016-04-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/编程思想/" itemprop="url" rel="index">
-                    <span itemprop="name">编程思想</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/21/链式编程思想/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/21/链式编程思想/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/04/21/链式编程思想/" class="leancloud_visitors" data-flag-title="链式编程思想">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>&#x94FE;&#x5F0F;&#x7F16;&#x7A0B;&#x601D;&#x60F3;&#xFF1A;&#x628A;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x64CD;&#x4F5C;&#x4F7F;&#x7528;.&#x6765;&#x6765;&#x8FDE;&#x63A5;&#x6210;&#x4E00;&#x53E5;&#x4EE3;&#x7801;&#xFF0C;&#x53EF;&#x8BFB;&#x6027;&#x597D;&#x3002;&#x5178;&#x578B;&#x7684;&#x4EE3;&#x8868;Masonry&#x6846;&#x67B6;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
-<pre><code>[redView mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.left.top.equalTo(@10);
-    make.right.bottom.equalTo(@(-10));
-}];
-</code></pre><p>ZHCalculateMaker&#x7684;&#x58F0;&#x660E;&#x4E0E;&#x5B9E;&#x73B0;</p>
-<pre><code>#import &lt;Foundation/Foundation.h&gt;
-
-@interface ZHCalculateMaker : NSObject
-
-@property (nonatomic, assign) float result;
-
-- (ZHCalculateMaker * (^)(float))add;
-
-- (ZHCalculateMaker * (^)(float))subtract;
-
-- (ZHCalculateMaker * (^)(float))multiply;
-
-- (ZHCalculateMaker * (^)(float))divide;
-
-@end
-
-#import &quot;ZHCalculateMaker.h&quot;
-
-@implementation ZHCalculateMaker
-
-- (ZHCalculateMaker * (^)(float))add {
-    return ^(float num) {
-        self.result += num;
-        return self;
-    };
-}
-
-- (ZHCalculateMaker * (^)(float))subtract {
-    return ^(float num) {
-        self.result -= num;
-        return self;
-    };
-}
-
-- (ZHCalculateMaker * (^)(float))multiply {
-    return ^(float num) {
-        self.result *= num;
-        return self;
-    };
-}
-
-- (ZHCalculateMaker * (^)(float))divide {
-    return ^(float num) {
-        self.result /= num;
-        return self;
-    };
-}
-
-@end
-</code></pre><p>NSObject+ZHCalculate.h&#x7684;&#x58F0;&#x660E;&#x4E0E;&#x5B9E;&#x73B0;</p>
-<pre><code>#import &lt;Foundation/Foundation.h&gt;
-#import &quot;ZHCalculateMaker.h&quot;
-
-@interface NSObject (ZHCalculate)
-
-+ (float)makeCalculate:(void (^)(ZHCalculateMaker *maker))block;
-
-@end
-
-#import &quot;NSObject+ZHCalculate.h&quot;
-#import &quot;ZHCalculateMaker.h&quot;
-
-@implementation NSObject (ZHCalculate)
-
-+ (float)makeCalculate:(void (^)(ZHCalculateMaker *maker))block {
-    //&#x521D;&#x59CB;&#x5316;&#x5236;&#x9020;&#x8005;
-    ZHCalculateMaker *maker = [ZHCalculateMaker new];
-
-    block(maker);
-
-    return maker.result;
-}
-
-@end
-</code></pre><p>&#x5916;&#x90E8;&#x8C03;&#x7528;&#x65B9;&#x6CD5;&#xFF1A;</p>
-<pre><code>- (void)viewDidLoad {
-    [super viewDidLoad];
-
-    float result = [NSObject makeCalculate:^(ZHCalculateMaker *maker) {
-
-        maker.add(3).multiply(5);
-
-    }];
-
-    NSLog(@&quot;%f&quot;, result);
-}
-</code></pre>
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1481,7 +1712,7 @@ Nginx: &#x94FE;&#x63A5;&#xFF1A;http://pan.baidu.com/s/1o8lKNXo &#x5BC6;&#x7801;&
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">44</span>
+              <span class="site-state-item-count">45</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

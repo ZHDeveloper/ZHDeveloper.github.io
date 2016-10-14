@@ -279,6 +279,245 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/02/CoreGraphic深入浅出一/" itemprop="url">
+                  CoreGraphic深入浅出(一)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-02T16:39:09+08:00" content="2016-06-02">
+              2016-06-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/CoreGraphic/" itemprop="url" rel="index">
+                    <span itemprop="name">CoreGraphic</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/02/CoreGraphic深入浅出一/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/02/CoreGraphic深入浅出一/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/06/02/CoreGraphic深入浅出一/" class="leancloud_visitors" data-flag-title="CoreGraphic深入浅出(一)">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>&#x6CE8;&#x610F;&#x70B9;&#xFF1A;</p>
+<ol>
+<li>&#x8C03;&#x7528;[self setNeedsDisplay];&#x53EF;&#x4EE5;&#x91CD;&#x65B0;&#x7ED8;&#x5236;&#x56FE;&#x5F62;&#x3002;</li>
+</ol>
+<h4 id="&#x753B;&#x7EBF;"><a href="#&#x753B;&#x7EBF;" class="headerlink" title="&#x753B;&#x7EBF;"></a>&#x753B;&#x7EBF;</h4><pre><code>- (void)drawRect:(CGRect)rect {
+
+    //&#x83B7;&#x53D6;&#x56FE;&#x5F62;&#x4E0A;&#x4E0B;&#x6587;&#xFF0C;&#x56FE;&#x5F62;&#x4E0A;&#x4E0B;&#x6587;&#x8F93;&#x51FA;&#x7684;&#x76EE;&#x6807;&#x662F;self-&#x300B;&#x4E5F;&#x5C31;&#x662F;&#x5F53;&#x524D;&#x7684;&#x8BD5;&#x56FE;&#x5BF9;&#x8C61;&#x3002;
+    CGContextRef context = UIGraphicsGetCurrentContext();
+
+    //&#x8BBE;&#x7F6E;&#x7EBF;&#x6761;&#x7684;&#x989C;&#x8272;
+    [[UIColor yellowColor] set];
+
+    //&#x8BBE;&#x7F6E;&#x7EBF;&#x5BBD;
+    CGContextSetLineWidth(context, 4);
+
+    // &#x8BBE;&#x7F6E;&#x7EBF;&#x7684;&#x5934;&#x5C3E;&#x7684;&#x6837;&#x5F0F;
+    CGContextSetLineCap(context, kCGLineCapButt);
+
+    //&#x8FDE;&#x63A5;&#x70B9;&#x7684;&#x6837;&#x5F0F;
+    CGContextSetLineJoin(context, kCGLineJoinRound);
+
+    //&#x7EBF;&#x6761;&#x7684;&#x8D77;&#x70B9;
+    CGContextMoveToPoint(context, 5, 5);
+    //&#x7EBF;&#x6761;&#x7684;&#x7EC8;&#x70B9;
+    CGContextAddLineToPoint(context, CGRectGetWidth(rect), CGRectGetHeight(rect));
+    //&#x6E32;&#x67D3;&#x7EBF;&#x6761;
+    CGContextStrokePath(context);
+}
+</code></pre><h4 id="&#x753B;&#x4E09;&#x89D2;&#x5F62;"><a href="#&#x753B;&#x4E09;&#x89D2;&#x5F62;" class="headerlink" title="&#x753B;&#x4E09;&#x89D2;&#x5F62;"></a>&#x753B;&#x4E09;&#x89D2;&#x5F62;</h4><p>&#x539F;&#x7406;&#xFF1A;&#x5728;&#x753B;&#x7EBF;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x6DFB;&#x52A0;&#x591A;&#x4E2A;&#x70B9;&#x6765;&#x8FDE;&#x6210;&#x8FDE;&#x7EED;&#x7684;&#x7EBF;&#xFF0C;&#x5C06;&#x8DEF;&#x5F84;&#x5173;&#x95ED;&#x8D77;&#x6765;CGContextClosePath(context);&#x5C31;&#x53EF;&#x4EE5;&#x5F62;&#x6210;&#x4E09;&#x89D2;&#x5F62;&#x3002;</p>
+<h4 id="&#x753B;&#x77E9;&#x5F62;"><a href="#&#x753B;&#x77E9;&#x5F62;" class="headerlink" title="&#x753B;&#x77E9;&#x5F62;"></a>&#x753B;&#x77E9;&#x5F62;</h4><p>&#x65B9;&#x6CD5;&#x4E00;&#xFF1A;&#x901A;&#x8FC7;&#x753B;&#x56DB;&#x4E2A;&#x70B9;&#x8FDE;&#x6210;&#x4E09;&#x6761;&#x7EBF;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x8D77;&#x70B9;&#x548C;&#x7EC8;&#x70B9;&#x8FDE;&#x63A5;&#x8D77;&#x6765;&#x3002;</p>
+<p>&#x65B9;&#x6CD5;&#x4E8C;&#xFF1A;</p>
+<pre><code>- (void)drawRect:(CGRect)rect {
+
+    CGContextRef context = UIGraphicsGetCurrentContext();
+
+    CGContextAddRect(context, CGRectMake(100, 100, 50, 50));
+
+    //&#x8BBE;&#x7F6E;&#x7EBF;&#x6761;&#x7684;&#x989C;&#x8272;
+    CGContextSetRGBFillColor(context, 0.2, 0.8, 0.2, 1);
+
+//    [[UIColor yellowColor] setFill];
+
+//    //&#x6E32;&#x67D3;-&#x300B;&#x3010;&#x7A7A;&#x5FC3;&#x3011;
+//    CGContextStrokePath(context);
+    //&#x6E32;&#x67D3;-&#x300B;&#x3010;&#x5B9E;&#x5FC3;&#x3011;
+    CGContextFillPath(context);
+}
+</code></pre><h4 id="&#x753B;&#x5706;&#x3001;&#x5F27;&#x5F62;&#x3001;&#x6247;&#x5F62;"><a href="#&#x753B;&#x5706;&#x3001;&#x5F27;&#x5F62;&#x3001;&#x6247;&#x5F62;" class="headerlink" title="&#x753B;&#x5706;&#x3001;&#x5F27;&#x5F62;&#x3001;&#x6247;&#x5F62;"></a>&#x753B;&#x5706;&#x3001;&#x5F27;&#x5F62;&#x3001;&#x6247;&#x5F62;</h4><pre><code>//&#x753B;&#x5F27;&#x5F62;
+- (void)drawRect:(CGRect)rect {
+
+    CGContextRef context = UIGraphicsGetCurrentContext();
+
+    /*!
+     *  @author zhihua, 16-06-02 17:06:03
+     *  &#x5706;&#x5FC3;&#x7684;&#x70B9;
+     *  &#x534A;&#x5F84;
+     *  &#x8D77;&#x59CB;&#x7684;&#x5F27;&#x5EA6;
+     *  &#x7ED3;&#x675F;&#x7684;&#x5F27;&#x5EA6;
+     *  clockwise 0 &#x987A;&#x9488; 1 &#x9006;&#x65F6;&#x9488;
+     *  @brief
+     */
+    CGContextAddArc(context, CGRectGetMidX(rect), CGRectGetMidY(rect), 100, 0, M_PI*0.65, 1);
+
+    CGContextStrokePath(context);
+
+}
+
+//&#x753B;&#x6247;&#x5F62;
+- (void)drawRect:(CGRect)rect {
+
+    //&#x83B7;&#x53D6;&#x56FE;&#x5F62;&#x4E0A;&#x4E0B;&#x6587;
+    CGContextRef context = UIGraphicsGetCurrentContext();
+
+    CGContextMoveToPoint(context, CGRectGetMidX(rect), CGRectGetMidY(rect));
+    CGContextAddArc(context, CGRectGetMidX(rect), CGRectGetMidY(rect), 50, 0, M_PI*0.25, 1);
+
+    CGContextClosePath(context);
+
+    CGContextStrokePath(context);
+}
+
+//&#x753B;&#x5F27;&#x5F62;
+- (void)drawRect:(CGRect)rect {
+
+    //&#x83B7;&#x53D6;&#x56FE;&#x5F62;&#x4E0A;&#x4E0B;&#x6587;
+    CGContextRef context = UIGraphicsGetCurrentContext();
+
+    CGContextAddEllipseInRect(context, CGRectMake(CGRectGetMidX(rect), CGRectGetMidY(rect), 50, 50));
+
+    CGContextStrokePath(context);
+
+}
+</code></pre><h4 id="&#x753B;&#x6587;&#x5B57;&#x3001;&#x753B;&#x56FE;&#x7247;"><a href="#&#x753B;&#x6587;&#x5B57;&#x3001;&#x753B;&#x56FE;&#x7247;" class="headerlink" title="&#x753B;&#x6587;&#x5B57;&#x3001;&#x753B;&#x56FE;&#x7247;"></a>&#x753B;&#x6587;&#x5B57;&#x3001;&#x753B;&#x56FE;&#x7247;</h4><pre><code>- (void)drawRect:(CGRect)rect {
+
+    //&#x753B;&#x56FE;&#x7247;
+    UIImage *image = [UIImage imageNamed:@&quot;papa&quot;];
+    //[image drawAtPoint:CGPointZero];
+    //[image drawInRect:CGRectMake(10, 10, 50, 50)];
+
+    //&#x5E73;&#x94FA;
+    [image drawAsPatternInRect:CGRectMake(0, 0, 180, 180)];
+
+    //&#x753B;&#x6587;&#x5B57;
+    NSString *text = @&quot;&#x5EFA;&#x8BBE;&#x4E16;&#x754C;&#x79D1;&#x6280;&#x5F3A;&#x56FD;&#x7684;&#x53F7;&#x89D2;&#x5DF2;&#x7ECF;&#x5439;&#x54CD;&#xFF0C;&#x79D1;&#x6280;&#x521B;&#x65B0;&#x7684;&#x6625;&#x5929;&#x5DF2;&#x7ECF;&#x6765;&#x4E34;&#x3002;&quot;;
+
+    NSDictionary *attr = @{NSFontAttributeName:[UIFont systemFontOfSize:13],NSForegroundColorAttributeName:[UIColor yellowColor]};
+
+    [text drawInRect:rect withAttributes:attr];
+    //&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4E0D;&#x4F1A;&#x6362;&#x884C;
+    //[text drawAtPoint:CGPointMake(10, 100) withAttributes:nil];
+}
+</code></pre>
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/02/Sublime3搭建GO开发环境/" itemprop="url">
                   Sublime3搭建GO开发环境
                 </a>
@@ -1041,240 +1280,6 @@ IB_DESIGNABLE
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/25/Clang黑魔法/" itemprop="url">
-                  Clang黑魔法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-25T18:09:04+08:00" content="2016-05-25">
-              2016-05-25
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Object-C/" itemprop="url" rel="index">
-                    <span itemprop="name">Object-C</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/25/Clang黑魔法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/25/Clang黑魔法/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/05/25/Clang黑魔法/" class="leancloud_visitors" data-flag-title="Clang黑魔法">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="&#x7B80;&#x4ECB;"><a href="#&#x7B80;&#x4ECB;" class="headerlink" title="&#x7B80;&#x4ECB;"></a>&#x7B80;&#x4ECB;</h4><p>Clang Attributes &#x662F; Clang &#x63D0;&#x4F9B;&#x7684;&#x4E00;&#x79CD;&#x6E90;&#x7801;&#x6CE8;&#x89E3;&#xFF0C;&#x65B9;&#x4FBF;&#x5F00;&#x53D1;&#x8005;&#x5411;&#x7F16;&#x8BD1;&#x5668;&#x8868;&#x8FBE;&#x67D0;&#x79CD;&#x8981;&#x6C42;&#xFF0C;&#x53C2;&#x4E0E;&#x63A7;&#x5236;&#x5982; Static Analyzer&#x3001;Name Mangling&#x3001;Code Generation &#x7B49;&#x8FC7;&#x7A0B;&#xFF0C;&#x4E00;&#x822C;&#x4EE5; <strong>attribute</strong>(xxx) &#x7684;&#x5F62;&#x5F0F;&#x51FA;&#x73B0;&#x5728;&#x4EE3;&#x7801;&#x4E2D;&#xFF1B;&#x4E3A;&#x65B9;&#x4FBF;&#x4F7F;&#x7528;&#xFF0C;&#x4E00;&#x4E9B;&#x5E38;&#x7528;&#x5C5E;&#x6027;&#x4E5F;&#x88AB; Cocoa &#x5B9A;&#x4E49;&#x6210;&#x5B8F;&#xFF0C;&#x6BD4;&#x5982;&#x5728;&#x7CFB;&#x7EDF;&#x5934;&#x6587;&#x4EF6;&#x4E2D;&#x7ECF;&#x5E38;&#x51FA;&#x73B0;&#x7684; NS_CLASS_AVAILABLE_IOS(9_0) &#x5C31;&#x662F; <strong>attribute</strong>(availability(&#x2026;)) &#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x7684;&#x7B80;&#x5355;&#x5199;&#x6CD5;&#x3002;</p>
-<h4 id="objc-subclassing-restricted"><a href="#objc-subclassing-restricted" class="headerlink" title="objc_subclassing_restricted"></a>objc_subclassing_restricted</h4><p>&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A; Final Class&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x4E00;&#x4E2A;&#x4E0D;&#x53EF;&#x88AB;&#x7EE7;&#x627F;&#x7684;&#x7C7B;&#xFF0C;&#x5047;&#x8BBE;&#x6211;&#x4EEC;&#x6709;&#x4E2A;&#x540D;&#x53EB; Eunuch&#xFF08;&#x592A;&#x76D1;&#xFF09; &#x7684;&#x7C7B;&#xFF0C;&#x4F46;&#x5E76;&#x4E0D;&#x5E0C;&#x671B;&#x6709;&#x4EBA;&#x53EF;&#x4EE5;&#x7EE7;&#x627F;&#x81EA;&#x5B83;&#xFF1A;</p>
-<pre><code>@interface Eunuch : NSObject
-@end
-@interface Child : Eunuch // &#x592A;&#x76D1;&#x4E0D;&#x80FD;&#x591F;&#x6709;&#x5B69;&#x7838;
-@end
-
-//&#x53EA;&#x8981;&#x5728; @interface &#x524D;&#x9762;&#x52A0;&#x4E0A; objc_subclassing_restricted &#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x5373;&#x53EF;&#xFF1A;
-
-__attribute__((objc_subclassing_restricted))
-@interface Eunuch : NSObject
-@end
-@interface Child : Eunuch // &lt;--- Compile Error
-@end
-</code></pre><h4 id="objc-requires-super"><a href="#objc-requires-super" class="headerlink" title="objc_requires_super"></a>objc_requires_super</h4><p>aka: NS_REQUIRES_SUPER&#xFF0C;&#x6807;&#x5FD7;&#x5B50;&#x7C7B;&#x7EE7;&#x627F;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x65F6;&#x9700;&#x8981;&#x8C03;&#x7528; super&#xFF0C;&#x5426;&#x5219;&#x7ED9;&#x51FA;&#x7F16;&#x8BD1;&#x8B66;&#x544A;&#xFF1A;</p>
-<pre><code>@interface Father : NSObject
-- (void)hailHydra __attribute__((objc_requires_super));
-@end
-@implementation Father
-- (void)hailHydra {
-NSLog(@&quot;hail hydra!&quot;);
-}
-@end
-@interface Son : Father
-@end
-@implementation Son
-- (void)hailHydra {
-} // &lt;--- Warning missing [super hailHydra]
-@end
-</code></pre><h4 id="objc-boxable"><a href="#objc-boxable" class="headerlink" title="objc_boxable"></a>objc_boxable</h4><p>Objective-C &#x4E2D;&#x7684; @(&#x2026;) &#x8BED;&#x6CD5;&#x7CD6;&#x53EF;&#x4EE5;&#x5C06;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B; box &#x6210; NSNumber &#x5BF9;&#x8C61;&#xFF0C;&#x5047;&#x5982;&#x60F3; box &#x4E00;&#x4E2A; struct &#x7C7B;&#x578B;&#x6216;&#x662F; union &#x7C7B;&#x578B;&#x6210; NSValue &#x5BF9;&#x8C61;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#xFF1A;</p>
-<pre><code>typedef struct __attribute__((objc_boxable)) {
-CGFloat x, y, width, height;
-} XXRect;
-
-&#x8FD9;&#x6837;&#x4E00;&#x6765;&#xFF0C;XXRect &#x5C31;&#x5177;&#x5907;&#x88AB; box &#x7684;&#x80FD;&#x529B;&#xFF1A;
-
-CGRect rect1 = {1, 2, 3, 4};
-NSValue *value1 = @(rect1); // &lt;--- Compile Error
-XXRect rect2 = {1, 2, 3, 4};
-NSValue *value2 = @(rect2); // &#x221A;
-</code></pre><h4 id="constructor-destructor"><a href="#constructor-destructor" class="headerlink" title="constructor / destructor"></a>constructor / destructor</h4><p>&#x987E;&#x540D;&#x601D;&#x4E49;&#xFF0C;&#x6784;&#x9020;&#x5668;&#x548C;&#x6790;&#x6784;&#x5668;&#xFF0C;&#x52A0;&#x4E0A;&#x8FD9;&#x4E24;&#x4E2A;&#x5C5E;&#x6027;&#x7684;&#x51FD;&#x6570;&#x4F1A;&#x5728;&#x5206;&#x522B;&#x5728;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#xFF08;&#x6216; shared library&#xFF09;load &#x548C; unload &#x65F6;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;&#x5728; main() &#x51FD;&#x6570;&#x8C03;&#x7528;&#x524D;&#x548C; return &#x540E;&#x6267;&#x884C;&#xFF1A;</p>
-<pre><code>__attribute__((constructor))
-static void beforeMain(void) {
-NSLog(@&quot;beforeMain&quot;);
-}
-__attribute__((destructor))
-static void afterMain(void) {
-NSLog(@&quot;afterMain&quot;);
-}
-int main(int argc, const char * argv[]) {
-NSLog(@&quot;main&quot;);
-return 0;
-}
-// Console:
-// &quot;beforeMain&quot; -&gt; &quot;main&quot; -&gt; &quot;afterMain&quot;
-</code></pre><p>constructor &#x548C; +load &#x90FD;&#x662F;&#x5728; main &#x51FD;&#x6570;&#x6267;&#x884C;&#x524D;&#x8C03;&#x7528;&#xFF0C;&#x4F46; +load &#x6BD4; constructor &#x66F4;&#x52A0;&#x65E9;&#x4E00;&#x4E22;&#x4E22;&#xFF0C;&#x56E0;&#x4E3A; dyld&#xFF08;&#x52A8;&#x6001;&#x94FE;&#x63A5;&#x5668;&#xFF0C;&#x7A0B;&#x5E8F;&#x7684;&#x6700;&#x521D;&#x8D77;&#x70B9;&#xFF09;&#x5728;&#x52A0;&#x8F7D; image&#xFF08;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x6210; Mach-O &#x6587;&#x4EF6;&#xFF09;&#x65F6;&#x4F1A;&#x5148;&#x901A;&#x77E5; objc runtime &#x53BB;&#x52A0;&#x8F7D;&#x5176;&#x4E2D;&#x6240;&#x6709;&#x7684;&#x7C7B;&#xFF0C;&#x6BCF;&#x52A0;&#x8F7D;&#x4E00;&#x4E2A;&#x7C7B;&#x65F6;&#xFF0C;&#x5B83;&#x7684; +load &#x968F;&#x4E4B;&#x8C03;&#x7528;&#xFF0C;&#x5168;&#x90E8;&#x52A0;&#x8F7D;&#x5B8C;&#x6210;&#x540E;&#xFF0C;dyld &#x624D;&#x4F1A;&#x8C03;&#x7528;&#x8FD9;&#x4E2A; image &#x4E2D;&#x6240;&#x6709;&#x7684; constructor &#x65B9;&#x6CD5;&#x3002;</p>
-<p>&#x6240;&#x4EE5; constructor &#x662F;&#x4E00;&#x4E2A;&#x5E72;&#x574F;&#x4E8B;&#x7684;&#x7EDD;&#x4F73;&#x65F6;&#x673A;&#xFF1A;</p>
-<ol>
-<li>&#x6240;&#x6709; Class &#x90FD;&#x5DF2;&#x7ECF;&#x52A0;&#x8F7D;&#x5B8C;&#x6210;</li>
-<li>main &#x51FD;&#x6570;&#x8FD8;&#x672A;&#x6267;&#x884C;</li>
-<li>&#x65E0;&#x9700;&#x50CF; +load &#x8FD8;&#x5F97;&#x6302;&#x8F7D;&#x5728;&#x4E00;&#x4E2A; Class &#x4E2D;</li>
-</ol>
-<p>FDStackView &#x7684; FDStackViewPatchEntry &#x65B9;&#x6CD5;&#x4FBF;&#x662F;&#x4F7F;&#x7528;&#x7684;&#x8FD9;&#x4E2A;&#x65F6;&#x673A;&#x6765;&#x5B9E;&#x73B0;&#x5077;&#x5929;&#x6362;&#x65E5;&#x7684;&#x4F0E;&#x4FE9;&#x3002;</p>
-<p>PS&#xFF1A;&#x82E5;&#x6709;&#x591A;&#x4E2A; constructor &#x4E14;&#x60F3;&#x63A7;&#x5236;&#x4F18;&#x5148;&#x7EA7;&#x7684;&#x8BDD;&#xFF0C;&#x53EF;&#x4EE5;&#x5199;&#x6210; <strong>attribute</strong>((constructor(101)))&#xFF0C;&#x91CC;&#x9762;&#x7684;&#x6570;&#x5B57;&#x8D8A;&#x5C0F;&#x4F18;&#x5148;&#x7EA7;&#x8D8A;&#x9AD8;&#xFF0C;1 ~ 100 &#x4E3A;&#x7CFB;&#x7EDF;&#x4FDD;&#x7559;&#x3002;</p>
-<h4 id="enable-if"><a href="#enable-if" class="headerlink" title="enable_if"></a>enable_if</h4><p>&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x53EA;&#x80FD;&#x7528;&#x5728; C &#x51FD;&#x6570;&#x4E0A;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x5B9E;&#x73B0;&#x53C2;&#x6570;&#x7684;&#x9759;&#x6001;&#x68C0;&#x67E5;&#xFF1A;</p>
-<pre><code>static void printValidAge(int age)
-__attribute__((enable_if(age &gt; 0 &amp;&amp; age &lt; 120, &quot;&#x4F60;&#x4E2B;&#x706B;&#x661F;&#x4EBA;&#xFF1F;&quot;))) {
-printf(&quot;%d&quot;, age);
-}
-</code></pre><p>&#x5B83;&#x8868;&#x793A;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x65F6;&#x5FC5;&#x987B;&#x6EE1;&#x8DB3; age &gt; 0 &amp;&amp; age &lt; 120 &#x624D;&#x88AB;&#x5141;&#x8BB8;&#xFF0C;&#x4E8E;&#x662F;&#x4E4E;&#xFF1A;</p>
-<pre><code>printValidAge(26); // &#x221A;
-printValidAge(150); // &lt;--- Compile Error
-printValidAge(-1); // &lt;--- Compile Error
-</code></pre><h4 id="cleanup"><a href="#cleanup" class="headerlink" title="cleanup"></a>cleanup</h4><p>&#x58F0;&#x660E;&#x5230;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x4E0A;&#xFF0C;&#x5F53;&#x8FD9;&#x4E2A;&#x53D8;&#x91CF;&#x4F5C;&#x7528;&#x57DF;&#x7ED3;&#x675F;&#x65F6;&#xFF0C;&#x8C03;&#x7528;&#x6307;&#x5B9A;&#x7684;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;Reactive Cocoa &#x7528;&#x8FD9;&#x4E2A;&#x7279;&#x6027;&#x5B9E;&#x73B0;&#x4E86;&#x795E;&#x5947;&#x7684; @onExit&#xFF0C;&#x5173;&#x4E8E;&#x8FD9;&#x4E2A; attribute&#xFF0C;&#x5728;&#x4E4B;&#x524D;&#x7684;&#x6587;&#x7AE0;&#x4E2D;&#x6709;&#x4ECB;&#x7ECD;&#xFF0C;&#x4F20;&#x9001;&#x95E8;&#x3002;</p>
-<h4 id="overloadable"><a href="#overloadable" class="headerlink" title="overloadable"></a>overloadable</h4><p>&#x7528;&#x4E8E; C &#x51FD;&#x6570;&#xFF0C;&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x82E5;&#x5E72;&#x4E2A;&#x51FD;&#x6570;&#x540D;&#x76F8;&#x540C;&#xFF0C;&#x4F46;&#x53C2;&#x6570;&#x4E0D;&#x540C;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x8C03;&#x7528;&#x65F6;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x81EA;&#x52A8;&#x6839;&#x636E;&#x53C2;&#x6570;&#x9009;&#x62E9;&#x51FD;&#x6570;&#x539F;&#x578B;&#xFF1A;</p>
-<pre><code>__attribute__((overloadable)) void logAnything(id obj) {
-NSLog(@&quot;%@&quot;, obj);
-}
-__attribute__((overloadable)) void logAnything(int number) {
-NSLog(@&quot;%@&quot;, @(number));
-}
-__attribute__((overloadable)) void logAnything(CGRect rect) {
-NSLog(@&quot;%@&quot;, NSStringFromCGRect(rect));
-}
-// Tests
-logAnything(@[@&quot;1&quot;, @&quot;2&quot;]);
-logAnything(233);
-logAnything(CGRectMake(1, 2, 3, 4));
-</code></pre><h4 id="objc-runtime-name"><a href="#objc-runtime-name" class="headerlink" title="objc_runtime_name"></a>objc_runtime_name</h4><p>&#x7528;&#x4E8E; @interface &#x6216; @protocol&#xFF0C;&#x5C06;&#x7C7B;&#x6216;&#x534F;&#x8BAE;&#x7684;&#x540D;&#x5B57;&#x5728;&#x7F16;&#x8BD1;&#x65F6;&#x6307;&#x5B9A;&#x6210;&#x53E6;&#x4E00;&#x4E2A;&#xFF1A;</p>
-<pre><code>__attribute__((objc_runtime_name(&quot;SarkGay&quot;)))
-@interface Sark : NSObject
-@end
-NSLog(@&quot;%@&quot;, NSStringFromClass([Sark class])); // &quot;SarkGay&quot;
-</code></pre><p>&#x6240;&#x6709;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x7C7B;&#x540D;&#x7684;&#x5730;&#x65B9;&#x90FD;&#x4F1A;&#x88AB;&#x66FF;&#x6362;&#xFF08;&#x552F;&#x4E00;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x8FD9;&#x65F6;&#x7528;&#x53CD;&#x5C04;&#x5C31;&#x4E0D;&#x5BF9;&#x4E86;&#xFF09;&#xFF0C;&#x6700;&#x7B80;&#x5355;&#x7C97;&#x66B4;&#x7684;&#x7528;&#x5904;&#x5C31;&#x662F;&#x53BB;&#x505A;&#x4E2A;&#x7C7B;&#x540D;&#x6DF7;&#x6DC6;&#xFF1A;</p>
-<pre><code>__attribute__((objc_runtime_name(&quot;40ea43d7629d01e4b8d6289a132482d0dd5df4fa&quot;)))
-@interface SecretClass : NSObject
-@end
-</code></pre><p>&#x8FD8;&#x80FD;&#x7528;&#x6570;&#x5B57;&#x5F00;&#x5934;&#xFF0C;&#x6015;&#x4E0D;&#x6015; - -&#xFF0C;&#x5047;&#x5982;&#x5199;&#x4E2A;&#x811A;&#x672C;&#x628A;&#x6BCF;&#x4E2A;&#x7C7B;&#x524D;&#x52A0;&#x4E2A;&#x968F;&#x673A;&#x751F;&#x6210;&#x7684; objc_runtime_name&#xFF0C;&#x5C82;&#x4E0D;&#x662F;&#x6700;&#x6700;&#x7CBE;&#x7B80;&#x7248;&#x7684;&#x4EE3;&#x7801;&#x6DF7;&#x6DC6;&#x5C31;&#x5B8C;&#x6210;&#x4E86;&#x5462;&#x2026;</p>
-<p>&#x5B83;&#x662F;&#x6211;&#x6240;&#x4E86;&#x89E3;&#x7684;&#x552F;&#x4E00;&#x4E00;&#x4E2A;&#x5BF9; objc &#x8FD0;&#x884C;&#x65F6;&#x7C7B;&#x7ED3;&#x6784;&#x6709;&#x5F71;&#x54CD;&#x7684; attribute&#xFF0C;&#x901A;&#x8FC7;&#x7F16;&#x7801;&#x7C7B;&#x540D;&#x53EF;&#x4EE5;&#x5728;&#x7F16;&#x8BD1;&#x65F6;&#x6CE8;&#x5165;&#x4E00;&#x4E9B;&#x4FE1;&#x606F;&#xFF0C;&#x88AB;&#x5E26;&#x5230;&#x8FD0;&#x884C;&#x65F6;&#x4E4B;&#x540E;&#xFF0C;&#x518D;&#x53CD;&#x89E3;&#x51FA;&#x6765;&#xFF0C;&#x8FD9;&#x5C31;&#x76F8;&#x5F53;&#x4E8E;&#x5F00;&#x8BBE;&#x4E86;&#x4E00;&#x6761;&#x79D8;&#x5BC6;&#x901A;&#x9053;&#xFF0C;&#x6253;&#x901A;&#x4E86;&#x5199;&#x7801;&#x65F6;&#x548C;&#x8FD0;&#x884C;&#x65F6;&#x3002;&#x8111;&#x6D1E;&#x4E00;&#x4E0B;&#xFF0C;&#x5047;&#x5982;&#x628A;&#x8FD9;&#x4E2A; attribute &#x5B9A;&#x4E49;&#x6210;&#x5B8F;&#xFF0C;&#x4EE5; annotation &#x7684;&#x5F62;&#x5F0F;&#x5B8C;&#x6210;&#x67D0;&#x4E9B;&#x529F;&#x80FD;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;</p>
-<pre><code>// @singleton &#x5305;&#x88F9;&#x4E86; __attribute__((objc_runtime_name(...)))
-// &#x5C06;&#x7C7B;&#x540D;&#x6539;&#x540D;&#x6210; &quot;SINGLETON_Sark_sharedInstance&quot;
-@singleton(Sark, sharedInstance)
-@interface Sark : NSObject
-+ (instancetype)sharedInstance;
-@end
-</code></pre><p>&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x7528; <strong>attribute</strong>((constructor)) &#x83B7;&#x53D6;&#x5165;&#x53E3;&#x65F6;&#x673A;&#xFF0C;&#x7528; runtime &#x627E;&#x5230;&#x8FD9;&#x4E2A;&#x7C7B;&#xFF0C;&#x53CD;&#x89E3;&#x51FA; &#x201C;sharedInstance&#x201D; &#x8FD9;&#x4E2A; selector &#x4FE1;&#x606F;&#xFF0C;&#x52A8;&#x6001;&#x5C06; + alloc&#xFF0C;- init &#x7B49;&#x65B9;&#x6CD5;&#x66FF;&#x6362;&#xFF0C;&#x8FD4;&#x56DE; + sharedInstance &#x5355;&#x4F8B;&#x3002;</p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1320,7 +1325,7 @@ NSLog(@&quot;%@&quot;, NSStringFromClass([Sark class])); // &quot;SarkGay&quot;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">44</span>
+              <span class="site-state-item-count">45</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -279,6 +279,156 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/13/Swift-在拓展中添加存储属性/" itemprop="url">
+                  Swift 在拓展中添加存储属性
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-13T17:43:25+08:00" content="2016-10-13">
+              2016-10-13
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/13/Swift-在拓展中添加存储属性/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/13/Swift-在拓展中添加存储属性/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/10/13/Swift-在拓展中添加存储属性/" class="leancloud_visitors" data-flag-title="Swift 在拓展中添加存储属性">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>&#x8FD9;&#x91CC;&#x5C31;&#x662F;&#x4E00;&#x4E9B;&#x8FD9;&#x6837;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x4F7F;&#x7528; Swift &#x7C7B;&#x578B;&#x63A8;&#x65AD;&#x7684;&#x9ED1;&#x9B54;&#x6CD5;&#xFF0C;&#x4F7F;&#x4F60;&#x5728;&#x7C7B;&#x6216;&#x534F;&#x8BAE;&#x6269;&#x5C55;&#x4E2D;&#x5199;&#x7C7B;&#x578B;&#x5B89;&#x5168;&#x7684;&#x975E; Optional &#x8BA1;&#x7B97;&#x5C5E;&#x6027;&#x65F6;&#xFF0C;&#x5C31;&#x50CF;&#x5B58;&#x50A8;&#x5C5E;&#x6027;&#x4E00;&#x6837;&#x3002;</p>
+<pre><code>import Foundation
+func associatedObject&lt;ValueType: AnyObject&gt;(
+        base: AnyObject, 
+        key: UnsafePointer&lt;UInt8&gt;, 
+        initialiser: () -&gt; ValueType) 
+        -&gt; ValueType {
+    if let associated = objc_getAssociatedObject(base, key) 
+        as? ValueType { return associated }
+    let associated = initialiser()
+    objc_setAssociatedObject(base, key, associated, 
+                             .OBJC_ASSOCIATION_RETAIN)
+    return associated
+}
+func associateObject&lt;ValueType: AnyObject&gt;(
+        base: AnyObject, 
+        key: UnsafePointer&lt;UInt8&gt;, 
+        value: ValueType) {
+    objc_setAssociatedObject(base, key, value, 
+                             .OBJC_ASSOCIATION_RETAIN)
+}
+</code></pre><p>&#x51FD;&#x6570;&#x5C31;&#x90A3;&#x4E48;&#x957F;&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x4F7F;&#x7528;&#x5B83;&#x4EEC;&#xFF1A;</p>
+<pre><code>class Miller {} // &#x8FD9;&#x662F;&#x6211;&#x4EEC;&#x8981;&#x6269;&#x5C55;&#x7684;&#x7C7B;
+class Cat { // &#x6BCF;&#x4E2A;&#x78E8;&#x574A;&#x4E3B;&#x90FD;&#x6709;&#x4E00;&#x53EA;&#x732B;
+    var name = &#x201C;Puss&#x201D;
+}
+private var catKey: UInt8 = 0 // &#x6211;&#x4EEC;&#x8FD8;&#x662F;&#x9700;&#x8981;&#x8FD9;&#x6837;&#x7684;&#x6A21;&#x677F;
+extension Miller {
+    var cat: Cat { // cat&#x300C;&#x5B9E;&#x9645;&#x4E0A;&#x300D;&#x662F;&#x4E00;&#x4E2A;&#x5B58;&#x50A8;&#x5C5E;&#x6027;
+        get { 
+            return associatedObject(self, key: &amp;catKey) 
+                { return Cat() } // &#x8BBE;&#x7F6E;&#x53D8;&#x91CF;&#x7684;&#x521D;&#x59CB;&#x503C;
+        }
+        set { associateObject(self, key: &amp;catKey, value: newValue) }
+    }
+}
+</code></pre><p>&#x5982;&#x679C;&#x4F60;&#x5728;&#x5BB6;&#x53EF;&#x4EE5;&#x8DDF;&#x7740;&#x7EC3;&#x4E60;&#x7684;&#x8BDD;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x5728; playground &#x4E2D;&#x6572;&#x4E0B;&#x4E0B;&#x9762;&#x51E0;&#x884C;&#x4EE3;&#x7801;&#xFF0C;&#x6765;&#x786E;&#x4FDD;&#x5B83;&#x80FD;&#x6B63;&#x5E38;&#x5DE5;&#x4F5C;&#x3002;</p>
+<pre><code>let grumpy = Miller()
+grumpy.cat.name // &#x663E;&#x793A; Puss
+grumpy.cat.name = &#x201C;Hephaestos&#x201D;
+grumpy.cat.name // &#x663E;&#x793A; Hephaestos
+</code></pre>
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/09/博客备份/" itemprop="url">
                   博客备份
                 </a>
@@ -893,245 +1043,6 @@ pod update --verbose --no-repo-update
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/02/CoreGraphic深入浅出一/" itemprop="url">
-                  CoreGraphic深入浅出(一)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-02T16:39:09+08:00" content="2016-06-02">
-              2016-06-02
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/CoreGraphic/" itemprop="url" rel="index">
-                    <span itemprop="name">CoreGraphic</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/02/CoreGraphic深入浅出一/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/02/CoreGraphic深入浅出一/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/06/02/CoreGraphic深入浅出一/" class="leancloud_visitors" data-flag-title="CoreGraphic深入浅出(一)">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>&#x6CE8;&#x610F;&#x70B9;&#xFF1A;</p>
-<ol>
-<li>&#x8C03;&#x7528;[self setNeedsDisplay];&#x53EF;&#x4EE5;&#x91CD;&#x65B0;&#x7ED8;&#x5236;&#x56FE;&#x5F62;&#x3002;</li>
-</ol>
-<h4 id="&#x753B;&#x7EBF;"><a href="#&#x753B;&#x7EBF;" class="headerlink" title="&#x753B;&#x7EBF;"></a>&#x753B;&#x7EBF;</h4><pre><code>- (void)drawRect:(CGRect)rect {
-
-    //&#x83B7;&#x53D6;&#x56FE;&#x5F62;&#x4E0A;&#x4E0B;&#x6587;&#xFF0C;&#x56FE;&#x5F62;&#x4E0A;&#x4E0B;&#x6587;&#x8F93;&#x51FA;&#x7684;&#x76EE;&#x6807;&#x662F;self-&#x300B;&#x4E5F;&#x5C31;&#x662F;&#x5F53;&#x524D;&#x7684;&#x8BD5;&#x56FE;&#x5BF9;&#x8C61;&#x3002;
-    CGContextRef context = UIGraphicsGetCurrentContext();
-
-    //&#x8BBE;&#x7F6E;&#x7EBF;&#x6761;&#x7684;&#x989C;&#x8272;
-    [[UIColor yellowColor] set];
-
-    //&#x8BBE;&#x7F6E;&#x7EBF;&#x5BBD;
-    CGContextSetLineWidth(context, 4);
-
-    // &#x8BBE;&#x7F6E;&#x7EBF;&#x7684;&#x5934;&#x5C3E;&#x7684;&#x6837;&#x5F0F;
-    CGContextSetLineCap(context, kCGLineCapButt);
-
-    //&#x8FDE;&#x63A5;&#x70B9;&#x7684;&#x6837;&#x5F0F;
-    CGContextSetLineJoin(context, kCGLineJoinRound);
-
-    //&#x7EBF;&#x6761;&#x7684;&#x8D77;&#x70B9;
-    CGContextMoveToPoint(context, 5, 5);
-    //&#x7EBF;&#x6761;&#x7684;&#x7EC8;&#x70B9;
-    CGContextAddLineToPoint(context, CGRectGetWidth(rect), CGRectGetHeight(rect));
-    //&#x6E32;&#x67D3;&#x7EBF;&#x6761;
-    CGContextStrokePath(context);
-}
-</code></pre><h4 id="&#x753B;&#x4E09;&#x89D2;&#x5F62;"><a href="#&#x753B;&#x4E09;&#x89D2;&#x5F62;" class="headerlink" title="&#x753B;&#x4E09;&#x89D2;&#x5F62;"></a>&#x753B;&#x4E09;&#x89D2;&#x5F62;</h4><p>&#x539F;&#x7406;&#xFF1A;&#x5728;&#x753B;&#x7EBF;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x6DFB;&#x52A0;&#x591A;&#x4E2A;&#x70B9;&#x6765;&#x8FDE;&#x6210;&#x8FDE;&#x7EED;&#x7684;&#x7EBF;&#xFF0C;&#x5C06;&#x8DEF;&#x5F84;&#x5173;&#x95ED;&#x8D77;&#x6765;CGContextClosePath(context);&#x5C31;&#x53EF;&#x4EE5;&#x5F62;&#x6210;&#x4E09;&#x89D2;&#x5F62;&#x3002;</p>
-<h4 id="&#x753B;&#x77E9;&#x5F62;"><a href="#&#x753B;&#x77E9;&#x5F62;" class="headerlink" title="&#x753B;&#x77E9;&#x5F62;"></a>&#x753B;&#x77E9;&#x5F62;</h4><p>&#x65B9;&#x6CD5;&#x4E00;&#xFF1A;&#x901A;&#x8FC7;&#x753B;&#x56DB;&#x4E2A;&#x70B9;&#x8FDE;&#x6210;&#x4E09;&#x6761;&#x7EBF;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x8D77;&#x70B9;&#x548C;&#x7EC8;&#x70B9;&#x8FDE;&#x63A5;&#x8D77;&#x6765;&#x3002;</p>
-<p>&#x65B9;&#x6CD5;&#x4E8C;&#xFF1A;</p>
-<pre><code>- (void)drawRect:(CGRect)rect {
-
-    CGContextRef context = UIGraphicsGetCurrentContext();
-
-    CGContextAddRect(context, CGRectMake(100, 100, 50, 50));
-
-    //&#x8BBE;&#x7F6E;&#x7EBF;&#x6761;&#x7684;&#x989C;&#x8272;
-    CGContextSetRGBFillColor(context, 0.2, 0.8, 0.2, 1);
-
-//    [[UIColor yellowColor] setFill];
-
-//    //&#x6E32;&#x67D3;-&#x300B;&#x3010;&#x7A7A;&#x5FC3;&#x3011;
-//    CGContextStrokePath(context);
-    //&#x6E32;&#x67D3;-&#x300B;&#x3010;&#x5B9E;&#x5FC3;&#x3011;
-    CGContextFillPath(context);
-}
-</code></pre><h4 id="&#x753B;&#x5706;&#x3001;&#x5F27;&#x5F62;&#x3001;&#x6247;&#x5F62;"><a href="#&#x753B;&#x5706;&#x3001;&#x5F27;&#x5F62;&#x3001;&#x6247;&#x5F62;" class="headerlink" title="&#x753B;&#x5706;&#x3001;&#x5F27;&#x5F62;&#x3001;&#x6247;&#x5F62;"></a>&#x753B;&#x5706;&#x3001;&#x5F27;&#x5F62;&#x3001;&#x6247;&#x5F62;</h4><pre><code>//&#x753B;&#x5F27;&#x5F62;
-- (void)drawRect:(CGRect)rect {
-
-    CGContextRef context = UIGraphicsGetCurrentContext();
-
-    /*!
-     *  @author zhihua, 16-06-02 17:06:03
-     *  &#x5706;&#x5FC3;&#x7684;&#x70B9;
-     *  &#x534A;&#x5F84;
-     *  &#x8D77;&#x59CB;&#x7684;&#x5F27;&#x5EA6;
-     *  &#x7ED3;&#x675F;&#x7684;&#x5F27;&#x5EA6;
-     *  clockwise 0 &#x987A;&#x9488; 1 &#x9006;&#x65F6;&#x9488;
-     *  @brief
-     */
-    CGContextAddArc(context, CGRectGetMidX(rect), CGRectGetMidY(rect), 100, 0, M_PI*0.65, 1);
-
-    CGContextStrokePath(context);
-
-}
-
-//&#x753B;&#x6247;&#x5F62;
-- (void)drawRect:(CGRect)rect {
-
-    //&#x83B7;&#x53D6;&#x56FE;&#x5F62;&#x4E0A;&#x4E0B;&#x6587;
-    CGContextRef context = UIGraphicsGetCurrentContext();
-
-    CGContextMoveToPoint(context, CGRectGetMidX(rect), CGRectGetMidY(rect));
-    CGContextAddArc(context, CGRectGetMidX(rect), CGRectGetMidY(rect), 50, 0, M_PI*0.25, 1);
-
-    CGContextClosePath(context);
-
-    CGContextStrokePath(context);
-}
-
-//&#x753B;&#x5F27;&#x5F62;
-- (void)drawRect:(CGRect)rect {
-
-    //&#x83B7;&#x53D6;&#x56FE;&#x5F62;&#x4E0A;&#x4E0B;&#x6587;
-    CGContextRef context = UIGraphicsGetCurrentContext();
-
-    CGContextAddEllipseInRect(context, CGRectMake(CGRectGetMidX(rect), CGRectGetMidY(rect), 50, 50));
-
-    CGContextStrokePath(context);
-
-}
-</code></pre><h4 id="&#x753B;&#x6587;&#x5B57;&#x3001;&#x753B;&#x56FE;&#x7247;"><a href="#&#x753B;&#x6587;&#x5B57;&#x3001;&#x753B;&#x56FE;&#x7247;" class="headerlink" title="&#x753B;&#x6587;&#x5B57;&#x3001;&#x753B;&#x56FE;&#x7247;"></a>&#x753B;&#x6587;&#x5B57;&#x3001;&#x753B;&#x56FE;&#x7247;</h4><pre><code>- (void)drawRect:(CGRect)rect {
-
-    //&#x753B;&#x56FE;&#x7247;
-    UIImage *image = [UIImage imageNamed:@&quot;papa&quot;];
-    //[image drawAtPoint:CGPointZero];
-    //[image drawInRect:CGRectMake(10, 10, 50, 50)];
-
-    //&#x5E73;&#x94FA;
-    [image drawAsPatternInRect:CGRectMake(0, 0, 180, 180)];
-
-    //&#x753B;&#x6587;&#x5B57;
-    NSString *text = @&quot;&#x5EFA;&#x8BBE;&#x4E16;&#x754C;&#x79D1;&#x6280;&#x5F3A;&#x56FD;&#x7684;&#x53F7;&#x89D2;&#x5DF2;&#x7ECF;&#x5439;&#x54CD;&#xFF0C;&#x79D1;&#x6280;&#x521B;&#x65B0;&#x7684;&#x6625;&#x5929;&#x5DF2;&#x7ECF;&#x6765;&#x4E34;&#x3002;&quot;;
-
-    NSDictionary *attr = @{NSFontAttributeName:[UIFont systemFontOfSize:13],NSForegroundColorAttributeName:[UIColor yellowColor]};
-
-    [text drawInRect:rect withAttributes:attr];
-    //&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4E0D;&#x4F1A;&#x6362;&#x884C;
-    //[text drawAtPoint:CGPointMake(10, 100) withAttributes:nil];
-}
-</code></pre>
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1177,7 +1088,7 @@ pod update --verbose --no-repo-update
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">44</span>
+              <span class="site-state-item-count">45</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
