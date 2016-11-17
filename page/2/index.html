@@ -643,6 +643,64 @@ UIView *view = [[UIView alloc] initWithFrame:CGrect(x - SINGLE_LINE_ADJUST_OFFSE
 </code></pre><h3 id="15&#x3001;Pod&#x66F4;&#x65B0;"><a href="#15&#x3001;Pod&#x66F4;&#x65B0;" class="headerlink" title="15&#x3001;Pod&#x66F4;&#x65B0;"></a>15&#x3001;Pod&#x66F4;&#x65B0;</h3><pre><code>pod install --verbose --no-repo-update
 pod update --verbose --no-repo-update
 </code></pre><h3 id="16&#x3001;&#x83B7;&#x53D6;Collection&#x7684;ContentSize"><a href="#16&#x3001;&#x83B7;&#x53D6;Collection&#x7684;ContentSize" class="headerlink" title="16&#x3001;&#x83B7;&#x53D6;Collection&#x7684;ContentSize"></a>16&#x3001;&#x83B7;&#x53D6;Collection&#x7684;ContentSize</h3><pre><code>self.collectionViewH = self.flowLayout.collectionViewContentSize.height;
+</code></pre><h3 id="17&#x3001;&#x8DF3;&#x8F6C;&#x8FDB;&#x5165;app&#x7684;&#x8BBE;&#x7F6E;&#x754C;&#x9762;"><a href="#17&#x3001;&#x8DF3;&#x8F6C;&#x8FDB;&#x5165;app&#x7684;&#x8BBE;&#x7F6E;&#x754C;&#x9762;" class="headerlink" title="17&#x3001;&#x8DF3;&#x8F6C;&#x8FDB;&#x5165;app&#x7684;&#x8BBE;&#x7F6E;&#x754C;&#x9762;"></a>17&#x3001;&#x8DF3;&#x8F6C;&#x8FDB;&#x5165;app&#x7684;&#x8BBE;&#x7F6E;&#x754C;&#x9762;</h3><pre><code>NSURL * url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+if([[UIApplication sharedApplication] canOpenURL:url]) {
+          NSURL*url =[NSURL           
+           URLWithString:UIApplicationOpenSettingsURLString];
+           [[UIApplication sharedApplication] openURL:url];
+}
+</code></pre><h3 id="18&#x3001;App&#x8FDB;&#x884C;&#x8BC4;&#x5206;"><a href="#18&#x3001;App&#x8FDB;&#x884C;&#x8BC4;&#x5206;" class="headerlink" title="18&#x3001;App&#x8FDB;&#x884C;&#x8BC4;&#x5206;"></a>18&#x3001;App&#x8FDB;&#x884C;&#x8BC4;&#x5206;</h3><pre><code>NSString *str = [NSString stringWithFormat:@&quot;itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&amp;id=xxxxxx&quot; ];
+
+if( ([[[UIDevice currentDevice] systemVersion] doubleValue]&gt;=7.0)){
+
+           str = [NSString stringWithFormat:@&quot;itms-apps://itunes.apple.com/app/idxxxxxxx&quot;];
+
+}
+
+[[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+</code></pre><h3 id="19&#x3001;&#x591A;&#x4E2A;&#x5F02;&#x6B65;&#x4EFB;&#x52A1;&#x8FDB;&#x884C;&#x5904;&#x7406;"><a href="#19&#x3001;&#x591A;&#x4E2A;&#x5F02;&#x6B65;&#x4EFB;&#x52A1;&#x8FDB;&#x884C;&#x5904;&#x7406;" class="headerlink" title="19&#x3001;&#x591A;&#x4E2A;&#x5F02;&#x6B65;&#x4EFB;&#x52A1;&#x8FDB;&#x884C;&#x5904;&#x7406;"></a>19&#x3001;&#x591A;&#x4E2A;&#x5F02;&#x6B65;&#x4EFB;&#x52A1;&#x8FDB;&#x884C;&#x5904;&#x7406;</h3><pre><code>// 1.&#x521B;&#x5EFA;dispatch_group_t
+dispatch_group_t group = dispatch_group_create();
+
+for (int i=0; i&lt;10; i++) {
+
+     // 2&#x3001;&#x5C06;&#x5F53;&#x524D;&#x7684;&#x4E0B;&#x8F7D;&#x64CD;&#x4F5C;&#x6DFB;&#x52A0;&#x5230;&#x7EC4;&#x4E2D;
+      dispatch_group_enter(group);
+
+        {
+              // &#x6570;&#x636E;&#x8BF7;&#x6C42;&#x6210;&#x529F;&#x79BB;&#x5F00;&#x5F53;&#x524D;&#x7EC4;
+             dispatch_group_leave(group);
+        }
+
+}
+// 3.&#x5F53;&#x6240;&#x6709;&#x56FE;&#x7247;&#x90FD;&#x4E0B;&#x8F7D;&#x5B8C;&#x6BD5;&#x518D;&#x901A;&#x8FC7;&#x95ED;&#x5305;&#x901A;&#x77E5;&#x8C03;&#x7528;&#x8005;
+
+dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+
+         // &#x80FD;&#x591F;&#x6765;&#x5230;&#x8FD9;&#x4E2A;&#x5730;&#x65B9;, &#x4E00;&#x5B9A;&#x662F;&#x6240;&#x6709;&#x4EFB;&#x52A1;&#x90FD;&#x5DF2;&#x7ECF;&#x5B8C;&#x6210;
+});
+</code></pre><h3 id="20&#x3001;label&#x8BBE;&#x7F6E;&#x5220;&#x9664;&#x7EBF;"><a href="#20&#x3001;label&#x8BBE;&#x7F6E;&#x5220;&#x9664;&#x7EBF;" class="headerlink" title="20&#x3001;label&#x8BBE;&#x7F6E;&#x5220;&#x9664;&#x7EBF;"></a>20&#x3001;label&#x8BBE;&#x7F6E;&#x5220;&#x9664;&#x7EBF;</h3><pre><code>UILabel *originPriceLabel = [UILabel new];
+
+NSString *originPriceString = [NSString stringWithFormat:@&quot;&#xA5; %@0&quot;, @&quot;100&quot;];
+
+NSMutableAttributedString *originPriceAttrsStr = [[NSMutableAttributedString alloc] initWithString:originPriceString];
+
+[originPriceAttrsStr addAttribute:NSStrikethroughStyleAttributeName value:@(1)
+
+range:NSMakeRange(0, originPriceString.length)];
+
+originPriceLabel.attributedText = originPriceAttrsStr;
+</code></pre><h3 id="21&#x3001;&#x8BBE;&#x7F6E;textView&#x6216;&#x8005;label&#x7684;&#x884C;&#x95F4;&#x8DDD;&#x65B9;&#x6CD5;"><a href="#21&#x3001;&#x8BBE;&#x7F6E;textView&#x6216;&#x8005;label&#x7684;&#x884C;&#x95F4;&#x8DDD;&#x65B9;&#x6CD5;" class="headerlink" title="21&#x3001;&#x8BBE;&#x7F6E;textView&#x6216;&#x8005;label&#x7684;&#x884C;&#x95F4;&#x8DDD;&#x65B9;&#x6CD5;"></a>21&#x3001;&#x8BBE;&#x7F6E;textView&#x6216;&#x8005;label&#x7684;&#x884C;&#x95F4;&#x8DDD;&#x65B9;&#x6CD5;</h3><pre><code>UILabel *label = [UILabel new];
+label.numberOfLines = 0;
+NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+paragraphStyle.lineSpacing = 4;
+NSDictionary *attributes = @{ NSFontAttributeName:[UIFont systemFontOfSize:14], NSParagraphStyleAttributeName:paragraphStyle};
+label.attributedText = [[NSAttributedString alloc]initWithString:label.text attributes:attributes];
+</code></pre><h3 id="22&#x3001;UIImageView&#x8BBE;&#x7F6E;&#x5706;&#x89D2;&#x65F6;&#x4EA7;&#x751F;UI&#x4E0D;&#x6D41;&#x7545;&#x7684;&#x89E3;&#x51B3;"><a href="#22&#x3001;UIImageView&#x8BBE;&#x7F6E;&#x5706;&#x89D2;&#x65F6;&#x4EA7;&#x751F;UI&#x4E0D;&#x6D41;&#x7545;&#x7684;&#x89E3;&#x51B3;" class="headerlink" title="22&#x3001;UIImageView&#x8BBE;&#x7F6E;&#x5706;&#x89D2;&#x65F6;&#x4EA7;&#x751F;UI&#x4E0D;&#x6D41;&#x7545;&#x7684;&#x89E3;&#x51B3;"></a>22&#x3001;UIImageView&#x8BBE;&#x7F6E;&#x5706;&#x89D2;&#x65F6;&#x4EA7;&#x751F;UI&#x4E0D;&#x6D41;&#x7545;&#x7684;&#x89E3;&#x51B3;</h3><pre><code>//        &#x53EA;&#x9700;&#x8981;&#x52A0;&#x4E0A;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x5C31;&#x53EF;&#x4EE5;&#x53BB;&#x9664;&#x952F;&#x9F7F;
+imageView.layer.shouldRasterize = YES;
+&#x5F53;shouldRasterize&#x8BBE;&#x6210;true&#x65F6;&#xFF0C;layer&#x88AB;&#x6E32;&#x67D3;&#x6210;&#x4E00;&#x4E2A;bitmap&#xFF0C;&#x5E76;&#x7F13;&#x5B58;&#x8D77;&#x6765;&#xFF0C;&#x7B49;&#x4E0B;&#x6B21;&#x4F7F;&#x7528;&#x65F6;&#x4E0D;&#x4F1A;&#x518D;&#x91CD;&#x65B0;&#x53BB;&#x6E32;&#x67D3;&#x4E86;&#x3002;&#x5B9E;&#x73B0;&#x5706;&#x89D2;&#x672C;&#x8EAB;&#x5C31;&#x662F;&#x5728;&#x505A;&#x989C;&#x8272;&#x6DF7;&#x5408;&#xFF08;blending&#xFF09;&#xFF0C;&#x5982;&#x679C;&#x6BCF;&#x6B21;&#x9875;&#x9762;&#x51FA;&#x6765;&#x65F6;&#x90FD;blending&#xFF0C;&#x6D88;&#x8017;&#x592A;&#x5927;&#xFF0C;&#x8FD9;&#x65F6;shouldRasterize = yes&#xFF0C;&#x4E0B;&#x6B21;&#x5C31;&#x53EA;&#x662F;&#x7B80;&#x5355;&#x7684;&#x4ECE;&#x6E32;&#x67D3;&#x5F15;&#x64CE;&#x7684;cache&#x91CC;&#x8BFB;&#x53D6;&#x90A3;&#x5F20;bitmap&#xFF0C;&#x8282;&#x7EA6;&#x7CFB;&#x7EDF;&#x8D44;&#x6E90;&#x3002;
+
+&#x989D;&#x5916;&#x6536;&#x83B7;&#xFF1A;&#x5982;&#x679C;&#x5728;&#x6EDA;&#x52A8;tableView&#x65F6;&#xFF0C;&#x6BCF;&#x6B21;&#x90FD;&#x6267;&#x884C;&#x5706;&#x89D2;&#x8BBE;&#x7F6E;&#xFF0C;&#x80AF;&#x5B9A;&#x4F1A;&#x963B;&#x585E;UI&#xFF0C;&#x8BBE;&#x7F6E;&#x8FD9;&#x4E2A;&#x5C06;&#x4F1A;&#x4F7F;&#x6ED1;&#x52A8;&#x66F4;&#x52A0;&#x6D41;&#x7545;&#x3002;
+&#x539F;&#x6587;&#x94FE;&#x63A5;&#xFF1A;http://blog.csdn.net/zhuangyou123/article/details/8737367
 </code></pre>
           
         
